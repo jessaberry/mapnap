@@ -37,3 +37,11 @@ Mapnap is a mobile app designed for anyone looking to manage a busy schedule. It
 - Arrival: sends a notification (pop-up) whenever the trigger is fired
 - Type: choose to set up one-time or recurring notifications
 - Confirmation & cancellations: ability to modify the next event when alarmed
+
+###Prototypes
+
+1. Time-Based trigger feature. 
+![IMG_3240 2](https://github.com/jessaberry/MapNap/assets/64464531/af5be1d1-9130-4049-a593-e52ee8e7e926)
+
+2. Alarm/Notification events feature.
+![20230522_204602](https://github.com/jessaberry/MapNap/assets/64464531/81ce569e-fcc4-4c44-b91a-5ccab2741c25)
