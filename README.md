@@ -5,11 +5,11 @@ Mapnap is a mobile app designed for anyone looking to manage a busy schedule. It
 
 ### Project task requirements:
 ##### Minimal requirements
-1. Location based triggers
-2. Time based triggers
-3. Recurring triggers
-4. Alarm / notification event
-5. Ability to add, update, delete, etc: triggers and events
+The application must display a notification when a specific location is reached.
+The application must display a notification at a specified time.
+The application must support recurring triggers for notifications.
+The application must provide alarm/notification functionality for events.
+The application must allow users to add, update, and delete triggers and events.
 
 ##### Standard requirements
 1. Ability to create workflow
