@@ -21,6 +21,7 @@ The users can then share their trip with their friends over the social media.
 3. The application should automatically extract metadata in the media files (e.g., exif, etc.) and  during the media import process
 4. The application should provide location-aware weather forecast information for upcoming experiences
 5. The application should allow the users to add and confirm other users as a friend who can be added as a participant in itineraries and experiences
+6. The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
 
 #### Stretch requirements
 1. The application could allow users to set itinerary, experience, and memory to private
