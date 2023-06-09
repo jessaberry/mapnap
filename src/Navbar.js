@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import Test from './experience/Test';
+import { NavLink } from "react-router-dom";
+import Experience from "./experience/components/Experience";
 
 // TODO: REPLACE THIS WITH ACTUAL COMPONENTS IN navbar
 const PlaceholderComponent = () => {
@@ -7,9 +7,9 @@ const PlaceholderComponent = () => {
 };
 
 const navPages = [
-  { path: '/', label: 'Dashboard', component: PlaceholderComponent },
-  { path: '/map', label: 'Map', component: PlaceholderComponent },
-  { path: '/test', label: 'TEST', component: Test },
+  { path: "/", label: "Dashboard", component: PlaceholderComponent },
+  { path: "/map", label: "Map", component: PlaceholderComponent },
+  { path: "/experience", label: "EXPERIENCE", component: Experience },
 ];
 
 const Navbar = () => {
