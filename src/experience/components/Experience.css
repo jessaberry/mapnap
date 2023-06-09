@@ -1,1 +1,9 @@
-/* PUT DROPDOWN STYLING HERE */
+/* PUT EXP STYLING HERE */
+.textfield {
+  width: 100%;
+  margin-bottom: 2;
+}
+
+.custom-select {
+  min-width: 200px;
+}

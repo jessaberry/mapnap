@@ -1,29 +1,32 @@
 import FormDateTimePicker from "./FormDateTimePicker";
 import FormSelect from "./FormSelect";
 import TextField from "@mui/material/TextField";
+import "./Experience.css";
 
 const FormInputs = ({ data, handleChange }) => {
   return (
     <>
-      <div>
+      <div className="textfield">
         <TextField
           name="name"
           label="Name"
           placeholder="Firstname Lastname"
           value={data.name}
           onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
         />
       </div>
-      <div>
+      <div className="textfield">
         <TextField
           name="email"
           label="Email/URL"
           placeholder="yourhandle@email.com"
           value={data.email}
           onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
         />
       </div>
-      <div>
+      <div className="custom-select">
         <FormSelect
           name="activity"
           value={data.activity}
@@ -33,7 +36,7 @@ const FormInputs = ({ data, handleChange }) => {
           label="Activity"
         />
       </div>
-      <div>
+      <div className="custom-date-time">
         <FormDateTimePicker
           label="dateFrom"
           value={data.datefrom}
@@ -42,7 +45,7 @@ const FormInputs = ({ data, handleChange }) => {
           }
         />
       </div>
-      <div>
+      <div className="custom-date-time">
         <FormDateTimePicker
           label="dateTo"
           value={data.dateTo}
@@ -51,25 +54,26 @@ const FormInputs = ({ data, handleChange }) => {
           }
         />
       </div>
-      <div>
+      <div className="textfield">
         <TextField
           name="address"
           label="Address"
           placeholder="1234 Burger St."
           value={data.address}
           onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
         />
       </div>
-      <div>
+      <div className="textfield">
         <TextField
           name="description"
           label="Description"
           placeholder="enter description"
           multiline
-          rows={2}
-          maxRows={10}
+          rows={6}
           value={data.description}
           onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
         />
       </div>
     </>

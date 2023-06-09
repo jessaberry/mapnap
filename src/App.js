@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Navbar";
-import Test from "./experience/components/Test";
+import Experience from "./experience/components/Experience";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <main>
           <Navbar />
           <Routes>
-            <Route path="/test" element={<Test />} />
+            <Route path="/experience" element={<Experience />} />
           </Routes>
         </main>
       </div>

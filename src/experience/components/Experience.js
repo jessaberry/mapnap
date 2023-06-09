@@ -10,7 +10,7 @@ function Experience() {
     <div>
       <h1>Add an experience</h1>
       <Form />
-      {/* TODO: remove this (visual purposes) */}
+      {/* TODO: REMOVE FROM HERE */}
       <ul>
         {experiences.map((experience) => (
           <li key={experience.id}>
@@ -24,11 +24,12 @@ function Experience() {
           </li>
         ))}
       </ul>
+      {/* REMOVE TO HERE */}
     </div>
   );
 }
 
-//TODO: remove this
+//TODO: REMOVE FROM HERE
 function App() {
   return (
     <Provider store={store}>
@@ -36,5 +37,6 @@ function App() {
     </Provider>
   );
 }
+// REMOVE TO HERE
 
 export default App;

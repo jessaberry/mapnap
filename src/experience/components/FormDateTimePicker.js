@@ -9,6 +9,7 @@ const FormDateTimePicker = ({ value, onChange }) => {
         value={value}
         onChange={onChange}
         renderInput={(props) => <TextField {...props} />}
+        sx={{ width: "50%", mb: 2 }}
       />
     </LocalizationProvider>
   );

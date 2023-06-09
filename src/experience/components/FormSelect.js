@@ -6,7 +6,7 @@ const FormSelect = ({ value, onChange }) => {
   };
 
   return (
-    <Select value={value} onChange={handleChange}>
+    <Select value={value} onChange={handleChange} sx={{ width: "50%", mb: 2 }}>
       <MenuItem value="Accommodation">Accommodation</MenuItem>
       <MenuItem value="Attraction">Attraction</MenuItem>
       <MenuItem value="Dining">Dining</MenuItem>
