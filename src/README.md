@@ -2,6 +2,9 @@
 
 Prior to starting the application, ensure you run the following: 
 `npm i react-router-dom`
+`npm i @mui/x-date-pickers`
+`npm install date-fns`
+`npm i formik`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

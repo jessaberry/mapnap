@@ -4,7 +4,6 @@ import Experience from './Experience';
 const ExperienceTesting = () => {
   return (
     <div className='TEST'>
-        <h1>text text text</h1>
         <Experience />
     </div>
   );

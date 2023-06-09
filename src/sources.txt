@@ -4,4 +4,7 @@ Router https://www.javatpoint.com/browserrouter-in-react
 ------------------------------------------------------------
 EXPERIENCE
 Dropdown Menu https://dev.to/cooljasonmelton/build-this-cool-dropdown-menu-with-react-react-router-and-css-39ln
+MUI DateTimePicker https://mui.com/x/react-date-pickers/date-picker/
+MUI DateTimePicker https://github.com/mui/mui-x/issues/5132
+MUI textarea https://stackoverflow.com/questions/46393703/text-area-in-material-ui
 ------------------------------
