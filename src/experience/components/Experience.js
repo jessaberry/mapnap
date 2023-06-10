@@ -15,7 +15,7 @@ function Experience() {
         {experiences.map((experience) => (
           <li key={experience.id}>
             <h3>{experience.name}</h3>
-            <p>Email: {experience.email}</p>
+            <p>Image: {experience.image}</p>
             <p>Activity: {experience.activity}</p>
             <p>From: {experience.datefrom.toString()}</p>
             <p>To: {experience.dateto.toString()}</p>
