@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Experience from "./experience/components/Experience";
+import Memory from "./memories/components/Memory";
 import Dashboard from "./Dashboard/components/Dashboard";
 
 // TODO: REPLACE THIS WITH ACTUAL COMPONENTS IN navbar
@@ -11,6 +12,7 @@ const navPages = [
   { path: "/", label: "Dashboard", component: Dashboard },
   { path: "/map", label: "Map", component: PlaceholderComponent },
   { path: "/experience", label: "EXPERIENCE", component: Experience },
+  { path: "/memory", label: "MEMORY", component: Memory }
 ];
 
 const Navbar = () => {

@@ -3,7 +3,7 @@ import { Provider, useSelector } from "react-redux";
 import store from "../reducers/store";
 import Form from "./Form";
 
-function Experience() {
+export default function Experience() {
   const experiences = useSelector((state) => state.exp.experiences);
 
   return (
@@ -29,6 +29,7 @@ function Experience() {
   );
 }
 
+/*
 //TODO: REMOVE FROM HERE
 function App() {
   return (
@@ -40,3 +41,4 @@ function App() {
 // REMOVE TO HERE
 
 export default App;
+*/
