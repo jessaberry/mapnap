@@ -8,7 +8,7 @@ function Experience() {
 
   return (
     <div>
-      <h1>Add an experience</h1>
+      <h1>Add an Experience </h1>
       <Form />
       {/* TODO: REMOVE FROM HERE */}
       <ul>
