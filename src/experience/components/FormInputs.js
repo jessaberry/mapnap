@@ -6,34 +6,24 @@ import "./Experience.css";
 const FormInputs = ({ data, handleChange }) => {
   return (
     <>
-      <div className="textfield">
-        <TextField
-          name="name"
-          label="Name"
-          placeholder="Firstname Lastname"
-          value={data.name}
-          onChange={handleChange}
-          sx={{ width: "50%", mb: 2 }}
-        />
-      </div>
-      <div className="textfield">
-        <TextField
-          name="email"
-          label="Email/URL"
-          placeholder="yourhandle@email.com"
-          value={data.email}
-          onChange={handleChange}
-          sx={{ width: "50%", mb: 2 }}
-        />
-      </div>
       <div className="custom-select">
-        <FormSelect
+        <FormSelect required
           name="activity"
           value={data.activity}
           onChange={(value) =>
             handleChange({ target: { name: "activity", value: value } })
           }
           label="Activity"
+        />
+      </div>
+      <div className="textfield">
+        <TextField required
+          name="name"
+          label="Name of experience"
+          placeholder="Petting Zoo"
+          value={data.name}
+          onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
         />
       </div>
       <div className="custom-date-time">
@@ -48,7 +38,7 @@ const FormInputs = ({ data, handleChange }) => {
       <div className="custom-date-time">
         <FormDateTimePicker
           label="dateTo"
-          value={data.dateTo}
+          value={data.dateto}
           onChange={(value) =>
             handleChange({ target: { name: "dateto", value } })
           }
@@ -60,6 +50,16 @@ const FormInputs = ({ data, handleChange }) => {
           label="Address"
           placeholder="1234 Burger St."
           value={data.address}
+          onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
+        />
+      </div>
+      <div className="textfield">
+        <TextField
+          name="image"
+          label="Image URL"
+          placeholder="monkeys.jpg"
+          value={data.image}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
         />

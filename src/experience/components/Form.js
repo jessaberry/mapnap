@@ -5,7 +5,7 @@ import FormInputs from "./FormInputs";
 
 const init = {
   name: "",
-  email: "",
+  image: "",
   activity: "",
   datefrom: "",
   dateto: "",
@@ -23,7 +23,9 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e.target.name !== "datefrom" && e.target.name !== "dateto") {
+      e.preventDefault();
+    }
     dispatch(add(data));
     setData(init);
   };
