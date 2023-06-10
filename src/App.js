@@ -10,18 +10,18 @@ import store from "./reducers/store";
 function App() {
   return (
     <Provider store={store}>
-    <BrowserRouter>
-      <div className="App">
-        <header className="App-header">ohohoho</header>
-        <main>
-          <Navbar />
-          <Routes>
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/memory" element={<Memory />} />
-          </Routes>
-        </main>
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">ohohoho</header>
+          <main>
+            <Navbar />
+            <Routes>
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/memory" element={<Memory />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
     </Provider>
   );
 }
