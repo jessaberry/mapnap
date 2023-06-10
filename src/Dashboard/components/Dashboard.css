@@ -1,0 +1,13 @@
+.trip-button {
+    position: relative;
+    top: 0px;
+    right: 43%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.card-gallery {
+    display: flex;
+    /*justify-content: space-between;*/
+}
