@@ -1,28 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import Experience from './components/experience/Experience';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "./Navbar";
+import Experience from "./experience/components/Experience";
+import Memory from "./memories/components/Memory";
+import Dashboard from "./Dashboard/components/Dashboard";
+import { Provider } from "react-redux";
+import store from "./reducers/store";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <body>
-        <Experience />
-      </body>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">ohohoho</header>
+          <main>
+            <Navbar />
+            <Routes>
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/memory" element={<Memory />} />
+              <Route path="/" element={<Dashboard />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
