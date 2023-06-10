@@ -1,6 +1,5 @@
 import React from "react";
-import { Provider, useSelector } from "react-redux";
-import store from "../reducers/store";
+import { useSelector } from "react-redux";
 import Form from "./Form";
 
 export default function Experience() {
@@ -28,17 +27,3 @@ export default function Experience() {
     </div>
   );
 }
-
-/*
-//TODO: REMOVE FROM HERE
-function App() {
-  return (
-    <Provider store={store}>
-      <Experience />
-    </Provider>
-  );
-}
-// REMOVE TO HERE
-
-export default App;
-*/

@@ -3,7 +3,8 @@ import "./App.css";
 import Navbar from "./Navbar";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
-import { Provider, useSelector } from "react-redux";
+import Dashboard from "./Dashboard/components/Dashboard";
+import { Provider } from "react-redux";
 import store from "./reducers/store";
 
 
@@ -18,6 +19,7 @@ function App() {
             <Routes>
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
+              <Route path="/" element={<Dashboard />} />
             </Routes>
           </main>
         </div>
