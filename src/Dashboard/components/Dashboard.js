@@ -3,7 +3,6 @@ import {Provider} from "react-redux";
 import store from "../../experience/reducers/store";
 import DropdownMenu from "./DropDownMenu";
 import "./Dashboard.css";
-import TravelDashboard from "./card";
 import Card from "./card";
 
 function Dashboard() {
