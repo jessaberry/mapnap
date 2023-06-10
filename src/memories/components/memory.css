@@ -1,0 +1,6 @@
+img.masonryImage {
+    borderBottomLeftRadius: 4;
+    borderBottomRightRadius: 4;
+    display: block;
+    width: 100%;
+}
