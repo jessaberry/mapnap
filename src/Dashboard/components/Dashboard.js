@@ -7,7 +7,7 @@ import Card from "./card";
 
 function Dashboard() {
     const handleAddTrip = () => {
-        // TODO: Implement logic to handle adding a trip
+        // TODO: Implement logic to handle adding a trip.json
         console.log('Add Trip button clicked!');
     };
 

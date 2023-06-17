@@ -1,0 +1,37 @@
+[
+  {
+    "UserId": 1,
+    "FirstName": "Eric",
+    "LastName": "Chau",
+    "EmailAddress": "thelyrist@live.ca",
+    "Salt": "yfo4aW8DSWKLvnEw",
+    "PasswordHash": ""
+  },
+  {
+    "UserId": 2,
+    "FirstName": "Jessa",
+    "LastName": "Shi",
+    "EmailAddress": "",
+    "Salt": "553FxoPMeyY68lSO",
+    "PasswordHash": ""
+  },
+  {
+    "UserId": 3,
+    "FirstName": "Max",
+    "LastName": "Zhong",
+    "EmailAddress": "",
+    "Salt": "0l4QDeG4oxyJ7VoL",
+    "PasswordHash": ""
+  },
+  {
+    "UserId": 4,
+    "FirstName": "Parth",
+    "LastName": "Sehtiya",
+    "EmailAddress": "",
+    "Salt": "F4S9A9M62UcsW7x4",
+    "PasswordHash": ""
+  }
+
+
+
+]

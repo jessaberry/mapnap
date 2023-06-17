@@ -23,7 +23,7 @@
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
 //
-//         // Add new trip to the trips array
+//         // Add new trip.json to the trips array
 //         setTrips([...trips, newTrip]);
 //
 //         // Reset the newTrip state
@@ -81,11 +81,11 @@
 //
 //             <h2>Trips:</h2>
 //             <ul>
-//                 {trips.map((trip, index) => (
+//                 {trips.map((trip.json, index) => (
 //                     <li key={index}>
-//                         <strong>Destination:</strong> {trip.destination},{' '}
-//                         <strong>Start Date:</strong> {trip.startDate},{' '}
-//                         <strong>End Date:</strong> {trip.endDate}
+//                         <strong>Destination:</strong> {trip.json.destination},{' '}
+//                         <strong>Start Date:</strong> {trip.json.startDate},{' '}
+//                         <strong>End Date:</strong> {trip.json.endDate}
 //                     </li>
 //                 ))}
 //             </ul>
@@ -121,7 +121,7 @@
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
 //
-//         // Add new trip to the trips array
+//         // Add new trip.json to the trips array
 //         setTrips([...trips, newTrip]);
 //
 //         // Reset the newTrip state
@@ -179,14 +179,14 @@
 //
 //             <h2>Trips:</h2>
 //             <div className="gallery">
-//                 {trips.map((trip, index) => (
+//                 {trips.map((trip.json, index) => (
 //                     <div key={index} className="card">
-//                         <h3>{trip.destination}</h3>
+//                         <h3>{trip.json.destination}</h3>
 //                         <p>
-//                             <strong>Start Date:</strong> {trip.startDate}
+//                             <strong>Start Date:</strong> {trip.json.startDate}
 //                         </p>
 //                         <p>
-//                             <strong>End Date:</strong> {trip.endDate}
+//                             <strong>End Date:</strong> {trip.json.endDate}
 //                         </p>
 //                     </div>
 //                 ))}
