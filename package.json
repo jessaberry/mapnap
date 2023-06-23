@@ -1,55 +1,16 @@
 {
-  "name": "mapnap",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/lab": "^5.0.0-alpha.133",
-    "@mui/material": "^5.13.4",
-    "@mui/x-date-pickers": "^6.6.0",
-    "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "date-fns": "^2.30.0",
-    "datetimepicker": "^0.1.39",
-    "formik": "^2.4.1",
-    "google-map-react": "^2.2.1",
-    "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.7",
-    "react-router-dom": "^6.12.1",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.10",
-    "web-vitals": "^2.1.4"
+    "concurrently": "^8.2.0",
+    "node": "^20.2.0",
+    "nodemon": "^2.0.22",
+    "pug": "^3.0.2",
+    "server": "^1.0.38"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "prettier": "2.8.8"
+    "start": "node ./server/bin/www",
+    "server": "nodemon ./server/bin/www",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "npm i --prefix client && npm i --prefix server"
   }
 }
