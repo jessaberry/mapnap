@@ -9,7 +9,9 @@ export const tripSlice = createSlice({
       state.trips = [...state.trips, action.payload];
     },
     deleteTrip: (state, action) => {
-      state.trips = state.trips.filter((trip) => trip.uuid !== action.payload);
+      state.trips = state.trips.filter(
+        (trip) => trip.TripId !== action.payload
+      );
     },
   },
 });
