@@ -6,7 +6,7 @@ import { Provider, useSelector } from "react-redux";
 import { Masonry } from "@mui/lab";
 import { styled } from '@mui/material/styles';
 import './memory.css'
-import store from "../../experience/reducers/store";
+import store from "../../reducers/store";
 import { useEffect } from "react";
 
 

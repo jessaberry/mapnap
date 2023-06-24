@@ -3,10 +3,10 @@ import "./App.css";
 import Navbar from "./Navbar";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
+import Trip from "./trip/components/Trip";
 import Dashboard from "./Dashboard/components/Dashboard";
 import { Provider } from "react-redux";
 import store from "./reducers/store";
-
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <main>
             <Navbar />
             <Routes>
+              <Route path="/trip" element={<Trip />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
               <Route path="/" element={<Dashboard />} />

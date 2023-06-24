@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { add } from "../reducers/reducer";
+import { addExperience } from "../reducers/reducer";
 import FormInputs from "./FormInputs";
+import { useNavigate } from "react-router-dom";
 
 const init = {
   name: "",
@@ -13,9 +14,10 @@ const init = {
   description: "",
 };
 
-const Form = () => {
-  const [data, setData] = useState(init);
+const Form = ({ tripUUID }) => {
+  const [data, setData] = useState({ ...init, tripID: tripUUID });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +25,13 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-    if (e.target.name !== "datefrom" && e.target.name !== "dateto") {
-      e.preventDefault();
-    }
-    dispatch(add(data));
+    e.preventDefault();
+    dispatch(addExperience(data));
     setData(init);
+    navigate("/trip");
   };
 
-  const handleReset = (e) => {
+  const handleReset = () => {
     setData(init);
   };
 
@@ -44,4 +45,5 @@ const Form = () => {
     </div>
   );
 };
+
 export default Form;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from "react-redux";
-import store from "../../experience/reducers/store";
+import store from "../../reducers/store";
 import DropdownMenu from "./DropDownMenu";
 import "./Dashboard.css";
 import Card from "./card";
