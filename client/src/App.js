@@ -14,7 +14,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
-          <header className="App-header">ohohoho</header>
+          <header className="App-header">Adventoro</header>
           <main>
             <Navbar />
             <SocialButtons />

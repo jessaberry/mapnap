@@ -36,9 +36,9 @@ export default function Trip() {
         handleAddTrip={handleAddTrip}
         handleAddExperience={handleAddExperience}
       />
-      <ul>
+      <ul className="trip-list">
         {trips.map((trip) => (
-          <li key={trip.TripId}>
+          <li key={trip.TripId} className="trip-item">
             <h3>TRIP name: {trip.Title}</h3>
             <p>TRIP description: {trip.Description}</p>
             <p>
