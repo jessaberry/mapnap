@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-import Experience from "./experience/components/Experience";
+// import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Dashboard from "./Dashboard/components/Dashboard";
+import Trip from "./trip/components/Trip";
+import Login from "./sharing/Login";
 
 // TODO: REPLACE THIS WITH ACTUAL COMPONENTS IN navbar
 const PlaceholderComponent = () => {
@@ -11,8 +13,9 @@ const PlaceholderComponent = () => {
 const navPages = [
   { path: "/", label: "Dashboard", component: Dashboard },
   { path: "/map", label: "Map", component: PlaceholderComponent },
-  { path: "/experience", label: "EXPERIENCE", component: Experience },
-  { path: "/memory", label: "MEMORY", component: Memory }
+  { path: "/trip", label: "TRIP", component: Trip },
+  // { path: "/experience", label: "EXPERIENCE", component: Experience },
+  { path: "/memory", label: "MEMORY", component: Memory },
 ];
 
 const Navbar = () => {
@@ -27,6 +30,9 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <div className="nav-login">
+        <Login />
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@
     "node": "^20.2.0",
     "nodemon": "^2.0.22",
     "pug": "^3.0.2",
+    "react-share": "^4.4.1",
     "server": "^1.0.38"
   },
   "scripts": {
