@@ -1,0 +1,58 @@
+[
+  {
+    "PointOfInterestTypeId": 1,
+    "Title": "Accommodation",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 2,
+    "Title": "Food and Beverage",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 3,
+    "Title": "Shopping",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 4,
+    "Title": "Airport",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 5,
+    "Title": "Train Station",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 6,
+    "Title": "Attraction",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 7,
+    "Title": "Venue",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "PointOfInterestTypeId": 8,
+    "Title": "Landmark",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  }
+]

@@ -4,10 +4,14 @@ import store from "../../reducers/store";
 import DropdownMenu from "./DropDownMenu";
 import "./Dashboard.css";
 import Card from "./card";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   const handleAddTrip = () => {
     // TODO: Implement logic to handle adding a trip.json
+    navigate("/trip");
     console.log("Add Trip button clicked!");
   };
 
@@ -25,16 +29,4 @@ function Dashboard() {
     </div>
   );
 }
-
-//TODO: REMOVE FROM HERE
-function App() {
-  return (
-    <Provider store={store}>
-      <Dashboard />
-    </Provider>
-  );
-}
-// REMOVE TO HERE
-
-export default App;
-// export default Dashboard;
+export default Dashboard;

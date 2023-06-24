@@ -57,3 +57,15 @@
   justify-content: flex-end;
   margin-left: auto;
 }
+
+/* Trip.css */
+.trip-list {
+  list-style: none;
+  margin-right: 30px;
+}
+
+.trip-item {
+  border: 2px solid #1a2556;
+  padding: 10px;
+  margin-bottom: 10px;
+}
