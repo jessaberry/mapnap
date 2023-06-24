@@ -22,7 +22,7 @@
     "url": "https://source.unsplash.com/qDkso9nvCg0/1200x1600",
     "width": 1200,
     "height": 1600,
-    "latitude": 34.495380,
+    "latitude": 34.49538,
     "longitude": 136.706146,
     "title": "Ise"
   },
@@ -50,7 +50,7 @@
     "width": 1600,
     "height": 1200,
     "latitude": 39.720009,
-    "longitude": 140.102570,
+    "longitude": 140.10257,
     "title": "Akita"
   },
   {
@@ -72,7 +72,7 @@
     "title": "Yokohama"
   },
   {
-    "uniqueId":"804b86ed-d2e4-42bf-80fd-bee8dc1d6391",
+    "uniqueId": "804b86ed-d2e4-42bf-80fd-bee8dc1d6391",
     "url": "https://source.unsplash.com/I1ASdgphUH4/1600x1200",
     "width": 1600,
     "height": 1200,

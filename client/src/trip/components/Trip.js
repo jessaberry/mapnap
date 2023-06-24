@@ -30,7 +30,10 @@ export default function Trip() {
   return (
     <div>
       <h1>Add a Trip</h1>
-      <Form handleAddTrip={handleAddTrip} handleAddExperience={handleAddExperience} />
+      <Form
+        handleAddTrip={handleAddTrip}
+        handleAddExperience={handleAddExperience}
+      />
       <ul>
         {trips.map((trip) => (
           <li key={trip.uuid}>
@@ -52,19 +55,28 @@ export default function Trip() {
                     <p>EXPERIENCE to: {exp.dateto.toString()}</p>
                     <p>EXPERIENCE address: {exp.address}</p>
                     <p>EXPERIENCE description: {exp.description}</p>
-                    <button type="button" onClick={() => handleDeleteExperience(exp.uuid)}>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteExperience(exp.uuid)}
+                    >
                       Delete Experience
                     </button>
                   </li>
                 ))}
             </ul>
             <div>
-            <button type="button" onClick={() => handleAddExperience(trip.uuid)}>
-              Add Experience
-            </button></div>
-            <div><button type="button" onClick={() => handleDeleteTrip(trip)}>
-              Delete Trip
-            </button></div>
+              <button
+                type="button"
+                onClick={() => handleAddExperience(trip.uuid)}
+              >
+                Add Experience
+              </button>
+            </div>
+            <div>
+              <button type="button" onClick={() => handleDeleteTrip(trip)}>
+                Delete Trip
+              </button>
+            </div>
           </li>
         ))}
       </ul>

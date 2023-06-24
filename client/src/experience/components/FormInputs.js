@@ -7,7 +7,8 @@ const FormInputs = ({ data, handleChange }) => {
   return (
     <>
       <div className="custom-select">
-        <FormSelect required
+        <FormSelect
+          required
           name="activity"
           value={data.activity}
           onChange={(value) =>
@@ -17,7 +18,8 @@ const FormInputs = ({ data, handleChange }) => {
         />
       </div>
       <div className="textfield">
-        <TextField required
+        <TextField
+          required
           name="name"
           label="Name of experience"
           placeholder="Petting Zoo"

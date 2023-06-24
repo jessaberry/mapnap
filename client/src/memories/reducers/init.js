@@ -2,9 +2,9 @@ import data from "../data/media_metadata.json";
 
 const js = data;
 
-console.log(js)
+console.log(js);
 
 let init = {
-  memories: js
+  memories: js,
 };
 export default init;

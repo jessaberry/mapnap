@@ -18,6 +18,9 @@
   align-items: center;
   background-color: darkslategrey;
   color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
@@ -41,4 +44,16 @@
   background-color: slategray;
   border-radius: 0;
   padding: 10px 10px;
+}
+
+.nav-login {
+  margin-right: 10px;
+}
+
+.socials {
+  display: flex;
+  padding: 10px 10px;
+  align-items: right;
+  justify-content: flex-end;
+  margin-left: auto;
 }

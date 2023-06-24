@@ -6,7 +6,7 @@ const init = {
   userID: "",
   title: "",
   description: "",
-  isPublic: ""
+  isPublic: "",
 };
 
 const Form = ({ handleAddTrip }) => {
@@ -26,7 +26,7 @@ const Form = ({ handleAddTrip }) => {
   const handleAddNewTrip = (e) => {
     e.preventDefault();
     const uuid = uuidv4();
-    const trip = { ...data, uuid: uuid};
+    const trip = { ...data, uuid: uuid };
     handleAddTrip(trip);
     setShowInput(false);
     setData(init);
@@ -79,4 +79,3 @@ const Form = ({ handleAddTrip }) => {
 };
 
 export default Form;
-

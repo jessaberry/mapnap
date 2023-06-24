@@ -7,6 +7,7 @@ import Trip from "./trip/components/Trip";
 import Dashboard from "./Dashboard/components/Dashboard";
 import { Provider } from "react-redux";
 import store from "./reducers/store";
+import SocialButtons from "./sharing/SocialButtons";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <header className="App-header">ohohoho</header>
           <main>
             <Navbar />
+            <SocialButtons />
             <Routes>
               <Route path="/trip" element={<Trip />} />
               <Route path="/experience" element={<Experience />} />

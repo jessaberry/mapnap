@@ -15,15 +15,12 @@ export const expSlice = createSlice({
     },
     edit: (state, action) => {
       const { id, key, value } = action.payload;
-      const memories = state.experiences.find(
-        (memories) => memories.id === id
-      );
+      const memories = state.experiences.find((memories) => memories.id === id);
       if (memories) {
         memories[key] = value;
-
       }
-    }
-  }
+    },
+  },
 });
 
 export const { add, del, edit } = expSlice.actions;

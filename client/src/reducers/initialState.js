@@ -1,6 +1,6 @@
 const initialState = {
-    trips: [],
-    experiences: [],
-    memories: []
-  };
+  trips: [],
+  experiences: [],
+  memories: [],
+};
 export default initialState;
