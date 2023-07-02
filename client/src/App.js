@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard/components/Dashboard";
 import { Provider } from "react-redux";
 import store from "./reducers/store";
 import SocialButtons from "./sharing/SocialButtons";
+import MapView from "./mapview/components/MapView"
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
               <Route path="/trip" element={<Trip />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
+              <Route path="/map" element={<MapView />} />
               <Route path="/" element={<Dashboard />} />
+              
             </Routes>
           </main>
         </div>
