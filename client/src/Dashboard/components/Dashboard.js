@@ -11,7 +11,6 @@ function Dashboard() {
 
   const handleAddTrip = () => {
     // TODO: Implement logic to handle adding a trip.json
-    navigate("/trip");
     console.log("Add Trip button clicked!");
   };
 
