@@ -10,13 +10,13 @@ export const expSlice = createSlice({
     },
     deleteExperience: (state, action) => {
       state.experiences = state.experiences.filter(
-        (experiences) => experiences.id !== action.payload
+        (experiences) => experiences.ExperienceId !== action.payload
       );
     },
     editExperience: (state, action) => {
       const { id, key, value } = action.payload;
       const experience = state.experiences.find(
-        (experience) => experience.id === id
+        (experience) => experience.ExperienceId === id
       );
       if (experience) {
         experience[key] = value;

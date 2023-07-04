@@ -37,6 +37,7 @@ const TripViewer = ({
             .map((exp) => (
               <li key={exp.ExperienceId}>
                 <h3>EXPERIENCE - {exp.Title}</h3>
+                <p>EXPERIENCE ID: {exp.ExperienceId}</p>
                 <p>EXPERIENCE activity: {getActivity(activityData, exp.ExperienceTypeId)}</p>
                 <p>EXPERIENCE from: {exp.StartingLocalDateTime.toString()}</p>
                 <p>EXPERIENCE to: {exp.EndingLocalDateTime.toString()}</p>
@@ -44,7 +45,7 @@ const TripViewer = ({
                 <p>EXPERIENCE description: {exp.Description}</p>
                 <button
                   type="button"
-                  onClick={() => handleDeleteExperience(exp.uuid)}
+                  onClick={() => handleDeleteExperience(exp.ExperienceId)}
                 >
                   Delete Experience
                 </button>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addTrip, deleteTrip } from "../reducers/reducer";
+import { addTrip, deleteTrip, updateTrip } from "../reducers/reducer";
 import { useNavigate } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
@@ -31,25 +31,55 @@ export default function Trip() {
     dispatch(deleteExperience(expID));
   };
 
+  const getExperiences = (tripID) => {
+    return experiences
+      .filter((exp) => exp.TripId === tripID)
+      .sort((a, b) => new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime));
+  };
+
+  // const handleSetTripDate = (tripID, date, type) => {
+  //   const updatedTrips = trips.map((trip) => {
+  //     if (trip.TripId === tripID) {
+  //       switch (type) {
+  //         case "start":
+  //           return { ...trip, StartingLocalDateTime: date };
+  //         case "end":
+  //           return { ...trip, EndingDateTime: date };
+  //         default:
+  //           return trip;
+  //       }
+  //     }
+  //     return trip;
+  //   });
+  //   dispatch(updateTrip(updatedTrips));
+  // };
+
+  // trips.forEach((trip) => {
+  //   const tripExperiences = getExperiences(trip.TripId);
+  //   if (tripExperiences.length > 0) {
+  //     handleSetTripDate(trip.TripId, tripExperiences[0].StartingLocalDateTime, "start");
+  //     handleSetTripDate(
+  //       trip.TripId,
+  //       tripExperiences[tripExperiences.length - 1].EndingDateTime,
+  //       "end"
+  //     );
+  //   }
+  // });
+
   return (
     <div>
       <h1>Trip Manager</h1>
-      <TripHandler
-        handleAddTrip={handleAddTrip}
-        handleAddExperience={handleAddExperience}
-      />
+      <TripHandler handleAddTrip={handleAddTrip} handleAddExperience={handleAddExperience} />
       <ul>
         {trips.map((trip) => {
-          const filteredExperiences = experiences
-            .filter((exp) => exp.TripId === trip.TripId)
-            .sort((a, b) => new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime));
+          const tripExperiences = getExperiences(trip.TripId);
           return (
             <TripViewer
               key={trip.TripId}
               trip={trip}
               poiData={poiData}
               activityData={activityData}
-              experiences={filteredExperiences}
+              experiences={tripExperiences}
               handleDeleteExperience={handleDeleteExperience}
               handleAddExperience={handleAddExperience}
               handleDeleteTrip={handleDeleteTrip}
