@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
 import TripViewer from "./TripViewer";
-import tripData from "../../data/trip.json";
 import poiData from "../../data/poi.json";
-import expData from "../../data/experience.json";
 import activityData from "../../data/experiencetype.json";
 
 export default function Trip() {
-  const trips = useSelector((state) => state.trip.trips) || tripData;
-  const experiences = useSelector((state) => state.exp.experiences) || expData;
+  const trips = useSelector((state) => state.trip.trips);
+  const experiences = useSelector((state) => state.exp.experiences);
+  const expenses = useSelector((state) => state.exp.expenses);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -77,9 +76,10 @@ export default function Trip() {
             <TripViewer
               key={trip.TripId}
               trip={trip}
+              experiences={tripExperiences}
+              expenses={expenses}
               poiData={poiData}
               activityData={activityData}
-              experiences={tripExperiences}
               handleDeleteExperience={handleDeleteExperience}
               handleAddExperience={handleAddExperience}
               handleDeleteTrip={handleDeleteTrip}
