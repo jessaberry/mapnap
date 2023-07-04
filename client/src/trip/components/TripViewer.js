@@ -1,13 +1,21 @@
 const getPOI = (poiData, tripPOI) => {
-    const startingPOI = poiData.find(
+    const poi = poiData.find(
         (data) => data.PointOfInterestId === Number(tripPOI)
     );
-    return startingPOI ? startingPOI.Title : "";
+    return poi ? poi.Title : "";
+};
+
+const getActivity = (activityData, tripActivity) => {
+  const activity = activityData.find(
+      (data) => data.ExperienceTypeId === Number(tripActivity)
+  );
+  return activity ? activity.Title : "";
 };
   
 const TripViewer = ({
     trip,
     poiData,
+    activityData,
     experiences,
     handleDeleteExperience,
     handleAddExperience,
@@ -22,18 +30,18 @@ const TripViewer = ({
         <p>TRIP start date: </p>
         <p>TRIP end date: </p>
         <p>TRIP countries: {trip.Countries}</p>
-        <p>Experiences:</p>
+        <p>Experiences</p>
         <ul>
           {experiences
-            .filter((exp) => exp.tripID === trip.TripId)
+            .filter((exp) => exp.TripId === trip.TripId)
             .map((exp) => (
-              <li key={exp.uuid}>
-                <h3>EXPERIENCE name: {exp.name}</h3>
-                <p>EXPERIENCE activity: {exp.activity}</p>
-                <p>EXPERIENCE from: {exp.datefrom.toString()}</p>
-                <p>EXPERIENCE to: {exp.dateto.toString()}</p>
-                <p>EXPERIENCE address: {exp.address}</p>
-                <p>EXPERIENCE description: {exp.description}</p>
+              <li key={exp.ExperienceId}>
+                <h3>EXPERIENCE - {exp.Title}</h3>
+                <p>EXPERIENCE activity: {getActivity(activityData, exp.ExperienceTypeId)}</p>
+                <p>EXPERIENCE from: {exp.StartingLocalDateTime.toString()}</p>
+                <p>EXPERIENCE to: {exp.EndingLocalDateTime.toString()}</p>
+                <p>EXPERIENCE address: {getPOI(poiData, trip.StartingPointOfInterestId)}</p>
+                <p>EXPERIENCE description: {exp.Description}</p>
                 <button
                   type="button"
                   onClick={() => handleDeleteExperience(exp.uuid)}

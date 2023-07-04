@@ -6,10 +6,12 @@ import TripHandler from "./TripHandler";
 import TripViewer from "./TripViewer";
 import tripData from "../../data/trip.json";
 import poiData from "../../data/poi.json";
+import expData from "../../data/experience.json";
+import activityData from "../../data/experiencetype.json";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips) || tripData;
-  const experiences = useSelector((state) => state.exp.experiences);
+  const experiences = useSelector((state) => state.exp.experiences) || expData;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,17 +39,23 @@ export default function Trip() {
         handleAddExperience={handleAddExperience}
       />
       <ul>
-        {trips.map((trip) => (
-          <TripViewer
-            key={trip.TripId}
-            trip={trip}
-            poiData={poiData}
-            experiences={experiences}
-            handleDeleteExperience={handleDeleteExperience}
-            handleAddExperience={handleAddExperience}
-            handleDeleteTrip={handleDeleteTrip}
-          />
-        ))}
+        {trips.map((trip) => {
+          const filteredExperiences = experiences
+            .filter((exp) => exp.TripId === trip.TripId)
+            .sort((a, b) => new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime));
+          return (
+            <TripViewer
+              key={trip.TripId}
+              trip={trip}
+              poiData={poiData}
+              activityData={activityData}
+              experiences={filteredExperiences}
+              handleDeleteExperience={handleDeleteExperience}
+              handleAddExperience={handleAddExperience}
+              handleDeleteTrip={handleDeleteTrip}
+            />
+          );
+        })}
       </ul>
     </div>
   );
