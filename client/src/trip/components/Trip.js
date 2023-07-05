@@ -33,7 +33,10 @@ export default function Trip() {
   const getExperiences = (tripID) => {
     return experiences
       .filter((exp) => exp.TripId === tripID)
-      .sort((a, b) => new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime));
+      .sort(
+        (a, b) =>
+          new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime)
+      );
   };
 
   // const handleSetTripDate = (tripID, date, type) => {
@@ -68,7 +71,10 @@ export default function Trip() {
   return (
     <div>
       <h1>Trip Manager</h1>
-      <TripHandler handleAddTrip={handleAddTrip} handleAddExperience={handleAddExperience} />
+      <TripHandler
+        handleAddTrip={handleAddTrip}
+        handleAddExperience={handleAddExperience}
+      />
       <ul>
         {trips.map((trip) => {
           const tripExperiences = getExperiences(trip.TripId);

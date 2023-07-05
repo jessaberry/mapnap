@@ -29,20 +29,25 @@ const TripViewer = ({
   handleAddExperience,
   handleDeleteTrip,
 }) => {
-  const tripExpenses = expenses.filter(
-    (expense) => experiences.some(
-      (exp) => exp.ExperienceId === expense.ExperienceId && exp.TripId === trip.TripId)
+  const tripExpenses = expenses.filter((expense) =>
+    experiences.some(
+      (exp) =>
+        exp.ExperienceId === expense.ExperienceId && exp.TripId === trip.TripId
+    )
   );
 
   const totalExpenses = tripExpenses.reduce(
-    (sum, expense) => sum + expense.Cost,0
+    (sum, expense) => sum + expense.Cost,
+    0
   );
 
   return (
     <li key={trip.TripId} className="trip-item">
       <h3>TRIP - {trip.Title}</h3>
       <p>TRIP description: {trip.Description}</p>
-      <p>TRIP starting POI: {getPOI(poiData, trip.StartingPointOfInterestId)}</p>
+      <p>
+        TRIP starting POI: {getPOI(poiData, trip.StartingPointOfInterestId)}
+      </p>
       <p>TRIP ending POI: {getPOI(poiData, trip.EndingPointOfInterestId)}</p>
       {/* <p>TRIP start date: </p> */}
       {/* <p>TRIP end date: </p> */}
@@ -56,10 +61,16 @@ const TripViewer = ({
             <li key={exp.ExperienceId}>
               <h3>EXPERIENCE - {exp.Title}</h3>
               <p>EXPERIENCE ID: {exp.ExperienceId}</p>
-              <p>EXPERIENCE activity: {getActivity(activityData, exp.ExperienceTypeId)}</p>
+              <p>
+                EXPERIENCE activity:{" "}
+                {getActivity(activityData, exp.ExperienceTypeId)}
+              </p>
               <p>EXPERIENCE from: {exp.StartingLocalDateTime.toString()}</p>
               <p>EXPERIENCE to: {exp.EndingLocalDateTime.toString()}</p>
-              <p>EXPERIENCE address: {getPOI(poiData, exp.StartingPointOfInterestId)}</p>
+              <p>
+                EXPERIENCE address:{" "}
+                {getPOI(poiData, exp.StartingPointOfInterestId)}
+              </p>
               <p>EXPERIENCE description: {exp.Description}</p>
               <p>cost: {getExpenses(expenses, exp.ExperienceId)}</p>
               <button
@@ -72,10 +83,7 @@ const TripViewer = ({
           ))}
       </ul>
       <div>
-        <button
-          type="button"
-          onClick={() => handleAddExperience(trip.TripId)}
-        >
+        <button type="button" onClick={() => handleAddExperience(trip.TripId)}>
           Add Experience
         </button>
       </div>

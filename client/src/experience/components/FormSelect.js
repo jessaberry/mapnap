@@ -9,7 +9,9 @@ const FormSelect = ({ value, onChange }) => {
   return (
     <Select value={value} onChange={handleChange} sx={{ width: "50%", mb: 2 }}>
       {types.map((item) => (
-        <MenuItem key={item.ExperienceTypeId} value={item.ExperienceTypeId}>{item.Title}</MenuItem>
+        <MenuItem key={item.ExperienceTypeId} value={item.ExperienceTypeId}>
+          {item.Title}
+        </MenuItem>
       ))}
     </Select>
   );

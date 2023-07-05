@@ -13,7 +13,7 @@ const TripForm = ({ handleAddTrip }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const tripId = uuidv4();
-    const trip = {  ...data, TripId: tripId};
+    const trip = { ...data, TripId: tripId };
     handleAddTrip(trip);
     setData("");
   };

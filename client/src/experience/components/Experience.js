@@ -19,7 +19,10 @@ export default function Experience() {
   return (
     <div>
       <h1>Add an Experience</h1>
-      <ExperienceHandler tripUUID={tripUUID} handleAddExperience={handleAddExperience} />
+      <ExperienceHandler
+        tripUUID={tripUUID}
+        handleAddExperience={handleAddExperience}
+      />
     </div>
   );
 }

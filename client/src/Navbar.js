@@ -14,7 +14,7 @@ const PlaceholderComponent = () => {
 const navPages = [
   { path: "/", label: "Dashboard", component: Dashboard },
   { path: "/map", label: "Map", component: PlaceholderComponent },
-  { path: "/budget", label: "Budget", component: Budget},
+  { path: "/budget", label: "Budget", component: Budget },
   { path: "/trip", label: "TRIP", component: Trip },
   // { path: "/experience", label: "EXPERIENCE", component: Experience },
   { path: "/memory", label: "MEMORY", component: Memory },
