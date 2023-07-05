@@ -58,6 +58,16 @@ const ExperienceForm = ({ data, handleChange }) => {
       </div>
       <div className="textfield">
         <TextField
+          name="Cost"
+          label="Cost"
+          placeholder="enter cost"
+          value={data.Cost}
+          onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
+        />
+      </div>
+      <div className="textfield">
+        <TextField
           name="Description"
           label="description"
           placeholder="enter description"

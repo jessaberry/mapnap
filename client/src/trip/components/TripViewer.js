@@ -13,10 +13,10 @@ const getActivity = (activityData, tripActivity) => {
 };
 
 const getExpenses = (expenseData, tripExpenses) => {
-  const expense = expenseData.find(
+  const expenses = expenseData.filter(
     (data) => data.ExperienceId === tripExpenses
   );
-  return expense ? expense.Cost : "";
+  return expenses.reduce((sum, expense) => sum + expense.Cost, 0);
 };
 
 const TripViewer = ({
@@ -29,9 +29,13 @@ const TripViewer = ({
   handleAddExperience,
   handleDeleteTrip,
 }) => {
-  const totalExpenses = expenses.reduce(
-    (sum, expense) => sum + expense.Cost,
-    0
+  const tripExpenses = expenses.filter(
+    (expense) => experiences.some(
+      (exp) => exp.ExperienceId === expense.ExperienceId && exp.TripId === trip.TripId)
+  );
+
+  const totalExpenses = tripExpenses.reduce(
+    (sum, expense) => sum + expense.Cost,0
   );
 
   return (
@@ -43,7 +47,7 @@ const TripViewer = ({
       {/* <p>TRIP start date: </p> */}
       {/* <p>TRIP end date: </p> */}
       <p>TRIP countries: {trip.Countries}</p>
-      <p>TRIP TOTAL COST: {totalExpenses}</p>
+      <p>TRIP expenses: {totalExpenses}</p>
       <p>Experiences</p>
       <ul>
         {experiences

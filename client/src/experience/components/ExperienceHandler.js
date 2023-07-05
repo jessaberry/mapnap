@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ExperienceForm from "./ExperienceForm";
 import initialExperience from "../reducers/initialExperience";
+import { v4 as uuidv4 } from "uuid";
 
 const ExperienceHandler = ({ tripUUID, handleAddExperience }) => {
   const [data, setData] = useState({ ...initialExperience, TripId: tripUUID });
@@ -12,7 +13,9 @@ const ExperienceHandler = ({ tripUUID, handleAddExperience }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddExperience(data);
+    const expId = uuidv4();
+    const experience = {  ...data, ExperienceId: expId};
+    handleAddExperience(experience);
     setData(initialExperience);
   };
 

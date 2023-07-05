@@ -7,6 +7,10 @@ export const expSlice = createSlice({
   reducers: {
     addExperience: (state, action) => {
       state.experiences = [...state.experiences, action.payload];
+      state.expenses = [...state.expenses, 
+        {ExperienceId: action.payload.ExperienceId,
+        Cost: Number(action.payload.Cost)}
+      ];
     },
     deleteExperience: (state, action) => {
       state.experiences = state.experiences.filter(
