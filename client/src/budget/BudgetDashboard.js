@@ -17,7 +17,7 @@ export default function BudgetDashboard() {
         <Grid item xs={12}>
           <div className="budget-trip">
             <h3>Trip</h3>
-            <TripVis trips={trips} experiences={experiences} expenses={expenses} />
+            <TripVis trips={trips} experiences={experiences} expenses={expenses}/>
           </div>
         </Grid>
         {/* BUDGET BY ACTIVITY TYPE */}
