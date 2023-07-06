@@ -1,3 +1,5 @@
+import { Grid, Paper, Typography } from "@mui/material";
+
 const getTripExpenses = (tripId, experiences, expenses) => {
   const tripExp = expenses.filter((expense) => {
     const hasExp = experiences.find(
@@ -28,16 +30,21 @@ const getTotalExpenses = (trips, experiences, expenses) => {
 const TripVis = ({ trips, experiences, expenses }) => {
   return (
     <div>
-      <h4>Trip Expenses</h4>
-      {trips.map((trip) => (
-        <div key={trip.TripId}>
-          <h3>{trip.Title}</h3>
-          <p>
-            Expenses: ${getTripExpenses(trip.TripId, experiences, expenses)}
-          </p>
-        </div>
-      ))}
-      <h4>Total Expenses: ${getTotalExpenses(trips, experiences, expenses)}</h4>
+      <Grid container spacing={2}>
+        {trips.map((trip) => (
+          <Grid item xs={12} sm={6} md={4} key={trip.TripId}>
+            <Paper elevation={3} style={{ padding: "20px" }}>
+              <Typography variant="h6">{trip.Title}</Typography>
+              <Typography variant="body1">
+                Expenses: ${getTripExpenses(trip.TripId, experiences, expenses)}
+              </Typography>
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
+      <Typography variant="h6">
+        Total Expenses: ${getTotalExpenses(trips, experiences, expenses)}
+      </Typography>
     </div>
   );
 };
