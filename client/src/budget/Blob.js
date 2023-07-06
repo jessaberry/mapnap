@@ -11,7 +11,7 @@ const getTripExpenses = (tripId, experiences, expenses) => {
     (total, expense) => total + expense.Cost,
     0
   );
-  return tripExpenses;
+  return Number(tripExpenses.toFixed(2));
 };
 
 const getTotalExpenses = (trips, experiences, expenses) => {
@@ -22,7 +22,7 @@ const getTotalExpenses = (trips, experiences, expenses) => {
     (total, expense) => total + expense,
     0
   );
-  return totalExpenses;
+  return Number(totalExpenses.toFixed(2));
 };
 
 const TripVis = ({ trips, experiences, expenses }) => {
@@ -32,10 +32,12 @@ const TripVis = ({ trips, experiences, expenses }) => {
       {trips.map((trip) => (
         <div key={trip.TripId}>
           <h3>{trip.Title}</h3>
-          <p>Expenses: {getTripExpenses(trip.TripId, experiences, expenses)}</p>
+          <p>
+            Expenses: ${getTripExpenses(trip.TripId, experiences, expenses)}
+          </p>
         </div>
       ))}
-      <h4>Total Expenses: {getTotalExpenses(trips, experiences, expenses)}</h4>
+      <h4>Total Expenses: ${getTotalExpenses(trips, experiences, expenses)}</h4>
     </div>
   );
 };

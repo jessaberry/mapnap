@@ -14,7 +14,12 @@ const ExperienceHandler = ({ tripUUID, handleAddExperience }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const expId = uuidv4();
-    const experience = { ...data, ExperienceId: expId };
+    const experience = {
+      ...data,
+      ExperienceId: expId,
+      StartingLocalDateTime: data.StartingLocalDateTime.toISOString(),
+      EndingLocalDateTime: data.EndingLocalDateTime.toISOString(),
+    };
     handleAddExperience(experience);
     setData(initialExperience);
   };

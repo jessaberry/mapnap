@@ -35,10 +35,8 @@ const TripViewer = ({
         exp.ExperienceId === expense.ExperienceId && exp.TripId === trip.TripId
     )
   );
-
-  const totalExpenses = tripExpenses.reduce(
-    (sum, expense) => sum + expense.Cost,
-    0
+  const totalExpenses = Number(
+    tripExpenses.reduce((sum, expense) => sum + expense.Cost, 0).toFixed(2)
   );
 
   return (
