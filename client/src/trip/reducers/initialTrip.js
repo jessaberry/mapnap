@@ -15,3 +15,4 @@ const initialTrip = {
   // DeletedAt: null,                                     ditto
   // IsDeleted: false                                     ditto
 };
+export default initialTrip;

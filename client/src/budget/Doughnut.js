@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { useEffect } from "react";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
 import activityData from "../data/experiencetype.json";
 
 Chart.register(ArcElement, Tooltip, Legend);

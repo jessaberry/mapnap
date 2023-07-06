@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addTrip, deleteTrip, updateTrip } from "../reducers/reducer";
+import { addTrip, deleteTrip } from "../reducers/reducer";
 import { useNavigate } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";

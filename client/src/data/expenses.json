@@ -1,7 +1,7 @@
 [
   {
     "ExperienceId": 1,
-    "Cost": 1.74
+    "Cost": 10.74
   },
   {
     "ExperienceId": 2,
@@ -9,7 +9,7 @@
   },
   {
     "ExperienceId": 3,
-    "Cost": 1000.32
+    "Cost": 11.32
   },
   {
     "ExperienceId": 4,
@@ -21,18 +21,18 @@
   },
   {
     "ExperienceId": 5,
-    "Cost": 70.53
+    "Cost": 27.53
   },
   {
     "ExperienceId": 6,
-    "Cost": 600.0
+    "Cost": 6.0
   },
   {
     "ExperienceId": 7,
-    "Cost": 4.0
+    "Cost": 34.0
   },
   {
     "ExperienceId": 8,
-    "Cost": 72.0
+    "Cost": 12.7
   }
 ]
