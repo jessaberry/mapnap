@@ -1,4 +1,5 @@
 import { Select, MenuItem } from "@mui/material";
+import types from "../../data/experiencetype.json";
 
 const FormSelect = ({ value, onChange }) => {
   const handleChange = (e) => {
@@ -7,11 +8,11 @@ const FormSelect = ({ value, onChange }) => {
 
   return (
     <Select value={value} onChange={handleChange} sx={{ width: "50%", mb: 2 }}>
-      <MenuItem value="Accommodation">Accommodation</MenuItem>
-      <MenuItem value="Attraction">Attraction</MenuItem>
-      <MenuItem value="Dining">Dining</MenuItem>
-      <MenuItem value="Hotel">Hotel</MenuItem>
-      <MenuItem value="Other">Other</MenuItem>
+      {types.map((item) => (
+        <MenuItem key={item.ExperienceTypeId} value={item.ExperienceTypeId}>
+          {item.Title}
+        </MenuItem>
+      ))}
     </Select>
   );
 };

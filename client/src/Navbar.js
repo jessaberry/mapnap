@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 // import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Dashboard from "./Dashboard/components/Dashboard";
+import Budget from "./budget/BudgetDashboard.js";
 import Trip from "./trip/components/Trip";
 import Login from "./sharing/Login";
 
@@ -13,6 +14,7 @@ const PlaceholderComponent = () => {
 const navPages = [
   { path: "/", label: "Dashboard", component: Dashboard },
   { path: "/map", label: "Map", component: PlaceholderComponent },
+  { path: "/budget", label: "Budget", component: Budget },
   { path: "/trip", label: "TRIP", component: Trip },
   // { path: "/experience", label: "EXPERIENCE", component: Experience },
   { path: "/memory", label: "MEMORY", component: Memory },
