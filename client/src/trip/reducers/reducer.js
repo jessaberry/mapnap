@@ -13,8 +13,11 @@ export const tripSlice = createSlice({
         (trip) => trip.TripId !== action.payload
       );
     },
+    updateTrip: (state, action) => {
+      state.trips = action.payload;
+    },
   },
 });
 
-export const { addTrip, deleteTrip } = tripSlice.actions;
+export const { addTrip, deleteTrip, updateTrip } = tripSlice.actions;
 export default tripSlice.reducer;
