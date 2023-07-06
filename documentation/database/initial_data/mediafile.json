@@ -11,11 +11,10 @@
     "Width": 1920,
     "Height": 1080,
     "FileSize": 1024,
-    "CreatedAt": ,
-    "UpdatedAt": ,
-    "DeletedAt": ,
+    "CreatedAt": "",
+    "UpdatedAt": "",
+    "DeletedAt": "",
     "IsDeleted": false,
     "IsPublic": false
   }
-
 ]

@@ -20,6 +20,7 @@ Chart.register(
   Tooltip,
   Legend
 );
+
 // TODO: figure out if mapping expenses separately is better or if mapping by trip is better
 const getDateExpenses = (experiences, expenses) => {
   const firstDate = new Date(
