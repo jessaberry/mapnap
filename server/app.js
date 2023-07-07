@@ -9,13 +9,17 @@ import cors from 'cors';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import "./loadEnvironment.mjs";
+import "./common/environments-and-constants.mjs";
 
 const allowedOrigins = ['http://localhost:3999'];
 
 import indexRouter from './routes/index.mjs';
 import usersRouter from './routes/users.mjs';
 import mediaFilesRouter from './routes/mediaFiles.mjs';
+import pointsOfInterestRouter from "./routes/pointsOfInterest.mjs";
+import experiencesRouter from "./routes/experiences.mjs";
+import tripsRouter from "./routes/trips.mjs";
+import memoriesRouter from "./routes/memories.mjs";
 
 const app = express();
 

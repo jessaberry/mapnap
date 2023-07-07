@@ -7,11 +7,12 @@ const router = express.Router();
 import db from "../db/conn.mjs";
 import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
-import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
+import {  pointsOfInterestCollectionName } from "../common/environments-and-constants.mjs";
 
 
-router.get(`/${mediaFilesCollectionName}`, async (req, res) => {
-  let collection = await db.collection(mediaFilesCollectionName);
+
+router.get(`/${pointsOfInterestCollectionName}`, async (req, res) => {
+  let collection = await db.collection(pointsOfInterestCollectionName);
   let results = await collection.find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
     .toArray();
@@ -19,16 +20,16 @@ router.get(`/${mediaFilesCollectionName}`, async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(`/${mediaFilesCollectionName}`, uploadMediaFile.single(mediaFilesCollectionName), (req, res, next) => {
-  console.log(mediaFilesCollectionName);
+router.put(`/${pointsOfInterestCollectionName}`, uploadMediaFile.single(pointsOfInterestCollectionName), (req, res, next) => {
+  console.log(pointsOfInterestCollectionName);
   let data = {};
   if (req.file) {
     data.mediaFile = req.file.location;
   }
 });
 
-router.get(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
-  let collection = await db.collection(mediaFilesCollectionName);
+router.get(`/${pointsOfInterestCollectionName}/:id`, async (req, res) => {
+  let collection = await db.collection(pointsOfInterestCollectionName);
   let query = { _id: ObjectId(req.params.id) };
   let result = await collection.findOne(query);
 
@@ -36,8 +37,8 @@ router.get(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
   else res.send(result).status(200);
 });
 
-router.post(`/${mediaFilesCollectionName}`, async (req, res) => {
-  let collection = await db.collection(mediaFilesCollectionName);
+router.post(`/${pointsOfInterestCollectionName}`, async (req, res) => {
+  let collection = await db.collection(pointsOfInterestCollectionName);
   let newDocument = req.body;
   newDocument.date = new Date();
   let result = await collection.insertOne(newDocument);
@@ -50,16 +51,16 @@ router.patch(`/comment/:id`, async (req, res) => {
     $push: { tags: req.body }
   };
 
-  let collection = await db.collection(routeCollectionName);
+  let collection = await db.collection(pointsOfInterestCollectionName);
   let result = await collection.updateOne(query, updates);
 
   res.send(result).status(200);
 });
 
-router.delete(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
+router.delete(`/${pointsOfInterestCollectionName}/:id`, async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
 
-  const collection = db.collection(mediaFilesCollectionName);
+  const collection = db.collection(pointsOfInterestCollectionName);
   let result = await collection.deleteOne(query);
 
   res.send(result).status(200);

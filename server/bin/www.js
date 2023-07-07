@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import "../loadEnvironment.mjs";
+import "../common/environments-and-constants.mjs";
 import app from '../app.js';
 import debugLib from 'debug';
 import http from 'http';

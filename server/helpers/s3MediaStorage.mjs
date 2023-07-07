@@ -1,4 +1,4 @@
-import "../loadEnvironment.mjs";
+import "../common/environments-and-constants.mjs";
 
 import multer from "multer";
 import path from "path";
@@ -38,5 +38,6 @@ const uploadMediaFile = multer({
     fileSize: 1024 * 1024 * Number(process.env.AWS_S3_MAX_ALLOWED_MEDIA_FILE_SIZE)
   }
 })
+
 
 export default uploadMediaFile;
