@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard.js";
 import Trip from "./trip/components/Trip";
 import Login from "./sharing/Login";
+import MapView from "./mapview/components/MapView";
 
 // TODO: REPLACE THIS WITH ACTUAL COMPONENTS IN navbar
 const PlaceholderComponent = () => {
@@ -13,7 +14,7 @@ const PlaceholderComponent = () => {
 
 const navPages = [
   { path: "/", label: "Dashboard", component: Dashboard },
-  { path: "/map", label: "Map", component: PlaceholderComponent },
+  { path: "/map", label: "Map", component: MapView },
   { path: "/budget", label: "Budget", component: Budget },
   { path: "/trip", label: "TRIP", component: Trip },
   // { path: "/experience", label: "EXPERIENCE", component: Experience },
