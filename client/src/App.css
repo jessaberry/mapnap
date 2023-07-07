@@ -69,3 +69,7 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+
+.leaflet-container {
+  height: 100vh;
+}
