@@ -3,25 +3,27 @@ import FormSelect from "./FormSelect";
 import TextField from "@mui/material/TextField";
 import "./Experience.css";
 
-const FormInputs = ({ data, handleChange }) => {
+const ExperienceForm = ({ data, handleChange }) => {
   return (
     <>
       <div className="custom-select">
-        <FormSelect required
-          name="activity"
-          value={data.activity}
+        <FormSelect
+          required
+          name="ExperienceTypeId"
+          value={data.ExperienceTypeId}
           onChange={(value) =>
-            handleChange({ target: { name: "activity", value: value } })
+            handleChange({ target: { name: "ExperienceTypeId", value: value } })
           }
           label="Activity"
         />
       </div>
       <div className="textfield">
-        <TextField required
-          name="name"
+        <TextField
+          required
+          name="Title"
           label="Name of experience"
           placeholder="Petting Zoo"
-          value={data.name}
+          value={data.Title}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
         />
@@ -29,49 +31,49 @@ const FormInputs = ({ data, handleChange }) => {
       <div className="custom-date-time">
         <FormDateTimePicker
           label="dateFrom"
-          value={data.datefrom}
+          value={data.StartingLocalDateTime}
           onChange={(value) =>
-            handleChange({ target: { name: "datefrom", value } })
+            handleChange({ target: { name: "StartingLocalDateTime", value } })
           }
         />
       </div>
       <div className="custom-date-time">
         <FormDateTimePicker
           label="dateTo"
-          value={data.dateto}
+          value={data.EndingLocalDateTime}
           onChange={(value) =>
-            handleChange({ target: { name: "dateto", value } })
+            handleChange({ target: { name: "EndingLocalDateTime", value } })
           }
         />
       </div>
       <div className="textfield">
         <TextField
-          name="address"
-          label="Address"
+          name="StartingPointOfInterestId"
+          label="Starting POI"
           placeholder="1234 Burger St."
-          value={data.address}
+          value={data.StartingPointOfInterestId}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
         />
       </div>
       <div className="textfield">
         <TextField
-          name="image"
-          label="Image URL"
-          placeholder="monkeys.jpg"
-          value={data.image}
+          name="Cost"
+          label="Cost"
+          placeholder="enter cost"
+          value={data.Cost}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
         />
       </div>
       <div className="textfield">
         <TextField
-          name="description"
-          label="Description"
+          name="Description"
+          label="description"
           placeholder="enter description"
           multiline
           rows={6}
-          value={data.description}
+          value={data.Description}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
         />
@@ -80,4 +82,4 @@ const FormInputs = ({ data, handleChange }) => {
   );
 };
 
-export default FormInputs;
+export default ExperienceForm;

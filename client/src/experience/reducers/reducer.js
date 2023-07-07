@@ -1,22 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
-import init from "./init";
+import initialState from "../../reducers/initialState";
 
 export const expSlice = createSlice({
   name: "exp",
-  initialState: init,
+  initialState: initialState,
   reducers: {
-    add: (state, action) => {
+    addExperience: (state, action) => {
       state.experiences = [...state.experiences, action.payload];
+      state.expenses = [
+        ...state.expenses,
+        {
+          ExperienceId: action.payload.ExperienceId,
+          Cost: Number(action.payload.Cost),
+        },
+      ];
     },
-    del: (state, action) => {
+    deleteExperience: (state, action) => {
       state.experiences = state.experiences.filter(
-        (experiences) => experiences.id !== action.payload
+        (experiences) => experiences.ExperienceId !== action.payload
       );
     },
-    edit: (state, action) => {
+    editExperience: (state, action) => {
       const { id, key, value } = action.payload;
       const experience = state.experiences.find(
-        (experience) => experience.id === id
+        (experience) => experience.ExperienceId === id
       );
       if (experience) {
         experience[key] = value;
@@ -25,5 +32,6 @@ export const expSlice = createSlice({
   },
 });
 
-export const { add, del, edit } = expSlice.actions;
+export const { addExperience, deleteExperience, editExperience } =
+  expSlice.actions;
 export default expSlice.reducer;
