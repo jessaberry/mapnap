@@ -2,11 +2,8 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.363.0",
     "aws-sdk": "^2.1400.0",
-    "client": "^0.0.1",
     "concurrently": "^8.2.0",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
-    "dotenv-expand": "^10.0.0",
     "dotenv-flow": "^3.2.0",
     "material-ui-dropzone": "^3.5.0",
     "mongoose": "^7.3.1",
@@ -14,13 +11,16 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pug": "^3.0.2",
+    "react-share": "^4.4.1",
     "react-aws-s3": "^1.5.0",
     "server": "^1.0.38"
   },
   "scripts": {
     "start": "node ./server/bin/www",
     "server": "nodemon ./server/bin/www",
-    "client": "PORT=3999 && npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "npm i --prefix client && npm i --prefix server",
+    "prettier": "npx prettier . --write --prefix client && npx prettier . --write --prefix server"
   }
 }
