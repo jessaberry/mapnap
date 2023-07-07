@@ -1,2 +1,2 @@
 import dotenv from 'dotenv-flow';
-dotenv.config({path: './server'});
+const config = dotenv.config({path: './server'});
