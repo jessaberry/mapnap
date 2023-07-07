@@ -13,7 +13,12 @@
 
 # misc
 .DS_Store
-.env.local
+server/.env
+server/.env.local
+client/.env
+client/.env.local
+server/.env
+server/.env.local
 .env.development.local
 .env.test.local
 .env.production.local
