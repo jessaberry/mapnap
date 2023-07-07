@@ -11,6 +11,7 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pug": "^3.0.2",
+    "react-share": "^4.4.1",
     "react-aws-s3": "^1.5.0",
     "server": "^1.0.38"
   },
@@ -18,6 +19,8 @@
     "start": "node ./server/bin/www",
     "server": "nodemon ./server/bin/www",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "npm i --prefix client && npm i --prefix server",
+    "prettier": "npx prettier . --write --prefix client && npx prettier . --write --prefix server"
   }
 }

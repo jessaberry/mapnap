@@ -1,0 +1,58 @@
+[
+  {
+    "ExperienceTypeId": 1,
+    "Title": "Accommodation",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 2,
+    "Title": "Food and Beverage",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 3,
+    "Title": "Shopping",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 4,
+    "Title": "Transportation",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 5,
+    "Title": "Attraction",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 6,
+    "Title": "Event",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 7,
+    "Title": "Sports and Activity",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  },
+  {
+    "ExperienceTypeId": 8,
+    "Title": "Other",
+    "Description": "",
+    "DefaultPrimaryColor": "",
+    "DefaultSecondaryColor": ""
+  }
+]
