@@ -8,6 +8,8 @@ import { styled } from "@mui/material/styles";
 import "./memory.css";
 import store from "../../reducers/store";
 import { useEffect } from "react";
+import Navbar from "../../Navbar";
+import SocialButtons from "../../sharing/SocialButtons";
 
 export default function Memory(props, children) {
   const memories = useSelector((state) => state.mem.memories);
@@ -31,7 +33,9 @@ export default function Memory(props, children) {
   }, []);
 
   return (
-    <>
+    <div>
+      <Navbar/>
+
       <Box sx={{ width: "100%", minHeight: 829 }}>
         <Masonry colunn={{ xs: 3, sm: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
           {memories.map((memory, index) => (
@@ -47,6 +51,6 @@ export default function Memory(props, children) {
           ))}
         </Masonry>
       </Box>
-    </>
+    </div>
   );
 }

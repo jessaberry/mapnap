@@ -7,6 +7,8 @@ import Card from "./card";
 import { useNavigate } from "react-router-dom";
 import PopupForm from './PopupForm';
 import React, { useState } from 'react';
+import Navbar from "../../Navbar";
+import SocialButtons from "../../sharing/SocialButtons";
 
 
 
@@ -32,9 +34,12 @@ function Dashboard() {
     };
 
   return (
+
     <div>
+        <Navbar />
+
       <h1>Dashboard</h1>
-      <DropdownMenu />
+
       <div className="trip-button">
         <button onClick={handleAddTrip}>Add Trip</button>
       </div>
