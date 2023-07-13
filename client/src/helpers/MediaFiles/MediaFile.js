@@ -1,8 +1,8 @@
-import React from 'react';
-import { UploadToS3 } from 'react-upload-to-s3';
-import { Col, Row, Container } from 'react-bootstrap';
+import React from "react";
+import { UploadToS3 } from "react-upload-to-s3";
+import { Col, Row, Container } from "react-bootstrap";
 
-const S3Uploader  = () => {
+const S3Uploader = () => {
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">
@@ -16,7 +16,7 @@ const S3Uploader  = () => {
             type="image"
             mediaConvertRole="mediaconvert_role"
             onResult={(result) => {
-              console.log('on Result', result);
+              console.log("on Result", result);
             }}
           />
         </Col>
@@ -24,6 +24,5 @@ const S3Uploader  = () => {
     </Container>
   );
 };
-
 
 export default S3Uploader;

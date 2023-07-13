@@ -1,5 +1,5 @@
-import dotenv from 'dotenv-flow';
-export const config = dotenv.config({path: './server'});
+import dotenv from "dotenv-flow";
+export const config = dotenv.config({ path: "./server" });
 
 /* Routes */
 export const usersCollectionName = "users";
