@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 import "../common/environments-and-constants.mjs";
-import app from '../app.js';
-import debugLib from 'debug';
-import http from 'http';
-const debug = debugLib('your-project-name:server');
+import app from "../app.js";
+import debugLib from "debug";
+import http from "http";
+const debug = debugLib("your-project-name:server");
 
 /**
  * Get port from environment and store in Express.
@@ -57,9 +57,7 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === "string"
-    ? "Pipe " + port
-    : "Port " + port;
+  const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -82,8 +80,6 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === "string"
-    ? "pipe " + addr
-    : "port " + addr.port;
+  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
 }

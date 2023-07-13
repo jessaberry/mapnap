@@ -32,8 +32,10 @@ const TripViewer = ({
   const tripExpenses = expenses.filter((expense) =>
     experiences.some((exp) => exp.ExperienceId === expense.ExperienceId)
   );
-  const totalExpenses = tripExpenses.reduce((sum, expense) => sum + expense.Cost, 0);
-
+  const totalExpenses = tripExpenses.reduce(
+    (sum, expense) => sum + expense.Cost,
+    0
+  );
 
   return (
     <li key={trip.TripId} className="trip-item">

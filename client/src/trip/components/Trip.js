@@ -1,5 +1,10 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTrip, deleteTrip } from "../reducers/reducer";
+import {
+  addTripAsync,
+  deleteTripAsync,
+  getTripsAsync,
+} from "../reducers/thunksTrip";
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
@@ -14,12 +19,16 @@ export default function Trip() {
   const navigate = useNavigate();
   const { tripId } = useParams();
 
+  useEffect(() => {
+    dispatch(getTripsAsync());
+  }, [dispatch]);
+
   const handleAddTrip = (trip) => {
-    dispatch(addTrip(trip));
+    dispatch(addTripAsync(trip));
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTrip(trip.TripId));
+    dispatch(deleteTripAsync(trip.TripId));
   };
 
   const handleAddExperience = (tripUUID) => {

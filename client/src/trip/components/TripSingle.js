@@ -8,7 +8,7 @@ const TripSingle = ({
   experiences,
   handleAddExperience,
   handleDeleteExperience,
-  handleDeleteTrip
+  handleDeleteTrip,
 }) => {
   const { tripID } = useParams();
   const trips = useSelector((state) => state.trip.trips) || [];

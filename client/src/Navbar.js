@@ -30,7 +30,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-        <SocialButtons />
+      <SocialButtons />
 
       <div className="nav-logout">
         <Logout />

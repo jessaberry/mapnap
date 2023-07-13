@@ -8,10 +8,9 @@ import router from "../routes/mediaFiles.mjs";
 
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-
 function sanitizeFile(file, cb) {
   // Define the allowed extension
-  const fileExtensions = process.env.AWS_S3_ALLOWED_MEDIA_EXTENSIONS.split('|');
+  const fileExtensions = process.env.AWS_S3_ALLOWED_MEDIA_EXTENSIONS.split("|");
 
   // Check allowed extensions
   const isAllowedExtensions = fileExtensions.includes(
@@ -19,7 +18,9 @@ function sanitizeFile(file, cb) {
   );
 
   // Mime type must be an image
-  const isAllowedMimeType = process.env.AWS_S3_ALLOWED_MEDIA_MIME_TYPES.some(substr => file.mimetype.startsWith(substr));
+  const isAllowedMimeType = process.env.AWS_S3_ALLOWED_MEDIA_MIME_TYPES.some(
+    (substr) => file.mimetype.startsWith(substr)
+  );
 
   if (isAllowedExtensions && isAllowedMimeType) {
     return cb(null, true); // no errors
@@ -32,12 +33,12 @@ function sanitizeFile(file, cb) {
 const uploadMediaFile = multer({
   storage: s3Storage,
   fileFilter: (req, file, callback) => {
-    sanitizeFile(file, callback)
+    sanitizeFile(file, callback);
   },
   limits: {
-    fileSize: 1024 * 1024 * Number(process.env.AWS_S3_MAX_ALLOWED_MEDIA_FILE_SIZE)
-  }
-})
-
+    fileSize:
+      1024 * 1024 * Number(process.env.AWS_S3_MAX_ALLOWED_MEDIA_FILE_SIZE),
+  },
+});
 
 export default uploadMediaFile;

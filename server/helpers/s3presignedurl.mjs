@@ -1,11 +1,11 @@
-import { S3 } from 'aws-sdk/clients/s3';
-import aws from 'aws-sdk';
+import { S3 } from "aws-sdk/clients/s3";
+import aws from "aws-sdk";
 
 aws.config.update({
   region: process.env.AWS_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-})
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
 
 /*
 function getPresignUrlPromiseFunction(s3, s3Params): Promise<string>{

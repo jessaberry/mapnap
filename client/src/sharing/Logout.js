@@ -1,21 +1,15 @@
-import {useNavigate} from "react-router-dom";
-
-
-
-
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleLogout = () => {
-        navigate('/login');
-    };
+  const handleLogout = () => {
+    navigate("/login");
+  };
 
   return (
     <div>
-       <button onClick={handleLogout}>
-           Logout
-       </button>
+      <button onClick={handleLogout}>Logout</button>
 
       {/* non-functional */}
     </div>

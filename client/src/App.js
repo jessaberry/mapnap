@@ -8,7 +8,7 @@ import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
 import store from "./reducers/store";
 import MediaFileTest from "./Test/MedilaFile/MediaFileTest";
-import MapView from "./mapview/components/MapView"
+import MapView from "./mapview/components/MapView";
 import SignUpPage from "./LoginPage/Signup";
 import LoginPage from "./LoginPage/Login";
 
