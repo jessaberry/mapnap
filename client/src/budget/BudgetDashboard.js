@@ -5,7 +5,6 @@ import TripVis from "./Blob.js";
 import { Grid } from "@mui/material";
 import "./BudgetDashboard.css";
 import Navbar from "../Navbar";
-import SocialButtons from "../sharing/SocialButtons";
 import React from "react";
 
 export default function BudgetDashboard() {

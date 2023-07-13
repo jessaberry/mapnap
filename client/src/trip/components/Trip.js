@@ -1,21 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addTrip, deleteTrip } from "../reducers/reducer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
-import TripViewer from "./TripViewer";
-import poiData from "../../data/poi.json";
-import activityData from "../../data/experiencetype.json";
+import TripSingle from "./TripSingle";
 import Navbar from "../../Navbar";
-import SocialButtons from "../../sharing/SocialButtons";
 import React from "react";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
   const experiences = useSelector((state) => state.exp.experiences);
-  const expenses = useSelector((state) => state.exp.expenses);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { tripId } = useParams();
 
   const handleAddTrip = (trip) => {
     dispatch(addTrip(trip));
@@ -42,62 +39,40 @@ export default function Trip() {
       );
   };
 
-  // const handleSetTripDate = (tripID, date, type) => {
-  //   const updatedTrips = trips.map((trip) => {
-  //     if (trip.TripId === tripID) {
-  //       switch (type) {
-  //         case "start":
-  //           return { ...trip, StartingLocalDateTime: date };
-  //         case "end":
-  //           return { ...trip, EndingDateTime: date };
-  //         default:
-  //           return trip;
-  //       }
-  //     }
-  //     return trip;
-  //   });
-  //   dispatch(updateTrip(updatedTrips));
-  // };
-
-  // trips.forEach((trip) => {
-  //   const tripExperiences = getExperiences(trip.TripId);
-  //   if (tripExperiences.length > 0) {
-  //     handleSetTripDate(trip.TripId, tripExperiences[0].StartingLocalDateTime, "start");
-  //     handleSetTripDate(
-  //       trip.TripId,
-  //       tripExperiences[tripExperiences.length - 1].EndingDateTime,
-  //       "end"
-  //     );
-  //   }
-  // });
-
   return (
     <div>
-    <Navbar/>
-
+      <Navbar />
       <h1>Trip Manager</h1>
       <TripHandler
         handleAddTrip={handleAddTrip}
         handleAddExperience={handleAddExperience}
       />
       <ul>
-        {trips.map((trip) => {
-          const tripExperiences = getExperiences(trip.TripId);
-          return (
-            <TripViewer
-              key={trip.TripId}
-              trip={trip}
-              experiences={tripExperiences}
-              expenses={expenses}
-              poiData={poiData}
-              activityData={activityData}
-              handleDeleteExperience={handleDeleteExperience}
+        {trips.map((trip) => (
+          <li key={trip.TripId}>
+            <h3>TRIP - {trip.Title}</h3>
+            <p>TRIP id: {trip.TripId}</p>
+            <Link to={`/trip/${trip.TripId}`}>
+              <button>View Trip</button>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Routes>
+        <Route path="/trip" element={<Trip trips={trips} />}></Route>
+        <Route
+          path={`/trip/${tripId}`}
+          element={
+            <TripSingle
+              tripID={tripId}
+              experiences={getExperiences(tripId)}
               handleAddExperience={handleAddExperience}
+              handleDeleteExperience={handleDeleteExperience}
               handleDeleteTrip={handleDeleteTrip}
             />
-          );
-        })}
-      </ul>
+          }
+        />
+      </Routes>
     </div>
   );
 }

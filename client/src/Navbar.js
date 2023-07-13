@@ -9,11 +9,6 @@ import MapView from "./mapview/components/MapView";
 import SocialButtons from "./sharing/SocialButtons";
 import React from "react";
 
-// TODO: REPLACE THIS WITH ACTUAL COMPONENTS IN navbar
-const PlaceholderComponent = () => {
-  return <div>Placeholder</div>;
-};
-
 const navPages = [
   { path: "/dashboard", label: "Dashboard", component: Dashboard },
   { path: "/map", label: "Map", component: MapView },
@@ -29,7 +24,7 @@ const Navbar = () => {
       <ul className="nav-links">
         {navPages.map((page, index) => (
           <li key={index}>
-            <NavLink to={page.path} activeClassName="active">
+            <NavLink to={page.path} className="active" exact="true">
               {page.label}
             </NavLink>
           </li>

@@ -1,5 +1,5 @@
 import path from "path";
-import "../loadEnvironment.mjs";
+import "../common/environments-and-constants.mjs";
 
 import multerS3 from 'multer-s3';
 import { S3Client } from '@aws-sdk/client-s3';

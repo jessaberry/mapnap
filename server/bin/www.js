@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import "../loadEnvironment.mjs";
+import "../common/environments-and-constants.mjs";
 import app from '../app.js';
 import debugLib from 'debug';
 import http from 'http';
@@ -12,7 +12,7 @@ const debug = debugLib('your-project-name:server');
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || "4999");
+const port = normalizePort(process.env.EXPRESS_JS_PORT || "4999");
 app.set("port", port);
 
 /**

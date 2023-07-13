@@ -24,14 +24,14 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.7",
-    "react-router-dom": "^6.12.1",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "react-share": "^4.4.1",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT = 3999 && react-scripts start",
+    "start": "cross-env PORT=3999 react-scripts start",
     "build": "../node_modules/.bin/react-scripts build",
     "test": "../node_modules/.bin/react-scripts test",
     "eject": "../node_modules/.bin/react-scripts eject"

@@ -5,7 +5,7 @@ const TripHandler = ({ handleAddTrip }) => {
   const [showInput, setShowInput] = useState(false);
 
   const handleShowTrip = () => {
-    setShowInput(true);
+    setShowInput(!showInput);
   };
 
   const handleAddNewTrip = (trip) => {
