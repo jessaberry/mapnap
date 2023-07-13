@@ -4,6 +4,9 @@ import { DateVis } from "./Line.js";
 import TripVis from "./Blob.js";
 import { Grid } from "@mui/material";
 import "./BudgetDashboard.css";
+import Navbar from "../Navbar";
+import SocialButtons from "../sharing/SocialButtons";
+import React from "react";
 
 export default function BudgetDashboard() {
   const experiences = useSelector((state) => state.exp.experiences);
@@ -11,7 +14,11 @@ export default function BudgetDashboard() {
   const trips = useSelector((state) => state.trip.trips);
 
   return (
+      <div>
+        <Navbar/>
+
     <div className="budget-container">
+
       <Grid container spacing={3} justifyContent="center">
         {/* BUDGET BY TRIP */}
         <Grid item xs={12}>
@@ -36,5 +43,6 @@ export default function BudgetDashboard() {
         </Grid>
       </Grid>
     </div>
+      </div>
   );
 }

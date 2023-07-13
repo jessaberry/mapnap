@@ -6,6 +6,9 @@ import TripHandler from "./TripHandler";
 import TripViewer from "./TripViewer";
 import poiData from "../../data/poi.json";
 import activityData from "../../data/experiencetype.json";
+import Navbar from "../../Navbar";
+import SocialButtons from "../../sharing/SocialButtons";
+import React from "react";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
@@ -70,6 +73,8 @@ export default function Trip() {
 
   return (
     <div>
+    <Navbar/>
+
       <h1>Trip Manager</h1>
       <TripHandler
         handleAddTrip={handleAddTrip}

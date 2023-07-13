@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@aws-sdk/client-s3": "^3.363.0",
+    "@material-ui/core": "^4.12.4",
     "aws-sdk": "^2.1400.0",
     "concurrently": "^8.2.0",
     "dotenv": "^16.3.1",
@@ -11,8 +12,8 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pug": "^3.0.2",
-    "react-share": "^4.4.1",
     "react-aws-s3": "^1.5.0",
+    "react-share": "^4.4.1",
     "server": "^1.0.38"
   },
   "scripts": {
