@@ -11,7 +11,7 @@ import { memoriesCollectionName } from "../common/environments-and-constants.mjs
 
 
 
-router.get(`/${memoriesCollectionName}`, async (req, res) => {
+router.get('/', async (req, res) => {
   let collection = await db.collection(memoriesCollectionName);
   let results = await collection.find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
@@ -20,7 +20,7 @@ router.get(`/${memoriesCollectionName}`, async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(`/${memoriesCollectionName}`, uploadMediaFile.single(memoriesCollectionName), (req, res, next) => {
+router.put('/', uploadMediaFile.single(memoriesCollectionName), (req, res, next) => {
   console.log(memoriesCollectionName);
   let data = {};
   if (req.file) {
@@ -28,7 +28,7 @@ router.put(`/${memoriesCollectionName}`, uploadMediaFile.single(memoriesCollecti
   }
 });
 
-router.get(`/${memoriesCollectionName}/:id`, async (req, res) => {
+router.get('/:id', async (req, res) => {
   let collection = await db.collection(memoriesCollectionName);
   let query = { _id: ObjectId(req.params.id) };
   let result = await collection.findOne(query);
@@ -37,7 +37,7 @@ router.get(`/${memoriesCollectionName}/:id`, async (req, res) => {
   else res.send(result).status(200);
 });
 
-router.post(`/${memoriesCollectionName}`, async (req, res) => {
+router.post('/', async (req, res) => {
   let collection = await db.collection(memoriesCollectionName);
   let newDocument = req.body;
   newDocument.date = new Date();
@@ -45,7 +45,7 @@ router.post(`/${memoriesCollectionName}`, async (req, res) => {
   res.send(result).status(204);
 });
 
-router.patch(`/${memoriesCollectionName}/:id`, async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
   const updates = {
     $push: { tags: req.body }
@@ -57,7 +57,7 @@ router.patch(`/${memoriesCollectionName}/:id`, async (req, res) => {
   res.send(result).status(200);
 });
 
-router.delete(`/${memoriesCollectionName}/:id`, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
 
   const collection = db.collection(memoriesCollectionName);

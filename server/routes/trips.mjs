@@ -11,7 +11,8 @@ import { tripsCollectionName } from "../common/environments-and-constants.mjs";
 
 
 
-router.get(`/${tripsCollectionName}`, async (req, res) => {
+router.get('/', async (req, res) => {
+  console.log('get trip');
   let collection = await db.collection(tripsCollectionName);
   let results = await collection.find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
@@ -20,33 +21,39 @@ router.get(`/${tripsCollectionName}`, async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(`/${tripsCollectionName}`, uploadMediaFile.single(tripsCollectionName), (req, res, next) => {
-  console.log(tripsCollectionName);
-  let data = {};
-  if (req.file) {
-    data.mediaFile = req.file.location;
-  }
+router.put('/', async (req, res) => {
+  let collection = await db.collection(tripsCollectionName);
+  let data = req.body;
+  if (!data) { res.send("Invalid data").status(404)};
+  const query = { _id: data._id };
+  console.log(query);
+  const options = { upsert: true };
+  let result = await collection.updateOne(query, { $set: data }, options);
+  if (!result) res.send("Not found").status(404);
+    else res.send(result).status(200);
 });
 
-router.get(`/${tripsCollectionName}/:id`, async (req, res) => {
+router.get('/:id', async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
-  let query = { _id: ObjectId(req.params.id) };
+  let query = { _id: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
 
   if (!result) res.send("Not found").status(404);
   else res.send(result).status(200);
 });
 
-router.post(`/${tripsCollectionName}`, async (req, res) => {
+router.post('/', async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
   let newDocument = req.body;
-  newDocument.date = new Date();
+  newDocument.createdAt = new Date();
+  newDocument.updatedAt = new Date();
+  newDocument.isDeleted = false;
   let result = await collection.insertOne(newDocument);
   res.send(result).status(204);
 });
 
 router.patch(`/comment/:id`, async (req, res) => {
-  const query = { _id: ObjectId(req.params.id) };
+  const query = { _id: new ObjectId(req.params.id) };
   const updates = {
     $push: { tags: req.body }
   };
@@ -57,8 +64,8 @@ router.patch(`/comment/:id`, async (req, res) => {
   res.send(result).status(200);
 });
 
-router.delete(`/${tripsCollectionName}/:id`, async (req, res) => {
-  const query = { _id: ObjectId(req.params.id) };
+router.delete('/:id', async (req, res) => {
+  const query = { _id: new ObjectId(req.params.id) };
 
   const collection = db.collection(tripsCollectionName);
   let result = await collection.deleteOne(query);

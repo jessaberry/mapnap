@@ -10,7 +10,7 @@ import { ObjectId } from "mongodb";
 import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
 
 
-router.get(`/${mediaFilesCollectionName}`, async (req, res) => {
+router.get('/', async (req, res) => {
   let collection = await db.collection(mediaFilesCollectionName);
   let results = await collection.find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
@@ -19,7 +19,7 @@ router.get(`/${mediaFilesCollectionName}`, async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(`/${mediaFilesCollectionName}`, uploadMediaFile.single(mediaFilesCollectionName), (req, res, next) => {
+router.put('/', async(req, res) => {
   console.log(mediaFilesCollectionName);
   let data = {};
   if (req.file) {
@@ -27,7 +27,7 @@ router.put(`/${mediaFilesCollectionName}`, uploadMediaFile.single(mediaFilesColl
   }
 });
 
-router.get(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
+router.get('/:id', async (req, res) => {
   let collection = await db.collection(mediaFilesCollectionName);
   let query = { _id: ObjectId(req.params.id) };
   let result = await collection.findOne(query);
@@ -36,7 +36,7 @@ router.get(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
   else res.send(result).status(200);
 });
 
-router.post(`/${mediaFilesCollectionName}`, async (req, res) => {
+router.post('/', async (req, res) => {
   let collection = await db.collection(mediaFilesCollectionName);
   let newDocument = req.body;
   newDocument.date = new Date();
@@ -44,7 +44,7 @@ router.post(`/${mediaFilesCollectionName}`, async (req, res) => {
   res.send(result).status(204);
 });
 
-router.patch(`/comment/:id`, async (req, res) => {
+router.patch('/comment/:id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
   const updates = {
     $push: { tags: req.body }
@@ -56,7 +56,7 @@ router.patch(`/comment/:id`, async (req, res) => {
   res.send(result).status(200);
 });
 
-router.delete(`/${mediaFilesCollectionName}/:id`, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
 
   const collection = db.collection(mediaFilesCollectionName);

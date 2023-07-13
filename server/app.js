@@ -20,6 +20,14 @@ import pointsOfInterestRouter from "./routes/pointsOfInterest.mjs";
 import experiencesRouter from "./routes/experiences.mjs";
 import tripsRouter from "./routes/trips.mjs";
 import memoriesRouter from "./routes/memories.mjs";
+import {
+  experiencesCollectionName,
+  mediaFilesCollectionName,
+  memoriesCollectionName,
+  pointsOfInterestCollectionName,
+  tripsCollectionName,
+  usersCollectionName
+} from "./common/environments-and-constants.mjs";
 
 const app = express();
 
@@ -39,9 +47,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/media-files/', mediaFilesRouter);
+
+app.use(`/${usersCollectionName}`, usersRouter);
+app.use(`/${mediaFilesCollectionName}`, mediaFilesRouter);
+app.use(`/${tripsCollectionName}`, tripsRouter);
+app.use(`/${pointsOfInterestCollectionName}`, pointsOfInterestRouter);
+app.use(`/${experiencesCollectionName}`, experiencesRouter);
+app.use(`/${memoriesCollectionName}`, memoriesRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

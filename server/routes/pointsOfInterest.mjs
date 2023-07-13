@@ -11,7 +11,7 @@ import {  pointsOfInterestCollectionName } from "../common/environments-and-cons
 
 
 
-router.get(`/${pointsOfInterestCollectionName}`, async (req, res) => {
+router.get('/', async (req, res) => {
   let collection = await db.collection(pointsOfInterestCollectionName);
   let results = await collection.find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
@@ -20,7 +20,7 @@ router.get(`/${pointsOfInterestCollectionName}`, async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(`/${pointsOfInterestCollectionName}`, uploadMediaFile.single(pointsOfInterestCollectionName), (req, res, next) => {
+router.put('/', uploadMediaFile.single(pointsOfInterestCollectionName), (req, res, next) => {
   console.log(pointsOfInterestCollectionName);
   let data = {};
   if (req.file) {
@@ -28,7 +28,7 @@ router.put(`/${pointsOfInterestCollectionName}`, uploadMediaFile.single(pointsOf
   }
 });
 
-router.get(`/${pointsOfInterestCollectionName}/:id`, async (req, res) => {
+router.get('/:id', async (req, res) => {
   let collection = await db.collection(pointsOfInterestCollectionName);
   let query = { _id: ObjectId(req.params.id) };
   let result = await collection.findOne(query);
@@ -37,7 +37,7 @@ router.get(`/${pointsOfInterestCollectionName}/:id`, async (req, res) => {
   else res.send(result).status(200);
 });
 
-router.post(`/${pointsOfInterestCollectionName}`, async (req, res) => {
+router.post('/', async (req, res) => {
   let collection = await db.collection(pointsOfInterestCollectionName);
   let newDocument = req.body;
   newDocument.date = new Date();
@@ -45,7 +45,7 @@ router.post(`/${pointsOfInterestCollectionName}`, async (req, res) => {
   res.send(result).status(204);
 });
 
-router.patch(`/comment/:id`, async (req, res) => {
+router.patch('/comment/:id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
   const updates = {
     $push: { tags: req.body }
@@ -57,7 +57,7 @@ router.patch(`/comment/:id`, async (req, res) => {
   res.send(result).status(200);
 });
 
-router.delete(`/${pointsOfInterestCollectionName}/:id`, async (req, res) => {
+router.delete('/ :id', async (req, res) => {
   const query = { _id: ObjectId(req.params.id) };
 
   const collection = db.collection(pointsOfInterestCollectionName);
