@@ -46,8 +46,12 @@
   padding: 10px 10px;
 }
 
-.nav-login {
+.nav-logout {
   margin-right: 10px;
+}
+
+.nav-logout button{
+  background-color: red;
 }
 
 .socials {
