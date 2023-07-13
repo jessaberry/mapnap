@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTripAsync,
-  deleteTripAsync,
-  getTripsAsync,
-} from "../reducers/thunksTrip";
+import { addTripAsync, deleteTripAsync, getTripsAsync } from "../reducers/thunksTrip";
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
 import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
@@ -61,16 +57,16 @@ export default function Trip() {
           <li key={trip.TripId}>
             <h3>TRIP - {trip.Title}</h3>
             <p>TRIP id: {trip.TripId}</p>
-            <Link to={`/trip/${trip.TripId}`}>
+            <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
           </li>
         ))}
       </ul>
       <Routes>
-        <Route path="/trip" element={<Trip trips={trips} />}></Route>
+        {/* <Route path="/trips" element={<Trip trips={trips} />}></Route> */}
         <Route
-          path={`/trip/${tripId}`}
+          path={`/trips/${tripId}`}
           element={
             <TripSingle
               tripID={tripId}

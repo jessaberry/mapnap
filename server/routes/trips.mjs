@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     .find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
     .toArray();
-
+  console.log("results");
   res.send(results).status(200);
 });
 
