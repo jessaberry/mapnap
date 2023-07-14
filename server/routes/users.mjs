@@ -28,7 +28,7 @@ const defaultUsers = [
     "UserId": 1
   },
   {
-    "_id": `${new ObjectId()}`,
+    "_id": "64b0d52fd5f869f56f6cf1e0",
     "UserId": 2,
     "FirstName": "Jessa",
     "LastName": "Shi",
@@ -37,20 +37,20 @@ const defaultUsers = [
     "PasswordHash": "5e57dc622f3097c2d01962c3c863b42c309eff9c0bcd85543348e9b1525f6533721fea5db9013adf987d0e36ccb8eed7d6f32aa60d44809c4063e721aeeb631d"
   },
   {
-    "_id": `${new ObjectId()}`,
+    "_id": "64b0d52fd5f869f56f6cf1e1",
     "UserId": 3,
     "FirstName": "Max",
     "LastName": "Zhong",
-    "EmailAddress": "",
+    "EmailAddress": "maxzhong02@gmail.com",
     "Salt": "0l4QDeG4oxyJ7VoL",
     "PasswordHash": "0170c379ada425e3868a175beac5abc43bf621374086a5168e9c715545ed50649abe9980d6da63bc1177cdaa97c96161006274db1afe2b3670d00f603b4a721a"
   },
   {
-    "_id": `${new ObjectId()}`,
+    "_id": "64b0d52fd5f869f56f6cf1e2",
     "UserId": 4,
     "FirstName": "Parth",
     "LastName": "Sehtiya",
-    "EmailAddress": "",
+    "EmailAddress": "parths@gmail.com",
     "Salt": "F4S9A9M62UcsW7x4",
     "PasswordHash": "a66b9555cd49a72954aa2498724139a75243cf722680c2224ca9b08417b0ccb121f2910972ac7146418e009269b83b8df294f3975569f694be670332bfb12826"
   }
@@ -63,6 +63,16 @@ router.get("/reset/", async (req, res) => {
   let collection = await db.collection(usersCollectionName);
   await collection.deleteMany({});
   let result = await collection.insertMany(defaultUsers);
+  res.send(result).status(200);
+});
+
+
+router.delete("/clear/", async (req, res) => {
+  const query = {};
+
+  const collection = await db.collection(usersCollectionName);
+  let result = await collection.deleteMany(query);
+
   res.send(result).status(200);
 });
 
@@ -92,7 +102,7 @@ router.put("/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   let collection = await db.collection(usersCollectionName);
-  let query = { _id: new ObjectId(req.params.id) };
+  let query = { _id: req.params.id };
   let result = await collection.findOne(query);
 
   if (!result) res.send("Not found").status(404);
@@ -102,31 +112,20 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   let collection = await db.collection(usersCollectionName);
   let newDocument = req.body;
-  newDocument.createdAt = new Date();
-  newDocument.updatedAt = new Date();
-  newDocument.isDeleted = false;
   let result = await collection.insertOne(newDocument);
   res.send(result).status(204);
 });
 
 
 router.delete("/:id", async (req, res) => {
-  const query = { _id: new ObjectId(req.params.id) };
+  const query = { _id: req.params.id };
 
-  const collection = db.collection(usersCollectionName);
+  const collection = await db.collection(usersCollectionName);
   let result = await collection.deleteOne(query);
 
   res.send(result).status(200);
 });
 
-router.delete("/clear/", async (req, res) => {
-  const query = {};
-
-  const collection = db.collection(usersCollectionName);
-  let result = await collection.deleteMany(query);
-
-  res.send(result).status(200);
-});
 
 
 
