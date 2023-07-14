@@ -16,7 +16,8 @@ function Dashboard() {
 
   const handleAddTrip = () => {
     // TODO: Implement logic to handle adding a trip.json
-    setFormOpen(true);
+        //setFormOpen(true);
+        navigate('/trip');
     console.log("Add Trip button clicked!");
   };
 

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
-import { addExperience } from "../reducers/reduceExperience";
+import { addExperienceAsync } from "../reducers/thunksExperience";
 
 export default function Experience() {
   const location = useLocation();
@@ -12,7 +12,7 @@ export default function Experience() {
   const navigate = useNavigate();
 
   const handleAddExperience = (exp) => {
-    dispatch(addExperience(exp));
+    dispatch(addExperienceAsync(exp));
     navigate("/trip");
   };
 

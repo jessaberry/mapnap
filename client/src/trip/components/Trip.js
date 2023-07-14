@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTripAsync, deleteTripAsync, getTripsAsync } from "../reducers/thunksTrip";
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
-import { deleteExperience } from "../../experience/reducers/reduceExperience";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
 import Navbar from "../../Navbar";
 import React from "react";
+import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
@@ -32,7 +32,7 @@ export default function Trip() {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperience(expID));
+    dispatch(deleteExperienceAsync(expID));
   };
 
   const getExperiences = (tripID) => {
