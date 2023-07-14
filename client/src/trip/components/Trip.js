@@ -43,8 +43,9 @@ export default function Trip() {
           new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime)
       );
   };
-
+  console.log(trips);
   return (
+
     <div>
       <Navbar />
       <h1>Trip Manager</h1>

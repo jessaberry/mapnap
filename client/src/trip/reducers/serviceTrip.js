@@ -2,7 +2,8 @@ import axios from "axios";
 
 const tripManager = {
   getTrips: async () => {
-    const res = await axios.get("/trips");
+    const res = await axios.get("http://localhost:4999/trips");
+    console.log(res.data)
     return res.data;
   },
 
