@@ -32,7 +32,7 @@ const defaultUsers = [
     "UserId": 2,
     "FirstName": "Jessa",
     "LastName": "Shi",
-    "EmailAddress": "",
+    "EmailAddress": "jessashi96@gmail.com",
     "Salt": "553FxoPMeyY68lSO",
     "PasswordHash": "5e57dc622f3097c2d01962c3c863b42c309eff9c0bcd85543348e9b1525f6533721fea5db9013adf987d0e36ccb8eed7d6f32aa60d44809c4063e721aeeb631d"
   },
