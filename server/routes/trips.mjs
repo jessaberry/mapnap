@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     .find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
     .toArray();
-  console.log("results");
+  console.log("results: " + results);
   res.send(results).status(200);
 });
 
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
   res.send(result).status(204);
 });
 
-router.patch(`/comment/:id`, async (req, res) => {
+router.patch(`/:id`, async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   const updates = {
     $push: { tags: req.body },

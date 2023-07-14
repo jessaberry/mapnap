@@ -15,8 +15,8 @@ export const INITIAL_STATE = {
 };
 
 export const actions = {
-  GET_TRIPS: "trips",
-  GET_USERS: "trips/users",
+  GET_TRIPS: "trips/getTrips",
+  GET_USERS: "trips/getUsers",
   ADD_TRIP: "trips/addTrip",
   DELETE_TRIP: "trips/deleteTrip",
   UPDATE_TRIP: "trips/updateTrip",

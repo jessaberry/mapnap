@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
-import { addExperience } from "../reducers/reducer";
+import { addExperience } from "../reducers/reduceExperience";
 
 export default function Experience() {
   const location = useLocation();
