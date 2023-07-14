@@ -1,3 +1,5 @@
+import "./styles.css";
+
 const getPOI = (poiData, tripPOI) => {
   const poi = poiData.find(
     (data) => data.PointOfInterestId === Number(tripPOI)
@@ -40,57 +42,77 @@ const TripViewer = ({
   );
 
   return (
-    <li key={trip.TripId} className="trip-item">
-      <h3>TRIP - {trip.Title}</h3>
-      <p>TRIP description: {trip.Description}</p>
-      <p>
-        TRIP starting POI: {getPOI(poiData, trip.StartingPointOfInterestId)}
-      </p>
-      <p>TRIP ending POI: {getPOI(poiData, trip.EndingPointOfInterestId)}</p>
-      {/* <p>TRIP start date: </p> */}
-      {/* <p>TRIP end date: </p> */}
-      <p>TRIP countries: {trip.Countries}</p>
-      <p>TRIP expenses: {totalExpenses}</p>
-      <p>Experiences</p>
-      <ul>
-        {experiences
-          .filter((exp) => exp.TripId === trip.TripId)
-          .map((exp) => (
-            <li key={exp.ExperienceId}>
-              <h3>EXPERIENCE - {exp.Title}</h3>
-              <p>EXPERIENCE ID: {exp.ExperienceId}</p>
-              <p>
-                EXPERIENCE activity:{" "}
-                {getActivity(activityData, exp.ExperienceTypeId)}
+      <div className="card-container">
+        <div className="trip-item">
+          <h3 className="trip-title">{trip.Title}</h3>
+          <div className="trip-info">
+            <p className="trip-description">{trip.Description}</p>
+            <div className="poi-info">
+              <p className="poi-starting">
+                Starting Point: {getPOI(poiData, trip.StartingPointOfInterestId)}
               </p>
-              <p>EXPERIENCE from: {exp.StartingLocalDateTime.toString()}</p>
-              <p>EXPERIENCE to: {exp.EndingLocalDateTime.toString()}</p>
-              <p>
-                EXPERIENCE address:{" "}
-                {getPOI(poiData, exp.StartingPointOfInterestId)}
+              <p className="poi-ending">
+                Ending Point: {getPOI(poiData, trip.EndingPointOfInterestId)}
               </p>
-              <p>EXPERIENCE description: {exp.Description}</p>
-              <p>cost: {getExpenses(expenses, exp.ExperienceId)}</p>
-              <button
+            </div>
+            <p className="trip-countries">Countries: {trip.Countries}</p>
+            <p className="trip-expenses">Total Expenses: {totalExpenses}</p>
+          </div>
+          <div className="experience-list">
+            <h4 className="experience-heading">Experiences</h4>
+            <div className="experience-card-container">
+              {experiences
+                  .filter((exp) => exp.TripId === trip.TripId)
+                  .map((exp) => (
+                      <div key={exp.ExperienceId} className="experience-card">
+                        <h4 className="experience-title">{exp.Title}</h4>
+                        <p className="experience-id">Experience ID: {exp.ExperienceId}</p>
+                        <p className="experience-activity">
+                          Activity: {getActivity(activityData, exp.ExperienceTypeId)}
+                        </p>
+                        <p className="experience-dates">
+                          From: {new Date(exp.StartingLocalDateTime).toLocaleDateString()}
+                          <br/>
+                          To: {new Date(exp.EndingLocalDateTime).toLocaleDateString()}
+                        </p>
+                        <p className="experience-address">
+                          Address: {getPOI(poiData, exp.StartingPointOfInterestId)}
+                        </p>
+                        <p className="experience-description">{exp.Description}</p>
+                        <p className="experience-cost">Cost: {getExpenses(expenses, exp.ExperienceId)}</p>
+                        <button
+                            type="button"
+                            onClick={() => handleDeleteExperience(exp.ExperienceId)}
+                            className="delete-experience-button"
+                        >
+                          Delete Experience
+                        </button>
+                      </div>
+                  ))}
+            </div>
+          </div>
+          <div className="trip-buttons">
+            <button
                 type="button"
-                onClick={() => handleDeleteExperience(exp.ExperienceId)}
-              >
-                Delete Experience
-              </button>
-            </li>
-          ))}
-      </ul>
-      <div>
-        <button type="button" onClick={() => handleAddExperience(trip.TripId)}>
-          Add Experience
-        </button>
+                onClick={() => handleAddExperience(trip.TripId)}
+                className="add-experience-button"
+            >
+              Add Experience
+            </button>
+            <button
+                type="button"
+                onClick={() => handleDeleteTrip(trip)}
+                className="delete-trip-button"
+            >
+              Delete Trip
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <button type="button" onClick={() => handleDeleteTrip(trip)}>
-          Delete Trip
-        </button>
-      </div>
-    </li>
+
+
+
+
   );
 };
 
