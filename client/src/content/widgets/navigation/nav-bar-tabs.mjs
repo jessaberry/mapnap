@@ -5,14 +5,23 @@ import { NavBarTab } from "./nav-bar-tab.mjs";
 export const NavBarTabs = () => {
   const { isAuthenticated } = useAuth0();
 
+
   return (
     <div className="nav-bar__tabs">
-      <NavBarTab path="/profile" label="Profile" />
-      <NavBarTab path="/public" label="Public" />
+      <NavBarTab path="/dashboard" label="Dashboard" />
+      <NavBarTab path="/map" label="Map" />
+      <NavBarTab path="/budget" label="Budget" />
+      <NavBarTab path="/trip" label="TRIP" />
+      <NavBarTab path="/experience" label="EXPERIENCE" />
+      <NavBarTab path="/memory" label="MEMORY" />
       {isAuthenticated && (
         <>
-          <NavBarTab path="/protected" label="Protected" />
-          <NavBarTab path="/admin" label="Admin" />
+          <NavBarTab path="/dashboard" label="Dashboard" />
+          <NavBarTab path="/map" label="Map" />
+          <NavBarTab path="/budget" label="Budget" />
+          <NavBarTab path="/trip" label="TRIP" />
+          <NavBarTab path="/experience" label="EXPERIENCE" />
+          <NavBarTab path="/memory" label="MEMORY" />
         </>
       )}
     </div>

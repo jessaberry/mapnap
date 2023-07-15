@@ -7,8 +7,8 @@ import Card from "./card";
 import { useNavigate } from "react-router-dom";
 import PopupForm from "./PopupForm";
 import React, { useState } from "react";
-import Navbar from "../../Navbar";
 import SocialButtons from "../../sharing/SocialButtons";
+import { NavBar } from "../../content/widgets/navigation/nav-bar.mjs";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -32,8 +32,8 @@ function Dashboard() {
   };
 
   return (
-    <div>
-      <Navbar />
+    <div className="page-layout">
+      <NavBar />
 
       <h1>Dashboard</h1>
 

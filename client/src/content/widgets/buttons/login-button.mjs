@@ -9,6 +9,9 @@ export const LoginButton = () => {
       appState: {
         returnTo: "/profile",
       },
+      authorizationParams: {
+        prompt: "login",
+      },
     });
   };
 

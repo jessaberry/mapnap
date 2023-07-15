@@ -5,9 +5,13 @@ import { useNavigate } from "react-router-dom";
 export const Auth0ProviderWithNavigate = ({ children }) => {
   const navigate = useNavigate();
 
+
+
   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
   const redirectUri = process.env.REACT_APP_AUTH0_CALLBACK_URL;
+
+
 
   const onRedirectCallback = (appState) => {
     navigate(appState?.returnTo || window.location.pathname);
@@ -28,5 +32,6 @@ export const Auth0ProviderWithNavigate = ({ children }) => {
     >
       {children}
     </Auth0Provider>
+
   );
 };

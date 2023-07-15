@@ -10,6 +10,7 @@ export const SignupButton = () => {
         returnTo: "/profile",
       },
       authorizationParams: {
+        prompt: "login",
         screen_hint: "signup",
       },
     });

@@ -1,16 +1,16 @@
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
-import Navbar from "../../Navbar";
-import SocialButtons from "../../sharing/SocialButtons";
+
 import React from "react";
+import { NavBar } from  "../../content/widgets/navigation/nav-bar.mjs";
 
 const testPos = [51.505, -0.09];
 
 export default function Map() {
   return (
     <div>
-      <Navbar />
+      <NavBar />
 
       <MapContainer center={testPos} zoom={13} scrollWheelZoom={true}>
         {" "}
