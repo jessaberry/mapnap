@@ -4,11 +4,12 @@ import { DateVis } from "./Line.js";
 import TripVis from "./Blob.js";
 import { Grid } from "@mui/material";
 import "./BudgetDashboard.css";
-import Navbar from "../Navbar";
-import SocialButtons from "../sharing/SocialButtons";
+
 import React from "react";
 import experienceData from "../data/experience.json";
 import expensesData from "../data/expenses.json";
+import { NavBar } from "../content/widgets/navigation/nav-bar.mjs";
+import {PageLayout} from "../content/template/page-layout.mjs";
 
 export default function BudgetDashboard() {
   // const experiences = useSelector((state) => state.exp.experiences);
@@ -18,8 +19,8 @@ export default function BudgetDashboard() {
   const trips = useSelector((state) => state.trip.trips);
 
   return (
-      <div>
-        <Navbar/>
+    <PageLayout>
+      <div className="content-layout">
 
     <div className="budget-container">
 
@@ -48,5 +49,6 @@ export default function BudgetDashboard() {
       </Grid>
     </div>
       </div>
+    </PageLayout>
   );
 }
