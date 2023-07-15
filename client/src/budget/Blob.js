@@ -49,6 +49,9 @@ const TripVis = ({ trips, experiences, expenses }) => {
     setTripID(null);
   };
 
+  // REMOVE WHEN EXPERIENCES FIXED
+  if (!experiences || !Array.isArray(experiences)) { return null;}
+
   return (
     <div>
       <Grid container spacing={2}>

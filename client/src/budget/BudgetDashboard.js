@@ -8,9 +8,9 @@ import Navbar from "../Navbar";
 import React from "react";
 
 export default function BudgetDashboard() {
-  const experiences = useSelector((state) => state.exp.experiences);
-  const expenses = useSelector((state) => state.exp.expenses);
-  const trips = useSelector((state) => state.trip.trips);
+  const experiences = useSelector((state) => state.experiences);
+  const expenses = useSelector((state) => state.expenses);
+  const trips = useSelector((state) => state.trip.trips);  
 
   return (
     <div>

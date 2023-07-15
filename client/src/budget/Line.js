@@ -23,6 +23,13 @@ Chart.register(
 
 // TODO: figure out if mapping expenses separately is better or if mapping by trip is better
 const getDateExpenses = (experiences, expenses) => {
+
+  const dateExpenses = {};
+  // REMOVE WHEN EXPERIENCES FIXED
+  if (!expenses || !Array.isArray(expenses)) {
+    return dateExpenses;
+  }
+
   const firstDate = new Date(
     Math.min(
       ...experiences.map(
@@ -37,7 +44,6 @@ const getDateExpenses = (experiences, expenses) => {
       )
     )
   );
-  const dateExpenses = {};
 
   const current = new Date(firstDate);
   while (current <= lastDate) {
