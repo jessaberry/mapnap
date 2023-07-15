@@ -23,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/trip/*" element={<Trip />} />
               <Route path="/trip/:id" element={<TripSingle />} />
+              <Route path="/trips/1" element={<TripSingle />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
               <Route path="/map" element={<MapView />} />

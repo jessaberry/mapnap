@@ -55,21 +55,21 @@ export default function Trip() {
         handleAddTrip={handleAddTrip}
         handleAddExperience={handleAddExperience}
       />
-      <div className="card-container"> {/* Apply the card container style */}
+      <div className="card-container">
         {trips.map((trip) => (
-          <div className="trip-item" key={trip.TripId}> {/* Apply the trip item card style */}
+          <div className="trip-item" key={trip.TripId}> 
             <h3 className="trip-title">TRIP - {trip.Title}</h3>
             <p className="trip-info">TRIP id: {trip.TripId}</p>
             <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
             <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
-            <div className="experience-list"> {/* Add the experience list container */}
+            <div className="experience-list"> 
               <h4 className="experience-heading">Experiences:</h4>
-              <div className="experience-card-container"> {/* Apply the experience card container style */}
+              <div className="experience-card-container"> 
                 {getExperiences(trip.TripId).map((experience) => (
-                  <div className="experience-card" key={experience.ExperienceId}> {/* Apply the experience card style */}
-                    <h5 className="experience-title">{experience.Title}</h5> {/* Print the title of the experience */}
+                  <div className="experience-card" key={experience.ExperienceId}> 
+                    <h5 className="experience-title">{experience.Title}</h5> 
                   </div>
                 ))}
               </div>
@@ -82,7 +82,7 @@ export default function Trip() {
           path={`/trips/${tripId}`}
           element={
             <TripSingle
-              tripID={tripId}
+              trips={trips}
               experiences={getExperiences(tripId)}
               handleAddExperience={handleAddExperience}
               handleDeleteExperience={handleDeleteExperience}
