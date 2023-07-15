@@ -7,6 +7,7 @@ import TripSingle from "./TripSingle";
 import Navbar from "../../Navbar";
 import React from "react";
 import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
+import "./styles.css";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
@@ -52,19 +53,18 @@ export default function Trip() {
         handleAddTrip={handleAddTrip}
         handleAddExperience={handleAddExperience}
       />
-      <ul>
+      <div className="card-container"> {/* Apply the card container style */}
         {trips.map((trip) => (
-          <li key={trip.TripId}>
-            <h3>TRIP - {trip.Title}</h3>
-            <p>TRIP id: {trip.TripId}</p>
+          <div className="trip-item" key={trip.TripId}> {/* Apply the trip item card style */}
+            <h3 className="trip-title">TRIP - {trip.Title}</h3>
+            <p className="trip-info">TRIP id: {trip.TripId}</p>
             <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <Routes>
-        {/* <Route path="/trips" element={<Trip trips={trips} />}></Route> */}
         <Route
           path={`/trips/${tripId}`}
           element={
