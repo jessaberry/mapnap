@@ -68,7 +68,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const collection = db.collection(tripsCollectionName);
-    await collection.deleteOne({ id: id });
+    await collection.deleteOne({ TripId: id });
     res.status(204).end();
   } catch (error) {
     console.error(error);
