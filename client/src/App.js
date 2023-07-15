@@ -21,7 +21,7 @@ function App() {
           <header className="App-header">Adventoro</header>
           <main>
             <Routes>
-              <Route path="/trip" element={<Trip />} />
+              <Route path="/trip/*" element={<Trip />} />
               <Route path="/trip/:id" element={<TripSingle />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />

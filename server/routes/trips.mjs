@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
   newDocument.updatedAt = new Date();
   newDocument.isDeleted = false;
   let result = await collection.insertOne(newDocument);
-  res.send(result).status(204);
+  res.send(result).status(201);
 });
 
 router.patch(`/:id`, async (req, res) => {
@@ -65,12 +65,15 @@ router.patch(`/:id`, async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const query = { _id: new ObjectId(req.params.id) };
-
-  const collection = db.collection(tripsCollectionName);
-  let result = await collection.deleteOne(query);
-
-  res.send(result).status(200);
+  try {
+    const id = req.params.id;
+    const collection = db.collection(tripsCollectionName);
+    await collection.deleteOne({ id: id });
+    res.status(204).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "failed to delete" });
+  }
 });
 
 export default router;

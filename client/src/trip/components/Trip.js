@@ -63,7 +63,7 @@ export default function Trip() {
             <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
-            <button>Delete</button>
+            <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
             <div className="experience-list"> {/* Add the experience list container */}
               <h4 className="experience-heading">Experiences:</h4>
               <div className="experience-card-container"> {/* Apply the experience card container style */}
