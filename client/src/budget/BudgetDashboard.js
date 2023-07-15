@@ -20,8 +20,8 @@ export default function BudgetDashboard() {
 
   return (
     <PageLayout>
-      <div className="content-layout">
-
+      <div>
+<h1>Budget</h1>
     <div className="budget-container">
 
       <Grid container spacing={3} justifyContent="center">

@@ -30,7 +30,7 @@
 }
 
 .button--primary {
-    background-color: var(--indigo);
+    background-color: var(--sauder-green);
 }
 
 .button--primary:hover {
@@ -71,9 +71,9 @@
 .button__logout {
     min-width: 8.4rem;
 
-    border: 0.1rem solid var(--indigo);
+    border: 0.1rem solid var(--sauder-green);
     color: var(--white);
-    background: var(--indigo);
+    background: var(--sauder-green);
     width: 50%;
     font-size: 1.6rem;
 

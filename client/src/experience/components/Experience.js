@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../Navbar";
+import Navbar from "../../_toRemove/Navbar";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

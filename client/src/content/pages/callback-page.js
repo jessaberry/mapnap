@@ -1,11 +1,13 @@
 import React from "react";
-import { NavBar } from "../widgets/navigation/nav-bar.mjs";
+import { PageLayout } from "../template/page-layout.mjs";
+
 
 export const CallbackPage = () => {
   return (
+    <PageLayout>
     <div className="page-layout">
-      <NavBar />
       <div className="page-layout__content" />
     </div>
+    </PageLayout>
   );
 };
