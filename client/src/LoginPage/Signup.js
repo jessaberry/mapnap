@@ -4,36 +4,61 @@ import "./styles.css";
 import axios from "axios";
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-    const handleSignUp = () => {
-        // Handle sign-up logic here
-        postNewUser();
-        console.log("Sign up:", email, password);
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     };
 
-  const handleSwitchToLogin = () => {
-    navigate("/login");
-    console.log("Switch to login page");
-  };
+    const handleFirstnameChange = (e) => {
+        setFirstname(e.target.value);
+    };
 
-    // Function to handle the POST request
-    const postNewUser = (newUser) => {
-        console.log('user added');
-        axios.post('http://localhost:3002/adduser', {
-            userMail: email,
-            userPassword: password});
+    const handleLastnameChange = (e) => {
+        setLastname(e.target.value);
+    };
+
+    const handleSignUp = async () => {
+        try {
+            const response = await fetch("http://localhost:4999/users/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    firstname,
+                    lastname,
+                }),
+            });
+
+            if (response.ok) {
+                // Sign up successful, perform necessary actions (e.g., redirect)
+                console.log("Sign up successful");
+            } else {
+                // Sign up failed, handle the error (e.g., display error message)
+                console.log("Sign up failed");
+            }
+        } catch (error) {
+            // Handle any network or server errors
+            console.log("Error:", error);
+        }
+    };
+
+
+
+    const handleSwitchToLogin = () => {
+        navigate("/login");
+        console.log("Switch to login page");
     };
 
     return (
@@ -45,7 +70,19 @@ const SignUpPage = () => {
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" value={password} onChange={handlePasswordChange} />
+                <input
+                    type="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+            </div>
+            <div>
+                <label>First Name:</label>
+                <input type="text" value={firstname} onChange={handleFirstnameChange} />
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" value={lastname} onChange={handleLastnameChange} />
             </div>
             <button onClick={handleSignUp}>Sign Up</button>
             <div className="button-container">
