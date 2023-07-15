@@ -57,7 +57,7 @@ const SignUpPage = () => {
 
     const handleSwitchToLogin = () => {
         navigate("/login");
-        console.log("Switch to login page");
+        console.log("Switch to login pages");
     };
 
     return (

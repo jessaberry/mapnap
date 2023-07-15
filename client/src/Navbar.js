@@ -4,7 +4,7 @@ import Memory from "./memories/components/Memory";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard.js";
 import Trip from "./trip/components/Trip";
-import Logout from "./sharing/Logout";
+import Logout from "./_toRemove/Logout";
 import MapView from "./mapview/components/MapView";
 import SocialButtons from "./sharing/SocialButtons";
 import React from "react";

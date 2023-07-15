@@ -56,8 +56,6 @@ const defaultUsers = [
   }
 ];
 
-console.log(defaultUsers);
-defaultUsers.toString();
 
 router.get("/reset/", async (req, res) => {
   let collection = await db.collection(usersCollectionName);
@@ -87,11 +85,14 @@ router.get("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  let collection = await db.collection(usersCollectionName);
   let data = req.body;
   if (!data) {
     res.send("Invalid data").status(404);
   }
+
+
+  let collection = await db.collection(usersCollectionName);
+
   const query = { _id: req.params.id };
   console.log(query);
   const options = { upsert: true };

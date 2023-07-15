@@ -1,13 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import "./common/environments-and-constants.mjs";
+import { BrowserRouter } from "react-router-dom";
+import { Auth0ProviderWithNavigate } from "./helpers/Auth0/auth0-provider-with-navigate";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.css";
+import "./styles/index.css";
+import "./styles/styles.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Auth0ProviderWithNavigate>
+
+        <App />
+
+      </Auth0ProviderWithNavigate>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
