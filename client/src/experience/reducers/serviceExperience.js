@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.baseURL = 'http://localhost:4999/';
 
 const experienceManager = {
     getExperiences: async () => {

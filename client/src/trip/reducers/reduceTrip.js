@@ -19,7 +19,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(addTripAsync.fulfilled, (state, action) => {
       state.addTrip = REQUEST_STATE.FULFILLED;
-      state.trips = action.payload;
+      state.trips.push(action.payload);
     });
     builder.addCase(addTripAsync.pending, (state, action) => {
       state.addTrip = REQUEST_STATE.PENDING;

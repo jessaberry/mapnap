@@ -3,6 +3,7 @@ import "./App.css";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Trip from "./trip/components/Trip";
+import TripSingle from "./trip/components/TripSingle";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
@@ -20,7 +21,8 @@ function App() {
           <header className="App-header">Adventoro</header>
           <main>
             <Routes>
-              <Route path="/trip/*" element={<Trip />} />
+              <Route path="/trip" element={<Trip />} />
+              <Route path="/trip/:id" element={<TripSingle />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
               <Route path="/map" element={<MapView />} />
@@ -29,7 +31,7 @@ function App() {
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/" element={<LoginPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route Path="/test/media-file" element={<MediaFileTest />} />
+              <Route path="/test/media-file" element={<MediaFileTest />} />
             </Routes>
           </main>
         </div>
