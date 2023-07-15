@@ -6,7 +6,7 @@ export const REQUEST_STATE = {
   };
   
   export const INITIAL_STATE = {
-    exp: [],
+    experiences: [],
     getExperiences: REQUEST_STATE.IDLE,
     addExperience: REQUEST_STATE.IDLE,
     deleteExperience: REQUEST_STATE.IDLE,

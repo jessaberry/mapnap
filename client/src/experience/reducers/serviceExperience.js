@@ -2,13 +2,13 @@ import axios from "axios";
 
 const experienceManager = {
     getExperiences: async () => {
-        const res = await axios.get("/exp");
+        const res = await axios.get("/experiences");
         return res.data;
     },
 
     addExperience: async (exp) => {
         try {
-            const res = await axios.post("/exp", exp);
+            const res = await axios.post("/experiences", exp);
             return res.data;
         } catch (error) {
             console.log(error);
@@ -18,7 +18,7 @@ const experienceManager = {
 
     deleteExperience: async (expID) => {
         try {
-            await axios.delete(`/exp/${expID}`);
+            await axios.delete(`/experiences/${expID}`);
         } catch (error) {
             console.log(error);
             throw error;
@@ -27,7 +27,7 @@ const experienceManager = {
 
     updateExperience: async (exp) => {
         try {
-          const res = await axios.patch(`/trips/${exp.ExperienceId}`, exp);
+          const res = await axios.patch(`/experiences/${exp.ExperienceId}`, exp);
           return res.data;
         } catch (error) {
           console.log(error);
