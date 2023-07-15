@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-// import Experience from "./experience/components/Experience";
+import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard.js";
@@ -14,7 +14,7 @@ const navPages = [
   { path: "/map", label: "Map", component: MapView },
   { path: "/budget", label: "Budget", component: Budget },
   { path: "/trip", label: "TRIP", component: Trip },
-  // { path: "/experience", label: "EXPERIENCE", component: Experience },
+  { path: "/experience", label: "EXPERIENCE", component: Experience },
   { path: "/memory", label: "MEMORY", component: Memory },
 ];
 

@@ -2,15 +2,18 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTripAsync, deleteTripAsync, getTripsAsync } from "../reducers/thunksTrip";
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
-import { deleteExperience } from "../../experience/reducers/reducer";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
 import Navbar from "../../Navbar";
 import React from "react";
+import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
+import "./styles.css";
+import experienceData from "../../data/experience.json";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
-  const experiences = useSelector((state) => state.exp.experiences);
+  const experiences = experienceData; //STUB
+  // const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { tripId } = useParams();
@@ -32,7 +35,7 @@ export default function Trip() {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperience(expID));
+    dispatch(deleteExperienceAsync(expID));
   };
 
   const getExperiences = (tripID) => {
@@ -53,24 +56,34 @@ export default function Trip() {
         handleAddTrip={handleAddTrip}
         handleAddExperience={handleAddExperience}
       />
-      <ul>
+      <div className="card-container">
         {trips.map((trip) => (
-          <li key={trip.TripId}>
-            <h3>TRIP - {trip.Title}</h3>
-            <p>TRIP id: {trip.TripId}</p>
+          <div className="trip-item" key={trip.TripId}> 
+            <h3 className="trip-title">TRIP - {trip.Title}</h3>
+            <p className="trip-info">TRIP id: {trip.TripId}</p>
             <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
-          </li>
+            <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
+            <div className="experience-list"> 
+              <h4 className="experience-heading">Experiences:</h4>
+              <div className="experience-card-container"> 
+                {getExperiences(trip.TripId).map((experience) => (
+                  <div className="experience-card" key={experience.ExperienceId}> 
+                    <h5 className="experience-title">{experience.Title}</h5> 
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
       <Routes>
-        {/* <Route path="/trips" element={<Trip trips={trips} />}></Route> */}
         <Route
           path={`/trips/${tripId}`}
           element={
             <TripSingle
-              tripID={tripId}
+              trips={trips}
               experiences={getExperiences(tripId)}
               handleAddExperience={handleAddExperience}
               handleDeleteExperience={handleDeleteExperience}
