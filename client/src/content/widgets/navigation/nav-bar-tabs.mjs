@@ -8,12 +8,8 @@ export const NavBarTabs = () => {
 
   return (
     <div className="nav-bar__tabs">
-      <NavBarTab path="/dashboard" label="Dashboard" />
-      <NavBarTab path="/map" label="Map" />
-      <NavBarTab path="/budget" label="Budget" />
-      <NavBarTab path="/trip" label="TRIP" />
-      <NavBarTab path="/experience" label="EXPERIENCE" />
-      <NavBarTab path="/memory" label="MEMORY" />
+      <NavBarTab path="/" label="Home" />
+
       {isAuthenticated && (
         <>
           <NavBarTab path="/dashboard" label="Dashboard" />

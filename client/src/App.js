@@ -34,6 +34,7 @@ export const App = () => {
         <div className="App">
           <main>
             <Routes>
+              <Route Path="/callback" element={<CallbackPage />} />
               <Route path="/trip/*" element={<Trip />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/experience" element={<Experience />} />
@@ -41,10 +42,11 @@ export const App = () => {
               <Route path="/map" element={<MapView />} />
               <Route path="/budget" element={<Budget />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route Path="/callback" element={<CallbackPage />} />
+
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/profile" element={<ProfilePage />} />
-              <Route path="*" element={<NotFoundPage />} />
+
+
             </Routes>
           </main>
         </div>

@@ -7,7 +7,7 @@
 
     background: var(--sauder-gradient);
 
-    color: var(--black);
+    color: var(--white);
 
     /* responsive */
 
@@ -15,6 +15,9 @@
     padding: 3.2rem 6.4rem;
 }
 
+.hero-banner h1 {
+    color: var(--white);
+}
 
 
 .hero-banner--yellow-mandarine {

@@ -7,6 +7,7 @@ export const ProfilePage = () => {
   const { user } = useAuth0();
 
   if (!user) {
+    console.log('not user');
     return null;
   }
 
