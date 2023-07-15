@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import axios from "axios";
 
 const SignUpPage = () => {
     const navigate = useNavigate();
@@ -58,7 +57,7 @@ const SignUpPage = () => {
 
     const handleSwitchToLogin = () => {
         navigate("/login");
-        console.log("Switch to login page");
+        console.log("Switch to login pages");
     };
 
     return (

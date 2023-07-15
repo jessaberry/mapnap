@@ -16,7 +16,7 @@
 server/.env
 server/.env.local
 client/.env
-client/.env.local
+client/.env
 server/.env
 server/.env.local
 .env.development.local

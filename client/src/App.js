@@ -1,44 +1,56 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import store from "./reducers/store";
+import { useAuth0 } from "@auth0/auth0-react";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import "./styles/App.css";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Trip from "./trip/components/Trip";
-import TripSingle from "./trip/components/TripSingle";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
-import store from "./reducers/store";
-import MediaFileTest from "./Test/MedilaFile/MediaFileTest";
-import MapView from "./mapview/components/MapView";
-import SignUpPage from "./LoginPage/Signup";
-import LoginPage from "./LoginPage/Login";
 
-function App() {
+import MapView from "./mapview/components/MapView";
+import { AdminPage } from "./content/pages/admin-page";
+import { CallbackPage } from "./content/pages/callback-page";
+import { HomePage } from "./content/pages/home-page";
+import { NotFoundPage } from "./content/pages/not-found-page";
+import { ProfilePage } from "./content/pages/profile-page";
+import { PageLoader } from "./content/widgets/page-loader.mjs"
+import { AuthenticationGuard } from "./helpers/Auth0/authentication-guard";
+
+export const App = () => {
+  const { isLoading } = useAuth0();
+  if (isLoading) {
+    return (
+      <div className="page-layout">
+        <PageLoader />
+      </div>
+    );
+  }
   return (
     <Provider store={store}>
-      <BrowserRouter>
+
         <div className="App">
-          <header className="App-header">Adventoro</header>
           <main>
             <Routes>
+              <Route Path="/callback" element={<CallbackPage />} />
               <Route path="/trip/*" element={<Trip />} />
-              <Route path="/trip/:id" element={<TripSingle />} />
-              <Route path="/trips/1" element={<TripSingle />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
               <Route path="/map" element={<MapView />} />
               <Route path="/budget" element={<Budget />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/" element={<LoginPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/test/media-file" element={<MediaFileTest />} />
+
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+
+
             </Routes>
           </main>
         </div>
-      </BrowserRouter>
     </Provider>
   );
 }
 
-export default App;

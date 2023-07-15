@@ -4,11 +4,12 @@ import { addTripAsync, deleteTripAsync, getTripsAsync } from "../reducers/thunks
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
-import Navbar from "../../Navbar";
 import React from "react";
 import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 import "./styles.css";
 import experienceData from "../../data/experience.json";
+import { NavBar } from "../../content/widgets/navigation/nav-bar.mjs";
+import {PageLayout} from "../../content/template/page-layout.mjs";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
@@ -48,9 +49,8 @@ export default function Trip() {
   };
   console.log(trips);
   return (
-
+<PageLayout>
     <div>
-      <Navbar />
       <h1>Trip Manager</h1>
       <TripHandler
         handleAddTrip={handleAddTrip}
@@ -93,5 +93,6 @@ export default function Trip() {
         />
       </Routes>
     </div>
+</PageLayout>
   );
 }

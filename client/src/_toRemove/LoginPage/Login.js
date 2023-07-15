@@ -23,7 +23,7 @@ const LoginPage = () => {
 
   const handleSwitchToSignUp = () => {
     navigate("/signup");
-    console.log("Switch to sign up page");
+    console.log("Switch to sign up pages");
   };
 
   return (
@@ -31,6 +31,7 @@ const LoginPage = () => {
       <h1>Login</h1>
       <div>
         <label>Email:</label>
+        
         <input type="email" value={email} onChange={handleEmailChange} />
       </div>
       <div>

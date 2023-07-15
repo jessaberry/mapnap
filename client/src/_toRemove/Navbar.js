@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import Experience from "./experience/components/Experience";
-import Memory from "./memories/components/Memory";
-import Dashboard from "./Dashboard/components/Dashboard";
-import Budget from "./budget/BudgetDashboard.js";
-import Trip from "./trip/components/Trip";
-import Logout from "./sharing/Logout";
-import MapView from "./mapview/components/MapView";
+import Experience from "../experience/components/Experience";
+import Memory from "../memories/components/Memory";
+import Dashboard from "../Dashboard/components/Dashboard";
+import Budget from "../budget/BudgetDashboard.js";
+import Trip from "../trip/components/Trip";
+import Logout from "./Logout";
+import MapView from "../mapview/components/MapView";
 import SocialButtons from "./sharing/SocialButtons";
 import React from "react";
 
