@@ -32,13 +32,11 @@ const TripViewer = ({
   handleDeleteTrip,
 }) => {
   const tripExpenses = expenses.filter((expense) =>
-    experiences.some(
-      (exp) =>
-        exp.ExperienceId === expense.ExperienceId && exp.TripId === trip.TripId
-    )
+    experiences.some((exp) => exp.ExperienceId === expense.ExperienceId)
   );
-  const totalExpenses = Number(
-    tripExpenses.reduce((sum, expense) => sum + expense.Cost, 0).toFixed(2)
+  const totalExpenses = tripExpenses.reduce(
+    (sum, expense) => sum + expense.Cost,
+    0
   );
 
   return (

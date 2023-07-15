@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../../Navbar";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,7 @@ import { addExperience } from "../reducers/reducer";
 
 export default function Experience() {
   const location = useLocation();
-  const tripUUID = location.state.tripUUID;
+  const tripUUID = location.state?.tripUUID;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ export default function Experience() {
 
   return (
     <div>
+      <Navbar />
       <h1>Add an Experience</h1>
       <ExperienceHandler
         tripUUID={tripUUID}

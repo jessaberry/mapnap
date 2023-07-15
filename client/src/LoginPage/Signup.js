@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import axios from "axios";
 
-
 const SignUpPage = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
     const handleSignUp = () => {
         // Handle sign-up logic here
@@ -24,10 +23,10 @@ const SignUpPage = () => {
         console.log("Sign up:", email, password);
     };
 
-    const handleSwitchToLogin = () => {
-        navigate('/login');
-        console.log("Switch to login page");
-    };
+  const handleSwitchToLogin = () => {
+    navigate("/login");
+    console.log("Switch to login page");
+  };
 
     // Function to handle the POST request
     const postNewUser = (newUser) => {

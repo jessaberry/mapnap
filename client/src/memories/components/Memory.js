@@ -34,7 +34,7 @@ export default function Memory(props, children) {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
 
       <Box sx={{ width: "100%", minHeight: 829 }}>
         <Masonry colunn={{ xs: 3, sm: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>

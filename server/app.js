@@ -1,21 +1,33 @@
-import createError from 'http-errors';
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import cors from 'cors';
+import createError from "http-errors";
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import cors from "cors";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import "./loadEnvironment.mjs";
+import "./common/environments-and-constants.mjs";
 
 const allowedOrigins = ["http://localhost:3999"];
 
-import indexRouter from './routes/index.mjs';
-import usersRouter from './routes/users.mjs';
-import mediaFilesRouter from './routes/mediaFiles.mjs';
+import indexRouter from "./routes/index.mjs";
+import usersRouter from "./routes/users.mjs";
+import mediaFilesRouter from "./routes/mediaFiles.mjs";
+import pointsOfInterestRouter from "./routes/pointsOfInterest.mjs";
+import experiencesRouter from "./routes/experiences.mjs";
+import tripsRouter from "./routes/trips.mjs";
+import memoriesRouter from "./routes/memories.mjs";
+import {
+  experiencesCollectionName,
+  mediaFilesCollectionName,
+  memoriesCollectionName,
+  pointsOfInterestCollectionName,
+  tripsCollectionName,
+  usersCollectionName,
+} from "./common/environments-and-constants.mjs";
 
 const app = express();
 
@@ -35,9 +47,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/media-files/', mediaFilesRouter);
+app.use("/", indexRouter);
+
+app.use(`/${usersCollectionName}`, usersRouter);
+app.use(`/${mediaFilesCollectionName}`, mediaFilesRouter);
+app.use(`/${tripsCollectionName}`, tripsRouter);
+app.use(`/${pointsOfInterestCollectionName}`, pointsOfInterestRouter);
+app.use(`/${experiencesCollectionName}`, experiencesRouter);
+app.use(`/${memoriesCollectionName}`, memoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
