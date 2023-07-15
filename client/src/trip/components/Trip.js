@@ -8,10 +8,12 @@ import Navbar from "../../Navbar";
 import React from "react";
 import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 import "./styles.css";
+import experienceData from "../../data/experience.json";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
-  const experiences = useSelector((state) => state.exp.experiences);
+  const experiences = experienceData; //STUB
+  // const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { tripId } = useParams();
@@ -61,6 +63,17 @@ export default function Trip() {
             <Link to={`/trips/${trip.TripId}`}>
               <button>View Trip</button>
             </Link>
+            <button>Delete</button>
+            <div className="experience-list"> {/* Add the experience list container */}
+              <h4 className="experience-heading">Experiences:</h4>
+              <div className="experience-card-container"> {/* Apply the experience card container style */}
+                {getExperiences(trip.TripId).map((experience) => (
+                  <div className="experience-card" key={experience.ExperienceId}> {/* Apply the experience card style */}
+                    <h5 className="experience-title">{experience.Title}</h5> {/* Print the title of the experience */}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
       </div>

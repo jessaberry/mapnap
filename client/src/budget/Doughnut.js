@@ -8,9 +8,6 @@ Chart.register(ArcElement, Tooltip, Legend);
 const getActivityExpenses = (experiences, expenses) => {
   const activityExpenses = {};
 
-  // REMOVE WHEN EXPERIENCES FIXED
-  if (!experiences || !Array.isArray(experiences)) { return activityExpenses;}
-
   expenses.forEach((expense) => {
     const experience = experiences.find(
       (exp) => exp.ExperienceId === expense.ExperienceId
