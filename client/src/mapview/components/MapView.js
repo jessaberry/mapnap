@@ -1,6 +1,6 @@
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import {Link} from "react-router-dom"
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
 import Navbar from "../../Navbar";
 import SocialButtons from "../../sharing/SocialButtons";
 import React from "react";
@@ -24,9 +24,8 @@ const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
   return (
-      <div>
-          <Navbar />
-
+    <div>
+      <Navbar />
 
     <MapContainer center = {[35.676, 139.650]} zoom = {2} scrollWheelZoom={true}> {/*center can probably be average of all markers? if not centered view on greenwich*/}
       <TileLayer

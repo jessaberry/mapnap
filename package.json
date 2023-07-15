@@ -23,5 +23,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "install": "npm i --prefix client && npm i --prefix server",
     "prettier": "npx prettier . --write --prefix client && npx prettier . --write --prefix server"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
