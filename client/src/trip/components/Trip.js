@@ -8,7 +8,6 @@ import React from "react";
 import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 import "./styles.css";
 import experienceData from "../../data/experience.json";
-import { NavBar } from "../../content/widgets/navigation/nav-bar.mjs";
 import {PageLayout} from "../../content/template/page-layout.mjs";
 
 export default function Trip() {

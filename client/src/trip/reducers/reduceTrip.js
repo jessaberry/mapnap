@@ -32,7 +32,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(deleteTripAsync.fulfilled, (state, action) => {
       state.deleteTrip = REQUEST_STATE.FULFILLED;
-      state.trips = state.trips.filter((card) => card.id !== action.payload);
+      state.trips = state.trips.filter((trip) => trip.TripId !== trip.payload);
     });
     builder.addCase(deleteTripAsync.pending, (state, action) => {
       state.deleteTrip = REQUEST_STATE.PENDING;
@@ -46,7 +46,7 @@ export const tripSlice = createSlice({
     builder.addCase(updateTripAsync.fulfilled, (state, action) => {
       state.updateTrip = REQUEST_STATE.FULFILLED;
       state.trips = state.trips.map((trip) =>
-      trip.id === action.payload.id ? action.payload : trip
+        trip.TripId === action.payload.TripId ? action.payload : trip
       );
     });
     builder.addCase(updateTripAsync.pending, (state, action) => {
