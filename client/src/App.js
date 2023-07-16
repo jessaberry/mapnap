@@ -35,7 +35,7 @@ export const App = () => {
           <main>
             <Routes>
               <Route Path="/callback" element={<CallbackPage />} />
-              <Route path="/trips" element={<Trip />} />
+              <Route path="/trips/*" element={<Trip />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/memory" element={<Memory />} />
