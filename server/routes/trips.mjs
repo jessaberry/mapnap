@@ -35,9 +35,12 @@ router.put("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
-  let query = { id: req.params.id };
+  // TODO: follow up on possibility of using string TripId instead
+  let query = { TripId: Number(req.params.id) };
   let result = await collection.findOne(query);
-
+  // console.log("id: ", req.params.id);
+  // console.log("query: ", query);
+  // console.log(result)
   if (!result) res.send("Not found").status(404);
   else res.send(result).status(200);
 });

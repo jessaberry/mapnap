@@ -70,7 +70,7 @@ export default function Trip() {
           {trips.map((trip) => (
             <div className="trip-item" key={trip.TripId}>
               <h3 className="trip-title">TRIP - {trip.Title}</h3>
-              <p className="trip-info">TRIP id: {trip.TripId}</p>
+              <div className="trip-info">TRIP id: {trip.TripId}</div>
               <Link to={`/trips/${trip.TripId}`}>
                 <button onClick={() => handleFilterTrip(trip.TripId)}>
                   View Details
