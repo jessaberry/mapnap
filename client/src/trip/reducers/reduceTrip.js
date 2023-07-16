@@ -4,6 +4,7 @@ import {
   addTripAsync,
   deleteTripAsync,
   updateTripAsync,
+  filterTripAsync
 } from "./thunksTrip";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateTrip";
 
@@ -57,8 +58,21 @@ export const tripSlice = createSlice({
       state.updateTrip = REQUEST_STATE.REJECTED;
       state.error = action.error;
     });
+
+    builder.addCase(filterTripAsync.fulfilled, (state, action) => {
+      state.filterTrip = REQUEST_STATE.FULFILLED;
+      state.trips = state.trips.filter((trip) => trip.TripId === trip.payload);
+    });
+    builder.addCase(filterTripAsync.pending, (state, action) => {
+      state.filterTrip = REQUEST_STATE.PENDING;
+      state.error = null;
+    });
+    builder.addCase(filterTripAsync.rejected, (state, action) => {
+      state.filterTrip = REQUEST_STATE.REJECTED;
+      state.error = action.error;
+    });
   },
 });
 
-export const { addTrip, deleteTrip, updateTrip } = tripSlice.actions;
+export const { addTrip, deleteTrip, updateTrip, filterTrip } = tripSlice.actions;
 export default tripSlice.reducer;

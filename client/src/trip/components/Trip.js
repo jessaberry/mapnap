@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTripAsync, deleteTripAsync, getTripsAsync } from "../reducers/thunksTrip";
+import { addTripAsync, deleteTripAsync, getTripsAsync, filterTripAsync } from "../reducers/thunksTrip";
 import { getExperiencesAsync } from "../../experience/reducers/thunksExperience";
 import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
 import TripHandler from "./TripHandler";
@@ -60,10 +60,10 @@ export default function Trip() {
           <div className="trip-item" key={trip.TripId}> 
             <h3 className="trip-title">TRIP - {trip.Title}</h3>
             <p className="trip-info">TRIP id: {trip.TripId}</p>
-            <Link to={`/trips/${trip.TripId}`}>
-              <button>View Trip</button>
+            <Link to={`/trips/${trip.TripId}`} onClick={() => dispatch(filterTripAsync(trip.TripId))}>
+              <button>View Details</button>
             </Link>
-            <button onClick={() => handleDeleteTrip(trip)}>Delete Trip</button>
+            <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
             <div className="experience-list"> 
               <h4 className="experience-heading">Experiences:</h4>
               <div className="experience-card-container"> 

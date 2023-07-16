@@ -11,6 +11,7 @@ export const INITIAL_STATE = {
   addTrip: REQUEST_STATE.IDLE,
   deleteTrip: REQUEST_STATE.IDLE,
   updateTrip: REQUEST_STATE.IDLE,
+  filterTrip: REQUEST_STATE.IDLE,
   error: null,
 };
 
@@ -20,4 +21,5 @@ export const actions = {
   ADD_TRIP: "trips/addTrip",
   DELETE_TRIP: "trips/deleteTrip",
   UPDATE_TRIP: "trips/updateTrip",
+  FILTER_TRIP: "trips/filterTrip"
 };

@@ -38,6 +38,16 @@ const tripManager = {
       throw error;
     }
   },
+
+  filterTrip: async (tripID) => {
+    try {
+      const res = await axios.get(`/trips/${tripID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 };
 
 export default tripManager;
