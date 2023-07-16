@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
-import { PageLayout} from "../../content/template/page-layout.mjs";
+import { PageLayout } from "../../content/template/page-layout.mjs";
 import { addExperienceAsync } from "../reducers/thunksExperience";
 
 export default function Experience() {
@@ -19,14 +19,13 @@ export default function Experience() {
 
   return (
     <PageLayout>
-    <div>
-
-      <h1>Add an Experience</h1>
-      <ExperienceHandler
-        tripUUID={tripUUID}
-        handleAddExperience={handleAddExperience}
-      />
-    </div>
+      <div>
+        <h1>Add an Experience</h1>
+        <ExperienceHandler
+          tripUUID={tripUUID}
+          handleAddExperience={handleAddExperience}
+        />
+      </div>
     </PageLayout>
   );
 }

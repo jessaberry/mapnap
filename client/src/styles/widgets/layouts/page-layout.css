@@ -1,27 +1,27 @@
 .page-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
 }
 
 .page-layout__content {
-    flex: 1;
-    flex-basis: auto;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  flex-basis: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 
-    margin-top: 8rem;
-    max-width: 120rem;
-    width: 100%;
+  margin-top: 8rem;
+  max-width: 120rem;
+  width: 100%;
 }
 
 @media only screen and (max-width: 640px) {
-    .page-layout__content {
-        margin-top: 6.4rem;
-    }
+  .page-layout__content {
+    margin-top: 6.4rem;
+  }
 }

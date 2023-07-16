@@ -5,6 +5,5 @@ import { PageLayout } from "../template/page-layout.mjs";
 export const HomePage = () => (
   <PageLayout>
     <HeroBanner />
-
   </PageLayout>
 );

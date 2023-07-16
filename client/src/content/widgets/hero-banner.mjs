@@ -8,8 +8,9 @@ export const HeroBanner = () => {
       <div className="hero-banner__logo">
         <img className="hero-banner__image" src={logo} alt="React logo" />
       </div>
-      <h1 className="hero-banner__headline">Welcome to {process.env.REACT_APP_APPLICATION_NAME}!</h1>
-
+      <h1 className="hero-banner__headline">
+        Welcome to {process.env.REACT_APP_APPLICATION_NAME}!
+      </h1>
     </div>
   );
 };

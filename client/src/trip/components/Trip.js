@@ -47,7 +47,7 @@ export default function Trip() {
     const trip = trips.find((trip) => trip.TripId === tripUUID);
     dispatch(filterTripAsync(tripUUID));
     navigate(`/trips/${trip.TripId}`, { state: { tripUUID } });
-  };  
+  };
 
   const getExperiences = (tripID) => {
     return experiences
@@ -72,14 +72,19 @@ export default function Trip() {
               <h3 className="trip-title">TRIP - {trip.Title}</h3>
               <p className="trip-info">TRIP id: {trip.TripId}</p>
               <Link to={`/trips/${trip.TripId}`}>
-                <button onClick={() => handleFilterTrip(trip.TripId)}>View Details</button>
+                <button onClick={() => handleFilterTrip(trip.TripId)}>
+                  View Details
+                </button>
               </Link>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
               <div className="experience-list">
                 <h4 className="experience-heading">Experiences:</h4>
                 <div className="experience-card-container">
                   {getExperiences(trip.TripId).map((experience) => (
-                    <div className="experience-card" key={experience.ExperienceId}>
+                    <div
+                      className="experience-card"
+                      key={experience.ExperienceId}
+                    >
                       <h5 className="experience-title">{experience.Title}</h5>
                     </div>
                   ))}
@@ -89,10 +94,7 @@ export default function Trip() {
           ))}
         </div>
         <Routes>
-          <Route
-            path={`/trips/:tripId`}
-            element={<TripSingle />}
-          />
+          <Route path={`/trips/:tripId`} element={<TripSingle />} />
         </Routes>
       </div>
     </PageLayout>

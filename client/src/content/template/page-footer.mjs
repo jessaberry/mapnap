@@ -15,7 +15,6 @@ export const PageFooter = () => {
             <p className="page-footer-message__description">
               <SocialButtons />
             </p>
-
           </div>
         </div>
       </div>

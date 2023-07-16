@@ -21,5 +21,5 @@ export const actions = {
   ADD_TRIP: "trips/addTrip",
   DELETE_TRIP: "trips/deleteTrip",
   UPDATE_TRIP: "trips/updateTrip",
-  FILTER_TRIP: "trips/filterTrip"
+  FILTER_TRIP: "trips/filterTrip",
 };

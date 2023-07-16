@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getExperiencesAsync, addExperienceAsync, deleteExperienceAsync, updateExperienceAsync } from "./thunksExperience";
+import {
+  getExperiencesAsync,
+  addExperienceAsync,
+  deleteExperienceAsync,
+  updateExperienceAsync,
+} from "./thunksExperience";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateExperience";
 
 export const expSlice = createSlice({
@@ -27,7 +32,9 @@ export const expSlice = createSlice({
 
     builder.addCase(deleteExperienceAsync.fulfilled, (state, action) => {
       state.deleteExperience = REQUEST_STATE.FULFILLED;
-      state.experiences = state.experiences.filter((experience) => experience.ExperienceId !== experience.payload);
+      state.experiences = state.experiences.filter(
+        (experience) => experience.ExperienceId !== experience.payload
+      );
     });
     builder.addCase(deleteExperienceAsync.pending, (state, action) => {
       state.deleteExperience = REQUEST_STATE.PENDING;
@@ -41,7 +48,9 @@ export const expSlice = createSlice({
     builder.addCase(updateExperienceAsync.fulfilled, (state, action) => {
       state.updateExperience = REQUEST_STATE.FULFILLED;
       state.experiences = state.experiences.map((experience) =>
-      experience.ExperienceId === action.payload.ExperienceId ? action.payload : experience
+        experience.ExperienceId === action.payload.ExperienceId
+          ? action.payload
+          : experience
       );
     });
     builder.addCase(updateExperienceAsync.pending, (state, action) => {
@@ -109,5 +118,6 @@ export const expSlice = createSlice({
 //   },
 // });
 
-export const { addExperience, deleteExperience, updateExperience } = expSlice.actions;
+export const { addExperience, deleteExperience, updateExperience } =
+  expSlice.actions;
 export default expSlice.reducer;

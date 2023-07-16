@@ -19,7 +19,7 @@ const TripSingle = ({
   // const expenses = useSelector((state) => state.exp.expenses) || [];
   const expenses = expenseData;
   const trip = tripData.find((trip) => trip.TripId === tripID);
-  
+
   if (!trip) {
     return (
       <div>

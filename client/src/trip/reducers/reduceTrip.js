@@ -4,7 +4,7 @@ import {
   addTripAsync,
   deleteTripAsync,
   updateTripAsync,
-  filterTripAsync
+  filterTripAsync,
 } from "./thunksTrip";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateTrip";
 
@@ -74,5 +74,6 @@ export const tripSlice = createSlice({
   },
 });
 
-export const { addTrip, deleteTrip, updateTrip, filterTrip } = tripSlice.actions;
+export const { addTrip, deleteTrip, updateTrip, filterTrip } =
+  tripSlice.actions;
 export default tripSlice.reducer;

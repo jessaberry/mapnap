@@ -1,11 +1,11 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:4999/';
+axios.defaults.baseURL = "http://localhost:4999/";
 
 const tripManager = {
   getTrips: async () => {
     const res = await axios.get("/trips");
-    console.log(res.data)
+    console.log(res.data);
     return res.data;
   },
 
@@ -47,7 +47,7 @@ const tripManager = {
       console.log(error);
       throw error;
     }
-  }
+  },
 };
 
 export default tripManager;
