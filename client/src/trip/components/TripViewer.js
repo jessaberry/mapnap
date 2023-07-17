@@ -76,13 +76,16 @@ const TripViewer = ({
                       {new Date(exp.StartingLocalDateTime).toLocaleDateString()}
                     </div>
                     <div>
-                      To: {new Date(exp.EndingLocalDateTime).toLocaleDateString()}
+                      To:{" "}
+                      {new Date(exp.EndingLocalDateTime).toLocaleDateString()}
                     </div>
                   </div>
                   <div className="experience-address">
                     Address: {getPOI(poiData, exp.StartingPointOfInterestId)}
                   </div>
-                  <div className="experience-description">{exp.Description}</div>
+                  <div className="experience-description">
+                    {exp.Description}
+                  </div>
                   <div className="experience-cost">
                     Cost: {getExpenses(expenses, exp.ExperienceId)}
                   </div>

@@ -75,7 +75,9 @@ export default function Trip() {
                   View Details
                 </button>
               </Link>
-              <button onClick={() => handleAddExperience(trip)}>Add Experience</button>
+              <button onClick={() => handleAddExperience(trip)}>
+                Add Experience
+              </button>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
               <div className="experience-list">
                 <div className="experience-card-container">
@@ -86,7 +88,13 @@ export default function Trip() {
                     >
                       <h5 className="experience-title">{experience.Title}</h5>
                       <p>Experience ID: {experience.ExperienceId}</p>
-                      <button onClick={() => handleDeleteExperience(experience.ExperienceId)}>Delete Experience</button>
+                      <button
+                        onClick={() =>
+                          handleDeleteExperience(experience.ExperienceId)
+                        }
+                      >
+                        Delete Experience
+                      </button>
                     </div>
                   ))}
                 </div>
