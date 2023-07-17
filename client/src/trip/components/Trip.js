@@ -27,11 +27,19 @@ export default function Trip() {
   }, [dispatch]);
 
   const handleAddTrip = (trip) => {
-    dispatch(addTripAsync(trip));
+    dispatch(addTripAsync(trip))
+    .then(() => {
+      dispatch(getTripsAsync());
+      dispatch(getExperiencesAsync());
+    })
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTripAsync(trip.TripId));
+    dispatch(deleteTripAsync(trip.TripId))
+    .then(() => {
+      dispatch(getTripsAsync());
+      dispatch(getExperiencesAsync());
+    })
   };
 
   const handleAddExperience = (tripUUID) => {
