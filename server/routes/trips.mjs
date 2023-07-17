@@ -8,6 +8,18 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { tripsCollectionName } from "../common/environments-and-constants.mjs";
 
+router.get("/:id", async (req, res) => {
+  let collection = await db.collection(tripsCollectionName);
+  // TODO: follow up on possibility of using string TripId instead
+  let query = { TripId: req.params.id };
+  let result = await collection.findOne(query);
+  // console.log("id: ", req.params.id);
+  // console.log("query: ", query);
+  // console.log(result)
+  if (!result) res.send("Not found").status(404);
+  else res.send(result).status(200);
+});
+
 router.get("/", async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
   let results = await collection
@@ -27,18 +39,6 @@ router.put("/", async (req, res) => {
   console.log(query);
   const options = { upsert: true };
   let result = await collection.updateOne(query, { $set: data }, options);
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
-});
-
-router.get("/:id", async (req, res) => {
-  let collection = await db.collection(tripsCollectionName);
-  // TODO: follow up on possibility of using string TripId instead
-  let query = { TripId: Number(req.params.id) };
-  let result = await collection.findOne(query);
-  // console.log("id: ", req.params.id);
-  // console.log("query: ", query);
-  // console.log(result)
   if (!result) res.send("Not found").status(404);
   else res.send(result).status(200);
 });

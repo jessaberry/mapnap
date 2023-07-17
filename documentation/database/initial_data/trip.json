@@ -1,6 +1,6 @@
 [
   {
-    "TripId": 1,
+    "TripId": "1",
     "UserId": 1,
     "Title": "2023 - Japan",
     "Description": "",
@@ -17,7 +17,7 @@
     "IsDeleted": false
   },
   {
-    "TripId": 2,
+    "TripId": "2",
     "UserId": 1,
     "Title": "2017 - Japan",
     "Description": "",
