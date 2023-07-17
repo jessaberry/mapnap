@@ -9,13 +9,11 @@ import { ObjectId } from "mongodb";
 import { tripsCollectionName } from "../common/environments-and-constants.mjs";
 
 router.get("/", async (req, res) => {
-  console.log("get trip");
   let collection = await db.collection(tripsCollectionName);
   let results = await collection
     .find({})
     .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
     .toArray();
-  console.log("results: " + results);
   res.send(results).status(200);
 });
 

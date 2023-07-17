@@ -6,15 +6,14 @@ import "./Experience.css";
 const ExperienceForm = ({ data, handleChange }) => {
   return (
     <>
-      <div className="custom-select">
-        <FormSelect
-          required
-          name="ExperienceTypeId"
-          value={data.ExperienceTypeId}
-          onChange={(value) =>
-            handleChange({ target: { name: "ExperienceTypeId", value: value } })
-          }
-          label="Activity"
+      <div className="textfield">
+        <TextField
+          name="TripId"
+          label="Trip"
+          value={data.TripId.TripId}
+          onChange={handleChange}
+          sx={{ width: "50%", mb: 2 }}
+          InputProps={{ readOnly: true }}
         />
       </div>
       <div className="textfield">
@@ -26,6 +25,17 @@ const ExperienceForm = ({ data, handleChange }) => {
           value={data.Title}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
+        />
+      </div>
+      <div className="custom-select">
+        <FormSelect
+          required
+          name="ExperienceTypeId"
+          value={data.ExperienceTypeId}
+          onChange={(value) =>
+            handleChange({ target: { name: "ExperienceTypeId", value: value } })
+          }
+          label="Activity"
         />
       </div>
       <div className="custom-date-time">

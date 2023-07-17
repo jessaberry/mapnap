@@ -13,8 +13,8 @@ const TripSingle = ({
   handleDeleteExperience,
   handleDeleteTrip,
 }) => {
-  // const { tripID } = useParams();
-  const tripID = 1;
+  const { tripID } = useParams();
+  // const tripID = 1;
   const trips = useSelector((state) => state.trip.trips);
   // const expenses = useSelector((state) => state.exp.expenses) || [];
   const expenses = expenseData;

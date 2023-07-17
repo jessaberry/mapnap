@@ -41,6 +41,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   let collection = await db.collection(experiencesCollectionName);
   let newDocument = req.body;
+  console.log(newDocument);
   newDocument.date = new Date();
   let result = await collection.insertOne(newDocument);
   res.send(result).status(204);
@@ -59,12 +60,10 @@ router.patch("/comment/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const query = { _id: ObjectId(req.params.id) };
-
+  const query = { ExperienceId: req.params.id };
   const collection = db.collection(experiencesCollectionName);
-  let result = await collection.deleteOne(query);
-
-  res.send(result).status(200);
+  await collection.deleteOne(query);
+  res.status(204).end();
 });
 
 export default router;

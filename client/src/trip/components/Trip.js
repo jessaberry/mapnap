@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTripAsync,
@@ -7,7 +7,7 @@ import {
   getTripsAsync,
 } from "../reducers/thunksTrip";
 import { getExperiencesAsync } from "../../experience/reducers/thunksExperience";
-import { useNavigate, Link, Route, Routes, useParams } from "react-router-dom";
+import { useNavigate, Link, Route, Routes } from "react-router-dom";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
 import React from "react";
@@ -20,7 +20,6 @@ export default function Trip() {
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { tripId } = useParams();
 
   useEffect(() => {
     dispatch(getTripsAsync());
@@ -76,9 +75,9 @@ export default function Trip() {
                   View Details
                 </button>
               </Link>
+              <button onClick={() => handleAddExperience(trip)}>Add Experience</button>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
               <div className="experience-list">
-                <h4 className="experience-heading">Experiences:</h4>
                 <div className="experience-card-container">
                   {getExperiences(trip.TripId).map((experience) => (
                     <div
@@ -86,6 +85,8 @@ export default function Trip() {
                       key={experience.ExperienceId}
                     >
                       <h5 className="experience-title">{experience.Title}</h5>
+                      <p>Experience ID: {experience.ExperienceId}</p>
+                      <button onClick={() => handleDeleteExperience(experience.ExperienceId)}>Delete Experience</button>
                     </div>
                   ))}
                 </div>
