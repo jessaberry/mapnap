@@ -22,6 +22,8 @@
     "formik": "^2.4.1",
     "google-map-react": "^2.2.1",
     "leaflet": "^1.9.4",
+    "mongodb": "^5.7.0",
+    "npm": "^9.8.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",

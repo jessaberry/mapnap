@@ -34,17 +34,19 @@ export const App = () => {
         <div className="App">
           <main>
             <Routes>
-              <Route Path="/callback" element={<CallbackPage />} />
-              <Route path="/trip/*" element={<Trip />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="/experience" element={<Experience />} />
-              <Route path="/memory" element={<Memory />} />
-              <Route path="/map" element={<MapView />} />
-              <Route path="/budget" element={<Budget />} />
-              <Route path="/dashboard" element={<Dashboard />} />
 
-              <Route path="/admin" element={<AdminPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
+
+              <Route path="/" element={<HomePage />} />
+              <Route path="/trip" element={<AuthenticationGuard component={Trip} /> } />
+              <Route path="/experience" element={<AuthenticationGuard component={Experience}  /> } />
+              <Route path="/memory" element={<AuthenticationGuard component={Memory} /> } />
+              <Route path="/map" element={<AuthenticationGuard component={MapView} /> } />
+              <Route path="/budget" element={<AuthenticationGuard component={Budget} />} />
+              <Route path="/dashboard" element={<AuthenticationGuard component={Dashboard} /> } />
+              <Route path="/admin" element={<AuthenticationGuard component={AdminPage} /> } />
+              <Route path="/profile" element={<AuthenticationGuard component={ProfilePage} />} />
+              <Route Path="/callback" element={<CallbackPage />} />
+              <Route path="*" element={<NotFoundPage />} />
 
 
             </Routes>

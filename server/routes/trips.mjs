@@ -19,6 +19,49 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
+router.get("/by-trip-id/:tripId", async (req, res) => {
+  console.log("get trip");
+  let collection = await db.collection(tripsCollectionName);
+  let results = await collection
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
+  console.log("results: " + results);
+  res.send(results).status(200);
+});
+
+router.get("/by-user-id/:userId", async (req, res) => {
+  console.log("get trip");
+  let collection = await db.collection(tripsCollectionName);
+  let results = await collection
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
+  console.log("results: " + results);
+  res.send(results).status(200);
+});
+
+router.get("/by-country-code/:countryCode", async (req, res) => {
+  let collection = await db.collection(tripsCollectionName);
+  let results = await collection
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
+  console.log("results: " + results);
+  res.send(results).status(200);
+});
+
+router.get("/by-keyword/:searchTerm", async (req, res) => {
+  let collection = await db.collection(tripsCollectionName);
+  let results = await collection
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
+  console.log("results: " + results);
+  res.send(results).status(200);
+});
+
+
 router.put("/", async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
   let data = req.body;
@@ -33,14 +76,6 @@ router.put("/", async (req, res) => {
   else res.send(result).status(200);
 });
 
-router.get("/:id", async (req, res) => {
-  let collection = await db.collection(tripsCollectionName);
-  let query = { _id: new ObjectId(req.params.id) };
-  let result = await collection.findOne(query);
-
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
-});
 
 router.post("/", async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
