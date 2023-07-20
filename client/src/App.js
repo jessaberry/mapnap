@@ -9,6 +9,7 @@ import Trip from "./trip/components/Trip";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
+import TripSingle from "./trip/components/TripSingle";
 
 import MapView from "./mapview/components/MapView";
 import { AdminPage } from "./content/pages/admin-page";
@@ -34,7 +35,8 @@ export const App = () => {
         <main>
           <Routes>
             <Route Path="/callback" element={<CallbackPage />} />
-            <Route path="/trips/*" element={<Trip />} />
+            <Route path="/trips" element={<Trip />} />
+            <Route path="/trips/:id" element={<TripSingle />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/memory" element={<Memory />} />

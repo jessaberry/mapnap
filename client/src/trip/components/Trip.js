@@ -30,7 +30,6 @@ export default function Trip() {
     dispatch(addTripAsync(trip))
     .then(() => {
       dispatch(getTripsAsync());
-      dispatch(getExperiencesAsync());
     })
   };
 
@@ -38,7 +37,6 @@ export default function Trip() {
     dispatch(deleteTripAsync(trip.TripId))
     .then(() => {
       dispatch(getTripsAsync());
-      dispatch(getExperiencesAsync());
     })
   };
 
@@ -47,7 +45,10 @@ export default function Trip() {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperienceAsync(expID));
+    dispatch(deleteExperienceAsync(expID))
+    .then(() => {
+      dispatch(getExperiencesAsync());
+    })
   };
 
   const handleFilterTrip = (tripUUID) => {

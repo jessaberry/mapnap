@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
 import { PageLayout } from "../../content/template/page-layout.mjs";
-import { addExperienceAsync } from "../reducers/thunksExperience";
+import { addExperienceAsync, deleteExperienceAsync } from "../reducers/thunksExperience";
 
 export default function Experience() {
   const location = useLocation();
-  const tripUUID = location.state?.tripUUID;
+  const trip = location.state?.tripUUID;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ export default function Experience() {
       <div>
         <h1>Add an Experience</h1>
         <ExperienceHandler
-          tripUUID={tripUUID}
+          trip={trip}
           handleAddExperience={handleAddExperience}
         />
       </div>

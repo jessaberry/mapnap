@@ -3,8 +3,8 @@ import ExperienceForm from "./ExperienceForm";
 import initialExperience from "../reducers/initialExperience";
 import { v4 as uuidv4 } from "uuid";
 
-const ExperienceHandler = ({ tripUUID, handleAddExperience }) => {
-  const [data, setData] = useState({ ...initialExperience, TripId: tripUUID });
+const ExperienceHandler = ({ trip, handleAddExperience }) => {
+  const [data, setData] = useState({ ...initialExperience, TripId: trip.TripId });
 
   const handleChange = (e) => {
     const { name, value } = e.target;

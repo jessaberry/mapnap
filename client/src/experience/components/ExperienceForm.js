@@ -10,7 +10,7 @@ const ExperienceForm = ({ data, handleChange }) => {
         <TextField
           name="TripId"
           label="Trip"
-          value={data.TripId.TripId}
+          value={data.TripId}
           onChange={handleChange}
           sx={{ width: "50%", mb: 2 }}
           InputProps={{ readOnly: true }}
