@@ -6,14 +6,12 @@ import { Grid } from "@mui/material";
 import "./BudgetDashboard.css";
 
 import React from "react";
-import experienceData from "../data/experience.json";
 import expensesData from "../data/expenses.json";
-import { NavBar } from "../content/widgets/navigation/nav-bar.mjs";
 import { PageLayout } from "../content/template/page-layout.mjs";
 
 export default function BudgetDashboard() {
-  // const experiences = useSelector((state) => state.exp.experiences);
-  const experiences = experienceData;
+  const experiences = useSelector((state) => state.exp.experiences);
+  // const experiences = experienceData;
   // const expenses = useSelector((state) => state.exp.expenses);
   const expenses = expensesData;
   const trips = useSelector((state) => state.trip.trips);

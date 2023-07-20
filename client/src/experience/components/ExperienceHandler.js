@@ -2,9 +2,15 @@ import { useState } from "react";
 import ExperienceForm from "./ExperienceForm";
 import initialExperience from "../reducers/initialExperience";
 import { v4 as uuidv4 } from "uuid";
+import { parseISO } from "date-fns";
 
 const ExperienceHandler = ({ trip, handleAddExperience }) => {
-  const [data, setData] = useState({ ...initialExperience, TripId: trip.TripId });
+  const [data, setData] = useState({ 
+    ...initialExperience, 
+    TripId: trip.TripId,
+    StartingLocalDateTime: new Date(),
+    EndingLocalDateTime: new Date()
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,8 +23,8 @@ const ExperienceHandler = ({ trip, handleAddExperience }) => {
     const experience = {
       ...data,
       ExperienceId: expId,
-      StartingLocalDateTime: data.StartingLocalDateTime.toISOString(),
-      EndingLocalDateTime: data.EndingLocalDateTime.toISOString(),
+      StartingLocalDateTime: parseISO(data.StartingLocalDateTime),
+      EndingLocalDateTime: parseISO(data.EndingLocalDateTime),
     };
     handleAddExperience(experience);
     setData(initialExperience);

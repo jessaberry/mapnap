@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
 import { PageLayout } from "../../content/template/page-layout.mjs";
-import { addExperienceAsync, deleteExperienceAsync } from "../reducers/thunksExperience";
+import { addExperienceAsync } from "../reducers/thunksExperience";
 
 export default function Experience() {
   const location = useLocation();
