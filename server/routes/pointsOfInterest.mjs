@@ -8,6 +8,8 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { pointsOfInterestCollectionName } from "../common/environments-and-constants.mjs";
 
+const initialPointsOfInterest =
+
 router.get("/", async (req, res) => {
   let collection = await db.collection(pointsOfInterestCollectionName);
   let results = await collection

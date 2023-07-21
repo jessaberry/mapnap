@@ -1,6 +1,6 @@
-import {TripActionTypes} from "./trip-action-types.mjs";
-import {apiRoot} from "../common/global.mjs";
-import {ObjectId} from "mongodb";
+import {TripActionTypes} from "../trip-action-types.mjs";
+import {apiRoot} from "../../common/global.mjs";
+import {ObjectId} from "mongoose";
 
 const selectTripByTripId = async(tripId) => {
     const command = apiRoot + TripActionTypes.SELECT_TRIP_BY_TRIP_ID + '/' + tripId;

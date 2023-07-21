@@ -12,9 +12,7 @@ export const PageFooter = () => {
             <p className="page-footer-message__headline">
               &copy; Team MapNap 2023.
             </p>
-            <p className="page-footer-message__description">
-              <SocialButtons />
-            </p>
+            <SocialButtons />
 
           </div>
         </div>

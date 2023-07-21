@@ -1,23 +1,25 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addTripAsync, deleteTripAsync, getTripsAsync} from "../reducers/thunksTrip";
+import { getTripByTripIdAsync } from "../reducers/trip-thunks.mjs";
 import {useNavigate, Link, Route, Routes, useParams} from "react-router-dom";
 import React from "react";
-import {deleteExperienceAsync} from "../experience/reducers/thunksExperience.js";
+import {deleteExperienceAsync} from "../../experience/reducers/thunksExperience.js";
 import "./styles.css";
-import experienceData from "../data/experience.json";
-import {PageLayout} from "../content/template/page-layout.mjs";
+import experienceData from "../../data/experience.json";
+import {PageLayout} from "../../content/template/page-layout.mjs";
+import {getTripByTripId} from "../reducers/trip-reducer.mjs";
 
-export default function Trips() {
-    const trips = useSelector((state) => state.trip.trips);
-    const experiences = experienceData; //STUB
-    // const experiences = useSelector((state) => state.exp.experiences);
+export default function TripDetail(tripId) {
+    //const trip = useSelector((state) => state.trip.trips);
+    const trip = (productList.products && productList.products.length > 0) ? productList.products.find(p => p.uniqueId === selectedProductId) : null;
+
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {tripId} = useParams();
 
     useEffect(() => {
-        dispatch(getTripsAsync());
+        dispatch(getTripByTripIdAsync(tripId));
     }, [dispatch]);
 
     const handleAddTrip = (trip) => {
@@ -44,9 +46,8 @@ export default function Trips() {
                     new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime)
             );
     };
-    console.log(trips);
+    console.log(trip);
     return (
-        <PageLayout>
             <div>
                 <h1>Trip Manager</h1>
                 <TripHandler
@@ -90,6 +91,5 @@ export default function Trips() {
                     />
                 </Routes>
             </div>
-        </PageLayout>
     );
 }

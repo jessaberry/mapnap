@@ -6,6 +6,7 @@ import "./styles/App.css";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Trip from "./trip/components/Trip";
+import Trips from "./trips/components/trips.mjs";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
@@ -38,6 +39,7 @@ export const App = () => {
 
               <Route path="/" element={<HomePage />} />
               <Route path="/trip" element={<AuthenticationGuard component={Trip} /> } />
+              <Route path="/trips" element={<AuthenticationGuard component={Trips} /> } />
               <Route path="/experience" element={<AuthenticationGuard component={Experience}  /> } />
               <Route path="/memory" element={<AuthenticationGuard component={Memory} /> } />
               <Route path="/map" element={<AuthenticationGuard component={MapView} /> } />

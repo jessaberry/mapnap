@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {TripActionTypes} from "./trip-action-types.mjs";
+import {TripActionTypes} from "../trip-action-types.mjs";
 import TripServices from "./trip-services.mjs";
 
 export const selectTripByTripIdAsync = createAsyncThunk(
