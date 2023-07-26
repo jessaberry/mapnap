@@ -39,9 +39,9 @@ const tripManager = {
     }
   },
 
-  filterTrip: async (tripID) => {
+  filterTrip: async (userID) => {
     try {
-      const res = await axios.get(`/trips/${tripID}`);
+      const res = await axios.get(`/trips/${userID}`);
       return res.data;
     } catch (error) {
       console.log(error);

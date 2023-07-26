@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addTripAsync,
   deleteTripAsync,
-  // filterTripAsync,
+  filterTripAsync,
   getTripsAsync,
 } from "../reducers/thunksTrip";
 import { getExperiencesAsync } from "../../experience/reducers/thunksExperience";
@@ -14,6 +14,7 @@ import React from "react";
 import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 import "./styles.css";
 import { PageLayout } from "../../content/template/page-layout.mjs";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Trip() {
   const trips = useSelector((state) => state.trip.trips);
@@ -21,11 +22,8 @@ export default function Trip() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(null);
-
-  useEffect(() => {
-    dispatch(getTripsAsync());
-    dispatch(getExperiencesAsync());
-  }, [dispatch]);
+  const { user } = useAuth0();
+  const userID = user?.sub;
 
   const handleAddTrip = (trip) => {
     dispatch(addTripAsync(trip)).then(() => {
@@ -49,13 +47,14 @@ export default function Trip() {
     });
   };
 
-  // const handleFilterTrip = (tripUUID) => {
-  //   const trip = trips.find((trip) => trip.TripId === tripUUID);
-  //   dispatch(filterTripAsync(tripUUID));
-  //   navigate(`/trips/${trip.TripId}`, { state: { tripUUID } });
-  // };
+  const handleFilterTrip = () => {
+    if (!userID) {
+      console.log("not user");
+      return null;
+    }
+    dispatch(filterTripAsync(userID));
+  };
 
-  // replaces handleFilterTrip
   const showTripDetails = (trip) => {
     setVisible((visibleTrip) => (visibleTrip === trip ? null : trip));
   };
@@ -68,6 +67,12 @@ export default function Trip() {
           new Date(a.StartingLocalDateTime) - new Date(b.StartingLocalDateTime)
       );
   };
+
+  useEffect(() => {
+    dispatch(getTripsAsync());
+    dispatch(getExperiencesAsync());
+    // handleFilterTrip(); // TODO: find out what's wrong with this
+  }, [dispatch]);
 
   return (
     <PageLayout>

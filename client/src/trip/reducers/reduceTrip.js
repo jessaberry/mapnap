@@ -61,7 +61,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(filterTripAsync.fulfilled, (state, action) => {
       state.filterTrip = REQUEST_STATE.FULFILLED;
-      state.trips = state.trips.filter((trip) => trip.TripId === trip.payload);
+      state.trips = state.trips.filter((trip) => trip.UserId === trip.payload);
     });
     builder.addCase(filterTripAsync.pending, (state, action) => {
       state.filterTrip = REQUEST_STATE.PENDING;

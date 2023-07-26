@@ -15,7 +15,11 @@ const TripHandler = ({ handleAddTrip }) => {
 
   return (
     <div>
-      <button type="button" onClick={handleShowTrip} style={{ marginBottom: "30px" }}>
+      <button
+        type="button"
+        onClick={handleShowTrip}
+        style={{ marginBottom: "30px" }}
+      >
         New Trip
       </button>
       {showInput && <TripForm handleAddTrip={handleAddNewTrip} />}

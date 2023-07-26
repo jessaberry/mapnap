@@ -11,8 +11,8 @@ import { tripsCollectionName } from "../common/environments-and-constants.mjs";
 router.get("/:id", async (req, res) => {
   let collection = await db.collection(tripsCollectionName);
   // TODO: follow up on possibility of using string TripId instead
-  let query = { TripId: req.params.id };
-  let result = await collection.findOne(query);
+  let query = { UserId: req.params.id };
+  let result = await collection.find(query).toArray();
   // console.log("id: ", req.params.id);
   // console.log("query: ", query);
   // console.log(result)

@@ -26,7 +26,7 @@ export const updateTripAsync = createAsyncThunk(
 
 export const filterTripAsync = createAsyncThunk(
   actions.FILTER_TRIP,
-  async (tripID) => {
-    return await TripManager.filterTrip(tripID);
+  async (userID) => {
+    return await TripManager.filterTrip(userID);
   }
 );
