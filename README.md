@@ -12,25 +12,25 @@ The users can then share their trip with their friends over the social media.
 
 ##### Minimal requirements
 
-1. The application must allow users to create, update, and delete an _itinerary_
-2. The application must allow users to create, update, and delete an _experience_ (e.g., accommodation, attraction, dining, etc.) within an itinerary, and each experience could contain information such as starting / ending time and location as well as participates.
+1. The application must allow users to create, update, and delete a _trip_
+2. The application must allow users to create, update, and delete an _experience_ (e.g., accommodation, attraction, dining, etc.) within a trip, and each experience could contain information such as starting / ending time and location as well as cost.
 3. The application must allow users to import media files (e.g., images, documents, or movies, etc.) to an experience as _memories_
-4. The application must allow users to share itineraries, experiences, and memories on social media
+4. The application must allow users to share their main trip page on social media
 
 #### Standard requirements
 
 1. The application should be able to show the itinerary and memories in calendar view and a map view
 2. The application should be able search for Point of Interest (POI) by name (using Google Place API or similar API services)
 3. The application should automatically extract metadata in the media files (e.g., exif, etc.) and during the media import process
-4. The application should provide location-aware weather forecast information for upcoming experiences
-5. The application should allow the users to add and confirm other users as a friend who can be added as a participant in itineraries and experiences
-6. The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
+4. The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
+5. The application could allow users to set itinerary, experience, and memory to private
 
 #### Stretch requirements
 
-1. The application could allow users to set itinerary, experience, and memory to private
-2. The application could allow users to track and provide analytics such as expenses by itinerary or by experience
-3. The application could allow users to query and save transportation details between the location of experiences
+1. The application could allow users to track and provide analytics such as expenses by itinerary or by experience
+2. The application could allow users to query and save transportation details between the location of experiences
+3. The application should provide location-aware weather forecast information for upcoming experiences
+4. The application should allow the users to add and confirm other users as a friend who can be added as a participant in itineraries and experiences
 
 ### Task breakdown:
 
