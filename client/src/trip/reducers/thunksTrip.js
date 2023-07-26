@@ -23,3 +23,10 @@ export const updateTripAsync = createAsyncThunk(
     return await TripManager.updateTrip(trip);
   }
 );
+
+export const filterTripAsync = createAsyncThunk(
+  actions.FILTER_TRIP,
+  async (userID) => {
+    return await TripManager.filterTrip(userID);
+  }
+);

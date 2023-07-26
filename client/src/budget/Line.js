@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { parseISO, differenceInDays } from "date-fns";
 
 Chart.register(
   CategoryScale,
@@ -21,7 +22,6 @@ Chart.register(
   Legend
 );
 
-// TODO: figure out if mapping expenses separately is better or if mapping by trip is better
 const getDateExpenses = (experiences, expenses) => {
   const firstDate = new Date(
     Math.min(
@@ -47,9 +47,9 @@ const getDateExpenses = (experiences, expenses) => {
   }
 
   experiences.forEach((experience) => {
-    const startDate = new Date(experience.StartingLocalDateTime);
-    const endDate = new Date(experience.EndingLocalDateTime);
-    const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // https://stackabuse.com/javascript-get-number-of-days-between-dates/
+    const startDate = parseISO(experience.StartingLocalDateTime);
+    const endDate = parseISO(experience.EndingLocalDateTime);
+    const days = differenceInDays(endDate, startDate);
 
     expenses.forEach((expense) => {
       if (expense.ExperienceId === experience.ExperienceId) {

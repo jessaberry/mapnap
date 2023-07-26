@@ -16,8 +16,8 @@ function Dashboard() {
 
   const handleAddTrip = () => {
     // TODO: Implement logic to handle adding a trip.json
-        //setFormOpen(true);
-        navigate('/trip');
+    //setFormOpen(true);
+    navigate("/trip");
     console.log("Add Trip button clicked!");
   };
 
@@ -33,20 +33,20 @@ function Dashboard() {
 
   return (
     <PageLayout>
-<div>
-      <h1>Dashboard</h1>
+      <div>
+        <h1>Dashboard</h1>
 
-      <div className="trip-button">
-        <button onClick={handleAddTrip}>Add Trip</button>
+        <div className="trip-button">
+          <button onClick={handleAddTrip}>Add Trip</button>
+        </div>
+        {isFormOpen && (
+          <PopupForm onSubmit={handleSubmit} onClose={handleClose} />
+        )}
+        {/* Other components and content */}
+        <div className="card-gallery">
+          <Card />
+        </div>
       </div>
-      {isFormOpen && (
-        <PopupForm onSubmit={handleSubmit} onClose={handleClose} />
-      )}
-      {/* Other components and content */}
-      <div className="card-gallery">
-        <Card />
-      </div>
-    </div>
     </PageLayout>
   );
 }
