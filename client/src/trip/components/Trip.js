@@ -1,13 +1,13 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTripAsync,
   deleteTripAsync,
-  filterTripAsync,
+  // filterTripAsync,
   getTripsAsync,
 } from "../reducers/thunksTrip";
 import { getExperiencesAsync } from "../../experience/reducers/thunksExperience";
-import { useNavigate, Link, Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
 import React from "react";
@@ -20,6 +20,7 @@ export default function Trip() {
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [visible, setVisible] = useState(null);
 
   useEffect(() => {
     dispatch(getTripsAsync());
@@ -27,17 +28,15 @@ export default function Trip() {
   }, [dispatch]);
 
   const handleAddTrip = (trip) => {
-    dispatch(addTripAsync(trip))
-    .then(() => {
+    dispatch(addTripAsync(trip)).then(() => {
       dispatch(getTripsAsync());
-    })
+    });
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTripAsync(trip.TripId))
-    .then(() => {
+    dispatch(deleteTripAsync(trip.TripId)).then(() => {
       dispatch(getTripsAsync());
-    })
+    });
   };
 
   const handleAddExperience = (tripUUID) => {
@@ -45,16 +44,20 @@ export default function Trip() {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperienceAsync(expID))
-    .then(() => {
+    dispatch(deleteExperienceAsync(expID)).then(() => {
       dispatch(getExperiencesAsync());
-    })
+    });
   };
 
-  const handleFilterTrip = (tripUUID) => {
-    const trip = trips.find((trip) => trip.TripId === tripUUID);
-    dispatch(filterTripAsync(tripUUID));
-    navigate(`/trips/${trip.TripId}`, { state: { tripUUID } });
+  // const handleFilterTrip = (tripUUID) => {
+  //   const trip = trips.find((trip) => trip.TripId === tripUUID);
+  //   dispatch(filterTripAsync(tripUUID));
+  //   navigate(`/trips/${trip.TripId}`, { state: { tripUUID } });
+  // };
+
+  // replaces handleFilterTrip
+  const showTripDetails = (trip) => {
+    setVisible((visibleTrip) => (visibleTrip === trip ? null : trip));
   };
 
   const getExperiences = (tripID) => {
@@ -78,36 +81,35 @@ export default function Trip() {
           {trips.map((trip) => (
             <div className="trip-item" key={trip.TripId}>
               <h3 className="trip-title">TRIP - {trip.Title}</h3>
-              <div className="trip-info">TRIP id: {trip.TripId}</div>
-              <Link to={`/trips/${trip.TripId}`}>
-                <button onClick={() => handleFilterTrip(trip.TripId)}>
-                  View Details
-                </button>
-              </Link>
+              <button onClick={() => showTripDetails(trip.TripId)}>
+                {visible === trip.TripId ? "Hide Details" : "View Details"}
+              </button>
               <button onClick={() => handleAddExperience(trip)}>
                 Add Experience
               </button>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
-              <div className="experience-list">
-                <div className="experience-card-container">
-                  {getExperiences(trip.TripId).map((experience) => (
-                    <div
-                      className="experience-card"
-                      key={experience.ExperienceId}
-                    >
-                      <h5 className="experience-title">{experience.Title}</h5>
-                      <p>Experience ID: {experience.ExperienceId}</p>
-                      <button
-                        onClick={() =>
-                          handleDeleteExperience(experience.ExperienceId)
-                        }
+              {visible === trip.TripId && (
+                <div className="experience-list">
+                  <div className="experience-card-container">
+                    {getExperiences(trip.TripId).map((experience) => (
+                      <div
+                        className="experience-card"
+                        key={experience.ExperienceId}
                       >
-                        Delete Experience
-                      </button>
-                    </div>
-                  ))}
+                        <h5 className="experience-title">{experience.Title}</h5>
+                        <p>Experience ID: {experience.ExperienceId}</p>
+                        <button
+                          onClick={() =>
+                            handleDeleteExperience(experience.ExperienceId)
+                          }
+                        >
+                          Delete Experience
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>

@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import { parseISO } from "date-fns";
 
 const ExperienceHandler = ({ trip, handleAddExperience }) => {
-  const [data, setData] = useState({ 
-    ...initialExperience, 
+  const [data, setData] = useState({
+    ...initialExperience,
     TripId: trip.TripId,
     StartingLocalDateTime: new Date(),
-    EndingLocalDateTime: new Date()
+    EndingLocalDateTime: new Date(),
   });
 
   const handleChange = (e) => {

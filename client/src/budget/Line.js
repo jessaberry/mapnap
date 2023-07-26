@@ -46,25 +46,25 @@ const getDateExpenses = (experiences, expenses) => {
     current.setDate(current.getDate() + 1);
   }
 
-    experiences.forEach((experience) => {
-      const startDate = parseISO(experience.StartingLocalDateTime);
-      const endDate = parseISO(experience.EndingLocalDateTime);
-      const days = differenceInDays(endDate, startDate);
-  
-      expenses.forEach((expense) => {
-        if (expense.ExperienceId === experience.ExperienceId) {
-          const dailyExpense = expense.Cost / days;
-  
-          const currentDate = new Date(startDate);
-          while (currentDate <= endDate) {
-            const date = currentDate.toLocaleDateString();
-            dateExpenses[date] += dailyExpense;
-            currentDate.setDate(currentDate.getDate() + 1);
-          }
+  experiences.forEach((experience) => {
+    const startDate = parseISO(experience.StartingLocalDateTime);
+    const endDate = parseISO(experience.EndingLocalDateTime);
+    const days = differenceInDays(endDate, startDate);
+
+    expenses.forEach((expense) => {
+      if (expense.ExperienceId === experience.ExperienceId) {
+        const dailyExpense = expense.Cost / days;
+
+        const currentDate = new Date(startDate);
+        while (currentDate <= endDate) {
+          const date = currentDate.toLocaleDateString();
+          dateExpenses[date] += dailyExpense;
+          currentDate.setDate(currentDate.getDate() + 1);
         }
-      });
+      }
     });
-    return dateExpenses;
+  });
+  return dateExpenses;
 };
 
 export const DateVis = ({ experiences, expenses }) => {
