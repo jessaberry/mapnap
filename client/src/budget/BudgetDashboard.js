@@ -4,17 +4,16 @@ import { DateVis } from "./Line.js";
 import TripVis from "./Blob.js";
 import { Grid } from "@mui/material";
 import "./BudgetDashboard.css";
-
 import React from "react";
-import expensesData from "../data/expenses.json";
 import { PageLayout } from "../content/template/page-layout.mjs";
 
 export default function BudgetDashboard() {
-  const experiences = useSelector((state) => state.exp.experiences);
-  // const experiences = experienceData;
-  // const expenses = useSelector((state) => state.exp.expenses);
-  const expenses = expensesData;
   const trips = useSelector((state) => state.trip.trips);
+  const experiences = useSelector((state) => state.exp.experiences);
+  const expenses = experiences.map((experience) => ({
+    ExperienceId: experience.ExperienceId,
+    Cost: Number(experience.Cost),
+  }));
 
   return (
     <PageLayout>
