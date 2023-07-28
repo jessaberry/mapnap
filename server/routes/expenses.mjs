@@ -7,44 +7,7 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { expensesCollectionName } from "../common/environments-and-constants.mjs";
 
-const defaultExpenses = [
-  {
-    ExperienceId: 1,
-    Cost: 10.74,
-  },
-  {
-    ExperienceId: 2,
-    Cost: 23.63,
-  },
-  {
-    ExperienceId: 3,
-    Cost: 11.32,
-  },
-  {
-    ExperienceId: 4,
-    Cost: 3.01,
-  },
-  {
-    ExperienceId: 4,
-    Cost: 2,
-  },
-  {
-    ExperienceId: 5,
-    Cost: 27.53,
-  },
-  {
-    ExperienceId: 6,
-    Cost: 6.0,
-  },
-  {
-    ExperienceId: 7,
-    Cost: 34.0,
-  },
-  {
-    ExperienceId: 8,
-    Cost: 12.7,
-  },
-];
+import defaultExpenses from "../data/expenses.json" assert {type: "json" };
 
 router.get("/", async (req, res) => {
   let collection = await db.collection(expensesCollectionName);

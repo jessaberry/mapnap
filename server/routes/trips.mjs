@@ -67,8 +67,8 @@ router.get("/by-trip-id/:tripId", async (req, res) => {
     }
 });
 
-router.get("/by-user-id/", async (req, res) => {
-    const userId = req.body.UserId;
+router.get("/by-user-id/:userId", async (req, res) => {
+    const userId = req.params.UserId;
     const query = {UserId: userId};
     console.log(query);
     try {
