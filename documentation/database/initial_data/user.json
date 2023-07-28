@@ -8,10 +8,10 @@
     "PasswordHash": ""
   },
   {
-    "UserId": 2,
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "FirstName": "Jessa",
     "LastName": "Shi",
-    "EmailAddress": "",
+    "EmailAddress": "jessashi96@gmail.com",
     "Salt": "553FxoPMeyY68lSO",
     "PasswordHash": ""
   },
