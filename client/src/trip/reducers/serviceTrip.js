@@ -4,7 +4,7 @@ axios.defaults.baseURL = "http://localhost:4999/";
 
 const tripManager = {
   getTrips: async () => {
-    const res = await axios.get("/trips");
+    const res = await axios.get("/trips/get-all/");
     console.log(res.data);
     return res.data;
   },

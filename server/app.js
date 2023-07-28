@@ -14,7 +14,6 @@ import "./common/environments-and-constants.mjs";
 const allowedOrigins = ["http://localhost:3999"];
 
 import indexRouter from "./routes/index.mjs";
-import usersRouter from "./routes/users.mjs";
 import mediaFilesRouter from "./routes/mediaFiles.mjs";
 import pointsOfInterestRouter from "./routes/pointsOfInterest.mjs";
 import experiencesRouter from "./routes/experiences.mjs";
@@ -25,8 +24,7 @@ import {
   mediaFilesCollectionName,
   memoriesCollectionName,
   pointsOfInterestCollectionName,
-  tripsCollectionName,
-  usersCollectionName,
+  tripsCollectionName
 } from "./common/environments-and-constants.mjs";
 
 const app = express();
@@ -49,12 +47,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.use(`/${usersCollectionName}`, usersRouter);
-app.use(`/${mediaFilesCollectionName}`, mediaFilesRouter);
-app.use(`/${tripsCollectionName}`, tripsRouter);
-app.use(`/${pointsOfInterestCollectionName}`, pointsOfInterestRouter);
-app.use(`/${experiencesCollectionName}`, experiencesRouter);
-app.use(`/${memoriesCollectionName}`, memoriesRouter);
+app.use(`/${mediaFilesCollectionName}/`, mediaFilesRouter);
+app.use(`/${tripsCollectionName}/`, tripsRouter);
+app.use(`/${pointsOfInterestCollectionName}/`, pointsOfInterestRouter);
+app.use(`/${experiencesCollectionName}/`, experiencesRouter);
+app.use(`/${memoriesCollectionName}/`, memoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

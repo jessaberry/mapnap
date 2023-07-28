@@ -3,9 +3,8 @@ const TripDetails = ({ trip }) => {
   return (
     <div>
       <p> </p>
-      Cover Media File:{" "}
-      <a href={image} target="_blank" rel="noopener noreferrer">
-        <img src={image} alt="Cover Media File" />
+      <a href={image} target="_blank" rel="placeholder img">
+        <img src={image} alt="Cover Media File" style={{ width: "200px", height: "auto" }} />
       </a>
       <p>Trip ID: {trip.TripId}</p>
       <p>User ID: {trip.UserId}</p>

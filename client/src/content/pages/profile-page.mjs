@@ -10,6 +10,7 @@ export const ProfilePage = () => {
     console.log("not user");
     return null;
   }
+  console.log(user.sub);
 
   return (
     <PageLayout>
@@ -22,6 +23,7 @@ export const ProfilePage = () => {
             <span>
               You can use the <strong>ID Token</strong> to get the profile
               information of an authenticated user.
+              User_Id: {user.sub}
             </span>
             <span>
               <strong>Only authenticated users can access this page.</strong>
