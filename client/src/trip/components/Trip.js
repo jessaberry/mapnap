@@ -7,7 +7,10 @@ import {
   deleteTripAsync,
   getTripsByUserIdAsync,
 } from "../reducers/thunksTrip";
-import { getExperiencesAsync, deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
+import {
+  getExperiencesAsync,
+  deleteExperienceAsync,
+} from "../../experience/reducers/thunksExperience";
 import { useNavigate, Route, Routes } from "react-router-dom";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
@@ -50,7 +53,7 @@ export default function Trip() {
       dispatch(getExperiencesAsync());
     });
   };
-  // // remove this? we should never have invalid userID 
+  // // remove this? we should never have invalid userID
   // const getUserTrips = () => {
   //   if (!userID) {
   //     console.log("not user");
@@ -98,7 +101,13 @@ export default function Trip() {
               </button>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
               {visible === trip.TripId && <TripDetails trip={trip} />}
-              {visible === trip.TripId && <TripExpViewer trip={trip} getExperiences={getExperiences} handleDeleteExperience={handleDeleteExperience} />}
+              {visible === trip.TripId && (
+                <TripExpViewer
+                  trip={trip}
+                  getExperiences={getExperiences}
+                  handleDeleteExperience={handleDeleteExperience}
+                />
+              )}
             </div>
           ))}
         </div>

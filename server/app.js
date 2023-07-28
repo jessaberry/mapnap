@@ -24,7 +24,7 @@ import {
   mediaFilesCollectionName,
   memoriesCollectionName,
   pointsOfInterestCollectionName,
-  tripsCollectionName
+  tripsCollectionName,
 } from "./common/environments-and-constants.mjs";
 
 const app = express();

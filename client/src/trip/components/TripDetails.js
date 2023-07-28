@@ -4,7 +4,11 @@ const TripDetails = ({ trip }) => {
     <div>
       <p> </p>
       <a href={image} target="_blank" rel="noreferrer">
-        <img src={image} alt="Cover Media File" style={{ width: "200px", height: "auto" }} />
+        <img
+          src={image}
+          alt="Cover Media File"
+          style={{ width: "200px", height: "auto" }}
+        />
       </a>
       <p>Trip ID: {trip.TripId}</p>
       <p>User ID: {trip.UserId}</p>
