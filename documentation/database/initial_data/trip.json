@@ -1,7 +1,7 @@
 [
   {
     "TripId": "1",
-    "UserId": "1",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "Title": "2023 - Japan",
     "Description": "",
     "StartingPointOfInterestId": 4,
@@ -18,7 +18,7 @@
   },
   {
     "TripId": "2",
-    "UserId": "1",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "Title": "2017 - Japan",
     "Description": "",
     "StartingPointOfInterestId": 4,

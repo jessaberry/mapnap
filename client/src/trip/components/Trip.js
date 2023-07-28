@@ -19,16 +19,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 import TripExpViewer from "./TripExpViewer";
 
 export default function Trip() {
-  const trips = useSelector((state) => state.trip.trips);
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(null);
   const { user } = useAuth0();
   const userID = user?.sub;
+  // const trips = useSelector((state) => state.trip.trips);
+  const trips = useSelector((state) =>
+    state.trip.trips.filter((trip) => trip.UserId === userID)
+  );
 
   const handleAddTrip = (trip) => {
-    dispatch(addTripAsync(trip)).then(() => {
+    const tripWithUserID = {
+      ...trip,
+      UserId: userID,
+    };
+    dispatch(addTripAsync(tripWithUserID)).then(() => {
       dispatch(getTripsAsync());
     });
   };
@@ -88,6 +95,7 @@ export default function Trip() {
           {trips.map((trip) => (
             <div className="trip-item" key={trip.TripId}>
               <h3 className="trip-title">TRIP - {trip.Title}</h3>
+              <p> User ID {userID}</p>
               <button onClick={() => showTripDetails(trip.TripId)}>
                 {visible === trip.TripId ? "Hide Details" : "View Details"}
               </button>
