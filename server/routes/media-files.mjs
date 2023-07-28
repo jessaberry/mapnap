@@ -8,6 +8,12 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
 
+
+router.get("/get-presigned-upload-params/", async(req, res) => {
+
+});
+
+
 router.get("/", async (req, res) => {
   let collection = await db.collection(mediaFilesCollectionName);
   let results = await collection

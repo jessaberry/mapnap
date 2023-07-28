@@ -19,6 +19,7 @@ import { NotFoundPage } from "./content/pages/not-found-page";
 import { ProfilePage } from "./content/pages/profile-page";
 import { PageLoader } from "./content/widgets/page-loader.mjs"
 import { AuthenticationGuard } from "./helpers/Auth0/authentication-guard";
+import MediaFileUploaderTest from "./helpers/media-files/media-file-uploader-test.mjs";
 
 export const App = () => {
   const { isLoading } = useAuth0();
@@ -47,6 +48,7 @@ export const App = () => {
               <Route path="/dashboard" element={<AuthenticationGuard component={Dashboard} /> } />
               <Route path="/admin" element={<AuthenticationGuard component={AdminPage} /> } />
               <Route path="/profile" element={<AuthenticationGuard component={ProfilePage} />} />
+              <Route path="/media-file" element={<AuthenticationGuard component={MediaFileUploaderTest} />} />
               <Route Path="/callback" element={<CallbackPage />} />
               <Route path="*" element={<NotFoundPage />} />
 
