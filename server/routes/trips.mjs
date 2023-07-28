@@ -34,6 +34,23 @@ router.get("/get-all/", async (req, res) => {
     res.send(results).status(200);
 });
 
+router.get("/get-other-public-trips/:userId", async (req, res) => {
+    console.log("get other public trips");
+    const userId = req.params.userId;
+    const qPublicTrips = { IsPublic: true};
+    const qNotCurrentUser = {UserId: { $ne : userId }}
+    const query = { $and: [
+        qPublicTrips,
+        qNotCurrentUser
+    ]}
+    let collection = await db.collection(tripsCollectionName);
+    let results = await collection
+        .find(query)
+        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+        .toArray();
+    console.log("results: " + results);
+    res.send(results).status(200);
+});
 router.get("/by-trip-id/:tripId", async (req, res) => {
     const tripId = req.params.tripId;
     const query = {_id: `${new ObjectId(tripId)}`};
