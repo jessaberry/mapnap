@@ -3,7 +3,7 @@ const TripDetails = ({ trip }) => {
   return (
     <div>
       <p> </p>
-      <a href={image} target="_blank" rel="placeholder img">
+      <a href={image} target="_blank" rel="noreferrer">
         <img src={image} alt="Cover Media File" style={{ width: "200px", height: "auto" }} />
       </a>
       <p>Trip ID: {trip.TripId}</p>

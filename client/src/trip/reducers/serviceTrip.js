@@ -9,6 +9,16 @@ const tripManager = {
     return res.data;
   },
 
+  getTripsByUserId: async (userID) => {
+    try {
+      const res = await axios.get(`/trips/by-user-id/${userID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+
   addTrip: async (trip) => {
     try {
       const res = await axios.post("/trips", trip);
@@ -32,16 +42,6 @@ const tripManager = {
   updateTrip: async (trip) => {
     try {
       const res = await axios.patch(`/trips/${trip.TripId}`, trip);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  },
-
-  filterTrip: async (userID) => {
-    try {
-      const res = await axios.get(`/trips/${userID}`);
       return res.data;
     } catch (error) {
       console.log(error);
