@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { PageLayout } from "../../content/template/page-layout.mjs";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   addTripAsync,
   deleteTripAsync,
-  filterTripAsync,
-  getTripsAsync,
+  getTripsByUserIdAsync,
 } from "../reducers/thunksTrip";
-import { getExperiencesAsync } from "../../experience/reducers/thunksExperience";
+import {
+  getExperiencesAsync,
+  deleteExperienceAsync,
+} from "../../experience/reducers/thunksExperience";
 import { useNavigate, Route, Routes } from "react-router-dom";
 import TripHandler from "./TripHandler";
 import TripSingle from "./TripSingle";
 import TripDetails from "./TripDetails";
-import React from "react";
-import { deleteExperienceAsync } from "../../experience/reducers/thunksExperience";
 import "./styles.css";
-import { PageLayout } from "../../content/template/page-layout.mjs";
-import { useAuth0 } from "@auth0/auth0-react";
+
 import TripExpViewer from "./TripExpViewer";
 
 export default function Trip() {
@@ -25,10 +26,7 @@ export default function Trip() {
   const [visible, setVisible] = useState(null);
   const { user } = useAuth0();
   const userID = user?.sub;
-  // const trips = useSelector((state) => state.trip.trips);
-  const trips = useSelector((state) =>
-    state.trip.trips.filter((trip) => trip.UserId === userID)
-  );
+  const trips = useSelector((state) => state.trip.trips);
 
   const handleAddTrip = (trip) => {
     const tripWithUserID = {
@@ -36,13 +34,13 @@ export default function Trip() {
       UserId: userID,
     };
     dispatch(addTripAsync(tripWithUserID)).then(() => {
-      dispatch(getTripsAsync());
+      dispatch(getTripsByUserIdAsync(userID));
     });
   };
 
   const handleDeleteTrip = (trip) => {
     dispatch(deleteTripAsync(trip.TripId)).then(() => {
-      dispatch(getTripsAsync());
+      dispatch(getTripsByUserIdAsync(userID));
     });
   };
 
@@ -55,14 +53,14 @@ export default function Trip() {
       dispatch(getExperiencesAsync());
     });
   };
-
-  const handleFilterTrip = () => {
-    if (!userID) {
-      console.log("not user");
-      return null;
-    }
-    dispatch(filterTripAsync(userID));
-  };
+  // // remove this? we should never have invalid userID
+  // const getUserTrips = () => {
+  //   if (!userID) {
+  //     console.log("not user");
+  //     return null;
+  //   }
+  //   dispatch(getTripsByUserIdAsync(userID));
+  // };
 
   const showTripDetails = (trip) => {
     setVisible((visibleTrip) => (visibleTrip === trip ? null : trip));
@@ -78,9 +76,8 @@ export default function Trip() {
   };
 
   useEffect(() => {
-    dispatch(getTripsAsync());
+    dispatch(getTripsByUserIdAsync(userID));
     dispatch(getExperiencesAsync());
-    // handleFilterTrip(); // TODO: find out what's wrong with this
   }, [dispatch]);
 
   return (
@@ -104,7 +101,13 @@ export default function Trip() {
               </button>
               <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
               {visible === trip.TripId && <TripDetails trip={trip} />}
-              {visible === trip.TripId && <TripExpViewer trip={trip} getExperiences={getExperiences} handleDeleteExperience={handleDeleteExperience} />}
+              {visible === trip.TripId && (
+                <TripExpViewer
+                  trip={trip}
+                  getExperiences={getExperiences}
+                  handleDeleteExperience={handleDeleteExperience}
+                />
+              )}
             </div>
           ))}
         </div>

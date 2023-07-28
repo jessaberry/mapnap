@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getTripsAsync,
   addTripAsync,
   deleteTripAsync,
   updateTripAsync,
-  filterTripAsync,
+  getTripsAsync,
+  getTripsByUserIdAsync,
 } from "./thunksTrip";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateTrip";
 
@@ -15,6 +15,10 @@ export const tripSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getTripsAsync.fulfilled, (state, action) => {
       state.getTrips = REQUEST_STATE.FULFILLED;
+      state.trips = action.payload;
+    });
+    builder.addCase(getTripsByUserIdAsync.fulfilled, (state, action) => {
+      state.getTripsByUserId = REQUEST_STATE.FULFILLED;
       state.trips = action.payload;
     });
 
@@ -58,22 +62,9 @@ export const tripSlice = createSlice({
       state.updateTrip = REQUEST_STATE.REJECTED;
       state.error = action.error;
     });
-
-    builder.addCase(filterTripAsync.fulfilled, (state, action) => {
-      state.filterTrip = REQUEST_STATE.FULFILLED;
-      state.trips = state.trips.filter((trip) => trip.UserId === trip.payload);
-    });
-    builder.addCase(filterTripAsync.pending, (state, action) => {
-      state.filterTrip = REQUEST_STATE.PENDING;
-      state.error = null;
-    });
-    builder.addCase(filterTripAsync.rejected, (state, action) => {
-      state.filterTrip = REQUEST_STATE.REJECTED;
-      state.error = action.error;
-    });
   },
 });
 
-export const { addTrip, deleteTrip, updateTrip, filterTrip } =
+export const { addTrip, deleteTrip, updateTrip, getTrips, getTripsByUserId } =
   tripSlice.actions;
 export default tripSlice.reducer;

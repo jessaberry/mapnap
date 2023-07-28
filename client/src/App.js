@@ -6,11 +6,10 @@ import "./styles/App.css";
 import Experience from "./experience/components/Experience";
 import Memory from "./memories/components/Memory";
 import Trip from "./trip/components/Trip";
+import Trips from "./trips/components/trips.mjs";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
-import TripSingle from "./trip/components/TripSingle";
-
 import MapView from "./mapview/components/MapView";
 import { AdminPage } from "./content/pages/admin-page";
 import { CallbackPage } from "./content/pages/callback-page";
@@ -34,18 +33,45 @@ export const App = () => {
       <div className="App">
         <main>
           <Routes>
-            <Route Path="/callback" element={<CallbackPage />} />
-            <Route path="/trips" element={<Trip />} />
-            <Route path="/trips/:id" element={<TripSingle />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/memory" element={<Memory />} />
-            <Route path="/map" element={<MapView />} />
-            <Route path="/budget" element={<Budget />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route
+              path="/trip"
+              element={<AuthenticationGuard component={Trip} />}
+            />
+            <Route
+              path="/trips"
+              element={<AuthenticationGuard component={Trips} />}
+            />
+            <Route
+              path="/experience"
+              element={<AuthenticationGuard component={Experience} />}
+            />
+            <Route
+              path="/memory"
+              element={<AuthenticationGuard component={Memory} />}
+            />
+            <Route
+              path="/map"
+              element={<AuthenticationGuard component={MapView} />}
+            />
+            <Route
+              path="/budget"
+              element={<AuthenticationGuard component={Budget} />}
+            />
+            <Route
+              path="/dashboard"
+              element={<AuthenticationGuard component={Dashboard} />}
+            />
+            <Route
+              path="/admin"
+              element={<AuthenticationGuard component={AdminPage} />}
+            />
+            <Route
+              path="/profile"
+              element={<AuthenticationGuard component={ProfilePage} />}
+            />
+            <Route Path="/callback" element={<CallbackPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
       </div>

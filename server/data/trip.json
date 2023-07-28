@@ -1,0 +1,53 @@
+[
+  {
+    "_id": "64ba2a2a9aa1ec7120dd2a6d",
+    "UserId": "auth0|64b26b8d76736ff2b0a188a6",
+    "Title": "2023 - Japan",
+    "Description": "bonk",
+    "StartingPointOfInterestId": 4,
+    "EndingPointOfInterestId": 2,
+    "StartingLocalDateTime": "2023-04-16T21:50:00.000Z",
+    "EndingDateTime": "2023-05-03T21:55:00.000Z",
+    "Country": "JP",
+    "CoverMediaFileId": null,
+    "IsPublic": true,
+    "CreatedAt": "2023-05-01T18:25:43.511Z",
+    "UpdatedAt": "2023-05-01T18:25:43.511Z",
+    "DeletedAt": null,
+    "IsDeleted": false
+  },
+  {
+    "_id": "64ba2a2a9aa1ec7120dd2a6e",
+    "UserId": "auth0|64b26b8d76736ff2b0a188a6",
+    "Title": "2017 - Japan",
+    "Description": "boing",
+    "StartingPointOfInterestId": 12,
+    "EndingPointOfInterestId": 6,
+    "StartingLocalDateTime": "2017-07-15T14:55:00.000Z",
+    "EndingDateTime": "2017-07-29T16:25:00.000Z",
+    "Country": "JP",
+    "CoverMediaFileId": null,
+    "IsPublic": true,
+    "CreatedAt": "2023-06-01T18:25:43.511Z",
+    "UpdatedAt": "2023-06-01T18:25:43.511Z",
+    "DeletedAt": null,
+    "IsDeleted": false
+  },
+  {
+    "_id": "64ba2a2a9aa1ec7120dd2a6f",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
+    "Title": "2018 - France",
+    "Description": "A romantic trip to Paris",
+    "StartingPointOfInterestId": 12,
+    "EndingPointOfInterestId": 6,
+    "StartingLocalDateTime": "2018-07-15T14:55:00.000Z",
+    "EndingDateTime": "2018-07-29T16:25:00.000Z",
+    "Country": "FR",
+    "CoverMediaFileId": null,
+    "IsPublic": true,
+    "CreatedAt": "2023-06-01T18:25:43.511Z",
+    "UpdatedAt": "2023-06-01T18:25:43.511Z",
+    "DeletedAt": null,
+    "IsDeleted": false
+  }
+]
