@@ -19,14 +19,15 @@ import pointsOfInterestRouter from "./routes/points-of-interest.mjs";
 import experiencesRouter from "./routes/experiences.mjs";
 import tripsRouter from "./routes/trips.mjs";
 import memoriesRouter from "./routes/memories.mjs";
-import s3HelperRouter from './routes/s3-helper.mjs';
+import s3HelperRouter from "./routes/s3-helper.mjs";
 
 import {
   experiencesCollectionName,
   mediaFilesCollectionName,
   memoriesCollectionName,
-  pointsOfInterestCollectionName, s3HelperName,
-  tripsCollectionName
+  pointsOfInterestCollectionName,
+  s3HelperName,
+  tripsCollectionName,
 } from "./common/environments-and-constants.mjs";
 
 const app = express();
@@ -50,7 +51,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 app.use(`/${mediaFilesCollectionName}/`, mediaFilesRouter);
-app.use(`/${s3HelperName}/`,s3HelperRouter);
+app.use(`/${s3HelperName}/`, s3HelperRouter);
 app.use(`/${tripsCollectionName}/`, tripsRouter);
 app.use(`/${pointsOfInterestCollectionName}/`, pointsOfInterestRouter);
 app.use(`/${experiencesCollectionName}/`, experiencesRouter);

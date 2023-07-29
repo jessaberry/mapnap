@@ -19,6 +19,16 @@ const tripManager = {
     }
   },
 
+  getOtherPublicTrips: async (userID) => {
+    try {
+      const res = await axios.get(`/trips/get-other-public-trips/${userID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+
   addTrip: async (trip) => {
     try {
       const res = await axios.post("/trips", trip);
@@ -42,6 +52,16 @@ const tripManager = {
   updateTrip: async (trip) => {
     try {
       const res = await axios.patch(`/trips/${trip.TripId}`, trip);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+
+  getPOI: async () => {
+    try {
+      const res = await axios.get("/points-of-interest");
       return res.data;
     } catch (error) {
       console.log(error);

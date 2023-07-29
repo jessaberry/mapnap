@@ -31,30 +31,57 @@ export const App = () => {
   }
   return (
     <Provider store={store}>
-
-        <div className="App">
-          <main>
-            <Routes>
-
-
-              <Route path="/" element={<HomePage />} />
-              <Route path="/trip" element={<AuthenticationGuard component={Trip} /> } />
-              <Route path="/trips" element={<AuthenticationGuard component={Trips} /> } />
-              <Route path="/experience" element={<AuthenticationGuard component={Experience}  /> } />
-              <Route path="/memory" element={<AuthenticationGuard component={Memory} /> } />
-              <Route path="/map" element={<AuthenticationGuard component={MapView} /> } />
-              <Route path="/budget" element={<AuthenticationGuard component={Budget} />} />
-              <Route path="/dashboard" element={<AuthenticationGuard component={Dashboard} /> } />
-              <Route path="/admin" element={<AuthenticationGuard component={AdminPage} /> } />
-              <Route path="/profile" element={<AuthenticationGuard component={ProfilePage} />} />
-              <Route path="/media-file" element={<AuthenticationGuard component={MediaFileUploaderTest} />} />
-              <Route Path="/callback" element={<CallbackPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-
-
-            </Routes>
-          </main>
-        </div>
+      <div className="App">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/trip"
+              element={<AuthenticationGuard component={Trip} />}
+            />
+            <Route
+              path="/trips"
+              element={<AuthenticationGuard component={Trips} />}
+            />
+            <Route
+              path="/experience"
+              element={<AuthenticationGuard component={Experience} />}
+            />
+            <Route
+              path="/memory"
+              element={<AuthenticationGuard component={Memory} />}
+            />
+            <Route
+              path="/map"
+              element={<AuthenticationGuard component={MapView} />}
+            />
+            <Route
+              path="/budget"
+              element={<AuthenticationGuard component={Budget} />}
+            />
+            <Route
+              path="/dashboard"
+              element={<AuthenticationGuard component={Dashboard} />}
+            />
+            <Route
+              path="/admin"
+              element={<AuthenticationGuard component={AdminPage} />}
+            />
+            <Route
+              path="/profile"
+              element={<AuthenticationGuard component={ProfilePage} />}
+            />
+            <Route
+              path="/media-file"
+              element={
+                <AuthenticationGuard component={MediaFileUploaderTest} />
+              }
+            />
+            <Route Path="/callback" element={<CallbackPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+      </div>
     </Provider>
   );
 };
