@@ -39,15 +39,16 @@
     "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.14.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-share": "^4.4.1",
     "react-upload-to-s3": "^1.0.16",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env PORT=3999 react-scripts start",
-    "build": "../node_modules/.bin/react-scripts build",
+    "dev": "cross-env PORT=3999 react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "../node_modules/.bin/react-scripts test",
     "eject": "../node_modules/.bin/react-scripts eject"
   },
