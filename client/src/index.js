@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.js";
 import { Auth0ProviderWithNavigate } from "./helpers/Auth0/auth0-provider-with-navigate.mjs";
 import reportWebVitals from "./reportWebVitals";
+import { HashRouter } from 'react-router-dom'
 import "./styles/index.css";
 import "./styles/styles.css";
 
@@ -12,11 +13,11 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Auth0ProviderWithNavigate>
         <App />
       </Auth0ProviderWithNavigate>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
