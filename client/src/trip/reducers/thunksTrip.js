@@ -13,6 +13,13 @@ export const getTripsByUserIdAsync = createAsyncThunk(
   }
 );
 
+export const getOtherPublicTripsAsync = createAsyncThunk(
+  actions.GET_OTHER_PUBLIC_TRIPS,
+  async (userId) => {
+    return await TripManager.getOtherPublicTrips(userId);
+  }
+);
+
 export const addTripAsync = createAsyncThunk(actions.ADD_TRIP, async (trip) => {
   return await TripManager.addTrip(trip);
 });

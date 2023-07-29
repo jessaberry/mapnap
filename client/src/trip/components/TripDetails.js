@@ -17,8 +17,6 @@ const TripDetails = ({ trip, poi }) => {
         />
       </a>
       <p> </p>
-      {/* <p>Trip ID: {trip.TripId}</p>
-      <p>User ID: {trip.UserId}</p> */}
       <p>Notes: {trip.Description}</p>
       <p>Location: {getPOI(trip.StartingPointOfInterestId).Title}</p>
       <p>{getPOI(trip.StartingPointOfInterestId).Description}</p>

@@ -7,6 +7,7 @@ import {
   deleteTripAsync,
   getTripsByUserIdAsync,
   getPOIAsync,
+  getOtherPublicTripsAsync,
 } from "../reducers/thunksTrip";
 import {
   getExperiencesAsync,
@@ -27,6 +28,7 @@ export default function Trip() {
   const { user } = useAuth0();
   const userID = user?.sub;
   const trips = useSelector((state) => state.trip.trips);
+  const publicTrips = useSelector((state) => state.trip.public);
   const poi = useSelector((state) => state.trip.poi);
 
   const handleAddTrip = (trip) => {
@@ -70,6 +72,7 @@ export default function Trip() {
 
   useEffect(() => {
     dispatch(getTripsByUserIdAsync(userID));
+    dispatch(getOtherPublicTripsAsync(userID));
     dispatch(getExperiencesAsync());
     dispatch(getPOIAsync());
   }, [dispatch, userID]);
@@ -105,6 +108,23 @@ export default function Trip() {
           ))}
         </div>
         <h2>Other people's public trips</h2>
+        <div className="card-container">
+          {publicTrips.map((trip) => (
+            <div className="trip-item" key={trip.TripId}>
+              <h3 className="trip-title">TRIP - {trip.Title}</h3>
+              <button onClick={() => showTripDetails(trip.TripId)}>
+                {visible === trip.TripId ? "Hide Details" : "View Details"}
+              </button>
+              {visible === trip.TripId && <TripDetails trip={trip} poi={poi} />}
+              {visible === trip.TripId && (
+                <TripExpViewer
+                  trip={trip}
+                  getExperiences={getExperiences}
+                />
+              )}
+            </div>
+          ))}
+        </div>
         <Routes>
           <Route path={`/trips/:tripId`} />
         </Routes>

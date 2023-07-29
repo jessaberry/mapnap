@@ -19,6 +19,16 @@ const tripManager = {
     }
   },
 
+  getOtherPublicTrips: async (userID) => {
+    try {
+      const res = await axios.get(`/trips/get-other-public-trips/${userID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+
   addTrip: async (trip) => {
     try {
       const res = await axios.post("/trips", trip);
