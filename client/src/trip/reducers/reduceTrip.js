@@ -5,6 +5,8 @@ import {
   updateTripAsync,
   getTripsAsync,
   getTripsByUserIdAsync,
+  getPOIAsync,
+  getOtherPublicTripsAsync,
 } from "./thunksTrip";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateTrip";
 
@@ -20,6 +22,14 @@ export const tripSlice = createSlice({
     builder.addCase(getTripsByUserIdAsync.fulfilled, (state, action) => {
       state.getTripsByUserId = REQUEST_STATE.FULFILLED;
       state.trips = action.payload;
+    });
+    builder.addCase(getOtherPublicTripsAsync.fulfilled, (state, action) => {
+      state.getOtherPublicTrips = REQUEST_STATE.FULFILLED;
+      state.public = action.payload;
+    });
+    builder.addCase(getPOIAsync.fulfilled, (state, action) => {
+      state.getPOI = REQUEST_STATE.FULFILLED;
+      state.poi = action.payload;
     });
 
     builder.addCase(addTripAsync.fulfilled, (state, action) => {
@@ -65,6 +75,13 @@ export const tripSlice = createSlice({
   },
 });
 
-export const { addTrip, deleteTrip, updateTrip, getTrips, getTripsByUserId } =
-  tripSlice.actions;
+export const {
+  addTrip,
+  deleteTrip,
+  updateTrip,
+  getTrips,
+  getTripsByUserId,
+  getOtherPublicTrips,
+  getPOI,
+} = tripSlice.actions;
 export default tripSlice.reducer;
