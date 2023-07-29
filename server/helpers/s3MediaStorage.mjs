@@ -4,7 +4,7 @@ import multer from "multer";
 import path from "path";
 
 import s3Storage from "../db/s3conn.js";
-import router from "../routes/mediaFiles.mjs";
+import router from "../routes/media-files.mjs";
 
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
