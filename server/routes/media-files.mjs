@@ -5,15 +5,11 @@ const router = express.Router();
 
 import db from "../db/conn.mjs";
 import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
-import {s3HelperName} from "../common/environments-and-constants.mjs";
+import { s3HelperName } from "../common/environments-and-constants.mjs";
 import { ObjectId } from "mongodb";
 import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
 
-
-router.get("/get-presigned-upload-params/", async(req, res) => {
-
-});
-
+router.get("/get-presigned-upload-params/", async (req, res) => {});
 
 router.get("/", async (req, res) => {
   let collection = await db.collection(mediaFilesCollectionName);

@@ -10,5 +10,4 @@ export const mediaFilesCollectionName = "media-files";
 export const pointsOfInterestCollectionName = "points-of-interest";
 export const expensesCollectionName = "expenses";
 
-
 export const s3HelperName = "s3-helper";

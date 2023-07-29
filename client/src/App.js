@@ -31,12 +31,9 @@ export const App = () => {
   }
   return (
     <Provider store={store}>
-
         <div className="App">
           <main>
             <Routes>
-
-
               <Route path="/" element={<HomePage />} />
               <Route path="/trip" element={<AuthenticationGuard component={Trip} /> } />
               <Route path="/trips" element={<AuthenticationGuard component={Trips} /> } />
@@ -50,8 +47,6 @@ export const App = () => {
               <Route path="/media-file" element={<AuthenticationGuard component={MediaFileUploaderTest} />} />
               <Route Path="/callback" element={<CallbackPage />} />
               <Route path="*" element={<NotFoundPage />} />
-
-
             </Routes>
           </main>
         </div>

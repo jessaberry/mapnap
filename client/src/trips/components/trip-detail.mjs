@@ -81,7 +81,7 @@ export default function TripDetail(tripId) {
           </div>
         ))}
       </div>
-      <Routes>
+      {/* <Routes>
         <Route
           path={`/trips/${tripId}`}
           element={
@@ -94,7 +94,7 @@ export default function TripDetail(tripId) {
             />
           }
         />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

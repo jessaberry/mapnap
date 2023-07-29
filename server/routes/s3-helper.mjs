@@ -5,21 +5,20 @@ import express from "express";
 
 const router = express.Router();
 
-import {mediaFilesCollectionName} from "../common/environments-and-constants.mjs";
-
+import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
 
 import https from "https";
-import {HttpRequest} from "@aws-sdk/protocol-http";
-import {fromIni} from "@aws-sdk/credential-provider-ini";
+import { HttpRequest } from "@aws-sdk/protocol-http";
+import { fromIni } from "@aws-sdk/credential-provider-ini";
 
-const credentials = fromIni({profile: 'default'});
+const credentials = fromIni({ profile: "default" });
 import {
-    getSignedUrl,
-    S3RequestPresigner,
+  getSignedUrl,
+  S3RequestPresigner,
 } from "@aws-sdk/s3-request-presigner";
-import {parseUrl} from "@aws-sdk/url-parser";
-import {formatUrl} from "@aws-sdk/util-format-url";
-import {Hash} from "@aws-sdk/hash-node";
+import { parseUrl } from "@aws-sdk/url-parser";
+import { formatUrl } from "@aws-sdk/util-format-url";
+import { Hash } from "@aws-sdk/hash-node";
 
 const region = process.env.AWS_REGION;
 const bucket = process.env.AWS_S3_MEDIA_FILES_BUCKET_NAME;
@@ -28,46 +27,47 @@ const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const Bucket = process.env.S3_BUCKET;
 
-
 router.get("/get-presigned-upload-params-without-client/", async (req, res) => {
-    const key = req.body.file;
-    console.log(key);
+  const key = req.body.file;
+  console.log(key);
 
-    const url = parseUrl(`https://${bucket}.s3.${region}.amazonaws.com/${key}`);
-    console.log(url);
-    const presigner = new S3RequestPresigner({
-        credentials: fromIni(),
-        region,
-        sha256: Hash.bind(null, "sha256"),
-    });
+  const url = parseUrl(`https://${bucket}.s3.${region}.amazonaws.com/${key}`);
+  console.log(url);
+  const presigner = new S3RequestPresigner({
+    credentials: fromIni(),
+    region,
+    sha256: Hash.bind(null, "sha256"),
+  });
 
-    const signedUrlObject = await presigner.presign(
-        new HttpRequest({...url, method: "PUT"})
-    );
-    try {
-
-        let result = await formatUrl(signedUrlObject);
-        res.send(result).status(200);
-    } catch (error) {
-        res.send(error).status(500);
-    }
-
+  const signedUrlObject = await presigner.presign(
+    new HttpRequest({ ...url, method: "PUT" })
+  );
+  try {
+    let result = await formatUrl(signedUrlObject);
+    res.send(result).status(200);
+  } catch (error) {
+    res.send(error).status(500);
+  }
 });
 
-router.get("/get-presigned-upload-params-with-client/:key", async (req, res) => {
+router.get(
+  "/get-presigned-upload-params-with-client/:key",
+  async (req, res) => {
     const key = req.params.key;
     console.log(key);
     console.log(bucket);
     try {
-        const client = new S3Client({region});
-        const command = new PutObjectCommand({Bucket: bucket, Key: key});
-        let result = await getSignedUrl(client, command, {expiresIn: parseInt(process.env.AWS_S3_PRESIGNED_URL_EXPIRY_DURATION)});
-        res.send(result).status(200)
+      const client = new S3Client({ region });
+      const command = new PutObjectCommand({ Bucket: bucket, Key: key });
+      let result = await getSignedUrl(client, command, {
+        expiresIn: parseInt(process.env.AWS_S3_PRESIGNED_URL_EXPIRY_DURATION),
+      });
+      res.send(result).status(200);
     } catch (error) {
-        res.send(error).status(500);
+      res.send(error).status(500);
     }
-
-});
+  }
+);
 
 /*
 function put(url, data) {
