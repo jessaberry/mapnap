@@ -120,6 +120,7 @@ export default function Trip() {
                 <TripExpViewer
                   trip={trip}
                   getExperiences={getExperiences}
+                  handleDeleteExperience={null}
                 />
               )}
             </div>
