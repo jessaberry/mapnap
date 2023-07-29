@@ -7,7 +7,7 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { expensesCollectionName } from "../common/environments-and-constants.mjs";
 
-import defaultExpenses from "../data/expenses.json" assert {type: "json" };
+import defaultExpenses from "../data/expenses.json" assert { type: "json" };
 
 router.get("/", async (req, res) => {
   let collection = await db.collection(expensesCollectionName);

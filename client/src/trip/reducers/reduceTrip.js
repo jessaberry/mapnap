@@ -70,6 +70,12 @@ export const tripSlice = createSlice({
   },
 });
 
-export const { addTrip, deleteTrip, updateTrip, getTrips, getTripsByUserId, getPOI } =
-  tripSlice.actions;
+export const {
+  addTrip,
+  deleteTrip,
+  updateTrip,
+  getTrips,
+  getTripsByUserId,
+  getPOI,
+} = tripSlice.actions;
 export default tripSlice.reducer;

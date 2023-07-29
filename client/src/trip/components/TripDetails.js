@@ -1,7 +1,9 @@
 const TripDetails = ({ trip, poi }) => {
   const image = trip.CoverMediaFileId; // TODO: replace this with Eric's ID
   const getPOI = (poiID) => {
-    const pointOfInterest = poi.find((item) => item.PointOfInterestId === poiID);
+    const pointOfInterest = poi.find(
+      (item) => item.PointOfInterestId === poiID
+    );
     return pointOfInterest;
   };
   return (

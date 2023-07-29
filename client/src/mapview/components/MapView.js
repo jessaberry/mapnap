@@ -38,7 +38,10 @@ export default function Map() {
             trips.map((trip) => (
               <Marker
                 key={trip.TripId}
-                position={[getPOI(trip.PointOfInterestId, "lat"), getPOI(trip.PointOfInterestId, "long")]}
+                position={[
+                  getPOI(trip.PointOfInterestId, "lat"),
+                  getPOI(trip.PointOfInterestId, "long"),
+                ]}
               >
                 <Popup>
                   <Link to={"/"}>{trip.Title}</Link>
