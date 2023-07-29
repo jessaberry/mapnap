@@ -8,9 +8,10 @@ import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import {ObjectId} from "mongodb";
 import {pointsOfInterestCollectionName} from "../common/environments-and-constants.mjs";
 
-import initialPointOfInterestTypes from "../data/poitype.json" assert {type: "json"};
-import initialPointsOfInterest from "../data/poi.json" assert {type: "json"};
-
+// import initialPointOfInterestTypes from "../data/poitype.json" assert {type: "json"};
+// import initialPointsOfInterest from "../data/poi.json" assert {type: "json"};
+import initialPointOfInterestTypes from "../data/poitype.json";
+import initialPointsOfInterest from "../data/poi.json";
 
 router.get("/reset-all/", async (req, res) => {
   try {
