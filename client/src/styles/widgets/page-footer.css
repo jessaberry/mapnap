@@ -19,6 +19,11 @@
   line-height: 2.4rem;
 }
 
+.page-footer .socials button {
+  width: auto;
+  margin: 5px 20px;
+}
+
 .page-footer-grid {
   display: grid;
   grid-template-rows: auto auto;

@@ -44,7 +44,7 @@ export const App = () => {
               <Route path="/memory" element={<Memory /> } />
               <Route path="/map" element={<AuthenticationGuard component={MapView} /> } />
               <Route path="/budget" element={<AuthenticationGuard component={Budget} />} />
-              <Route path="/dashboard" element={<AuthenticationGuard component={Dashboard} /> } />
+              <Route path="/dashboard" element={<AuthenticationGuard component={Trip} /> } />
               <Route path="/admin" element={<AuthenticationGuard component={AdminPage} /> } />
               <Route path="/profile" element={<AuthenticationGuard component={ProfilePage} />} />
               <Route path="/media-file" element={<AuthenticationGuard component={MediaFileUploaderTest} />} />
