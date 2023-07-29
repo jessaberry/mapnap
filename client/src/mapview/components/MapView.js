@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
@@ -21,7 +22,8 @@ const attrib =
 const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
-  let trips = []; /* list of trips should be here */
+  const trips = useSelector((state) => state.trip.trips);
+  // const poi = useSelector ((state) => state.trip.poi);
   return (
     <PageLayout>
       <div>
@@ -29,11 +31,13 @@ export default function Map() {
         <MapContainer center={[35.676, 139.65]} zoom={2} scrollWheelZoom={true}>
           {" "}
           <TileLayer attribution={attrib} url={url}></TileLayer>
-          {this.trips.length > 0 &&  this.trips.map((trip) => (
-            <Marker position={[trip.coordinates[0], trip.coordinates[1]]}> {/* this assumes that the coordinates are in [x, y] array form*/}
+          {trips.length > 0 &&  trips.map((trip) => (
+            // <Marker position={[poi.Latitude, poi.Longitude]}> {/* this assumes that the coordinates are in [x, y] array form*/}
+            <Marker position={[69.69, 136]}> {/* this assumes that the coordinates are in [x, y] array form*/}
             <Popup>
-              {trip.description} {'\n'} {/* assumes that trip's description is under description... */}
-              <Link to={"/"}>{trip.id}</Link> {/* assumes trip.id si the link itself.... */}
+              <Link to={"/"}>{trip.Title}</Link> {/* assumes trip.id si the link itself.... */}
+              <br></br>
+              {trip.Description} {'\n'} {/* assumes that trip's description is under description... */}
             </Popup>
           </Marker>
            ))
