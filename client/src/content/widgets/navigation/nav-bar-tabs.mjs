@@ -14,7 +14,6 @@ export const NavBarTabs = () => {
           <NavBarTab path="/dashboard" label="Dashboard" />
           <NavBarTab path="/map" label="Map" />
           <NavBarTab path="/budget" label="Budget" />
-          <NavBarTab path="/trip" label="TRIP" />
           <NavBarTab path="/experience" label="EXPERIENCE" />
           <NavBarTab path="/memory" label="MEMORY" />
         </>
