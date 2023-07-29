@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:4999/";
+axios.defaults.baseURL = "https://mapnap-backend.onrender.com/";
 
 const tripManager = {
   getTrips: async () => {
