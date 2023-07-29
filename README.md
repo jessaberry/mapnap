@@ -1,10 +1,10 @@
-# Lorem Ipsum (Application to be Named)
+# MAPNAP
 
 ### Project description:
 
 [//]: # "Mapnap is a mobile app designed for anyone looking to manage a busy schedule. It is designed to manage daily routines and notify users on time-based and location-based events in response to stored user data. Location and time triggers, settings, associated events, and usage data will be stored in Mapnap's database. Additional features (depending on time) include theme support, snoozing options, and social media integration."
 
-**lorem ipsum** is a website designed for travel lovers to plan and organize their itineraries and travel memories.
+**MAPNAP** is a website designed for travel lovers to plan and organize their itineraries and travel memories.
 The users can plan and organize their upcoming trips in map or calendar view, and, during or after the trip, add media files to create a memory album.
 The users can then share their trip with their friends over the social media.
 
@@ -20,17 +20,17 @@ The users can then share their trip with their friends over the social media.
 #### Standard requirements
 
 1. The application should be able to show the itinerary and memories in calendar view and a map view
-2. The application should be able search for Point of Interest (POI) by name (using Google Place API or similar API services)
-3. The application should automatically extract metadata in the media files (e.g., exif, etc.) and during the media import process
-4. The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
-5. The application could allow users to set itinerary, experience, and memory to private
+2. The application should automatically extract metadata in the media files (e.g., exif, etc.) and during the media import process
+3. The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
+4. The application should allow users to set itinerary, experience, and memory to private
+5. The application should allow users to track and provide analytics such as expenses by itinerary or by experience
 
 #### Stretch requirements
 
-1. The application could allow users to track and provide analytics such as expenses by itinerary or by experience
-2. The application could allow users to query and save transportation details between the location of experiences
-3. The application should provide location-aware weather forecast information for upcoming experiences
-4. The application should allow the users to add and confirm other users as a friend who can be added as a participant in itineraries and experiences
+1. The application could allow users to query and save transportation details between the location of experiences
+2. The application could be able search for Point of Interest (POI) by name (using Google Place API or similar API services)
+3. The application could provide location-aware weather forecast information for upcoming experiences
+4. The application could allow the users to add and confirm other users as a friend who can be added as a participant in itineraries and experiences
 
 ### Task breakdown:
 
