@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 import "./common/environments-and-constants.mjs";
 
-const allowedOrigins = ["http://localhost:3999"];
+const allowedOrigins = ["http://localhost:3999", "https://mapnap.onrender.com"];
 
 import indexRouter from "./routes/index.mjs";
 import mediaFilesRouter from "./routes/media-files.mjs";
