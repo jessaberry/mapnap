@@ -1,7 +1,8 @@
 [
   {
-    "ExperienceId": 1,
-    "TripId": 1,
+    "ExperienceId": "1",
+    "TripId": "1",
+    "Cost": 1.74,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 1,
     "EndingPointOfInterestId": 1,
@@ -19,8 +20,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 2,
-    "TripId": 1,
+    "ExperienceId": "2",
+    "TripId": "1",
+    "Cost": 23.63,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 6,
     "EndingPointOfInterestId": 6,
@@ -38,8 +40,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 3,
-    "TripId": 1,
+    "ExperienceId": "3",
+    "TripId": "1",
+    "Cost": 1000.32,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 11,
     "EndingPointOfInterestId": 11,
@@ -57,8 +60,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 4,
-    "TripId": 1,
+    "ExperienceId": "4",
+    "TripId": "1",
+    "Cost": 3.01,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 6,
     "EndingPointOfInterestId": 6,
@@ -76,8 +80,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 4,
-    "TripId": 2,
+    "ExperienceId": "4",
+    "TripId": "2",
+    "Cost": 2,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 6,
     "EndingPointOfInterestId": 6,
@@ -95,8 +100,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 5,
-    "TripId": 1,
+    "ExperienceId": "5",
+    "TripId": "1",
+    "Cost": 70.53,
     "ExperienceTypeId": 1,
     "StartingPointOfInterestId": 12,
     "EndingPointOfInterestId": 12,
@@ -114,8 +120,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 6,
-    "TripId": 1,
+    "ExperienceId": "6",
+    "TripId": "1",
+    "Cost": 600.0,
     "ExperienceTypeId": 2,
     "StartingPointOfInterestId": 13,
     "EndingPointOfInterestId": 13,
@@ -133,8 +140,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 7,
-    "TripId": 1,
+    "ExperienceId": "7",
+    "TripId": "1",
+    "Cost": 4.0,
     "ExperienceTypeId": 2,
     "StartingPointOfInterestId": 13,
     "EndingPointOfInterestId": 13,
@@ -152,8 +160,9 @@
     "IsDeleted": false
   },
   {
-    "ExperienceId": 8,
-    "TripId": 1,
+    "ExperienceId": "8",
+    "TripId": "1",
+    "Cost": 72.0,
     "ExperienceTypeId": 4,
     "StartingPointOfInterestId": 17,
     "EndingPointOfInterestId": 16,

@@ -8,8 +8,7 @@ import { styled } from "@mui/material/styles";
 import "./memory.css";
 import store from "../../reducers/store";
 import { useEffect } from "react";
-import {PageLayout} from "../../content/template/page-layout.mjs";
-
+import { PageLayout } from "../../content/template/page-layout.mjs";
 
 export default function Memory(props, children) {
   const memories = useSelector((state) => state.mem.memories);
@@ -34,25 +33,25 @@ export default function Memory(props, children) {
 
   return (
     <PageLayout>
-    <div>
-<h1>Memories</h1>
+      <div>
+        <h1>Memories</h1>
 
-      <Box sx={{ width: "100%", minHeight: 829 }}>
-        <Masonry colunn={{ xs: 3, sm: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
-          {memories.map((memory, index) => (
-            <div key={index}>
-              <img
-                className="masonryImage"
-                src={memory.url}
-                alt={memory.title}
-                loading="lazy"
-              />
-              <Typography>{memory.title}</Typography>
-            </div>
-          ))}
-        </Masonry>
-      </Box>
-    </div>
+        <Box sx={{ width: "100%", minHeight: 829 }}>
+          <Masonry colunn={{ xs: 3, sm: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
+            {memories.map((memory, index) => (
+              <div key={index}>
+                <img
+                  className="masonryImage"
+                  src={memory.url}
+                  alt={memory.title}
+                  loading="lazy"
+                />
+                <Typography>{memory.title}</Typography>
+              </div>
+            ))}
+          </Masonry>
+        </Box>
+      </div>
     </PageLayout>
   );
 }

@@ -7,7 +7,7 @@ export const ProfilePage = () => {
   const { user } = useAuth0();
 
   if (!user) {
-    console.log('not user');
+    console.log("not user");
     return null;
   }
   console.log(user.sub);
@@ -22,8 +22,7 @@ export const ProfilePage = () => {
           <p id="page-description">
             <span>
               You can use the <strong>ID Token</strong> to get the profile
-              information of an authenticated user.
-              User_Id: {user.sub}
+              information of an authenticated user. User_Id: {user.sub}
             </span>
             <span>
               <strong>Only authenticated users can access this page.</strong>

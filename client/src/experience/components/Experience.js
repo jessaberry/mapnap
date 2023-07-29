@@ -1,33 +1,31 @@
 import React from "react";
-import Navbar from "../../_toRemove/Navbar";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExperienceHandler from "./ExperienceHandler";
-import { addExperience } from "../reducers/reducer";
-import { PageLayout} from "../../content/template/page-layout.mjs";
+import { PageLayout } from "../../content/template/page-layout.mjs";
+import { addExperienceAsync } from "../reducers/thunksExperience";
 
 export default function Experience() {
   const location = useLocation();
-  const tripUUID = location.state?.tripUUID;
+  const trip = location.state?.tripUUID;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleAddExperience = (exp) => {
-    dispatch(addExperience(exp));
-    navigate("/trip");
+    dispatch(addExperienceAsync(exp));
+    navigate("/trips");
   };
 
   return (
     <PageLayout>
-    <div>
-
-      <h1>Add an Experience</h1>
-      <ExperienceHandler
-        tripUUID={tripUUID}
-        handleAddExperience={handleAddExperience}
-      />
-    </div>
+      <div>
+        <h1>Add an Experience</h1>
+        <ExperienceHandler
+          trip={trip}
+          handleAddExperience={handleAddExperience}
+        />
+      </div>
     </PageLayout>
   );
 }

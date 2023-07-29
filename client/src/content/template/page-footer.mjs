@@ -13,7 +13,6 @@ export const PageFooter = () => {
               &copy; Team MapNap 2023.
             </p>
             <SocialButtons />
-
           </div>
         </div>
       </div>

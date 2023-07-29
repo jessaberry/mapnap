@@ -1,12 +1,22 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:4999/';
+axios.defaults.baseURL = "http://localhost:4999/";
 
 const tripManager = {
   getTrips: async () => {
-    const res = await axios.get("/trips");
-    console.log(res.data)
+    const res = await axios.get("/trips/get-all/");
+    console.log(res.data);
     return res.data;
+  },
+
+  getTripsByUserId: async (userID) => {
+    try {
+      const res = await axios.get(`/trips/by-user-id/${userID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   },
 
   addTrip: async (trip) => {

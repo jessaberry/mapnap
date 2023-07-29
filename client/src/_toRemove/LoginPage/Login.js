@@ -31,7 +31,7 @@ const LoginPage = () => {
       <h1>Login</h1>
       <div>
         <label>Email:</label>
-        
+
         <input type="email" value={email} onChange={handleEmailChange} />
       </div>
       <div>

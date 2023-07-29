@@ -5,7 +5,6 @@ import { NavBarTab } from "./nav-bar-tab.mjs";
 export const NavBarTabs = () => {
   const { isAuthenticated } = useAuth0();
 
-
   return (
     <div className="nav-bar__tabs">
       <NavBarTab path="/" label="Home" />

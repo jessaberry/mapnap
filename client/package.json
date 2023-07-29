@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^13.5.0",
     "api-query-params": "^5.4.0",
     "axios": "^1.4.0",
+    "bson": "^5.4.0",
     "chart.js": "^4.3.0",
     "cross-env": "^7.0.3",
     "crypto": "^1.0.1",

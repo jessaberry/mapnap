@@ -9,6 +9,6 @@ export default configureStore({
     exp: expReducer,
     mem: memoryReducer,
     trip: tripReducer,
-    trips: tripsReducer
+    trips: tripsReducer,
   },
 });

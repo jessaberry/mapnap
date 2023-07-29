@@ -1,103 +1,103 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .trip-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .trip-title {
-    font-size: 24px;
-    margin-top: 0;
+  font-size: 24px;
+  margin-top: 0;
 }
 
 .trip-info {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .trip-description {
-    font-size: 16px;
-    margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .poi-info {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .poi-starting,
 .poi-ending {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .trip-countries,
 .trip-expenses {
-    font-size: 14px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .experience-list {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .experience-heading {
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .experience-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .experience-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    flex: 1 0 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  flex: 1 0 200px;
 }
 
 .experience-title {
-    font-size: 18px;
-    margin-top: 0;
+  font-size: 18px;
+  margin-top: 0;
 }
 
 .experience-id,
 .experience-activity {
-    font-size: 14px;
-    margin-bottom: 5px;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .experience-dates,
 .experience-address,
 .experience-description,
 .experience-cost {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .delete-experience-button,
 .add-experience-button,
 .delete-trip-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .delete-experience-button:hover,
 .add-experience-button:hover,
 .delete-trip-button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }

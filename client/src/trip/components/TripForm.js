@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import initialTrip from "../reducers/initialTrip";
+import { TextField } from "@mui/material";
 
 const TripForm = ({ handleAddTrip }) => {
   const [data, setData] = useState(initialTrip);
@@ -20,42 +21,42 @@ const TripForm = ({ handleAddTrip }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <TextField
         type="text"
         name="Title"
         value={data.Title}
         onChange={handleChange}
         placeholder="Enter trip name"
       />
-      <input
+      <TextField
         type="text"
         name="Description"
         value={data.Description}
         onChange={handleChange}
         placeholder="Enter trip description"
       />
-      <input
+      <TextField
         type="number"
         name="StartingPointOfInterestId"
         value={data.StartingPointOfInterestId}
         onChange={handleChange}
         placeholder="Enter starting point"
       />
-      <input
+      <TextField
         type="number"
         name="EndingPointOfInterestId"
         value={data.EndingPointOfInterestId}
         onChange={handleChange}
         placeholder="Enter ending point"
       />
-      <input
+      <TextField
         type="text"
         name="Countries"
         value={data.Countries}
         onChange={handleChange}
         placeholder="Enter country"
       />
-      <input
+      <TextField
         type="text"
         name="CoverMediaFileId"
         value={data.CoverMediaFileId}

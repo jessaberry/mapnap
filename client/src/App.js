@@ -10,14 +10,13 @@ import Trips from "./trips/components/trips.mjs";
 import Dashboard from "./Dashboard/components/Dashboard";
 import Budget from "./budget/BudgetDashboard";
 import { Provider } from "react-redux";
-
 import MapView from "./mapview/components/MapView";
 import { AdminPage } from "./content/pages/admin-page";
 import { CallbackPage } from "./content/pages/callback-page";
 import { HomePage } from "./content/pages/home-page";
 import { NotFoundPage } from "./content/pages/not-found-page";
 import { ProfilePage } from "./content/pages/profile-page";
-import { PageLoader } from "./content/widgets/page-loader.mjs"
+import { PageLoader } from "./content/widgets/page-loader.mjs";
 import { AuthenticationGuard } from "./helpers/Auth0/authentication-guard";
 import MediaFileUploaderTest from "./helpers/media-files/media-file-uploader-test.mjs";
 
@@ -58,5 +57,4 @@ export const App = () => {
         </div>
     </Provider>
   );
-}
-
+};

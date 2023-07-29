@@ -1,83 +1,83 @@
 .profile-grid {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    /* responsive */
+  /* responsive */
 
-    margin-top: 48px;
+  margin-top: 48px;
 }
 
 .profile__header {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
 }
 
 .profile__avatar {
-    border: solid 2px var(--sauder-blue);
-    border-radius: 50%;
+  border: solid 2px var(--sauder-blue);
+  border-radius: 50%;
 
-    /* responsive */
+  /* responsive */
 
-    height: 80px;
-    width: 80px;
+  height: 80px;
+  width: 80px;
 }
 
 .nav-bar .profile__avatar {
-    border: solid 2px var(--sauder-blue);
-    border-radius: 50%;
+  border: solid 2px var(--sauder-blue);
+  border-radius: 50%;
 
-    /* responsive */
+  /* responsive */
 
-    height: 80%;
-    width: 80%;
-    max-height: 60px;
-    max-width: 60px;
-    margin: auto 0 auto 30px;
+  height: 80%;
+  width: 80%;
+  max-height: 60px;
+  max-width: 60px;
+  margin: auto 0 auto 30px;
 }
 
 .profile__headline {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .profile__title {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 
-    color: var(--white);
+  color: var(--white);
 }
 
 .profile__details {
-    /* responsive */
+  /* responsive */
 
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 @media only screen and (max-width: 480px) {
-    .profile-grid {
-        margin-top: 2.4rem;
-    }
+  .profile-grid {
+    margin-top: 2.4rem;
+  }
 
-    .profile__avatar {
-        height: 5.6rem;
-        width: 5.6rem;
+  .profile__avatar {
+    height: 5.6rem;
+    width: 5.6rem;
 
-        border-radius: 50%;
+    border-radius: 50%;
 
-        border: solid 0.13rem var(--aqua);
-    }
+    border: solid 0.13rem var(--aqua);
+  }
 
-    .profile__title {
-        font-size: 1.6rem;
-    }
+  .profile__title {
+    font-size: 1.6rem;
+  }
 
-    .profile__description {
-        font-size: 1.3rem;
-    }
+  .profile__description {
+    font-size: 1.3rem;
+  }
 
-    .profile__details {
-        margin-top: 1.6rem;
-    }
+  .profile__details {
+    margin-top: 1.6rem;
+  }
 }

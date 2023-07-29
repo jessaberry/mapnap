@@ -1,9 +1,8 @@
-import {configureStore} from "@reduxjs/toolkit";
-import productReducer from '../trips/trip-reducer.mjs';
+import { configureStore } from "@reduxjs/toolkit";
+import productReducer from "../trips/trip-reducer.mjs";
 
 export const store = configureStore({
-        reducer: {
-            tripR
-        },
-    }
-)
+  reducer: {
+    tripR,
+  },
+});
