@@ -163,7 +163,7 @@ export default function MediaFileUploader(props) {
             destination={{ url: uploadDestination }}
         >
                 <UploadButton>Select File to upload</UploadButton>
-            <p>Uploding for user {props.userId} </p>
+            <p>Uploading for user {props.userId} </p>
                 <br />
                 <UploadPreview
                     PreviewComponent={ItemPreviewWithCrop}

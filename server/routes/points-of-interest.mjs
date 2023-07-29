@@ -6,7 +6,7 @@ const router = express.Router();
 import db from "../db/conn.mjs";
 import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import {ObjectId} from "mongodb";
-import {pointsOfInterestCollectionName, tripsCollectionName} from "../common/environments-and-constants.mjs";
+import {pointsOfInterestCollectionName} from "../common/environments-and-constants.mjs";
 
 import initialPointOfInterestTypes from "../data/poitype.json" assert {type: "json"};
 import initialPointsOfInterest from "../data/poi.json" assert {type: "json"};
