@@ -24,14 +24,15 @@ router.get("/reset-all/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-        let collection = await db.collection(pointsOfInterestCollectionName);
-        let results = await collection
-            .find({})
-            .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-            .toArray();
+    let collection = await db.collection(pointsOfInterestCollectionName);
+    console.log("collection:",collection);
+    let results = await collection
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
 
-        res.send(results).status(200);
-    });
+    res.send(results).status(200);
+  });
 
 router.put(
     "/",

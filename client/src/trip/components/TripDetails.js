@@ -1,5 +1,9 @@
-const TripDetails = ({ trip }) => {
+const TripDetails = ({ trip, poi }) => {
   const image = trip.CoverMediaFileId; // TODO: replace this with Eric's ID
+  const getPOI = (poiID) => {
+    const pointOfInterest = poi.find((item) => item.PointOfInterestId === poiID);
+    return pointOfInterest;
+  };
   return (
     <div>
       <p> </p>
@@ -10,11 +14,14 @@ const TripDetails = ({ trip }) => {
           style={{ width: "200px", height: "auto" }}
         />
       </a>
-      <p>Trip ID: {trip.TripId}</p>
-      <p>User ID: {trip.UserId}</p>
-      <p>Starting Point of Interest ID: {trip.StartingPointOfInterestId}</p>
-      <p>Ending Point of Interest ID: {trip.EndingPointOfInterestId}</p>
-      <p>Countries: {trip.Countries}</p>
+      <p> </p>
+      {/* <p>Trip ID: {trip.TripId}</p>
+      <p>User ID: {trip.UserId}</p> */}
+      <p>Notes: {trip.Description}</p>
+      <p>Location: {getPOI(trip.StartingPointOfInterestId).Title}</p>
+      <p>{getPOI(trip.StartingPointOfInterestId).Description}</p>
+      {/* <p>Ending location:   {getTitle(trip.EndingPointOfInterestId)}</p> */}
+      <p>Country: {trip.Countries}</p>
     </div>
   );
 };

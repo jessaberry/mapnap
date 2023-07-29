@@ -37,3 +37,10 @@ export const filterTripAsync = createAsyncThunk(
     return await TripManager.filterTrip(userID);
   }
 );
+
+export const getPOIAsync = createAsyncThunk(
+  actions.GET_POI,
+  async () => {
+    return await TripManager.getPOI();
+  }
+);

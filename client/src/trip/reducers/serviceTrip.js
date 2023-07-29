@@ -48,6 +48,16 @@ const tripManager = {
       throw error;
     }
   },
+
+  getPOI: async () => {
+    try {
+      const res = await axios.get("/points-of-interest");
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
 };
 
 export default tripManager;

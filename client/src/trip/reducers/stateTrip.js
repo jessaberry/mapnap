@@ -10,6 +10,7 @@ export const INITIAL_STATE = {
   poi: [],
   getTrips: REQUEST_STATE.IDLE,
   getTripsByUserId: REQUEST_STATE.IDLE,
+  getPOI: REQUEST_STATE.IDLE,
   addTrip: REQUEST_STATE.IDLE,
   deleteTrip: REQUEST_STATE.IDLE,
   updateTrip: REQUEST_STATE.IDLE,
@@ -25,4 +26,5 @@ export const actions = {
   DELETE_TRIP: "trips/deleteTrip",
   UPDATE_TRIP: "trips/updateTrip",
   FILTER_TRIP: "trips/filterTrip",
+  GET_POI: "points-of-interest",
 };
