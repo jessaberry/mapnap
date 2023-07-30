@@ -59,7 +59,7 @@ export const App = () => {
               element={<AuthenticationGuard component={Budget} />}
             />
             <Route
-              path="/dashboard"
+              path="/dashboard/*"
               element={<AuthenticationGuard component={Trip} />}
             />
             <Route

@@ -1,11 +1,13 @@
+import countries from "../../point-of-interest/countries";
+
 const TripDetails = ({ trip, poi }) => {
   const image = trip.CoverMediaFileId; // TODO: replace this with Eric's ID
   const getPOI = (poiID) => {
-    const pointOfInterest = poi.find(
-      (item) => item.PointOfInterestId === poiID
-    );
-    return pointOfInterest;
+    return poi.find((item) => item.PointOfInterestId === poiID) || null;
   };
+  const startPOI = getPOI(trip.StartingPointOfInterestId);
+  const country = countries.find((country) => country.code === trip.Countries);
+
   return (
     <div>
       <p> </p>
@@ -18,10 +20,10 @@ const TripDetails = ({ trip, poi }) => {
       </a>
       <p> </p>
       <p>Notes: {trip.Description}</p>
-      <p>Location: {getPOI(trip.StartingPointOfInterestId).Title}</p>
-      <p>{getPOI(trip.StartingPointOfInterestId).Description}</p>
-      {/* <p>Ending location:   {getTitle(trip.EndingPointOfInterestId)}</p> */}
-      <p>Country: {trip.Countries}</p>
+      <p>
+        Location: {country.label} - {startPOI ? startPOI.Title : "N/A"}
+      </p>
+      <p>{startPOI ? startPOI.Description : "N/A"}</p>
     </div>
   );
 };

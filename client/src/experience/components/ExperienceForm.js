@@ -68,6 +68,7 @@ const ExperienceForm = ({ data, handleChange }) => {
       </div>
       <div className="textfield">
         <TextField
+          required
           name="Cost"
           label="Cost"
           placeholder="enter cost"

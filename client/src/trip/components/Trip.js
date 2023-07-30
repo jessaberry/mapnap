@@ -13,12 +13,9 @@ import {
   getExperiencesAsync,
   deleteExperienceAsync,
 } from "../../experience/reducers/thunksExperience";
-import { useNavigate, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TripHandler from "./TripHandler";
-import TripDetails from "./TripDetails";
 import "./styles.css";
-
-import TripExpViewer from "./TripExpViewer";
 
 export default function Trip() {
   const experiences = useSelector((state) => state.exp.experiences);
@@ -82,53 +79,17 @@ export default function Trip() {
       <div>
         <h2>Dashboard</h2>
         <TripHandler
+          trips={trips}
+          publicTrips={publicTrips}
+          poi={poi}
+          visible={visible}
+          getExperiences={getExperiences}
           handleAddTrip={handleAddTrip}
+          handleDeleteTrip={handleDeleteTrip}
           handleAddExperience={handleAddExperience}
+          handleDeleteExperience={handleDeleteExperience}
+          showTripDetails={showTripDetails}
         />
-        <div className="card-container">
-          {trips.map((trip) => (
-            <div className="trip-item" key={trip.TripId}>
-              <h3 className="trip-title">TRIP - {trip.Title}</h3>
-              <button onClick={() => showTripDetails(trip.TripId)}>
-                {visible === trip.TripId ? "Hide Details" : "View Details"}
-              </button>
-              <button onClick={() => handleAddExperience(trip)}>
-                Add Experience
-              </button>
-              <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
-              {visible === trip.TripId && <TripDetails trip={trip} poi={poi} />}
-              {visible === trip.TripId && (
-                <TripExpViewer
-                  trip={trip}
-                  getExperiences={getExperiences}
-                  handleDeleteExperience={handleDeleteExperience}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <h2>Other people's public trips</h2>
-        <div className="card-container">
-          {publicTrips.map((trip) => (
-            <div className="trip-item" key={trip.TripId}>
-              <h3 className="trip-title">TRIP - {trip.Title}</h3>
-              <button onClick={() => showTripDetails(trip.TripId)}>
-                {visible === trip.TripId ? "Hide Details" : "View Details"}
-              </button>
-              {visible === trip.TripId && <TripDetails trip={trip} poi={poi} />}
-              {visible === trip.TripId && (
-                <TripExpViewer
-                  trip={trip}
-                  getExperiences={getExperiences}
-                  handleDeleteExperience={null}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <Routes>
-          <Route path={`/trips/:tripId`} />
-        </Routes>
       </div>
     </PageLayout>
   );
