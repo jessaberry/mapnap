@@ -7,7 +7,7 @@ import Card from "./card";
 import { useNavigate } from "react-router-dom";
 import PopupForm from "./PopupForm";
 import React, { useState } from "react";
-import { NavBar } from "../../content/widgets/navigation/nav-bar.mjs";
+import { NavBar } from "../../content/widgets/navigation/desktop/nav-bar.mjs";
 import { PageLayout } from "../../content/template/page-layout.mjs";
 
 function Dashboard() {
