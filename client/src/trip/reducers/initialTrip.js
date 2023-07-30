@@ -3,11 +3,11 @@ const initialTrip = {
   // UserId: 1,                                           handled by login
   Title: "",
   Description: "",
-  StartingPointOfInterestId: 1,
-  EndingPointOfInterestId: 1,
+  StartingPointOfInterestId: "",
+  EndingPointOfInterestId: "",
   // StartingLocalDateTime: "2023-04-16T21:50:00.000Z",   handled by earliest experience's date/time
   // EndingDateTime: "2023-05-03T21:55:00.000Z",          handled by latest experience's date/time
-  Countries: ["JP"],
+  Countries: "",
   CoverMediaFileId: "",
   // IsPublic: true,                                      handled by visibility bar when sharing
   // CreatedAt: "2023-05-01T18:25:43.511Z",               handled by memories
