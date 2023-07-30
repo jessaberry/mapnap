@@ -18,6 +18,16 @@ const tripManager = {
     }
   },
 
+  getTripsByTripId: async (tripID) => {
+    try {
+      const res = await axios.get(`/trips/by-trip-id/${tripID}`);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+
   getOtherPublicTrips: async (userID) => {
     try {
       const res = await axios.get(`/trips/get-other-public-trips/${userID}`);

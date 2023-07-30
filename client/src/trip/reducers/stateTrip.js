@@ -6,6 +6,7 @@ export const REQUEST_STATE = {
 };
 
 export const INITIAL_STATE = {
+  trip: null,
   trips: [],
   public: [],
   poi: [],
@@ -21,6 +22,7 @@ export const INITIAL_STATE = {
 };
 
 export const actions = {
+  GET_TRIP_BY_TRIP_ID: "trips/by-trip-id",
   GET_TRIPS: "trips/get-all",
   GET_TRIPS_BY_USER_ID: "trips/by-user-id",
   GET_OTHER_PUBLIC_TRIPS: "trips/get-other-public-trips",
