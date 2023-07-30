@@ -2,7 +2,7 @@ import React from "react";
 import { NavBarBrand } from "./nav-bar-brand.mjs";
 import { NavBarButtons } from "./nav-bar-buttons.mjs";
 import { NavBarTabs } from "./nav-bar-tabs.mjs";
-import { ProfilePic } from "../profile-pic.mjs";
+import { ProfilePic } from "../../profile-pic.mjs";
 
 export const NavBar = () => {
   return (
