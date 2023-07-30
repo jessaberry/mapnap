@@ -1,4 +1,4 @@
-import countries from "../../point-of-interest/countries";
+import countries from "../../helpers/select-country/countries.js";
 
 const TripDetails = ({ trip, poi }) => {
   const image = trip.CoverMediaFileId; // TODO: replace this with Eric's ID
