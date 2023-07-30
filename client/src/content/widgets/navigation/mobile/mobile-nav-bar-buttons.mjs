@@ -5,21 +5,21 @@ import { LogoutButton } from "../../buttons/logout-button.mjs";
 import { SignupButton } from "../../buttons/signup-button.mjs";
 
 export const MobileNavBarButtons = () => {
-    const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
-    return (
-        <div className="mobile-nav-bar__buttons">
-            {!isAuthenticated && (
-                <>
-                    <SignupButton />
-                    <LoginButton />
-                </>
-            )}
-            {isAuthenticated && (
-                <>
-                    <LogoutButton />
-                </>
-            )}
-        </div>
-    );
+  return (
+    <div className="mobile-nav-bar__buttons">
+      {!isAuthenticated && (
+        <>
+          <SignupButton />
+          <LoginButton />
+        </>
+      )}
+      {isAuthenticated && (
+        <>
+          <LogoutButton />
+        </>
+      )}
+    </div>
+  );
 };

@@ -2,10 +2,12 @@ import countries from "../../point-of-interest/countries";
 
 const TripDetails = ({ trip, poi }) => {
   const image = trip.CoverMediaFileId; // TODO: replace this with Eric's ID
-  const getPOI = (poiID) => { return poi.find((item) => item.PointOfInterestId === poiID) || null; };
+  const getPOI = (poiID) => {
+    return poi.find((item) => item.PointOfInterestId === poiID) || null;
+  };
   const startPOI = getPOI(trip.StartingPointOfInterestId);
   // const endPOI = getPOI(trip.EndingPointOfInterestId);
-  
+
   return (
     <div>
       <p> </p>

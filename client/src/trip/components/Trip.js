@@ -87,7 +87,13 @@ export default function Trip() {
         <div className="card-container">
           {trips.map((trip) => (
             <div className="trip-item" key={trip.TripId}>
-              <h3 className="trip-title">TRIP - {trip.Title} <img src={`https://flaglog.com/codes/official-ratio-120px/${trip.Countries}.png`} style={{ width: "40px"}} /></h3>
+              <h3 className="trip-title">
+                TRIP - {trip.Title}{" "}
+                <img
+                  src={`https://flaglog.com/codes/official-ratio-120px/${trip.Countries}.png`}
+                  style={{ width: "40px" }}
+                />
+              </h3>
               <button onClick={() => showTripDetails(trip.TripId)}>
                 {visible === trip.TripId ? "Hide Details" : "View Details"}
               </button>
@@ -110,7 +116,13 @@ export default function Trip() {
         <div className="card-container">
           {publicTrips.map((trip) => (
             <div className="trip-item" key={trip.TripId}>
-              <h3 className="trip-title">TRIP - {trip.Title} <img src={`https://flaglog.com/codes/official-ratio-120px/${trip.Countries}.png`} style={{ width: "40px"}} /></h3>
+              <h3 className="trip-title">
+                TRIP - {trip.Title}{" "}
+                <img
+                  src={`https://flaglog.com/codes/official-ratio-120px/${trip.Countries}.png`}
+                  style={{ width: "40px" }}
+                />
+              </h3>
               <button onClick={() => showTripDetails(trip.TripId)}>
                 {visible === trip.TripId ? "Hide Details" : "View Details"}
               </button>
