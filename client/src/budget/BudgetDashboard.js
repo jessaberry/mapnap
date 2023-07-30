@@ -9,7 +9,9 @@ import { PageLayout } from "../content/template/page-layout.mjs";
 
 export default function BudgetDashboard() {
   const trips = useSelector((state) => state.trip.trips);
-  const experiences = useSelector((state) => state.exp.experiences);
+  const experiences = useSelector((state) => state.exp.experiences).filter(
+    (exp) => trips.some((trip) => trip.TripId === exp.TripId)
+  );
   const expenses = experiences.map((experience) => ({
     ExperienceId: experience.ExperienceId,
     Cost: Number(experience.Cost),
