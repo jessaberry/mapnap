@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import initialTrip from "../reducers/initialTrip";
 import { TextField } from "@mui/material";
+import SelectCountry from "./TripFormCountry";
 
 const TripForm = ({ handleAddTrip }) => {
   const [data, setData] = useState(initialTrip);
@@ -9,6 +10,12 @@ const TripForm = ({ handleAddTrip }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((data) => ({ ...data, [name]: value }));
+  };
+
+  const handleCountrySelect = (country) => {
+    console.log(country);
+    console.log(country.code);
+    setData((data) => ({ ...data, Countries: country.code }));
   };
 
   const handleSubmit = (e) => {
@@ -49,11 +56,10 @@ const TripForm = ({ handleAddTrip }) => {
         onChange={handleChange}
         placeholder="Enter ending point"
       />
-      <TextField
-        type="text"
+      <SelectCountry
         name="Countries"
         value={data.Countries}
-        onChange={handleChange}
+        onChange={handleCountrySelect}
         placeholder="Enter country"
       />
       <TextField
