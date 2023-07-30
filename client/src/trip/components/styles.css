@@ -101,3 +101,7 @@
 .delete-trip-button:hover {
   background-color: #45a049;
 }
+
+img.countryFlag {
+  border: #cccccc 1px solid
+}

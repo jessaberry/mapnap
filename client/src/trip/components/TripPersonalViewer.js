@@ -17,7 +17,7 @@ const TripPersonalViewer = ({
         <div className="trip-item" key={trip.TripId}>
           <h3 className="trip-title">
             TRIP - {trip.Title}{" "}
-            <img
+            <img className="countryFlag"
               src={`https://flaglog.com/codes/official-ratio-120px/${trip.Countries}.png`}
               style={{ width: "40px" }}
               alt="country flag"
