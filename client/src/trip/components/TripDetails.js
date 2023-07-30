@@ -6,7 +6,7 @@ const TripDetails = ({ trip, poi }) => {
     return poi.find((item) => item.PointOfInterestId === poiID) || null;
   };
   const startPOI = getPOI(trip.StartingPointOfInterestId);
-  // const endPOI = getPOI(trip.EndingPointOfInterestId);
+  const country = countries.find((country) => country.code === trip.Countries);
 
   return (
     <div>
@@ -20,9 +20,10 @@ const TripDetails = ({ trip, poi }) => {
       </a>
       <p> </p>
       <p>Notes: {trip.Description}</p>
-      <p>Location: {startPOI ? startPOI.Title : "N/A"}</p>
+      <p>
+        Location: {country.label} - {startPOI ? startPOI.Title : "N/A"}
+      </p>
       <p>{startPOI ? startPOI.Description : "N/A"}</p>
-      {/* <p>Ending location:   {getTitle(trip.EndingPointOfInterestId)}</p> */}
     </div>
   );
 };

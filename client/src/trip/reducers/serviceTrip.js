@@ -5,7 +5,6 @@ axios.defaults.baseURL = "https://mapnap-backend.onrender.com/";
 const tripManager = {
   getTrips: async () => {
     const res = await axios.get("/trips/get-all/");
-    console.log(res.data);
     return res.data;
   },
 
