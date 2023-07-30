@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:4999/";
+axios.defaults.baseURL = process.env.REACT_APP_API_SERVER_URL;
 
 const experienceManager = {
   getExperiences: async () => {
