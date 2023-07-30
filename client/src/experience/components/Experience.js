@@ -14,7 +14,7 @@ export default function Experience() {
 
   const handleAddExperience = (exp) => {
     dispatch(addExperienceAsync(exp));
-    navigate("/trip");
+    navigate("/dashboard");
   };
 
   return (

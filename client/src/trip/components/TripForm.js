@@ -16,7 +16,7 @@ const TripForm = ({ handleAddTrip }) => {
     const tripId = uuidv4();
     const trip = { ...data, TripId: tripId };
     handleAddTrip(trip);
-    setData("");
+    setData(initialTrip);
   };
 
   return (
