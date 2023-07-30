@@ -17,7 +17,7 @@ export default function selectCountry({ value, onChange }) {
       sx={{ width: 300 }}
       options={countries}
       autoHighlight
-      value={value}
+      value={countries.find((country) => country.code === value)}
       onChange={handleCountryChange}
       renderOption={(props, option) => (
         <Box
