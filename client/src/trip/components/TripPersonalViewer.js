@@ -9,6 +9,7 @@ const TripPersonalViewer = ({
   getExperiences,
   handleAddExperience,
   handleDeleteExperience,
+  handleEditTrip,
   handleDeleteTrip,
 }) => {
   return (
@@ -27,10 +28,19 @@ const TripPersonalViewer = ({
           <button onClick={() => showTripDetails(trip.TripId)}>
             {visible === trip.TripId ? "Hide Details" : "View Details"}
           </button>
-          <button onClick={() => handleAddExperience(trip)}>
-            Add Experience
-          </button>
-          <button onClick={() => handleDeleteTrip(trip)}>Delete</button>
+          {visible === trip.TripId && (
+            <button onClick={() => handleEditTrip(trip)}>Edit Trip</button>
+          )}
+          {visible === trip.TripId && (
+            <button onClick={() => handleDeleteTrip(trip)}>Delete Trip</button>
+          )}
+          <div>
+            {visible === trip.TripId && (
+              <button onClick={() => handleAddExperience(trip)}>
+                Add An Experience
+              </button>
+            )}
+          </div>
           {visible === trip.TripId && <TripDetails trip={trip} poi={poi} />}
           {visible === trip.TripId && (
             <TripExpViewer

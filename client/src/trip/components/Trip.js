@@ -8,6 +8,7 @@ import {
   getTripsByUserIdAsync,
   getPOIAsync,
   getOtherPublicTripsAsync,
+  updateTripAsync,
 } from "../reducers/thunksTrip";
 import {
   getExperiencesAsync,
@@ -15,7 +16,6 @@ import {
 } from "../../experience/reducers/thunksExperience";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import { useParams } from "react-router-dom";
 import TripDetails from "./TripDetails";
 import TripForm from "./TripForm";
 import TripPersonalViewer from "./TripPersonalViewer";
@@ -91,8 +91,6 @@ export default function Trip(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const routeParams = useParams();
-  console.log(routeParams);
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -103,13 +101,7 @@ export default function Trip(props) {
   const publicTrips = useSelector((state) => state.trip.public);
   const poi = useSelector((state) => state.trip.poi);
 
-  const handleAddNewTrip = (trip) => {
-    handleAddTrip(trip);
-    setOpen(false);
-  };
   const handleAddTrip = (trip) => {
-    console.log(trip);
-    console.log(userID);
     const tripWithUserID = {
       ...trip,
       UserId: userID,
@@ -120,7 +112,18 @@ export default function Trip(props) {
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTripAsync(trip.TripId)).then(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this trip? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteTripAsync(trip.TripId)).then(() => {
+        dispatch(getTripsByUserIdAsync(userID));
+      });
+    }
+  };
+
+  const handleEditTrip = (trip) => {
+    dispatch(updateTripAsync(trip)).then(() => {
       dispatch(getTripsByUserIdAsync(userID));
     });
   };
@@ -130,9 +133,14 @@ export default function Trip(props) {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperienceAsync(expID)).then(() => {
-      dispatch(getExperiencesAsync());
-    });
+    const confirm = window.confirm(
+      "Are you sure you want to delete this experience? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteExperienceAsync(expID)).then(() => {
+        dispatch(getExperiencesAsync());
+      });
+    }
   };
 
   const showTripDetails = (trip) => {
@@ -204,6 +212,7 @@ export default function Trip(props) {
             showTripDetails={showTripDetails}
             handleAddExperience={handleAddExperience}
             handleDeleteExperience={handleDeleteExperience}
+            handleEditTrip={handleEditTrip}
             handleDeleteTrip={handleDeleteTrip}
           />
           <h2>Other people's public trips</h2>
