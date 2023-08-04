@@ -103,10 +103,6 @@ export default function Trip(props) {
   const publicTrips = useSelector((state) => state.trip.public);
   const poi = useSelector((state) => state.trip.poi);
 
-  const handleAddNewTrip = (trip) => {
-    handleAddTrip(trip);
-    setOpen(false);
-  };
   const handleAddTrip = (trip) => {
     console.log(trip);
     console.log(userID);
@@ -120,9 +116,14 @@ export default function Trip(props) {
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTripAsync(trip.TripId)).then(() => {
-      dispatch(getTripsByUserIdAsync(userID));
-    });
+    const confirm = window.confirm(
+      "Are you sure you want to delete this trip? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteTripAsync(trip.TripId)).then(() => {
+        dispatch(getTripsByUserIdAsync(userID));
+      });
+    }
   };
 
   const handleAddExperience = (tripUUID) => {
@@ -130,9 +131,14 @@ export default function Trip(props) {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperienceAsync(expID)).then(() => {
-      dispatch(getExperiencesAsync());
-    });
+    const confirm = window.confirm(
+      "Are you sure you want to delete this experience? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteExperienceAsync(expID)).then(() => {
+        dispatch(getExperiencesAsync());
+      });
+    }
   };
 
   const showTripDetails = (trip) => {

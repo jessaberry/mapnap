@@ -13,6 +13,13 @@ const TripExpViewer = ({ trip, getExperiences, handleDeleteExperience }) => {
               <button
                 onClick={() => handleDeleteExperience(experience.ExperienceId)}
               >
+                Edit Experience
+              </button>
+            )}
+            {handleDeleteExperience !== null && (
+              <button
+                onClick={() => handleDeleteExperience(experience.ExperienceId)}
+              >
                 Delete Experience
               </button>
             )}
