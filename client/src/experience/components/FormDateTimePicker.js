@@ -1,22 +1,20 @@
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import TextField from "@mui/material/TextField";
 
 const FormDateTimePicker = ({ value, onChange, label }) => {
-  const minDate = label === "dateTo" ? value : undefined;
+  const dateValue = value instanceof Date ? value : new Date(value);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
         label={label}
-        value={value}
-        onChange={onChange}
-        minDate={minDate}
-        textField={(props) => <TextField {...props} />}
+        value={dateValue}
+        onChange={(newValue) =>
+          onChange({ target: { name: label, value: newValue.toISOString() } })
+        }
         sx={{ width: "50%", mb: 2 }}
       />
     </LocalizationProvider>
   );
 };
-
 export default FormDateTimePicker;

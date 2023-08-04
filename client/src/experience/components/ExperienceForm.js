@@ -55,20 +55,18 @@ const ExperienceForm = ({
       </div>
       <div className="custom-date-time">
         <FormDateTimePicker
-          label="dateFrom"
+          label="StartingLocalDateTime"
+          name="StartingLocalDateTime"
           value={data.StartingLocalDateTime}
-          onChange={(value) =>
-            handleChange({ target: { name: "StartingLocalDateTime", value } })
-          }
+          onChange={handleChange}
         />
       </div>
       <div className="custom-date-time">
         <FormDateTimePicker
-          label="dateTo"
+          label="EndingLocalDateTime"
+          name="EndingLocalDateTime"
           value={data.EndingLocalDateTime}
-          onChange={(value) =>
-            handleChange({ target: { name: "EndingLocalDateTime", value } })
-          }
+          onChange={handleChange}
         />
       </div>
       <div className="textfield">
