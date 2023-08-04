@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     exp: expReducer,
     mem: memoryReducer,
-    trip: tripReducer
+    trip: tripReducer,
   },
 });

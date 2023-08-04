@@ -1,9 +1,24 @@
 import FormDateTimePicker from "./FormDateTimePicker";
 import FormSelect from "./FormSelect";
 import TextField from "@mui/material/TextField";
+import { Autocomplete } from "@mui/material";
 import "./Experience.css";
 
-const ExperienceForm = ({ data, handleChange }) => {
+const ExperienceForm = ({
+  data,
+  poi,
+  handleChange,
+  handleStartChange,
+  handleEndChange,
+}) => {
+  const startPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.StartingPointOfInterestId
+    ) || null;
+  const endPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.EndingPointOfInterestId
+    ) || null;
   return (
     <>
       <div className="textfield">
@@ -40,30 +55,50 @@ const ExperienceForm = ({ data, handleChange }) => {
       </div>
       <div className="custom-date-time">
         <FormDateTimePicker
-          label="dateFrom"
+          label="StartingLocalDateTime"
+          name="StartingLocalDateTime"
           value={data.StartingLocalDateTime}
-          onChange={(value) =>
-            handleChange({ target: { name: "StartingLocalDateTime", value } })
-          }
+          onChange={handleChange}
         />
       </div>
       <div className="custom-date-time">
         <FormDateTimePicker
-          label="dateTo"
+          label="EndingLocalDateTime"
+          name="EndingLocalDateTime"
           value={data.EndingLocalDateTime}
-          onChange={(value) =>
-            handleChange({ target: { name: "EndingLocalDateTime", value } })
-          }
+          onChange={handleChange}
         />
       </div>
       <div className="textfield">
-        <TextField
-          name="StartingPointOfInterestId"
-          label="Starting POI"
-          placeholder="1234 Burger St."
-          value={data.StartingPointOfInterestId}
-          onChange={handleChange}
-          sx={{ width: "50%", mb: 2 }}
+        <Autocomplete
+          options={poi}
+          getOptionLabel={(option) => option.Title}
+          value={startPOI}
+          onChange={handleStartChange}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Start Point"
+              placeholder="1234 Burger St."
+              sx={{ width: "50%", mb: 2 }}
+            />
+          )}
+        />
+      </div>
+      <div className="textfield">
+        <Autocomplete
+          options={poi}
+          getOptionLabel={(option) => option.Title}
+          value={endPOI}
+          onChange={handleEndChange}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="End Point"
+              placeholder="1234 Burger St."
+              sx={{ width: "50%", mb: 2 }}
+            />
+          )}
         />
       </div>
       <div className="textfield">

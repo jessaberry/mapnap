@@ -5,7 +5,7 @@ import { TextField } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import SelectCountry from "../../helpers/select-country/select-country.js"
+import SelectCountry from "../../helpers/select-country/select-country.js";
 
 const TripForm = ({ handleAddTrip }) => {
   const [data, setData] = useState({ ...initialTrip, IsPublic: true });
@@ -50,14 +50,14 @@ const TripForm = ({ handleAddTrip }) => {
         onChange={handleChange}
         placeholder="Enter trip description"
       />
-      <TextField
+      {/* <TextField
         type="number"
         name="StartingPointOfInterestId"
         label="Starting Location"
         value={data.StartingPointOfInterestId}
         onChange={handleChange}
         placeholder="Enter starting point"
-      />
+      /> */}
       {/* looking to just have 1 address */}
       {/* <TextField
         type="number"
