@@ -11,7 +11,7 @@ import UploadButton from "@rpldy/upload-button";
 import UploadPreview, { PREVIEW_TYPES } from "@rpldy/upload-preview";
 import cropImage from "./media-file-cropper.mjs";
 import "./styles.css";
-import {getMockSenderEnhancer} from "@rpldy/mock-sender";
+import { getMockSenderEnhancer } from "@rpldy/mock-sender";
 
 const mockSenderEnhancer = getMockSenderEnhancer({ delay: 1500 });
 
@@ -164,8 +164,10 @@ export default function MediaFileUploader(props) {
   const previewMethodsRef = useRef();
 
   return (
-    <Uploady multiple={false} destination={{ url: uploadDestination }}
-             enhancer={mockSenderEnhancer}
+    <Uploady
+      multiple={false}
+      destination={{ url: uploadDestination }}
+      enhancer={mockSenderEnhancer}
     >
       <UploadButton>Select File to upload</UploadButton>
       <p>Uploading for user {props.userId} </p>

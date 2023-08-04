@@ -51,7 +51,13 @@ const ExperienceHandler = ({ trip, poi, handleAddExperience }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <ExperienceForm data={data} poi={poi} handleChange={handleChange} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
+        <ExperienceForm
+          data={data}
+          poi={poi}
+          handleChange={handleChange}
+          handleStartChange={handleStartChange}
+          handleEndChange={handleEndChange}
+        />
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </form>

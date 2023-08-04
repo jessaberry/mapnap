@@ -68,31 +68,31 @@
     "IsDeleted": false
   },
   {
-    "Title":"Sherry and Russell's Wedding",
-    "Description":"2024 - Cancun",
-    "StartingPointOfInterestId":"17",
-    "EndingPointOfInterestId":"17",
-    "Countries":"MX",
-    "CoverMediaFileId":"https://d3qvqlc701gzhm.cloudfront.net/full/22bab5ad4b9aa1027ad00a84ea7493d2c0c5e666d43d3b9413e332bdbd3f1780.jpg",
-    "TripId":"25447ffd-3553-47af-b377-aabd263b4e94",
-    "UserId":"auth0|64b26d7f76736ff2b0a188d4",
-    "createdAt":{"$date":{"$numberLong":"1690614761489"}},
-    "updatedAt":{"$date":{"$numberLong":"1690614761489"}},
-    "isDeleted":false,
-    "IsPublic":true
+    "Title": "Sherry and Russell's Wedding",
+    "Description": "2024 - Cancun",
+    "StartingPointOfInterestId": "17",
+    "EndingPointOfInterestId": "17",
+    "Countries": "MX",
+    "CoverMediaFileId": "https://d3qvqlc701gzhm.cloudfront.net/full/22bab5ad4b9aa1027ad00a84ea7493d2c0c5e666d43d3b9413e332bdbd3f1780.jpg",
+    "TripId": "25447ffd-3553-47af-b377-aabd263b4e94",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
+    "createdAt": { "$date": { "$numberLong": "1690614761489" } },
+    "updatedAt": { "$date": { "$numberLong": "1690614761489" } },
+    "isDeleted": false,
+    "IsPublic": true
   },
-  { 
-    "Title":"Tour de Croissant",
-    "Description":"2018 - France",
-    "StartingPointOfInterestId":"18",
-    "EndingPointOfInterestId":"18",
-    "Countries":"FR",
-    "CoverMediaFileId":"https://media.cntraveler.com/photos/641bafd0428c1c5485f37616/1:1/w_3142,h_3142,c_limit/Dinan-france-GettyImages-1155533043.jpg",
-    "TripId":"012347a8-a433-496b-aea9-c82691aa1447",
-    "UserId":"auth0|64b26d7f76736ff2b0a188d4",
-    "createdAt":{"$date":{"$numberLong":"1690628893893"}},
-    "updatedAt":{"$date":{"$numberLong":"1690628893893"}},
-    "isDeleted":false,
-    "IsPublic":true
+  {
+    "Title": "Tour de Croissant",
+    "Description": "2018 - France",
+    "StartingPointOfInterestId": "18",
+    "EndingPointOfInterestId": "18",
+    "Countries": "FR",
+    "CoverMediaFileId": "https://media.cntraveler.com/photos/641bafd0428c1c5485f37616/1:1/w_3142,h_3142,c_limit/Dinan-france-GettyImages-1155533043.jpg",
+    "TripId": "012347a8-a433-496b-aea9-c82691aa1447",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
+    "createdAt": { "$date": { "$numberLong": "1690628893893" } },
+    "updatedAt": { "$date": { "$numberLong": "1690628893893" } },
+    "isDeleted": false,
+    "IsPublic": true
   }
 ]

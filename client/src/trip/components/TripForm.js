@@ -5,7 +5,7 @@ import { TextField } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import SelectCountry from "../../helpers/select-country/select-country.js"
+import SelectCountry from "../../helpers/select-country/select-country.js";
 
 const TripForm = ({ handleAddTrip }) => {
   const [data, setData] = useState({ ...initialTrip, IsPublic: true });

@@ -39,8 +39,8 @@ export const App = () => {
               element={<AuthenticationGuard component={Trip} />}
             />
             <Route
-                path="/trip-single/:id"
-                element={<AuthenticationGuard component={Trip} />}
+              path="/trip-single/:id"
+              element={<AuthenticationGuard component={Trip} />}
             />
             <Route
               path="/trip-add"

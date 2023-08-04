@@ -4,9 +4,21 @@ import TextField from "@mui/material/TextField";
 import { Autocomplete } from "@mui/material";
 import "./Experience.css";
 
-const ExperienceForm = ({ data, poi, handleChange, handleStartChange, handleEndChange }) => {
-  const startPOI = poi.find((item) => item.PointOfInterestId === data.StartingPointOfInterestId) || null;
-  const endPOI = poi.find((item) => item.PointOfInterestId === data.EndingPointOfInterestId) || null;
+const ExperienceForm = ({
+  data,
+  poi,
+  handleChange,
+  handleStartChange,
+  handleEndChange,
+}) => {
+  const startPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.StartingPointOfInterestId
+    ) || null;
+  const endPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.EndingPointOfInterestId
+    ) || null;
   return (
     <>
       <div className="textfield">
