@@ -8,6 +8,7 @@ import {
   getTripsByUserIdAsync,
   getPOIAsync,
   getOtherPublicTripsAsync,
+  updateTripAsync,
 } from "../reducers/thunksTrip";
 import {
   getExperiencesAsync,
@@ -15,7 +16,6 @@ import {
 } from "../../experience/reducers/thunksExperience";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import { useParams } from "react-router-dom";
 import TripDetails from "./TripDetails";
 import TripForm from "./TripForm";
 import TripPersonalViewer from "./TripPersonalViewer";
@@ -91,8 +91,6 @@ export default function Trip(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const routeParams = useParams();
-  console.log(routeParams);
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -104,8 +102,6 @@ export default function Trip(props) {
   const poi = useSelector((state) => state.trip.poi);
 
   const handleAddTrip = (trip) => {
-    console.log(trip);
-    console.log(userID);
     const tripWithUserID = {
       ...trip,
       UserId: userID,
@@ -124,6 +120,12 @@ export default function Trip(props) {
         dispatch(getTripsByUserIdAsync(userID));
       });
     }
+  };
+
+  const handleEditTrip = (trip) => {
+    dispatch(updateTripAsync(trip)).then(() => {
+      dispatch(getTripsByUserIdAsync(userID));
+    });
   };
 
   const handleAddExperience = (tripUUID) => {
@@ -210,6 +212,7 @@ export default function Trip(props) {
             showTripDetails={showTripDetails}
             handleAddExperience={handleAddExperience}
             handleDeleteExperience={handleDeleteExperience}
+            handleEditTrip={handleEditTrip}
             handleDeleteTrip={handleDeleteTrip}
           />
           <h2>Other people's public trips</h2>
