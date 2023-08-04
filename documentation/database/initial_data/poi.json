@@ -1,7 +1,7 @@
 [
   {
-    "PointOfInterestId": 1,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "1",
+    "PointOfInterestTypeId": "1",
     "Title": "Yatsusankan",
     "AlternateName": null,
     "Description": "",
@@ -16,8 +16,8 @@
     "Longitude": 137.1878209
   },
   {
-    "PointOfInterestId": 2,
-    "PointOfInterestTypeId": 4,
+    "PointOfInterestId": "2",
+    "PointOfInterestTypeId": "4",
     "Title": "Tokyo International Airport",
     "AlternateName": "Haneda Airport",
     "Description": "",
@@ -32,8 +32,8 @@
     "Longitude": 139.7798386
   },
   {
-    "PointOfInterestId": 3,
-    "PointOfInterestTypeId": 4,
+    "PointOfInterestId": "3",
+    "PointOfInterestTypeId": "4",
     "Title": "Narita International Airport (NRT)",
     "AlternateName": "Narita Airport",
     "Description": "",
@@ -48,8 +48,8 @@
     "Longitude": 140.3879893
   },
   {
-    "PointOfInterestId": 4,
-    "PointOfInterestTypeId": 4,
+    "PointOfInterestId": "4",
+    "PointOfInterestTypeId": "4",
     "Title": "Kansai International Airport",
     "AlternateName": "",
     "Description": "",
@@ -64,8 +64,8 @@
     "Longitude": 135.2278136
   },
   {
-    "PointOfInterestId": 5,
-    "PointOfInterestTypeId": 4,
+    "PointOfInterestId": "5",
+    "PointOfInterestTypeId": "4",
     "Title": "Itami Airport",
     "AlternateName": "",
     "Description": "",
@@ -80,8 +80,8 @@
     "Longitude": 135.2278136
   },
   {
-    "PointOfInterestId": 6,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "6",
+    "PointOfInterestTypeId": "1",
     "Title": "Hotel Trusty Osaka Abeno",
     "AlternateName": "",
     "Description": "",
@@ -96,8 +96,8 @@
     "Longitude": 135.5123041
   },
   {
-    "PointOfInterestId": 7,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "7",
+    "PointOfInterestTypeId": "1",
     "Title": "Mitsui Garden Hotel Kyobashi",
     "AlternateName": "",
     "Description": "",
@@ -112,8 +112,8 @@
     "Longitude": 139.7708061
   },
   {
-    "PointOfInterestId": 8,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "8",
+    "PointOfInterestTypeId": "1",
     "Title": "Dormy Inn Premium Kyoto Ekimae",
     "AlternateName": "",
     "Description": "",
@@ -128,8 +128,8 @@
     "Longitude": 135.7619008
   },
   {
-    "PointOfInterestId": 9,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "9",
+    "PointOfInterestTypeId": "1",
     "Title": "Hoshino Resorts OiraseKeiryuHotel",
     "AlternateName": "",
     "Description": "",
@@ -144,8 +144,8 @@
     "Longitude": 140.9817282
   },
   {
-    "PointOfInterestId": 10,
-    "PointOfInterestTypeId": 3,
+    "PointOfInterestId": "10",
+    "PointOfInterestTypeId": "3",
     "Title": "Shin-Aomori Station",
     "AlternateName": "",
     "Description": "",
@@ -160,8 +160,8 @@
     "Longitude": 140.6934715
   },
   {
-    "PointOfInterestId": 11,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "11",
+    "PointOfInterestTypeId": "1",
     "Title": "Nipponia Tawaramoto Maruto Soy Source",
     "AlternateName": "",
     "Description": "",
@@ -176,8 +176,8 @@
     "Longitude": 135.8162352
   },
   {
-    "PointOfInterestId": 12,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "12",
+    "PointOfInterestTypeId": "1",
     "Title": "Misaki lodge",
     "AlternateName": "",
     "Description": "",
@@ -192,8 +192,8 @@
     "Longitude": 135.7590534
   },
   {
-    "PointOfInterestId": 13,
-    "PointOfInterestTypeId": 1,
+    "PointOfInterestId": "13",
+    "PointOfInterestTypeId": "1",
     "Title": "Ryouri Mankou",
     "AlternateName": "",
     "Description": "",
@@ -208,8 +208,8 @@
     "Longitude": 135.7817553
   },
   {
-    "PointOfInterestId": 14,
-    "PointOfInterestTypeId": 5,
+    "PointOfInterestId": "14",
+    "PointOfInterestTypeId": "5",
     "Title": "Asuka Station",
     "AlternateName": "",
     "Description": "",
@@ -224,8 +224,8 @@
     "Longitude": 135.5927096
   },
   {
-    "PointOfInterestId": 15,
-    "PointOfInterestTypeId": 5,
+    "PointOfInterestId": "15",
+    "PointOfInterestTypeId": "5",
     "Title": "Asuka Station",
     "AlternateName": "",
     "Description": "",
@@ -240,8 +240,8 @@
     "Longitude": 135.7817553
   },
   {
-    "PointOfInterestId": 16,
-    "PointOfInterestTypeId": 5,
+    "PointOfInterestId": "16",
+    "PointOfInterestTypeId": "5",
     "Title": "Asuka Station",
     "AlternateName": "",
     "Description": "",
@@ -256,8 +256,8 @@
     "Longitude": 135.7817553
   },
   {
-    "PointOfInterestId": 17,
-    "PointOfInterestTypeId": 5,
+    "PointOfInterestId": "17",
+    "PointOfInterestTypeId": "5",
     "Title": "Osaka Abenobashi Station",
     "AlternateName": "",
     "Description": "",
@@ -270,5 +270,35 @@
     "Country": "jp",
     "Latitude": 34.6454938,
     "Longitude": 135.5150557
+  },
+  { "PointOfInterestId":"18",
+    "PointOfInterestTypeId":"3",
+    "Title":"Chambelland",
+    "AlternateName":"",
+    "Description":"The best boulangerie in Paris, according to Google.",
+    "AddressLine1":"14 Rue Ternaux, 75011 Paris, France",
+    "AddressLine2":"",
+    "AddressLine3":"",
+    "City":"Paris",
+    "Province":"",
+    "PostalCode":"998",
+    "Country":"France",
+    "Latitude":{"$numberDouble":"48.86"},
+    "Longitude":{"$numberDouble":"2.21"}
+  },
+  { "PointOfInterestId":"19",
+    "PointOfInterestTypeId":"3",
+    "Title":"La Isla",
+    "AlternateName":"",
+    "Description":"Bussin open-air shopping complex with clothing stores, restaurants & a Ferris wheel.",
+    "AddressLine1":"5 Lt 18-10, Blvd. Kukulcan km 12.5, Zona Hotelera, 77500 Cancún, Q.R., Mexico",
+    "AddressLine2":"",
+    "AddressLine3":"",
+    "City":"Cancun",
+    "Province":"Q.R.",
+    "PostalCode":"998",
+    "Country":"Mexico",
+    "Latitude":{"$numberDouble":"18.6"},
+    "Longitude":{"$numberDouble":"-96.15"}
   }
 ]

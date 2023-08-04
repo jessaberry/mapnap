@@ -178,5 +178,30 @@
     "UpdatedAt": "2023-06-01T18:25:43.511Z",
     "DeletedAt": null,
     "IsDeleted": false
+  },
+  { "Cost":"2000",
+    "ExperienceTypeId": 3,
+    "StartingPointOfInterestId":"16",
+    "EndingPointOfInterestId":"1",
+    "StartingLocalDateTime": "2022-04-18T09:10:00.000Z",
+    "EndingLocalDateTime": "2022-04-18T09:49:00.000Z",
+    "Title":"La Isla mall",
+    "Description":"let's go on a spree",
+    "IsPublic":true,
+    "TripId":"25447ffd-3553-47af-b377-aabd263b4e94",
+    "ExperienceId":"25566e98-7cc6-4280-a4f6-ea2e4ece536b"
+  },
+  { "Cost":"5.63",
+    "ExperienceTypeId":2,
+    "StartingPointOfInterestId":"18",
+    "EndingPointOfInterestId":"1",
+    "StartingLocalDateTime": "2018-04-18T09:10:00.000Z",
+    "EndingLocalDateTime": "2018-04-18T09:49:00.000Z",
+    "Title":"Boulangerie Chambelland Oberkampf",
+    "Description":"omnom",
+    "IsPublic":true,
+    "TripId":"012347a8-a433-496b-aea9-c82691aa1447",
+    "ExperienceId":"62547d6d-fa53-4a90-a73b-76219f0b2699"
   }
+
 ]

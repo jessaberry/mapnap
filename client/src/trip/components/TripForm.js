@@ -50,14 +50,14 @@ const TripForm = ({ handleAddTrip }) => {
         onChange={handleChange}
         placeholder="Enter trip description"
       />
-      <TextField
+      {/* <TextField
         type="number"
         name="StartingPointOfInterestId"
         label="Starting Location"
         value={data.StartingPointOfInterestId}
         onChange={handleChange}
         placeholder="Enter starting point"
-      />
+      /> */}
       {/* looking to just have 1 address */}
       {/* <TextField
         type="number"

@@ -4,7 +4,7 @@ import initialExperience from "../reducers/initialExperience";
 import { v4 as uuidv4 } from "uuid";
 import { parseISO } from "date-fns";
 
-const ExperienceHandler = ({ trip, handleAddExperience }) => {
+const ExperienceHandler = ({ trip, poi, handleAddExperience }) => {
   const [data, setData] = useState({
     ...initialExperience,
     TripId: trip.TripId,
@@ -15,6 +15,20 @@ const ExperienceHandler = ({ trip, handleAddExperience }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleStartChange = (event, newValue) => {
+    setData((prevData) => ({
+      ...prevData,
+      StartingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
+    }));
+  };
+
+  const handleEndChange = (event, newValue) => {
+    setData((prevData) => ({
+      ...prevData,
+      EndingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -37,7 +51,7 @@ const ExperienceHandler = ({ trip, handleAddExperience }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <ExperienceForm data={data} handleChange={handleChange} />
+        <ExperienceForm data={data} poi={poi} handleChange={handleChange} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </form>
