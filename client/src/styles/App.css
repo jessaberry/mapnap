@@ -55,11 +55,14 @@
 }
 
 .socials {
-  display: flex;
   padding: 10px 10px;
-  align-items: right;
+  align-items: center;
   justify-content: flex-end;
   margin-left: auto;
+  position: relative;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%,);
 }
 
 /* Trip.css */
@@ -75,6 +78,11 @@
 }
 
 .leaflet-container {
-  height: 60vh;
-  width: 120vh;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  height: 70vh;
+  width: 160vh;
+  border: 4px #002145 solid;
 }

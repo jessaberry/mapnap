@@ -63,7 +63,7 @@
   margin-right: 24px;
 
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 16px;
 }
 
@@ -75,11 +75,12 @@
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-color: var(--sauder-green);
+  font-size: 16px;
 
   /* responsive */
 
-  text-decoration-thickness: 4px;
-  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
 }
 
 .nav-bar__tab:hover {
