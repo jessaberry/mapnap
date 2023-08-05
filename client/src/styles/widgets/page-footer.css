@@ -15,13 +15,14 @@
 
   /* responsive */
 
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   line-height: 2.4rem;
 }
 
 .page-footer .socials button {
   width: auto;
   margin: 5px 20px;
+  
 }
 
 .page-footer-grid {
@@ -41,7 +42,7 @@
 
   /* responsive */
 
-  grid-template-columns: 1.5fr 1fr auto;
+  grid-template-columns: 1.5fr 0.7fr auto;
   column-gap: 2.4rem;
 }
 
@@ -69,7 +70,7 @@
 .page-footer-message__description {
   margin-bottom: 0;
 
-  letter-spacing: 0.016rem;
+  letter-spacing: 0.005rem;
 }
 
 .page-footer-info__button {

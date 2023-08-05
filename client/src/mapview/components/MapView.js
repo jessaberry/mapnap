@@ -26,7 +26,7 @@ export default function Map() {
   const poi = useSelector((state) => state.trip.poi);
   const getPOI = (id, type) => {
     const loc = poi.find((point) => point.PointOfInterestId === id);
-    return type === "lat" ? Number(loc.Latitude) : Number(loc.Longitude);
+    return type === "lat" ? loc.Latitude : loc.Longitude;
   };
   return (
     <PageLayout>
@@ -34,8 +34,8 @@ export default function Map() {
         <h1>Map View</h1>
         <MapContainer center={[35.676, 139.65]} zoom={2} scrollWheelZoom={true}>
           <TileLayer attribution={attrib} url={url} />
-          {trips.length > 0 &&
-            trips.map((trip) => (
+          {trips.map((trip) => {
+            return (
               <Marker
                 key={trip.TripId}
                 position={[
@@ -48,8 +48,8 @@ export default function Map() {
                   <br />
                   {trip.Description}
                 </Popup>
-              </Marker>
-            ))}
+              </Marker>)
+          })}
         </MapContainer>
       </div>
     </PageLayout>
