@@ -74,7 +74,7 @@
 
   border: 0.1rem solid var(--black);
   color: var(--white);
-  background: var(black);
+  background: var(--sauder-green);
   width: 50%;
   font-size: 1.4rem;
 
