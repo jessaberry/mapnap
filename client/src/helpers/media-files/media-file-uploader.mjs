@@ -1,181 +1,245 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
-import styled from "styled-components";
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
+import React, {useState, useCallback, useRef} from "react";
+import Cropper from "react-easy-crop";
+import ObjectId from 'bson-objectid';
+
 import Uploady, {
-  withRequestPreSendUpdate,
-  useItemFinalizeListener,
-  useItemStartListener,
+    withRequestPreSendUpdate,
+    useItemFinalizeListener,
+    useItemProgressListener
 } from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
-import UploadPreview, { PREVIEW_TYPES } from "@rpldy/upload-preview";
-import cropImage from "./media-file-cropper.mjs";
+import UploadPreview, {PREVIEW_TYPES} from "@rpldy/upload-preview";
+import getCroppedImg from "./media-file-cropper.mjs";
 import "./styles.css";
-import {getMockSenderEnhancer} from "@rpldy/mock-sender";
+import {useAuth0} from "@auth0/auth0-react";
+import {useDispatch, useSelector} from "react-redux";
+import {Circle} from "rc-progress";
+import {getPresignedUploadUrlAsync} from "../s3/s3-thunks.mjs";
 
-const mockSenderEnhancer = getMockSenderEnhancer({ delay: 1500 });
+const UploadProgress = () => {
+    const progressData = useItemProgressListener() || {completed: 0};
+    const {completed} = progressData;
 
-const StyledReactCrop = styled(ReactCrop)`
-  width: 100%;
-  max-width: 900px;
-  height: 400px;
-`;
+    return (<div
+        className={completed === 0 ? 'invisible flex flex-row-reverse mb-2 h-25' : "flex flex-row-reverse mb-2 h-25"}>
+        <Circle
+            className="progress-circle"
+            strokeWidth={5}
+            strokeColor={completed === 100 ? "#4dc14d" : "#40affd"}
+            percent={completed}/>
+        <span className="px-2 py-2 text-sm text-gray-700">{completed === 100 ? "All done!" : "Uploading..."}</span>
+    </div>);
+};
 
-const PreviewImage = styled.img`
-  margin: 5px;
-  max-width: 200px;
-  height: auto;
-  max-height: 200px;
-`;
-
-const ButtonsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const uploadDestination =
-  "https://mapnap.s3.us-west-2.amazonaws.com/dummy.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAYFMHL5XRUQ2GEPXU%2F20230726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230726T070058Z&X-Amz-Expires=3600&X-Amz-Signature=00d4afb15c3ec2cae97a9f6f6e5eacad21126c8b267334f46da433ddc5e7c28c&X-Amz-SignedHeaders=host&x-id=PutObject";
 
 const PreviewButtons = ({
-  finished,
-  crop,
-  updateRequest,
-  onUploadCancel,
-  onUploadCrop,
-}) => {
-  return (
-    <ButtonsWrapper>
-      <button
-        style={{
-          display: !finished && updateRequest && crop ? "block" : "none",
-        }}
-        onClick={onUploadCrop}
-      >
-        Upload Cropped
-      </button>
-      <button
-        style={{ display: !finished && updateRequest ? "block" : "none" }}
-        onClick={updateRequest}
-      >
-        Upload without Crop
-      </button>
-      <button
-        style={{
-          display: !finished && updateRequest && crop ? "block" : "none",
-        }}
-        onClick={onUploadCancel}
-      >
-        Cancel
-      </button>
-    </ButtonsWrapper>
-  );
+                            finished,
+                            crop,
+                            updateRequest,
+                            onUploadCancel,
+                            onUploadCrop
+                        }) => {
+    return (
+        <div className="ButtonWrapper">
+            <button
+                style={{
+                    display: !finished && updateRequest && crop ? "block" : "none"
+                }}
+                onClick={onUploadCrop}
+            >
+                Upload Cropped
+            </button>
+            <button
+                style={{display: !finished && updateRequest ? "block" : "none"}}
+                onClick={updateRequest}
+            >
+                Upload without Crop
+            </button>
+            <button
+                style={{
+                    display: !finished && updateRequest && crop ? "block" : "none"
+                }}
+                onClick={onUploadCancel}
+            >
+                Cancel
+            </button>
+        </div>
+    );
 };
 
 const UPLOAD_STATES = {
-  NONE: 0,
-  UPLOADING: 1,
-  FINISHED: 2,
+    NONE: 0,
+    UPLOADING: 1,
+    FINISHED: 2
 };
 
 const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
-  const {
-    id,
-    url,
-    isFallback,
-    type,
-    updateRequest,
-    requestData,
-    previewMethods,
-  } = props;
-  const cropRef = useRef(null);
-  const [uploadState, setUploadState] = useState(UPLOAD_STATES.NONE);
-  const [crop, setCrop] = useState(null);
-  const [croppedUrl, setCroppedUrl] = useState(null);
-  const isFinished = uploadState === UPLOAD_STATES.FINISHED;
+    const {
+        id,
+        url,
+        isFallback,
+        type,
+        updateRequest,
+        requestData,
+        previewMethods
+    } = props;
+    const [uploadState, setUploadState] = useState(UPLOAD_STATES.NONE);
+    const [croppedImg, setCroppedImg] = useState(null);
 
-  useItemStartListener(() => setUploadState(UPLOAD_STATES.UPLOADING), id);
-  useItemFinalizeListener(() => setUploadState(UPLOAD_STATES.FINISHED), id);
+    //data for react-easy-crop
+    const [crop, setCrop] = useState({x: 0, y: 0});
+    const [zoom, setZoom] = useState(1);
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-  const onImageLoaded = useCallback((image) => {
-    cropRef.current = image;
-  }, []);
+    const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+        // console.log(croppedArea, croppedAreaPixels);
+        setCroppedAreaPixels(croppedAreaPixels);
+    }, []);
 
-  const onUploadCrop = useCallback(async () => {
-    if (updateRequest && (crop?.height || crop?.width)) {
-      const {
-        blob: croppedBlob,
-        blobUrl,
-        revokeUrl,
-      } = await cropImage(
-        cropRef.current,
-        requestData.items[0].file,
-        crop,
-        true
-      );
+    const isFinished = uploadState === UPLOAD_STATES.FINISHED;
 
-      requestData.items[0].file = croppedBlob;
+    useItemProgressListener(() => setUploadState(UPLOAD_STATES.UPLOADING), id);
+    useItemFinalizeListener(() => setUploadState(UPLOAD_STATES.FINISHED), id);
 
-      updateRequest({ items: requestData.items });
-      setCroppedUrl({ blobUrl, revokeUrl });
-    }
-  }, [requestData, updateRequest, crop]);
+    const onUploadCrop = useCallback(async () => {
+        if (updateRequest && croppedAreaPixels) {
+            const [croppedBlob, croppedUri] = await getCroppedImg(
+                url,
+                croppedAreaPixels
+            );
 
-  const onUploadCancel = useCallback(() => {
-    updateRequest(false);
-    if (previewMethods.current?.clear) {
-      previewMethods.current.clear();
-    }
-  }, [updateRequest, previewMethods]);
+            requestData.items[0].file = croppedBlob;
 
-  useEffect(() => () => croppedUrl?.revokeUrl(), [croppedUrl]);
+            updateRequest({items: requestData.items});
+            setCroppedImg(croppedUri);
+        }
+    }, [url, requestData, updateRequest, croppedAreaPixels]);
 
-  return isFallback || type !== PREVIEW_TYPES.IMAGE ? (
-    <PreviewImage src={url} alt="fallback img" />
-  ) : (
-    <>
-      {requestData && uploadState === UPLOAD_STATES.NONE ? (
-        <StyledReactCrop
-          ruleOfThirds
-          src={url}
-          crop={crop}
-          onImageLoaded={onImageLoaded}
-          onChange={setCrop}
-          onComplete={setCrop}
-          style={{ height: "100%" }}
-        />
-      ) : (
-        <PreviewImage src={croppedUrl?.blobUrl || url} alt="img to upload" />
-      )}
-      <PreviewButtons
-        finished={isFinished}
-        crop={crop}
-        updateRequest={updateRequest}
-        onUploadCancel={onUploadCancel}
-        onUploadCrop={onUploadCrop}
-      />
-      <p>{isFinished ? "FINISHED" : ""}</p>
-    </>
-  );
+    const onUploadCancel = useCallback(() => {
+        updateRequest(false);
+        if (previewMethods.current?.clear) {
+            previewMethods.current.clear();
+        }
+    }, [updateRequest, previewMethods]);
+
+
+    return isFallback || type !== PREVIEW_TYPES.IMAGE ? (
+        <img src={url} alt="fallback img" className="PreviewImage"/>
+    ) : (
+        <>
+            {requestData && uploadState === UPLOAD_STATES.NONE ? (
+                <div className="crop-view">
+                    <div className="crop-container">
+                        <Cropper
+                            image={url}
+                            crop={crop}
+                            zoom={zoom}
+                            aspect={4 / 3}
+                            onCropChange={setCrop}
+                            onCropComplete={onCropComplete}
+                            onZoomChange={setZoom}
+                        />
+                    </div>
+                    <div className="controls">
+                        <input
+                            type="range"
+                            value={zoom}
+                            min={1}
+                            max={3}
+                            step={0.1}
+                            aria-labelledby="Zoom"
+                            onChange={(e) => {
+                                setZoom(e.target.value);
+                            }}
+                            className="zoom-range"
+                        />
+                    </div>
+                </div>
+            ) : (
+                <img src={croppedImg || url} alt="img to upload" className="PreviewImage"/>
+            )}
+            <PreviewButtons
+                finished={isFinished}
+                crop={crop}
+                updateRequest={updateRequest}
+                onUploadCancel={onUploadCancel}
+                onUploadCrop={onUploadCrop}
+            />
+            <p>{isFinished ? "FINISHED" : ""}</p>
+        </>
+    );
 });
 
-export default function MediaFileUploader(props) {
-  const previewMethodsRef = useRef();
 
-  return (
-    <Uploady multiple={false} destination={{ url: uploadDestination }}
-             enhancer={mockSenderEnhancer}
-    >
-      <UploadButton>Select File to upload</UploadButton>
-      <p>Uploading for user {props.userId} </p>
-      <br />
-      <UploadPreview
-        PreviewComponent={ItemPreviewWithCrop}
-        previewComponentProps={{ previewMethods: previewMethodsRef }}
-        previewMethodsRef={previewMethodsRef}
-        fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
-      />
-    </Uploady>
-  );
+
+
+
+
+export default function MediaFileUploader(props) {
+    const uploadUrl = useSelector(state => state.s3.uploadUrl);
+    const dispatch = useDispatch();
+    const previewMethodsRef = useRef();
+    const {user} = useAuth0();
+
+
+
+    if (!user) {
+        console.log("not user");
+        return null;
+    }
+    const extension = 'jpg';
+
+
+    const userId = user.sub;
+    const fileId = new ObjectId();
+
+    console.log('uploadUrl',uploadUrl);
+    const type = 'image/jpeg';
+
+
+    ///const key = userId + '/' + fileId + '.' + extension;
+    const key = fileId  + '.' + extension;
+
+
+//    dispatch(getPresignedUploadUrlAsync(params));
+
+    const parameters = {
+        url: uploadUrl,
+        params: {
+            document_name: key,
+
+        },
+        method: 'PUT',
+        headers: {
+            'Content-Type': type,
+        },
+    }
+
+    const handleUploadButtonClick = () => {
+        const params = {userid: userId, key: key };
+        console.log('parameters', parameters);
+        dispatch(getPresignedUploadUrlAsync(params));
+    }
+
+    return (
+        <Uploady
+            multiple={false}
+            destination={parameters}
+
+        >
+            <div className="MediaFileUploader">
+                <p>Uploading to: </p>
+                <p>User: {userId}</p>
+                <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
+                <br/>
+                <UploadProgress/>
+                <UploadPreview
+                    PreviewComponent={ItemPreviewWithCrop}
+                    previewComponentProps={{previewMethods: previewMethodsRef}}
+                    previewMethodsRef={previewMethodsRef}
+                    fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
+                />
+            </div>
+        </Uploady>
+    );
 }
