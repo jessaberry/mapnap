@@ -179,7 +179,16 @@ export default function Trip(props) {
       <PageLayout>
         <div>
           <h2>Dashboard</h2>
-          <Button variant="outlined" onClick={handleClickOpen}>
+          <Button variant="contained"
+            onClick={handleClickOpen}
+            sx={{
+              color: "var(--white)",
+              backgroundColor: "var(--sauder-blue)",
+              "&:hover": {
+                borderColor: "var(--sauder-blue)",
+                backgroundColor: "var(--sauder-green)",
+              },
+            }}>
             New Trip
           </Button>
           <BootstrapDialog
