@@ -10,7 +10,9 @@ const TripExpViewer = ({ trip, getExperiences, handleDeleteExperience }) => {
             <p>Budget: ${experience.Cost}</p>
             <p>Public? {String(experience.IsPublic)}</p>
             {handleDeleteExperience !== null && (
-              <button onClick={() => handleDeleteExperience(experience.ExperienceId)}>
+              <button
+                onClick={() => handleDeleteExperience(experience.ExperienceId)}
+              >
                 Delete Experience
               </button>
             )}

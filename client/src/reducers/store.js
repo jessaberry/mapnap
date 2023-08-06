@@ -9,6 +9,6 @@ export default configureStore({
     exp: expReducer,
     mem: memoryReducer,
     trip: tripReducer,
-    s3: s3Reducer
+    s3: s3Reducer,
   },
 });

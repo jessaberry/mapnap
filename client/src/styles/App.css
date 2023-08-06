@@ -60,7 +60,8 @@
   justify-content: flex-end;
   margin-left: auto;
   position: relative;
-  left: 50%;
+  right: 0;
+  top: 20%;
   /* bring your own prefixes */
   transform: translate(-50%,);
 }

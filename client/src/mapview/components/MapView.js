@@ -48,7 +48,8 @@ export default function Map() {
                   <br />
                   {trip.Description}
                 </Popup>
-              </Marker>)
+              </Marker>
+            );
           })}
         </MapContainer>
       </div>
