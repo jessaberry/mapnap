@@ -1,10 +1,4 @@
-body {
-  position: relative;
-  height: 100vh;
-  margin: 0;
-}
-
-.App {
+.MediaFileUploader {
   font-family: sans-serif;
   text-align: center;
 }
@@ -14,13 +8,20 @@ body {
   margin-top: 20px;
 }
 
-body {
-  background: #010916;
-  color: #fff;
-}
 
 #logo {
   height: 120px;
+}
+
+div.ButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  top: 40px;
+  right: 0;
+  position: absolute;
+  z-index: 999;
 }
 
 button {
@@ -35,10 +36,94 @@ button {
   margin-bottom: 4px;
 }
 
+.crop-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  z-index: 999;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  padding: 22px 0px;
+}
+
+.zoom-range {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 2px;
+  border-top: 5px solid #fff;
+  border-bottom: 5px solid #fff;
+  background: #3f51b5;
+  width: 100%;
+}
+
+.zoom-range::-moz-range-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #3f51b5;
+  background: #3f51b5;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.zoom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #3f51b5;
+  background: #3f51b5;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.controls:hover input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px 8px rgba(63, 81, 181, 0.16);
+  border-radius: 50%;
+
+}
+
+.controls:hover input[type="range"]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px 8px rgba(63, 81, 181, 0.16);
+}
+
 #doc-link {
-  position: fixed;
-  bottom: 2px;
+  position: absolute;
+  bottom: 10px;
   right: 10px;
   font-size: 20px;
   color: #fff;
+}
+
+img.PreviewImage {
+  margin: 5px;
+  max-width: 200px;
+  height: auto;
+  max-height: 200px;
+}
+
+.progress-circle{
+  width: 25px;
+}
+.drag-and-drop{
+  width: 100%;
+  height: 200px;
+}
+.drag-over{
+  opacity: 0.7;
 }
