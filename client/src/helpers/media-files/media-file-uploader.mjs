@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useRef} from "react";
 import Cropper from "react-easy-crop";
 import ObjectId from 'bson-objectid';
-
 import Uploady, {
     withRequestPreSendUpdate,
     useItemFinalizeListener,
@@ -30,7 +29,6 @@ const UploadProgress = () => {
         <span className="px-2 py-2 text-sm text-gray-700">{completed === 100 ? "All done!" : "Uploading..."}</span>
     </div>);
 };
-
 
 const PreviewButtons = ({
                             finished,

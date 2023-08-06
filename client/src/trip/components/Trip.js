@@ -8,6 +8,7 @@ import {
   getTripsByUserIdAsync,
   getPOIAsync,
   getOtherPublicTripsAsync,
+  updateTripAsync,
 } from "../reducers/thunksTrip";
 import {
   getExperiencesAsync,
@@ -15,30 +16,27 @@ import {
 } from "../../experience/reducers/thunksExperience";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import { useParams } from "react-router-dom";
 import TripDetails from "./TripDetails";
 import TripForm from "./TripForm";
 import TripPersonalViewer from "./TripPersonalViewer";
 import TripPublicViewer from "./TripPublicViewer";
 
-
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-
+import * as React from "react";
+import PropTypes from "prop-types";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
+  "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
   },
-  '& .MuiDialogActions-root': {
+  "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
 }));
@@ -47,23 +45,23 @@ function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
 
   return (
-      <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-        {children}
-        {onClose ? (
-            <IconButton
-                aria-label="close"
-                onClick={onClose}
-                sx={{
-                  position: 'absolute',
-                  right: 8,
-                  top: 8,
-                  color: (theme) => theme.palette.grey[500],
-                }}
-            >
-              <CloseIcon />
-            </IconButton>
-        ) : null}
-      </DialogTitle>
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
   );
 }
 
@@ -72,23 +70,17 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-
-
-
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
-
-
-
 
 export default function Trip(props) {
   const [open, setOpen] = useState(false);
@@ -99,8 +91,6 @@ export default function Trip(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const routeParams = useParams();
-  console.log(routeParams);
   const experiences = useSelector((state) => state.exp.experiences);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -111,14 +101,7 @@ export default function Trip(props) {
   const publicTrips = useSelector((state) => state.trip.public);
   const poi = useSelector((state) => state.trip.poi);
 
-
-  const handleAddNewTrip = (trip) => {
-    handleAddTrip(trip);
-    setOpen(false);
-  };
   const handleAddTrip = (trip) => {
-    console.log(trip);
-    console.log(userID);
     const tripWithUserID = {
       ...trip,
       UserId: userID,
@@ -129,7 +112,18 @@ export default function Trip(props) {
   };
 
   const handleDeleteTrip = (trip) => {
-    dispatch(deleteTripAsync(trip.TripId)).then(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this trip? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteTripAsync(trip.TripId)).then(() => {
+        dispatch(getTripsByUserIdAsync(userID));
+      });
+    }
+  };
+
+  const handleEditTrip = (trip) => {
+    dispatch(updateTripAsync(trip)).then(() => {
       dispatch(getTripsByUserIdAsync(userID));
     });
   };
@@ -139,13 +133,15 @@ export default function Trip(props) {
   };
 
   const handleDeleteExperience = (expID) => {
-    dispatch(deleteExperienceAsync(expID)).then(() => {
-      dispatch(getExperiencesAsync());
-    });
+    const confirm = window.confirm(
+      "Are you sure you want to delete this experience? This action cannot be undone."
+    );
+    if (confirm) {
+      dispatch(deleteExperienceAsync(expID)).then(() => {
+        dispatch(getExperiencesAsync());
+      });
+    }
   };
-
-
-
 
   const showTripDetails = (trip) => {
     setVisible((visibleTrip) => (visibleTrip === trip ? null : trip));
@@ -168,63 +164,67 @@ export default function Trip(props) {
   }, [dispatch, userID]);
 
   if (trips.length === 1) {
-    return (<>
-    <PageLayout>
-      <div>
-        <h2>{trips[0].Title}</h2>
-        <TripDetails trip={trips} />
-      </div>
-    </PageLayout>
-    </>);
-  }
-  else {
     return (
+      <>
         <PageLayout>
           <div>
-            <h2>Dashboard</h2>
-            <Button variant="outlined" onClick={handleClickOpen}>
-              New Trip
-            </Button>
-            <BootstrapDialog
-                onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={open}
-            >
-              <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                Add a Trip
-              </BootstrapDialogTitle>
-              <DialogContent dividers>
-                <TripForm handleAddTrip={handleAddTrip}/>
-              </DialogContent>
-              <DialogActions>
-                <Button autoFocus onClick={handleClose}>
-                  Cancel
-                </Button>
-              </DialogActions>
-            </BootstrapDialog>
-
-
-            <h2>My trips</h2>
-            <TripPersonalViewer
-                trips={trips}
-                poi={poi}
-                visible={visible}
-                getExperiences={getExperiences}
-                showTripDetails={showTripDetails}
-                handleAddExperience={handleAddExperience}
-                handleDeleteExperience={handleDeleteExperience}
-                handleDeleteTrip={handleDeleteTrip}
-            />
-            <h2>Other people's public trips</h2>
-            <TripPublicViewer
-                publicTrips={publicTrips}
-                poi={poi}
-                visible={visible}
-                getExperiences={getExperiences}
-                showTripDetails={showTripDetails}
-            />
+            <h2>{trips[0].Title}</h2>
+            <TripDetails trip={trips} />
           </div>
         </PageLayout>
+      </>
+    );
+  } else {
+    return (
+      <PageLayout>
+        <div>
+          <h2>Dashboard</h2>
+          <Button variant="outlined" onClick={handleClickOpen}>
+            New Trip
+          </Button>
+          <BootstrapDialog
+            onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={open}
+          >
+            <BootstrapDialogTitle
+              id="customized-dialog-title"
+              onClose={handleClose}
+            >
+              Add a Trip
+            </BootstrapDialogTitle>
+            <DialogContent dividers>
+              <TripForm handleAddTrip={handleAddTrip} />
+            </DialogContent>
+            <DialogActions>
+              <Button autoFocus onClick={handleClose}>
+                Cancel
+              </Button>
+            </DialogActions>
+          </BootstrapDialog>
+
+          <h2>My trips</h2>
+          <TripPersonalViewer
+            trips={trips}
+            poi={poi}
+            visible={visible}
+            getExperiences={getExperiences}
+            showTripDetails={showTripDetails}
+            handleAddExperience={handleAddExperience}
+            handleDeleteExperience={handleDeleteExperience}
+            handleEditTrip={handleEditTrip}
+            handleDeleteTrip={handleDeleteTrip}
+          />
+          <h2>Other people's public trips</h2>
+          <TripPublicViewer
+            publicTrips={publicTrips}
+            poi={poi}
+            visible={visible}
+            getExperiences={getExperiences}
+            showTripDetails={showTripDetails}
+          />
+        </div>
+      </PageLayout>
     );
   }
 }

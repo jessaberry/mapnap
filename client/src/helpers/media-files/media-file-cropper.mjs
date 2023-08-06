@@ -1,7 +1,5 @@
 //copied over from: https://codesandbox.io/s/q8q1mnr01w?file=/src/cropImage.js
 
-
-
 export const createImage = (url) =>
     new Promise((resolve, reject) => {
       const image = new Image();
