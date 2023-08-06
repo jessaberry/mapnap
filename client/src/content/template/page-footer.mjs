@@ -9,10 +9,10 @@ export const PageFooter = () => {
       <div className="page-footer-grid">
         <div className="page-footer-grid__info">
           <div className="page-footer-info__message">
+            <SocialButtons />
             <p className="page-footer-message__headline">
               &copy; Team MapNap 2023.
             </p>
-            <SocialButtons />
           </div>
         </div>
       </div>

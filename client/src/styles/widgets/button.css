@@ -69,15 +69,17 @@
 
 .button__login,
 .button__logout {
-  min-width: 8.4rem;
+  min-width: 9rem;
+  /* max-height: 2.9rem; */
 
-  border: 0.1rem solid var(--sauder-green);
+  border: 0.1rem solid var(--black);
   color: var(--white);
-  background: var(--sauder-green);
+  background: var(black);
   width: 50%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 
   margin-right: 1.6rem;
+  margin-top: 3px;
 
   font-family: var(--font-primary);
   font-style: normal;
@@ -94,13 +96,13 @@
 }
 
 .button__sign-up {
-  min-width: 8.4rem;
-
+  min-width: 9rem;
+  margin-top: 3px;
   border: 0.1rem solid var(--white);
   color: var(--white);
   background-color: transparent;
   width: 50%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 
   margin-right: 1.6rem;
 

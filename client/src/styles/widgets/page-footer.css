@@ -5,7 +5,7 @@
 
   width: 100%;
 
-  margin-top: 2.4rem;
+  margin-top: 2rem;
 
   background-color: var(--dark-aluminium);
 
@@ -21,8 +21,7 @@
 
 .page-footer .socials button {
   width: auto;
-  margin: 5px 20px;
-  
+  margin: 0px 6px;
 }
 
 .page-footer-grid {
@@ -62,8 +61,8 @@
 }
 
 .page-footer-message__headline {
-  margin: 0 0 1.4rem;
-
+  margin: 0 1.4rem 0rem;
+  font-size: small;
   font-weight: 500;
 }
 
