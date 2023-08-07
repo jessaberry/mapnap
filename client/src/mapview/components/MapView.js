@@ -1,6 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Link } from "react-router-dom";
 import React from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -34,7 +33,7 @@ export default function Map() {
         <h1>Map View</h1>
         <MapContainer center={[35.676, 139.65]} zoom={2} scrollWheelZoom={true}>
           <TileLayer attribution={attrib} url={url} />
-          {trips.map((trip) => {
+          {trips.length > 0 && trips.map((trip) => {
             return (
               <Marker
                 key={trip.TripId}
@@ -44,7 +43,7 @@ export default function Map() {
                 ]}
               >
                 <Popup>
-                  <Link to={"/"}>{trip.Title}</Link>
+                  {trip.Title}
                   <br />
                   {trip.Description}
                 </Popup>

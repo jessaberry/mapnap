@@ -62,8 +62,6 @@
   position: relative;
   right: 0;
   top: 20%;
-  /* bring your own prefixes */
-  transform: translate(-50%);
 }
 
 .trip-list {
@@ -96,6 +94,7 @@
 .trip-details-info {
   margin-top: 20px;
   display: flex;
+  color: #FFFFFF;
 }
 
 .trip-details-image {
