@@ -1,3 +1,5 @@
+/* used specifically for trips and the cards themselves */ 
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -5,16 +7,17 @@
 }
 
 .trip-item {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 5px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #111111;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .trip-title {
   font-size: 24px;
   margin-top: 0;
+  color: #FFFFFF;
 }
 
 .trip-info {
