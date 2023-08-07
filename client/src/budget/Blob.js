@@ -51,7 +51,10 @@ const TripVis = ({ trips, experiences, expenses }) => {
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Typography variant="p">
+        Total Expenses: ${getTotalExpenses(trips, experiences, expenses)}
+      </Typography>
+      <div className="trip-container">
         {trips.map((trip) => (
           <Grid item xs={12} sm={6} md={4} key={trip.TripId}>
             <Paper
@@ -66,11 +69,19 @@ const TripVis = ({ trips, experiences, expenses }) => {
             </Paper>
           </Grid>
         ))}
-      </Grid>
+      </div>
       <Menu
         anchorEl={anchorElement}
         open={Boolean(anchorElement)}
         onClose={handleMenuClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
       >
         {experiences
           .filter((experience) => experience.TripId === tripID)
@@ -90,9 +101,6 @@ const TripVis = ({ trips, experiences, expenses }) => {
           ))}
       </Menu>
       <br></br>
-      <Typography variant="p">
-        Total Expenses: ${getTotalExpenses(trips, experiences, expenses)}
-      </Typography>
     </div>
   );
 };

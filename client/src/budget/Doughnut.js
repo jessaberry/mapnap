@@ -4,6 +4,7 @@ import { Doughnut } from "react-chartjs-2";
 import activityData from "../data/experiencetype.json";
 
 Chart.register(ArcElement, Tooltip, Legend);
+Chart.defaults.animation.lazy = true;
 
 const getActivityExpenses = (experiences, expenses) => {
   const activityExpenses = {};
@@ -61,6 +62,25 @@ export const ActivityVis = ({ experiences, expenses }) => {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        align: "center",
+        labels: {
+          boxWidth: 30,
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const label = context.dataset.data[context.dataIndex];
+            return "$" + label.toFixed(2);
+          },
+        },
+      },
+      doughnut: {
+        cutout: "80%",
+      },
+    },
   };
 
   useEffect(() => {
@@ -68,7 +88,7 @@ export const ActivityVis = ({ experiences, expenses }) => {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Doughnut data={data} options={chartOptions} />
     </div>
   );

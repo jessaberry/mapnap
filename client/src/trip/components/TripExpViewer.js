@@ -7,7 +7,10 @@ const TripExpViewer = ({
 }) => {
   const getPOI = (poiID) => {
     const itemPOI = poi.find((item) => item.PointOfInterestId === poiID);
-    return itemPOI ? itemPOI.Title : "N/A";
+    return itemPOI ? "Location: " + itemPOI.Title : null;
+  };
+  const getDate = (date) => {
+    return new Date(date);
   };
 
   return (
@@ -25,10 +28,11 @@ const TripExpViewer = ({
             <p>Cost: ${experience.Cost}</p>
             <p>Notes: {experience.Description}</p>
             <p>
-              Location: {experience.StartingLocalDateTime}{" "}
-              {getPOI(experience.StartingPointOfInterestId)}
+              From {getDate(experience.StartingLocalDateTime).toLocaleString()}{" "}
             </p>
-            <p>Public? {String(experience.IsPublic)}</p>
+            <p>{getPOI(experience.StartingPointOfInterestId)}</p>
+            <p>To {getDate(experience.EndingLocalDateTime).toLocaleString()}</p>
+            <p>{getPOI(experience.EndingPointOfInterestId)}</p>
             {handleDeleteExperience !== null && (
               <button
                 onClick={() => handleDeleteExperience(experience.ExperienceId)}
