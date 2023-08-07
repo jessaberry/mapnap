@@ -18,7 +18,6 @@ export default function Memory(props, children) {
     const trips = useSelector((state) => state.trip.trips);
     const experiences = useSelector((state) => state.exp.experiences);
     const memories = useSelector((state) => state.mem.memories);
-    console.log('memories', memories);
     const otherPublicMemories = useSelector((state) => state.mem.otherPublicMemories);
     const dispatch = useDispatch();
 
@@ -42,6 +41,7 @@ export default function Memory(props, children) {
                 }
             }
         });
+        console.log('userid', userId);
         dispatch(getMemoriesByUserIdAsync(userId));
         dispatch(getTripsByUserIdAsync(userId));
         dispatch(getExperiencesByUserIdAsync(userId));
@@ -78,6 +78,7 @@ export default function Memory(props, children) {
                             ))}
                         </Masonry>
                     </Box>
+                    <h2>Memories from other users</h2>
                     <Box sx={{width: "100%", minHeight: 829}}>
                         <Masonry colunn={{xs: 3, sm: 4}} spacing={{xs: 1, sm: 2, md: 3}}>
                             {otherPublicMemories.map((memory, index) => (

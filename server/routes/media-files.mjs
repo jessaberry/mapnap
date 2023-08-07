@@ -27,9 +27,9 @@ router.get("/get-all", async (req, res) => {
 router.get("/get-other-public-media-files/:userId", async (req, res) => {
 try {
   const userId = req.params.userId;
-  const qPublicMEMORIES = {IsPublic: true};
+  const qPublicMemories = {IsPublic: true};
   const qNotCurrentUser = {UserId: {$ne: userId}};
-  const query = {$and: [qPublicMEMORIES, qNotCurrentUser]};
+  const query = {$and: [qPublicMemories, qNotCurrentUser]};
   let collection = await db.collection(mediaFilesCollectionName);
   let results = await collection
       .find(query)
