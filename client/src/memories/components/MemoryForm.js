@@ -2,7 +2,7 @@ import * as React from "react";
 import { Form, Field } from "redux-form";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { Button, Typography } from "@mui/material";
+import {Button, TextField, Typography} from "@mui/material";
 import { useSelector } from "react-redux";
 
 import "react-dropzone-uploader/dist/styles.css";
@@ -19,13 +19,8 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 function MemoryForm(props, children) {
   const memories = useSelector((state) => state.mem.memories);
-  const getUploadParams = ({ meta }) => {
-    const url = "https://httpbin.org/post";
-    return {
-      url,
-      meta: { fileUrl: `${url}/${encodeURIComponent(meta.name)}` },
-    };
-  };
+  const trips = useSelector((state) => state.trip.trips);
+  const experiences = useSelector((state) => state.exp.experiences);
 
   const handleChangeStatus = ({ meta }, status) => {
     console.log(status, meta);
@@ -35,33 +30,10 @@ function MemoryForm(props, children) {
   return (
     <>
       <form onSubmit={handleSubmit(submit)}>
-        <Field
-          name="title"
-          type="text"
-          component={renderField}
-          label="Title"
-        ></Field>
-        <Field
-          name="description"
-          type="text"
-          component={renderField}
-          label="Description"
-        ></Field>
-        <Dropzone>
-          getUploadParams={getUploadParams}
-          onChangeStatus={handleChangeStatus}
-          onSubmit={handleSubmit}
-          accept="image/*,audio/*,video/*" inputContent=
-          {(files, extra) =>
-            extra.reject ? "Image, audio and video files only" : "Drag Files"
-          }
-          styles=
-          {{
-            dropzoneReject: { borderColor: "red", backgroundColor: "#DAA" },
-            inputLabel: (files, extra) =>
-              extra.reject ? { color: "red" } : {},
-          }}
-        </Dropzone>
+        <TextField id="title"></TextField>
+        <TextField id="description"></TextField>
+
+
       </form>
     </>
   );

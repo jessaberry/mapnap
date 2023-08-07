@@ -7,7 +7,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Bar",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -19,7 +19,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Drinks",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -31,7 +31,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Front Entrance",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -43,7 +43,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Guestroom",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -55,7 +55,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Onsen",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -67,7 +67,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Relax Room",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -79,7 +79,7 @@
     "latitude": 36.2330294,
     "longitude": 137.1856322,
     "title": "Yatsusankan - Wakashi",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -91,7 +91,7 @@
     "latitude": 35.4379577,
     "longitude": 136.7724739,
     "title": "Tagajo",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -103,7 +103,7 @@
     "latitude": 39.720009,
     "longitude": 140.10257,
     "title": "Akita",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -115,7 +115,7 @@
     "latitude": 35.652832,
     "longitude": 139.839478,
     "title": "Tokyo",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -127,7 +127,7 @@
     "latitude": 35.443707,
     "longitude": 139.638031,
     "title": "Yokohama",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   },
@@ -139,7 +139,7 @@
     "latitude": 42.923901,
     "longitude": 143.196106,
     "title": "Obihiro",
-    "userId": "",
+    "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
     "experienceId": ""
   }

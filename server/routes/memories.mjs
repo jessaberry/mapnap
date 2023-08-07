@@ -6,14 +6,14 @@ const router = express.Router();
 import db from "../db/conn.mjs";
 import {ObjectId} from "mongodb";
 import {memoriesCollectionName} from "../common/environments-and-constants.mjs";
-import initialMEMORIES from "../data/experience.json"  assert { type: "json" };
+import initialMemories from "../data/memory.json"  assert { type: "json" };
 
 router.get("/reset-all/", async (req, res) => {
     try {
         const collection = db.collection(memoriesCollectionName);
-        console.log(initialMEMORIES);
+        console.log(initialMemories);
         await collection.deleteMany({});
-        let result = await collection.insertMany(initialMEMORIES);
+        let result = await collection.insertMany(initialMemories);
         res.send(result).status(200);
     } catch (error) {
         console.error(error);
@@ -62,16 +62,16 @@ router.get("/by-experience-id/:experienceId", async (req, res) => {
     }
 });
 
-router.get("/by-user-id/:UserId", async (req, res) => {
-    const userId = req.params.UserId;
-    const query = { UserId: userId };
-    console.log(query);
+router.get("/by-user-id/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const query = { userId: userId };
     try {
         let collection = await db.collection(memoriesCollectionName);
         let results = await collection
-            .find(query)
+            .find({})
             .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
             .toArray();
+        console.log(results);
         res.send(results).status(200);
     } catch (error) {
         console.error(error);

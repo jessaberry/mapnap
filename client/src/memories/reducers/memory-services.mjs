@@ -32,6 +32,16 @@ const getMemoriesByUserId = async (userId) => {
   const response = await fetch(command, {
     method: "GET",
   });
+  console.log('getmemoriesbyuserid',response.json());
+  return response.json();
+};
+
+const getOtherPublicMemories = async (userId) => {
+  const command = apiRoot + MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES + "/" + userId;
+  const response = await fetch(command, {
+    method: "GET",
+  });
+  console.log('getotherpublicmemories', response.json());
   return response.json();
 };
 
@@ -125,6 +135,7 @@ export default {
   getMemoriesByUserId,
   getMemoriesByTripId,
   getMemoriesByExperienceId,
+  getOtherPublicMemories,
 
   upsertSingleMemory,
 

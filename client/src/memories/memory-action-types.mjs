@@ -3,6 +3,7 @@ export const MemoryActionTypes = {
 
   GET_ALL_MEMORIES: "memories/get-all",
   GET_MEMORIES_BY_USER_ID: "memories/get-by-user-id",
+  GET_OTHER_PUBLIC_MEMORIES: "/get-other-public-memories",
   GET_MEMORIES_BY_TRIP_ID: "memories/get-by-trip-id",
   GET_MEMORIES_BY_EXPERIENCE_ID: "memories/get-by-experience-id",
   GET_MEMORIES_BY_KEYWORD: "memories/get-by-keyword",

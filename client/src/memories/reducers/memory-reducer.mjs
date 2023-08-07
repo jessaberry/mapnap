@@ -11,6 +11,7 @@ import {
     deleteAllMemoriesAsync,
     deleteMemoryByMemoryIdAsync,
     resetAllMemoriesAsync,
+    getOtherPublicMemoriesAsync,
 } from "./memory-thunks.mjs";
 import {apiRoot, REQUEST_STATE} from "../../common/global.mjs";
 
@@ -18,7 +19,8 @@ const defaultSelectedMemoryId = "632fe308-ec3b-4d86-b2ea-03f2aa936ba7";
 const defaultMemoryList = {};
 
 const initialState = {
-    MemoryList: [],
+    memories: defaultMemoryList,
+    otherPublicMemories: defaultMemoryList,
 
     selectMemoryByMemoryId: defaultSelectedMemoryId,
 
@@ -26,8 +28,10 @@ const initialState = {
 
     getMemoryByMemoryId: REQUEST_STATE.IDLE,
 
+
     getMemoriesByUserId: REQUEST_STATE.IDLE,
     getMemoriesByTripId: REQUEST_STATE.IDLE,
+    getOtherPublicMemories: REQUEST_STATE.IDLE,
     getMemoriesByExperienceId: REQUEST_STATE.IDLE,
     getMemoriesSByKeyword: REQUEST_STATE.IDLE,
 
@@ -42,7 +46,7 @@ const initialState = {
 };
 
 export const memoryReducer = createSlice({
-    name: "Memories",
+    name: "mem",
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -67,7 +71,7 @@ export const memoryReducer = createSlice({
             })
             .addCase(getAllMemoriesAsync.fulfilled, (state, action) => {
                 state.getAllMemories = REQUEST_STATE.FULFILLED;
-                state.MemoryList = action.payload;
+                state.memories = action.payload;
             })
             .addCase(getAllMemoriesAsync.rejected, (state, action) => {
                 state.getAllMemories = REQUEST_STATE.REJECTED;
@@ -81,7 +85,7 @@ export const memoryReducer = createSlice({
             })
             .addCase(getMemoryByMemoryIdAsync.fulfilled, (state, action) => {
                 state.getMemoryByMemoryId = REQUEST_STATE.FULFILLED;
-                state.MemoryList = {Memories: action.payload};
+                state.memories = {Memories: action.payload};
             })
             .addCase(getMemoryByMemoryIdAsync.rejected, (state, action) => {
                 state.getMemoryByMemoryId = REQUEST_STATE.REJECTED;
@@ -96,7 +100,7 @@ export const memoryReducer = createSlice({
             })
             .addCase(getMemoriesByKeywordAsync.fulfilled, (state, action) => {
                 state.getMemoriesByKeyword = REQUEST_STATE.FULFILLED;
-                state.MemoryList = {Memories: action.payload};
+                state.memories = {Memories: action.payload};
             })
             .addCase(getMemoriesByKeywordAsync.rejected, (state, action) => {
                 state.getMemoriesByKeyword = REQUEST_STATE.REJECTED;
@@ -110,13 +114,27 @@ export const memoryReducer = createSlice({
             })
             .addCase(getMemoriesByUserIdAsync.fulfilled, (state, action) => {
                 state.getMemoriesByUserId = REQUEST_STATE.FULFILLED;
-                state.MemoryList = {Memories: action.payload};
+                state.memories = {Memories: action.payload};
             })
             .addCase(getMemoriesByUserIdAsync.rejected, (state, action) => {
                 state.getMemoriesByUserId = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
 
+
+        builder
+            .addCase(getOtherPublicMemoriesAsync.pending, (state) => {
+                state.getOtherPublicMemories = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(getOtherPublicMemoriesAsync.fulfilled, (state, action) => {
+                state.getOtherPublicMemories = REQUEST_STATE.FULFILLED;
+                state.otherPublicMemories = action.payload;
+            })
+            .addCase(getOtherPublicMemoriesAsync.rejected, (state, action) => {
+                state.selectMemoryByMemoryId = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            });
 
         builder
             .addCase(getMemoriesByTripIdAsync.pending, (state) => {
@@ -211,6 +229,7 @@ export const {
     getAllMemories,
     getMemoryByMemoryId,
     getMemoriesByUserId,
+    getOtherPublicMemories,
     getMemoriesByTripId,
     getMemoriesByExperienceId,
     getMemoriesByKeyword,

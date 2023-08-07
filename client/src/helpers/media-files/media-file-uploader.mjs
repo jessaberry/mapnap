@@ -201,6 +201,7 @@ export default function MediaFileUploader(props) {
     const [imageLongitude, setimageLongitude] = useState(null);
 
     const [imgData, setImgData] = useState({});
+    const [imgSrc, setImgSrc] = useState({});
 
     const convertImage = (file) => {
         const blobURL = URL.createObjectURL(file);

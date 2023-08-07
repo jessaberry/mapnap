@@ -4,29 +4,29 @@ import MemoriesServices from "./memory-services.mjs";
 
 export const selectMemoryByMemoryIdAsync = createAsyncThunk(
   MemoryActionTypes.SELECT_MEMORY_BY_MEMORY_ID,
-  async (tripId) => {
+  async (memoryId) => {
     return await MemoriesServices.selectMemoryByMemoryId(memoryId);
   }
 );
 
 export const getAllMemoriesAsync = createAsyncThunk(
-  MemoryActionTypes.GET_ALL_Memories,
+  MemoryActionTypes.GET_ALL_MEMORIES,
   async () => {
     return await MemoriesServices.getAllMemories();
   }
 );
 
 export const getMemoryByMemoryIdAsync = createAsyncThunk(
-  MemoryActionTypes.GET_MEMORIES_BY_MEMORY_ID,
-  async (tripId) => {
-    return await MemoriesServices.getMemoryByMemoryId(memoryID);
+  MemoryActionTypes.GET_MEMORY_BY_MEMORY_ID,
+  async (memoryId) => {
+    return await MemoriesServices.getMemoryByMemoryId(memoryId);
   }
 );
 
 export const getMemoriesByTripIdAsync = createAsyncThunk(
     MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID,
     async (tripId) => {
-        return await MemoriesServices.getMemoriesByTripId(tripID);
+        return await MemoriesServices.getMemoriesByTripId(tripId);
     }
 );
 
@@ -37,9 +37,16 @@ export const getMemoriesByUserIdAsync = createAsyncThunk(
   }
 );
 
+export const getOtherPublicMemoriesAsync = createAsyncThunk(
+    MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES,
+    async (userId) => {
+        return await MemoriesServices.getOtherPublicMemories(userId);
+    }
+);
+
 export const getMemoriesByExperienceIdAsync = createAsyncThunk(
     MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID,
-    async (tripId) => {
+    async (experienceId) => {
         return await MemoriesServices.getMemoriesByExperienceId(experienceId);
     }
 );
@@ -60,8 +67,8 @@ export const upsertSingleMemoryAsync = createAsyncThunk(
 
 export const deleteMemoryByMemoryIdAsync = createAsyncThunk(
   MemoryActionTypes.DELETE_MEMORY_BY_MEMORY_ID,
-  async (tripId) => {
-    return await MemoriesServices.deleteMemoryByMemoryId(tripId);
+  async (memoryId) => {
+    return await MemoriesServices.deleteMemoryByMemoryId(memoryId);
   }
 );
 
