@@ -1,3 +1,5 @@
+/* used specifically for trips and the cards themselves */ 
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
