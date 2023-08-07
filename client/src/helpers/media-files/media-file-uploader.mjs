@@ -4,7 +4,8 @@ import ObjectId from 'bson-objectid';
 import Uploady, {
     withRequestPreSendUpdate,
     useItemFinalizeListener,
-    useItemProgressListener
+    useItemProgressListener,
+    useItemStartListener
 } from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import UploadPreview, {PREVIEW_TYPES} from "@rpldy/upload-preview";
@@ -14,6 +15,11 @@ import {useAuth0} from "@auth0/auth0-react";
 import {useDispatch, useSelector} from "react-redux";
 import {Circle} from "rc-progress";
 import {getPresignedUploadUrlAsync} from "../s3/s3-thunks.mjs";
+import {TextField} from "@mui/material";
+import Button from "@mui/material/Button/Button.js";
+import exifr from "exifr";
+import heic2any from "heic2any";
+
 
 const UploadProgress = () => {
     const progressData = useItemProgressListener() || {completed: 0};
@@ -26,9 +32,10 @@ const UploadProgress = () => {
             strokeWidth={5}
             strokeColor={completed === 100 ? "#4dc14d" : "#40affd"}
             percent={completed}/>
-        <span className="px-2 py-2 text-sm text-gray-700">{completed === 100 ? "All done!" : "Uploading..."}</span>
+        <span className="px-2 py-2 text-sm text-gray-700" hidden={true}>{completed === 100 ? "All done!" : "Uploading..."}</span>
     </div>);
 };
+
 
 const PreviewButtons = ({
                             finished,
@@ -84,6 +91,7 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
     const [uploadState, setUploadState] = useState(UPLOAD_STATES.NONE);
     const [croppedImg, setCroppedImg] = useState(null);
 
+
     //data for react-easy-crop
     const [crop, setCrop] = useState({x: 0, y: 0});
     const [zoom, setZoom] = useState(1);
@@ -110,6 +118,8 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
 
             updateRequest({items: requestData.items});
             setCroppedImg(croppedUri);
+
+
         }
     }, [url, requestData, updateRequest, croppedAreaPixels]);
 
@@ -119,6 +129,7 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
             previewMethods.current.clear();
         }
     }, [updateRequest, previewMethods]);
+
 
 
     return isFallback || type !== PREVIEW_TYPES.IMAGE ? (
@@ -168,9 +179,9 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
     );
 });
 
+const handleSubmission = async () => {
 
-
-
+}
 
 
 export default function MediaFileUploader(props) {
@@ -179,6 +190,28 @@ export default function MediaFileUploader(props) {
     const previewMethodsRef = useRef();
     const {user} = useAuth0();
 
+
+    const [imageWidth, setImageWidth] = useState(null);
+    const [imageHeight, setImageHeight] = useState(null);
+
+    const [croppedImageWidth, setCroppedImageWidth] = useState(null);
+    const [croppedImageHeight, setCroppedImageHeight] = useState(null);
+
+    const [imageLatitude, setimageLatitude] = useState(null);
+    const [imageLongitude, setimageLongitude] = useState(null);
+
+    const [imgData, setImgData] = useState({});
+
+    const convertImage = (file) => {
+        const blobURL = URL.createObjectURL(file);
+        fetch(blobURL)
+            .then((res) => res.blob())
+            .then((blob) => heic2any({ blob }))
+            .then((conversionResult) => {
+                setImgSrc(conversionResult);
+            })
+            .catch((e) => {});
+    };
 
 
     if (!user) {
@@ -191,15 +224,11 @@ export default function MediaFileUploader(props) {
     const userId = user.sub;
     const fileId = new ObjectId();
 
-    console.log('uploadUrl',uploadUrl);
+    console.log('uploadUrl', uploadUrl);
     const type = 'image/jpeg';
 
 
-    ///const key = userId + '/' + fileId + '.' + extension;
-    const key = fileId  + '.' + extension;
-
-
-//    dispatch(getPresignedUploadUrlAsync(params));
+    const key = fileId + '.' + extension;
 
     const parameters = {
         url: uploadUrl,
@@ -212,32 +241,109 @@ export default function MediaFileUploader(props) {
             'Content-Type': type,
         },
     }
+    /*
+      {
+    "MediaFileId": 1,
+    "OwnerUserId": 1,
+    "Title": "Yatsusankan",
+    "Description": "",
+    "Url": "https://en.823kan.com/wp01/wp-content/uploads/2022/08/movie202104_1920.jpg",
+    "Latitude": 36.2330294,
+    "Longitude": 137.1878209,
+    "Duration": null,
+    "Width": 1920,
+    "Height": 1080,
+    "FileSize": 1024,
+    "CreatedAt": "",
+    "UpdatedAt": "",
+    "DeletedAt": "",
+    "IsDeleted": false,
+    "IsPublic": false
+  }
+     */
+
+    const fileMetaData = {
+        width: 1600,
+        height: 1200,
+        url: "",
+        latitude: 352.25221,
+        longitude: 35.2525,
+        fileSize: 162003,
+        createdAt: "2023-01-25",
+        updatedAt: "2023-01-25",
+        title: "Yatsusankan",
+        description: "Entrance",
+        userId: "GDsgsgs",
+        tripId: "SAdegsgsg",
+        experienceId: "352tswg",
+        isPublic: true
+    }
 
     const handleUploadButtonClick = () => {
-        const params = {userid: userId, key: key };
+        const params = {userid: userId, key: key};
         console.log('parameters', parameters);
         dispatch(getPresignedUploadUrlAsync(params));
     }
+    const readImageDimensions = (file) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            var dataUrl = URL.createObjectURL(file);
+            img.src = dataUrl;
+
+            convertImage(file);
+            exifr
+                .parse(file)
+                .then((output) => {
+                    setImgData(output);
+                })
+                .catch((e) => {});
+
+
+            img.onload = () => {
+                URL.revokeObjectURL(dataUrl);
+                resolve([img.naturalWidth, img.naturalHeight]);
+            };
+        });
+    };
+
+    const UploadWithDimensionsCheck = () => {
+        useItemStartListener(async (item) => {
+            const [width, height] = await readImageDimensions(item.file);
+
+            return;
+        });
+        return <></>;
+    };
 
     return (
-        <Uploady
-            multiple={false}
-            destination={parameters}
-
-        >
+        <>
             <div className="MediaFileUploader">
-                <p>Uploading to: </p>
-                <p>User: {userId}</p>
-                <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
-                <br/>
-                <UploadProgress/>
-                <UploadPreview
-                    PreviewComponent={ItemPreviewWithCrop}
-                    previewComponentProps={{previewMethods: previewMethodsRef}}
-                    previewMethodsRef={previewMethodsRef}
-                    fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
-                />
+                <Uploady
+                    multiple={false}
+                    destination={parameters}
+
+                >
+                    <UploadWithDimensionsCheck />
+                    <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
+                    <UploadProgress/>
+                    <UploadPreview
+                        PreviewComponent={ItemPreviewWithCrop}
+                        previewComponentProps={{previewMethods: previewMethodsRef}}
+                        previewMethodsRef={previewMethodsRef}
+                        fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
+                    />
+
+                </Uploady>
+
+                <TextField id="title" label="Title" variant="outlined" fullWidth={true}/><br/>
+                <TextField id="description" label="Description" variant="outlined" multiline={true} fullWidth={true}
+                           rows="5"/>
+                <TextField id="width" label="Width"  value={imageWidth} InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField>
+                <TextField id="height" label="Height"  value={imageHeight}  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField><br />
+                <TextField id="latitude" label="Latitude" variant="outlined" a  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField>
+                <TextField id="longitude" label="Longitude" variant="outlined"  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField><br />
+                <Button>Save Media File</Button>
             </div>
-        </Uploady>
+        </>
     );
 }

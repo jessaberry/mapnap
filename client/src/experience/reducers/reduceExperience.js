@@ -64,8 +64,8 @@ export const expSlice = createSlice({
   },
 });
 
-// export const { addTrip, deleteTrip, updateTrip } = tripSlice.actions;
-// export default tripSlice.reducer;
+// export const { addTrip, deleteTrip, updateTrip } = MEMORIESlice.actions;
+// export default MEMORIESlice.reducer;
 
 // export const expSlice = createSlice({
 //   name: "exp",

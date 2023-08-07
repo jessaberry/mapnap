@@ -3,7 +3,6 @@ import express from "express";
 const router = express.Router();
 
 import db from "../db/conn.mjs";
-import uploadMediaFile from "../helpers/s3MediaStorage.mjs";
 import { ObjectId } from "mongodb";
 import { experiencesCollectionName } from "../common/environments-and-constants.mjs";
 
@@ -18,9 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 router.put(
-  "/",
-  uploadMediaFile.single(experiencesCollectionName),
-  (req, res, next) => {
+  "/", async (req, res, next) => {
     console.log(experiencesRouteCollectionName);
     let data = {};
     if (req.file) {

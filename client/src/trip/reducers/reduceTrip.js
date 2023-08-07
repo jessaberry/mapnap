@@ -3,28 +3,28 @@ import {
   addTripAsync,
   deleteTripAsync,
   updateTripAsync,
-  getTripsAsync,
-  getTripsByUserIdAsync,
+  getMEMORIESAsync,
+  getMEMORIESByUserIdAsync,
   getPOIAsync,
-  getOtherPublicTripsAsync,
+  getOtherPublicMEMORIESAsync,
 } from "./thunksTrip";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateTrip";
 
-export const tripSlice = createSlice({
+export const MEMORIESlice = createSlice({
   name: "trip",
   initialState: INITIAL_STATE,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getTripsAsync.fulfilled, (state, action) => {
-      state.getTrips = REQUEST_STATE.FULFILLED;
-      state.trips = action.payload;
+    builder.addCase(getMEMORIESAsync.fulfilled, (state, action) => {
+      state.getMEMORIES = REQUEST_STATE.FULFILLED;
+      state.MEMORIES = action.payload;
     });
-    builder.addCase(getTripsByUserIdAsync.fulfilled, (state, action) => {
-      state.getTripsByUserId = REQUEST_STATE.FULFILLED;
-      state.trips = action.payload;
+    builder.addCase(getMEMORIESByUserIdAsync.fulfilled, (state, action) => {
+      state.getMEMORIESByUserId = REQUEST_STATE.FULFILLED;
+      state.MEMORIES = action.payload;
     });
-    builder.addCase(getOtherPublicTripsAsync.fulfilled, (state, action) => {
-      state.getOtherPublicTrips = REQUEST_STATE.FULFILLED;
+    builder.addCase(getOtherPublicMEMORIESAsync.fulfilled, (state, action) => {
+      state.getOtherPublicMEMORIES = REQUEST_STATE.FULFILLED;
       state.public = action.payload;
     });
     builder.addCase(getPOIAsync.fulfilled, (state, action) => {
@@ -34,7 +34,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(addTripAsync.fulfilled, (state, action) => {
       state.addTrip = REQUEST_STATE.FULFILLED;
-      state.trips.push(action.payload);
+      state.MEMORIES.push(action.payload);
     });
     builder.addCase(addTripAsync.pending, (state, action) => {
       state.addTrip = REQUEST_STATE.PENDING;
@@ -47,7 +47,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(deleteTripAsync.fulfilled, (state, action) => {
       state.deleteTrip = REQUEST_STATE.FULFILLED;
-      state.trips = state.trips.filter((trip) => trip.TripId !== trip.payload);
+      state.MEMORIES = state.MEMORIES.filter((trip) => trip.TripId !== trip.payload);
     });
     builder.addCase(deleteTripAsync.pending, (state, action) => {
       state.deleteTrip = REQUEST_STATE.PENDING;
@@ -60,7 +60,7 @@ export const tripSlice = createSlice({
 
     builder.addCase(updateTripAsync.fulfilled, (state, action) => {
       state.updateTrip = REQUEST_STATE.FULFILLED;
-      state.trips = state.trips.map((trip) =>
+      state.MEMORIES = state.MEMORIES.map((trip) =>
         trip.TripId === action.payload.TripId ? action.payload : trip
       );
     });
@@ -79,9 +79,9 @@ export const {
   addTrip,
   deleteTrip,
   updateTrip,
-  getTrips,
-  getTripsByUserId,
-  getOtherPublicTrips,
+  getMEMORIES,
+  getMEMORIESByUserId,
+  getOtherPublicMEMORIES,
   getPOI,
-} = tripSlice.actions;
-export default tripSlice.reducer;
+} = MEMORIESlice.actions;
+export default MEMORIESlice.reducer;

@@ -4,8 +4,8 @@
 
 [//]: # "Mapnap is a mobile app designed for anyone looking to manage a busy schedule. It is designed to manage daily routines and notify users on time-based and location-based events in response to stored user data. Location and time triggers, settings, associated events, and usage data will be stored in Mapnap's database. Additional features (depending on time) include theme support, snoozing options, and social media integration."
 
-**Mapnap** is a website designed for travellers to plan and organize their itineraries and record memories from their trips.
-The users can plan and organize their upcoming trips in map or calendar view, and also add media files to create a memory album to reflect upon.
+**Mapnap** is a website designed for travellers to plan and organize their itineraries and record memories from their MEMORIES.
+The users can plan and organize their upcoming MEMORIES in map or calendar view, and also add media files to create a memory album to reflect upon.
 If a user so chooses, they can then share their trip with their friends over the social media.
 
 Access Mapnap here: https://mapnap.onrender.com/
