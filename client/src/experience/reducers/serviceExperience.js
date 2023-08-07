@@ -7,6 +7,11 @@ const experienceManager = {
     return res.data;
   },
 
+  getExperiencesByUserId: async (userId) => {
+    const res = await axios.get("/experiences/by-user-id/" + userId);
+    return res.data;
+  },
+
   addExperience: async (exp) => {
     try {
       const res = await axios.post("/experiences", exp);

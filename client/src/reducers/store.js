@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import expReducer from "../experience/reducers/reduceExperience";
-import memoryReducer from "../memories/reducers/reducer";
+import memoryReducer from "../memories/reducers/memory-reducer.mjs";
 import tripReducer from "../trip/reducers/reduceTrip";
 import s3Reducer from "../helpers/s3/s3-reducer.mjs";
 
