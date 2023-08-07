@@ -9,7 +9,8 @@
     "title": "Yatsusankan - Bar",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c52926b02ae71c5dd6b047",
@@ -21,7 +22,8 @@
     "title": "Yatsusankan - Drinks",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c52970b1e99aafa54d4fca",
@@ -33,10 +35,11 @@
     "title": "Yatsusankan - Front Entrance",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": false
   },
   {
-    "_id": "64c5295f3d3f3b707352f930",
+    "_id": "64c5295f3d3f3b707352f934",
     "url": "https://mapnap.s3.us-west-2.amazonaws.com/yatsusankan/guest-room-1920.jpg",
     "width": 1920,
     "height": 1080,
@@ -45,10 +48,11 @@
     "title": "Yatsusankan - Guestroom",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": false
   },
   {
-    "_id": "64c5295f3d3f3b707352f930",
+    "_id": "64c5295f3d3f3b707352f933",
     "url": "https://mapnap.s3.us-west-2.amazonaws.com/yatsusankan/onsen-1920.jpg",
     "width": 1920,
     "height": 1080,
@@ -57,10 +61,11 @@
     "title": "Yatsusankan - Onsen",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
-    "_id": "64c5295f3d3f3b707352f930",
+    "_id": "64c5295f3d3f3b707352f932",
     "url": "https://mapnap.s3.us-west-2.amazonaws.com/yatsusankan/relax-room-1920.jpg",
     "width": 1920,
     "height": 1080,
@@ -69,7 +74,8 @@
     "title": "Yatsusankan - Relax Room",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c5295f3d3f3b707352f930",
@@ -81,10 +87,11 @@
     "title": "Yatsusankan - Wakashi",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
-    "_id": "64c5295f3d3f3b707352f930",
+    "_id": "64c5295f3d3f3b707352f931",
     "url": "https://source.unsplash.com/epcsn8Ed8kY/1200x1600",
     "width": 1200,
     "height": 1600,
@@ -105,7 +112,8 @@
     "title": "Akita",
     "userId": "auth0|64b26b8d76736ff2b0a188a6",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c5294c59753e35bb4ad6d0",
@@ -115,9 +123,10 @@
     "latitude": 35.652832,
     "longitude": 139.839478,
     "title": "Tokyo",
-    "userId": "auth0|64b26b8d76736ff2b0a188a6",
+    "userId": "auth0|64b26d7f76736ff2b0a188d4",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c52945c82ec6d59a8ea58e",
@@ -127,9 +136,10 @@
     "latitude": 35.443707,
     "longitude": 139.638031,
     "title": "Yokohama",
-    "userId": "auth0|64b26b8d76736ff2b0a188a6",
+    "userId": "auth0|64b26d7f76736ff2b0a188d4",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": true
   },
   {
     "_id": "64c52933ba8060b5cb67e54f",
@@ -139,8 +149,9 @@
     "latitude": 42.923901,
     "longitude": 143.196106,
     "title": "Obihiro",
-    "userId": "auth0|64b26b8d76736ff2b0a188a6",
+    "userId": "auth0|64b26d7f76736ff2b0a188d4",
     "tripId": "",
-    "experienceId": ""
+    "experienceId": "",
+    "isPublic": false
   }
 ]

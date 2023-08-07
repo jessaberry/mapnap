@@ -35,9 +35,9 @@ router.get("/get-all/", async (req, res) => {
 router.get("/get-other-public-memories/:userId", async (req, res) => {
     console.log("get other public MEMORIES");
     const userId = req.params.userId;
-    const qPublicMEMORIES = { IsPublic: true };
-    const qNotCurrentUser = { UserId: { $ne: userId } };
-    const query = { $and: [qPublicMEMORIES, qNotCurrentUser] };
+    const qPublicMemories = { isPublic: true };
+    const qNotCurrentUser = { userId: { $ne: userId } };
+    const query = { $and: [qPublicMemories, qNotCurrentUser] };
     let collection = await db.collection(memoriesCollectionName);
     let results = await collection
         .find(query)
@@ -68,7 +68,7 @@ router.get("/by-user-id/:userId", async (req, res) => {
     try {
         let collection = await db.collection(memoriesCollectionName);
         let results = await collection
-            .find({})
+            .find(query)
             .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
             .toArray();
         console.log(results);
@@ -120,7 +120,7 @@ router.post("/", async (req, res) => {
     res.send(result).status(201);
 });
 
-router.patch(`/:id`, async (req, res) => {
+router.patch(`/by-memory-id/:id`, async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
     const updates = {
         $push: { tags: req.body },
@@ -136,7 +136,7 @@ router.patch(`/:id`, async (req, res) => {
     }
 });
 
-router.delete("/:id/", async (req, res) => {
+router.delete("/delete-by-memory-id/:id/", async (req, res) => {
     try {
         const id = req.params.id;
         const collection = db.collection(memoriesCollectionName);

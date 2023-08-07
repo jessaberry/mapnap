@@ -51,12 +51,6 @@ export const getMemoriesByExperienceIdAsync = createAsyncThunk(
     }
 );
 
-export const getMemoriesByKeywordAsync = createAsyncThunk(
-  MemoryActionTypes.GET_MEMORIES_BY_KEYWORD,
-  async (searchTerm) => {
-    return await MemoriesServices.getMemoriesByKeyword(searchTerm);
-  }
-);
 
 export const upsertSingleMemoryAsync = createAsyncThunk(
   MemoryActionTypes.UPSERT_SINGLE_MEMORY,

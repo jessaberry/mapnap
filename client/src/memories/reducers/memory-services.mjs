@@ -32,7 +32,6 @@ const getMemoriesByUserId = async (userId) => {
   const response = await fetch(command, {
     method: "GET",
   });
-  console.log('getmemoriesbyuserid',response.json());
   return response.json();
 };
 
@@ -41,7 +40,6 @@ const getOtherPublicMemories = async (userId) => {
   const response = await fetch(command, {
     method: "GET",
   });
-  console.log('getotherpublicmemories', response.json());
   return response.json();
 };
 
@@ -61,19 +59,6 @@ const getMemoriesByExperienceId = async (experienceId) => {
   return response.json();
 };
 
-const getMemoriesByKeyword = async (searchTerm) => {
-  const command =
-    apiRoot +
-    MemoryActionTypes.GET_MEMORIES_BY_KEYWORD +
-    "/" +
-    encodeURI(searchTerm);
-  console.log(command);
-  const response = await fetch(command, {
-    method: "GET",
-  });
-  console.log(response);
-  return response.json();
-};
 
 
 const upsertSingleMemory = async (trip) => {
@@ -131,7 +116,6 @@ export default {
 
   getAllMemories,
   getMemoryByMemoryId,
-  getMemoriesByKeyword,
   getMemoriesByUserId,
   getMemoriesByTripId,
   getMemoriesByExperienceId,
