@@ -5,8 +5,6 @@ const router = express.Router();
 
 import {HttpRequest} from "@aws-sdk/protocol-http";
 import {fromIni} from "@aws-sdk/credential-provider-ini";
-
-
 import {
     S3RequestPresigner,
 } from "@aws-sdk/s3-request-presigner";
@@ -17,8 +15,8 @@ import {Hash} from "@aws-sdk/hash-node";
 const region = process.env.AWS_REGION;
 const bucket = process.env.AWS_S3_MEDIA_FILES_BUCKET_NAME;
 
-
 router.get("/get-presigned-upload/", async (req, res) => {
+
     const key = req.query.key;
     console.log(key);
 

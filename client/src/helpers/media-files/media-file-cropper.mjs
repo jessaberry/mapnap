@@ -1,13 +1,13 @@
 //copied over from: https://codesandbox.io/s/q8q1mnr01w?file=/src/cropImage.js
 
 export const createImage = (url) =>
-    new Promise((resolve, reject) => {
-      const image = new Image();
-      image.addEventListener("load", () => resolve(image));
-      image.addEventListener("error", (error) => reject(error));
-      image.setAttribute("crossOrigin", "anonymous"); // needed to avoid cross-origin issues on CodeSandbox
-      image.src = url;
-    });
+  new Promise((resolve, reject) => {
+    const image = new Image();
+    image.addEventListener("load", () => resolve(image));
+    image.addEventListener("error", (error) => reject(error));
+    image.setAttribute("crossOrigin", "anonymous"); // needed to avoid cross-origin issues on CodeSandbox
+    image.src = url;
+  });
 
 export function getRadianAngle(degreeValue) {
   return (degreeValue * Math.PI) / 180;
@@ -21,9 +21,9 @@ export function rotateSize(width, height, rotation) {
 
   return {
     width:
-        Math.abs(Math.cos(rotRad) * width) + Math.abs(Math.sin(rotRad) * height),
+      Math.abs(Math.cos(rotRad) * width) + Math.abs(Math.sin(rotRad) * height),
     height:
-        Math.abs(Math.sin(rotRad) * width) + Math.abs(Math.cos(rotRad) * height)
+      Math.abs(Math.sin(rotRad) * width) + Math.abs(Math.cos(rotRad) * height),
   };
 }
 
@@ -31,10 +31,10 @@ export function rotateSize(width, height, rotation) {
  * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
  */
 export default async function getCroppedImg(
-    imageSrc,
-    pixelCrop,
-    rotation = 0,
-    flip = { horizontal: false, vertical: false }
+  imageSrc,
+  pixelCrop,
+  rotation = 0,
+  flip = { horizontal: false, vertical: false }
 ) {
   const image = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
@@ -48,9 +48,9 @@ export default async function getCroppedImg(
 
   // calculate bounding box of the rotated image
   const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
-      image.width,
-      image.height,
-      rotation
+    image.width,
+    image.height,
+    rotation
   );
 
   // set canvas size to match the bounding box
@@ -69,10 +69,10 @@ export default async function getCroppedImg(
   // croppedAreaPixels values are bounding box relative
   // extract the cropped image using these values
   const data = ctx.getImageData(
-      pixelCrop.x,
-      pixelCrop.y,
-      pixelCrop.width,
-      pixelCrop.height
+    pixelCrop.x,
+    pixelCrop.y,
+    pixelCrop.width,
+    pixelCrop.height
   );
 
   // set canvas width to final desired crop size - this will clear existing context

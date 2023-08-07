@@ -1,6 +1,6 @@
-import React, {useState, useCallback, useRef} from "react";
+import React, { useState, useCallback, useRef } from "react";
 import Cropper from "react-easy-crop";
-import ObjectId from 'bson-objectid';
+import ObjectId from "bson-objectid";
 import Uploady, {
     withRequestPreSendUpdate,
     useItemFinalizeListener,
@@ -8,7 +8,7 @@ import Uploady, {
     useItemStartListener
 } from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
-import UploadPreview, {PREVIEW_TYPES} from "@rpldy/upload-preview";
+import UploadPreview, { PREVIEW_TYPES } from "@rpldy/upload-preview";
 import getCroppedImg from "./media-file-cropper.mjs";
 import "./styles.css";
 import {useAuth0} from "@auth0/auth0-react";
@@ -38,49 +38,77 @@ const UploadProgress = () => {
 
 
 const PreviewButtons = ({
-                            finished,
-                            crop,
-                            updateRequest,
-                            onUploadCancel,
-                            onUploadCrop
-                        }) => {
-    return (
-        <div className="ButtonWrapper">
-            <button
-                style={{
-                    display: !finished && updateRequest && crop ? "block" : "none"
-                }}
-                onClick={onUploadCrop}
-            >
-                Upload Cropped
-            </button>
-            <button
-                style={{display: !finished && updateRequest ? "block" : "none"}}
-                onClick={updateRequest}
-            >
-                Upload without Crop
-            </button>
-            <button
-                style={{
-                    display: !finished && updateRequest && crop ? "block" : "none"
-                }}
-                onClick={onUploadCancel}
-            >
-                Cancel
-            </button>
-        </div>
-    );
+  finished,
+  crop,
+  updateRequest,
+  onUploadCancel,
+  onUploadCrop,
+}) => {
+  return (
+    <div className="ButtonWrapper">
+      <button
+        style={{
+          display: !finished && updateRequest && crop ? "block" : "none",
+        }}
+        onClick={onUploadCrop}
+      >
+        Upload Cropped
+      </button>
+      <button
+        style={{ display: !finished && updateRequest ? "block" : "none" }}
+        onClick={updateRequest}
+      >
+        Upload without Crop
+      </button>
+      <button
+        style={{
+          display: !finished && updateRequest && crop ? "block" : "none",
+        }}
+        onClick={onUploadCancel}
+      >
+        Cancel
+      </button>
+    </div>
+  );
 };
 
 const UPLOAD_STATES = {
-    NONE: 0,
-    UPLOADING: 1,
-    FINISHED: 2
+  NONE: 0,
+  UPLOADING: 1,
+  FINISHED: 2,
 };
 
 const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
-    const {
-        id,
+  const {
+    id,
+    url,
+    isFallback,
+    type,
+    updateRequest,
+    requestData,
+    previewMethods,
+  } = props;
+  const [uploadState, setUploadState] = useState(UPLOAD_STATES.NONE);
+  const [croppedImg, setCroppedImg] = useState(null);
+
+  //data for react-easy-crop
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    // console.log(croppedArea, croppedAreaPixels);
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  const isFinished = uploadState === UPLOAD_STATES.FINISHED;
+
+  useItemProgressListener(() => setUploadState(UPLOAD_STATES.UPLOADING), id);
+  useItemFinalizeListener(() => setUploadState(UPLOAD_STATES.FINISHED), id);
+
+  const onUploadCrop = useCallback(async () => {
+    if (updateRequest && croppedAreaPixels) {
+      const [croppedBlob, croppedUri] = await getCroppedImg(
         url,
         isFallback,
         type,
@@ -231,16 +259,8 @@ export default function MediaFileUploader(props) {
 
     const key = fileId + '.' + extension;
 
-    const parameters = {
-        url: uploadUrl,
-        params: {
-            document_name: key,
-
-        },
-        method: 'PUT',
-        headers: {
-            'Content-Type': type,
-        },
+      updateRequest({ items: requestData.items });
+      setCroppedImg(croppedUri);
     }
     /*
       {
