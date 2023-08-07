@@ -8,7 +8,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.1",
     "@mui/lab": "^5.0.0-alpha.133",
-    "@mui/material": "^5.14.2",
+    "@mui/material": "^5.14.3",
     "@mui/x-date-pickers": "^6.6.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@rpldy/mock-sender": "^1.4.1",
@@ -46,6 +46,8 @@
     "react-scripts": "^5.0.1",
     "react-share": "^4.4.1",
     "react-upload-to-s3": "^1.0.16",
+    "react-virtualized": "^9.22.5",
+    "react-window": "^1.8.9",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
