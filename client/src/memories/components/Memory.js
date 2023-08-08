@@ -41,15 +41,10 @@ export default function Memory(props, children) {
                 }
             }
         });
-        console.log('userid', userId);
         dispatch(getMemoriesByUserIdAsync(userId));
         dispatch(getTripsByUserIdAsync(userId));
         dispatch(getExperiencesByUserIdAsync(userId));
         dispatch(getOtherPublicMemoriesAsync(userId));
-        console.log('trips', trips);
-        console.log('experiences', experiences);
-
-        console.log('memories after dispatch', memories);
     }, []);
 
 

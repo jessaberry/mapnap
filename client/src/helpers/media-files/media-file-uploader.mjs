@@ -235,6 +235,7 @@ export default function MediaFileUploader(props) {
         url: uploadUrl,
         params: {
             document_name: key,
+            ContentEncoding: 'base64'
 
         },
         method: 'PUT',
@@ -311,7 +312,7 @@ export default function MediaFileUploader(props) {
         useItemStartListener(async (item) => {
             const [width, height] = await readImageDimensions(item.file);
 
-            return;
+            return true;
         });
         return <></>;
     };
