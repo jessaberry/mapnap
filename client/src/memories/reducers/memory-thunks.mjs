@@ -24,10 +24,10 @@ export const getMemoryByMemoryIdAsync = createAsyncThunk(
 );
 
 export const getMemoriesByTripIdAsync = createAsyncThunk(
-    MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID,
-    async (tripId) => {
-        return await MemoriesServices.getMemoriesByTripId(tripId);
-    }
+  MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID,
+  async (tripId) => {
+    return await MemoriesServices.getMemoriesByTripId(tripId);
+  }
 );
 
 export const getMemoriesByUserIdAsync = createAsyncThunk(
@@ -38,19 +38,18 @@ export const getMemoriesByUserIdAsync = createAsyncThunk(
 );
 
 export const getOtherPublicMemoriesAsync = createAsyncThunk(
-    MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES,
-    async (userId) => {
-        return await MemoriesServices.getOtherPublicMemories(userId);
-    }
+  MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES,
+  async (userId) => {
+    return await MemoriesServices.getOtherPublicMemories(userId);
+  }
 );
 
 export const getMemoriesByExperienceIdAsync = createAsyncThunk(
-    MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID,
-    async (experienceId) => {
-        return await MemoriesServices.getMemoriesByExperienceId(experienceId);
-    }
+  MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID,
+  async (experienceId) => {
+    return await MemoriesServices.getMemoriesByExperienceId(experienceId);
+  }
 );
-
 
 export const upsertSingleMemoryAsync = createAsyncThunk(
   MemoryActionTypes.UPSERT_SINGLE_MEMORY,
