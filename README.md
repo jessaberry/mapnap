@@ -38,7 +38,7 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 ✅ The application should allow the user to budget their itinerary, by allowing an optional cost/price entry when an experience is added
 
 
-:warning: The application should allow users to set itinerary, experience, and memories to private (edit: only itinerary trips can be set to private)
+:warning: The application should allow users to set itinerary, experience, and memories to private (edit: only itinerary trips and memories can be set to private)
 
 
 ✅ The application should allow users to track and provide analytics such as expenses by itinerary or by experience
@@ -80,7 +80,7 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 
 
 ### List of Contributions
-- Eric Chau: backend (express + mongoDB integration), S3 upload and user authentication
+- Eric Chau: backend (express + mongoDB integration), memories, S3 upload and user authentication
 - Max Zhong: map view, frontend, styling
 - Jessa Shi: frontend (react + redux integration) of trips, experiences, budgeting
 
