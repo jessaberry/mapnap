@@ -55,24 +55,28 @@ export default function Map() {
     <PageLayout>
       <div>
         <h1>Map View</h1>
-        <MapContainer
-          center={[35.676, 139.65]}
-          bounds={bounds}
-          scrollWheelZoom={true}
-        >
-          <TileLayer attribution={attrib} url={url} />
-          {markerArray.map(({ lat, lng, name }, index) => (
-            <Marker position={[lat, lng]} key={index}>
-              <Popup>
-                {name}
-                <br />
-                Latitude: {lat}
-                <br />
-                Longitude: {lng}
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
+        {markerArray.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <MapContainer
+            center={[35.676, 139.65]}
+            bounds={bounds}
+            scrollWheelZoom={true}
+          >
+            <TileLayer attribution={attrib} url={url} />
+            {markerArray.map(({ lat, lng, name }, index) => (
+              <Marker position={[lat, lng]} key={index}>
+                <Popup>
+                  {name}
+                  <br />
+                  Latitude: {lat}
+                  <br />
+                  Longitude: {lng}
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        )}
       </div>
     </PageLayout>
   );
