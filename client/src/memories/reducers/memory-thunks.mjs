@@ -1,13 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { MemoryActionTypes } from "../memory-action-types.mjs";
 import {
-    deleteAllMemories, deleteMemoryByMemoryId,
-    getAllMemories, getMemoriesByExperienceId,
-    getMemoriesByUserId,
-    getOtherPublicMemories, resetAllMemories,
-    selectMemoryByMemoryId,
-    upsertSingleMemory,
-    getMemoriesByTripId, getMemoryByMemoryId
+  deleteAllMemories,
+  deleteMemoryByMemoryId,
+  getAllMemories,
+  getMemoriesByExperienceId,
+  getMemoriesByUserId,
+  getOtherPublicMemories,
+  resetAllMemories,
+  selectMemoryByMemoryId,
+  upsertSingleMemory,
+  getMemoriesByTripId,
+  getMemoryByMemoryId,
 } from "./memory-services.mjs";
 
 export const selectMemoryByMemoryIdAsync = createAsyncThunk(
@@ -32,10 +36,10 @@ export const getMemoryByMemoryIdAsync = createAsyncThunk(
 );
 
 export const getMemoriesByTripIdAsync = createAsyncThunk(
-    MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID,
-    async (tripId) => {
-        return await getMemoriesByTripId(tripId);
-    }
+  MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID,
+  async (tripId) => {
+    return await getMemoriesByTripId(tripId);
+  }
 );
 
 export const getMemoriesByUserIdAsync = createAsyncThunk(
@@ -46,17 +50,17 @@ export const getMemoriesByUserIdAsync = createAsyncThunk(
 );
 
 export const getOtherPublicMemoriesAsync = createAsyncThunk(
-    MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES,
-    async (userId) => {
-        return await getOtherPublicMemories(userId);
-    }
+  MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES,
+  async (userId) => {
+    return await getOtherPublicMemories(userId);
+  }
 );
 
 export const getMemoriesByExperienceIdAsync = createAsyncThunk(
-    MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID,
-    async (experienceId) => {
-        return await getMemoriesByExperienceId(experienceId);
-    }
+  MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID,
+  async (experienceId) => {
+    return await getMemoriesByExperienceId(experienceId);
+  }
 );
 
 export const upsertSingleMemoryAsync = createAsyncThunk(

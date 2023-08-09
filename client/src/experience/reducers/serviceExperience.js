@@ -14,7 +14,7 @@ const experienceManager = {
 
   getExperiencesByTripId: async (tripId) => {
     const res = await axios.get("/experiences/by-trip-id/" + tripId);
-    console.log('getexptrip')
+    console.log("getexptrip");
     return res.data;
   },
 

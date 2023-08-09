@@ -6,22 +6,22 @@ export const REQUEST_STATE = {
 };
 
 export const INITIAL_STATE = {
-    experiences: [],
-    expenses: [],
-    getExperiences: REQUEST_STATE.IDLE,
-    getExperiencesByUserId: REQUEST_STATE.IDLE,
-    getExperiencesByTripId: REQUEST_STATE.IDLE,
-    addExperience: REQUEST_STATE.IDLE,
-    deleteExperience: REQUEST_STATE.IDLE,
-    updateExperience: REQUEST_STATE.IDLE,
-    error: null,
+  experiences: [],
+  expenses: [],
+  getExperiences: REQUEST_STATE.IDLE,
+  getExperiencesByUserId: REQUEST_STATE.IDLE,
+  getExperiencesByTripId: REQUEST_STATE.IDLE,
+  addExperience: REQUEST_STATE.IDLE,
+  deleteExperience: REQUEST_STATE.IDLE,
+  updateExperience: REQUEST_STATE.IDLE,
+  error: null,
 };
 
 export const actions = {
-    GET_EXP: "exp/getExp",
-    GET_EXP_BY_USER_ID: "ex/getExpByUserId",
-    GET_EXP_BY_TRIP_ID: "ex/getExpByTripId",
-    ADD_EXP: "exp/addExp",
-    DELETE_EXP: "exp/deleteExp",
-    UPDATE_EXP: "exp/updateExp",
+  GET_EXP: "exp/getExp",
+  GET_EXP_BY_USER_ID: "ex/getExpByUserId",
+  GET_EXP_BY_TRIP_ID: "ex/getExpByTripId",
+  ADD_EXP: "exp/addExp",
+  DELETE_EXP: "exp/deleteExp",
+  UPDATE_EXP: "exp/updateExp",
 };

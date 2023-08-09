@@ -11,7 +11,7 @@
     "Description": "check in cat separately at meow resort",
     "IsPublic": true,
     "TripId": "25447ffd-3553-47af-b377-aabd263b4e94",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "9eaadb3f-28b8-4254-8b0c-ea6801a67199",
     "date": "2023-07-29T07:13:41.020Z"
   },
@@ -27,7 +27,7 @@
     "Description": "let's go on a spree",
     "IsPublic": true,
     "TripId": "25447ffd-3553-47af-b377-aabd263b4e94",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "25566e98-7cc6-4280-a4f6-ea2e4ece536b"
   },
   {
@@ -42,7 +42,7 @@
     "Description": "omnom",
     "IsPublic": true,
     "TripId": "012347a8-a433-496b-aea9-c82691aa1447",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "62547d6d-fa53-4a90-a73b-76219f0b2699",
     "date": "2023-07-29T11:17:51.741Z"
   },
@@ -235,7 +235,7 @@
     "IsPublic": true,
     "TripId": "012347a8-a433-496b-aea9-c82691aa1447",
     "ExperienceId": "135d2bd5-4c62-4487-8ae3-5bfc9e9a51d4",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "date": "2023-07-29T21:22:46.642Z"
   },
   {
@@ -250,7 +250,7 @@
     "Description": "",
     "IsPublic": true,
     "TripId": "e2af72f9-d3e9-49da-9d95-68643b826a64",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "Date From": "2023-08-12T08:05:02.000Z",
     "Date To": "2023-08-31T20:20:02.000Z",
     "ExperienceId": "b940e39f-486f-4aff-bc3a-c5b97f2b192a",
@@ -315,7 +315,7 @@
     "Description": "",
     "IsPublic": true,
     "TripId": "25447ffd-3553-47af-b377-aabd263b4e94",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "6530e777-face-4942-aeef-f44fa5b274b1",
     "date": "2023-08-07T08:04:40.390Z"
   },
@@ -330,7 +330,7 @@
     "Description": "",
     "IsPublic": true,
     "TripId": "25447ffd-3553-47af-b377-aabd263b4e94",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "a76558b1-bc4e-4c6f-90fa-22ebbcc3fb68",
     "date": "2023-08-07T08:06:11.337Z"
   },
@@ -345,7 +345,7 @@
     "Description": "meowmeowyum",
     "IsPublic": true,
     "TripId": "74b84dc7-fafe-40bf-af5b-90b907ff91ec",
-    "UserId" :  "auth0|64b26d7f76736ff2b0a188d4",
+    "UserId": "auth0|64b26d7f76736ff2b0a188d4",
     "ExperienceId": "1e760a94-42fc-4647-b531-20cd41b92783",
     "date": "2023-08-07T22:51:53.427Z"
   }

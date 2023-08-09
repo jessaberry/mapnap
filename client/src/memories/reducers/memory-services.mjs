@@ -21,7 +21,8 @@ export const getAllMemories = async () => {
 };
 
 export const getMemoryByMemoryId = async (memoryId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORY_BY_MEMORY_ID + "/" + memoryId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORY_BY_MEMORY_ID + "/" + memoryId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -29,7 +30,8 @@ export const getMemoryByMemoryId = async (memoryId) => {
 };
 
 export const getMemoriesByUserId = async (userId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_USER_ID + "/" + userId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORIES_BY_USER_ID + "/" + userId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -37,7 +39,8 @@ export const getMemoriesByUserId = async (userId) => {
 };
 
 export const getOtherPublicMemories = async (userId) => {
-  const command = apiRoot + MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES + "/" + userId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES + "/" + userId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -45,7 +48,8 @@ export const getOtherPublicMemories = async (userId) => {
 };
 
 export const getMemoriesByTripId = async (tripId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID + "/" + tripId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID + "/" + tripId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -53,7 +57,11 @@ export const getMemoriesByTripId = async (tripId) => {
 };
 
 export const getMemoriesByExperienceId = async (experienceId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID + "/" + experienceId;
+  const command =
+    apiRoot +
+    MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID +
+    "/" +
+    experienceId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -62,7 +70,8 @@ export const getMemoriesByExperienceId = async (experienceId) => {
 
 export const upsertSingleMemory = async (memory) => {
   const memoryId = memory["_id"] ? memory["_id"] : new ObjectID();
-  const command = apiRoot + MemoryActionTypes.UPSERT_SINGLE_MEMORY + "/" + memoryId;
+  const command =
+    apiRoot + MemoryActionTypes.UPSERT_SINGLE_MEMORY + "/" + memoryId;
   const response = await fetch(command, {
     method: "POST",
     headers: {
