@@ -11,8 +11,15 @@ export const getExperiencesAsync = createAsyncThunk(
 
 export const getExperiencesByUserIdAsync = createAsyncThunk(
     actions.GET_EXP_BY_USER_ID,
-    async () => {
-        return await experienceManager.getExperiences();
+    async (userId) => {
+        return await experienceManager.getExperiencesByUserId(userId);
+    }
+);
+
+export const getExperiencesByTripIdAsync = createAsyncThunk(
+    actions.GET_EXP_BY_TRIP_ID,
+    async (tripId) => {
+        return await experienceManager.getExperiencesByTripId(tripId);
     }
 );
 

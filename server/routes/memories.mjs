@@ -48,7 +48,7 @@ router.get("/get-other-public-memories/:userId", async (req, res) => {
 });
 router.get("/by-experience-id/:experienceId", async (req, res) => {
     const experienceId = req.params.experienceId;
-    const query = { _id: `${new ObjectId(experienceId)}` };
+    const query = { experienceId: experienceId };
     try {
         let collection = await db.collection(memoriesCollectionName);
         let results = await collection
@@ -79,9 +79,9 @@ router.get("/by-user-id/:userId", async (req, res) => {
     }
 });
 
-router.get("/by-experience-id/:ExperienceId", async (req, res) => {
-    const experienceId = req.params.ExperienceId;
-    const query = { ExperienceId: experienceId };
+router.get("/by-trip-id/:TripId", async (req, res) => {
+    const tripId = req.params.TripId;
+    const query = { tripId: tripId };
     console.log(query);
     try {
         let collection = await db.collection(memoriesCollectionName);
@@ -92,7 +92,7 @@ router.get("/by-experience-id/:ExperienceId", async (req, res) => {
         res.send(results).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "failed to search by user id" });
+        res.status(500).json({ message: "failed to search by trip id" });
     }
 });
 

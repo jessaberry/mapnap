@@ -19,6 +19,7 @@ import {TextField} from "@mui/material";
 import Button from "@mui/material/Button/Button.js";
 import exifr from "exifr";
 import heic2any from "heic2any";
+import Box from "@mui/material/Box/Box.js";
 
 
 const UploadProgress = () => {
@@ -32,7 +33,8 @@ const UploadProgress = () => {
             strokeWidth={5}
             strokeColor={completed === 100 ? "#4dc14d" : "#40affd"}
             percent={completed}/>
-        <span className="px-2 py-2 text-sm text-gray-700" hidden={true}>{completed === 100 ? "All done!" : "Uploading..."}</span>
+        <span className="px-2 py-2 text-sm text-gray-700"
+              hidden={true}>{completed === 100 ? "All done!" : "Uploading..."}</span>
     </div>);
 };
 
@@ -98,7 +100,6 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-        // console.log(croppedArea, croppedAreaPixels);
         setCroppedAreaPixels(croppedAreaPixels);
     }, []);
 
@@ -129,7 +130,6 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
             previewMethods.current.clear();
         }
     }, [updateRequest, previewMethods]);
-
 
 
     return isFallback || type !== PREVIEW_TYPES.IMAGE ? (
@@ -185,20 +185,22 @@ const handleSubmission = async () => {
 
 
 export default function MediaFileUploader(props) {
-    const uploadUrl = useSelector(state => state.s3.uploadUrl);
+
     const dispatch = useDispatch();
     const previewMethodsRef = useRef();
     const {user} = useAuth0();
 
+    const extension = 'jpg';
 
-    const [imageWidth, setImageWidth] = useState(null);
-    const [imageHeight, setImageHeight] = useState(null);
+
+    const [imageWidth, setImageWidth] = useState(1920);
+    const [imageHeight, setImageHeight] = useState(1080);
 
     const [croppedImageWidth, setCroppedImageWidth] = useState(null);
     const [croppedImageHeight, setCroppedImageHeight] = useState(null);
 
-    const [imageLatitude, setimageLatitude] = useState(null);
-    const [imageLongitude, setimageLongitude] = useState(null);
+    const [imageLatitude, setImageLatitude] = useState(null);
+    const [imageLongitude, setImageLongitude] = useState(null);
 
     const [imgData, setImgData] = useState({});
     const [imgSrc, setImgSrc] = useState({});
@@ -207,29 +209,27 @@ export default function MediaFileUploader(props) {
         const blobURL = URL.createObjectURL(file);
         fetch(blobURL)
             .then((res) => res.blob())
-            .then((blob) => heic2any({ blob }))
+            .then((blob) => heic2any({blob}))
             .then((conversionResult) => {
                 setImgSrc(conversionResult);
             })
-            .catch((e) => {});
+            .catch((e) => {
+            });
     };
 
 
-    if (!user) {
-        console.log("not user");
-        return null;
-    }
-    const extension = 'jpg';
+
 
 
     const userId = user.sub;
     const fileId = new ObjectId();
 
-    console.log('uploadUrl', uploadUrl);
     const type = 'image/jpeg';
 
 
     const key = fileId + '.' + extension;
+
+    const uploadUrl = useSelector(state => state.s3.uploadUrl);
 
     const parameters = {
         url: uploadUrl,
@@ -243,26 +243,7 @@ export default function MediaFileUploader(props) {
             'Content-Type': type,
         },
     }
-    /*
-      {
-    "MediaFileId": 1,
-    "OwnerUserId": 1,
-    "Title": "Yatsusankan",
-    "Description": "",
-    "Url": "https://en.823kan.com/wp01/wp-content/uploads/2022/08/movie202104_1920.jpg",
-    "Latitude": 36.2330294,
-    "Longitude": 137.1878209,
-    "Duration": null,
-    "Width": 1920,
-    "Height": 1080,
-    "FileSize": 1024,
-    "CreatedAt": "",
-    "UpdatedAt": "",
-    "DeletedAt": "",
-    "IsDeleted": false,
-    "IsPublic": false
-  }
-     */
+
 
     const fileMetaData = {
         width: 1600,
@@ -298,7 +279,8 @@ export default function MediaFileUploader(props) {
                 .then((output) => {
                     setImgData(output);
                 })
-                .catch((e) => {});
+                .catch((e) => {
+                });
 
 
             img.onload = () => {
@@ -317,35 +299,46 @@ export default function MediaFileUploader(props) {
         return <></>;
     };
 
+    const onChangeImageWidth = (e) => {
+        setImageWidth(e.value);
+    }
+    const onChangeImageHeight = (e) => {
+        setImageHeight(e.value);
+    }
+
+    const name = () => {
+        return this.name;
+    }
+
+    const value = () => {
+        return {uploadUrl};
+    }
+
     return (
         <>
             <div className="MediaFileUploader">
-                <Uploady
-                    multiple={false}
-                    destination={parameters}
+                <Box component="fieldset">
+                    <legend>Media File Upload</legend>
+                    <Uploady
+                        multiple={false}
+                        destination={parameters}
+                    >
+                        <UploadWithDimensionsCheck/>
+                        <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
+                        <UploadProgress/>
+                        <UploadPreview
+                            PreviewComponent={ItemPreviewWithCrop}
+                            previewComponentProps={{previewMethods: previewMethodsRef}}
+                            previewMethodsRef={previewMethodsRef}
+                            fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
+                        />
 
-                >
-                    <UploadWithDimensionsCheck />
-                    <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
-                    <UploadProgress/>
-                    <UploadPreview
-                        PreviewComponent={ItemPreviewWithCrop}
-                        previewComponentProps={{previewMethods: previewMethodsRef}}
-                        previewMethodsRef={previewMethodsRef}
-                        fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
-                    />
+                    </Uploady>
 
-                </Uploady>
-
-                <TextField id="title" label="Title" variant="outlined" fullWidth={true}/><br/>
-                <TextField id="description" label="Description" variant="outlined" multiline={true} fullWidth={true}
-                           rows="5"/>
-                <TextField id="width" label="Width"  value={imageWidth} InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField>
-                <TextField id="height" label="Height"  value={imageHeight}  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField><br />
-                <TextField id="latitude" label="Latitude" variant="outlined" a  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField>
-                <TextField id="longitude" label="Longitude" variant="outlined"  InputProps={{readOnly: true}} InputLabelProps={{ shrink: true }}></TextField><br />
-                <Button>Save Media File</Button>
+                </Box>
+                <br /><br />
             </div>
+
         </>
     );
 }
