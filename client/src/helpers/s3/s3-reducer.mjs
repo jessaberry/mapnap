@@ -2,7 +2,7 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 import { apiRoot, REQUEST_STATE } from "../../common/global.mjs";
 import getPresignedUploadUrlAsync from "./s3-thunks.mjs";
 
-const defaultUploadUrl = process.env.REACT_APP_API_SERVER_URL;
+const defaultUploadUrl = '';
 
 const initialState = {
   uploadUrl: defaultUploadUrl,

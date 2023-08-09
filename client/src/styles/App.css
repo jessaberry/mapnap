@@ -1,115 +1,125 @@
 /* Sheet includes trips, nav and such, all others will be in GENERAL for font and header sizes, etc*/
 
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  margin-bottom: -14px;
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin-bottom: -14px;
 }
 
 .navbar {
-  align-items: center;
-  background-color: darkslategrey;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    align-items: center;
+    background-color: darkslategrey;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-links {
-  display: flex;
-  font-size: 16px;
+    display: flex;
+    font-size: 16px;
 }
 
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  height: 100%;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    height: 100%;
 }
 
 .nav-links li {
-  padding: 10px 10px;
-  list-style: none;
+    padding: 10px 10px;
+    list-style: none;
 }
 
 .nav-links li:hover {
-  background-color: slategray;
-  border-radius: 0;
-  padding: 10px 10px;
+    background-color: slategray;
+    border-radius: 0;
+    padding: 10px 10px;
 }
 
 .nav-logout {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .nav-logout button {
-  background-color: red;
+    background-color: red;
 }
 
 .socials {
-  padding: 10px 10px;
-  align-items: center;
-  justify-content: flex-end;
-  margin-left: auto;
-  position: relative;
-  right: 0;
-  top: 20%;
+    padding: 10px 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    position: relative;
+    right: 0;
+    top: 20%;
 }
 
 .trip-list {
-  list-style: none;
-  margin-right: 30px;
+    list-style: none;
+    margin-right: 30px;
 }
 
 .trip-item {
-  border: 2px solid #1a2556;
-  padding: 10px;
-  margin-bottom: 10px;
+    border: 2px solid #1a2556;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .leaflet-container {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
-  height: 70vh;
-  width: 160vh;
-  border: 4px #002145 solid;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    height: 70vh;
+    width: 160vh;
+    border: 4px #002145 solid;
 }
 
 .trip-details-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .trip-details-info {
-  margin-top: 20px;
-  display: flex;
-  color: #ffffff;
+    margin-top: 20px;
+    display: flex;
 }
 
 .trip-details-image {
-  width: 200px;
-  height: auto;
+    width: 200px;
+    height: auto;
 }
 
 .trip-details-text {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .trip-details-line {
-  align-self: flex-start;
+    align-self: flex-start;
+}
+
+
+button.SauderButton {
+    color: var(--white);
+    background-color: var(--sauder-blue);
+}
+
+button.SauderButton:hover {
+    border-color: var(--sauder-blue);
+    background-color: var(--sauder-green);
 }

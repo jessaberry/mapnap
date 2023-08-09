@@ -42,6 +42,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-easy-crop": "^5.0.0",
+    "react-hook-form": "^7.45.4",
     "react-image-crop": "^10.1.5",
     "react-leaflet": "^4.2.1",
     "react-redux": "^8.0.7",

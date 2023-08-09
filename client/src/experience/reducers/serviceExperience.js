@@ -12,6 +12,12 @@ const experienceManager = {
     return res.data;
   },
 
+  getExperiencesByTripId: async (tripId) => {
+    const res = await axios.get("/experiences/by-trip-id/" + tripId);
+    console.log('getexptrip')
+    return res.data;
+  },
+
   addExperience: async (exp) => {
     try {
       const res = await axios.post("/experiences", exp);

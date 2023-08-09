@@ -56,10 +56,21 @@ router.get("/by-experience-id/:experienceId", async (req, res) => {
       .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
       .toArray();
     res.send(results).status(200);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "failed to search by experience id" });
-  }
+});
+router.get("/by-experience-id/:experienceId", async (req, res) => {
+    const experienceId = req.params.experienceId;
+    const query = { experienceId: experienceId };
+    try {
+        let collection = await db.collection(memoriesCollectionName);
+        let results = await collection
+            .find(query)
+            .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+            .toArray();
+        res.send(results).status(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "failed to search by experience id" });
+    }
 });
 
 router.get("/by-user-id/:userId", async (req, res) => {
@@ -79,35 +90,31 @@ router.get("/by-user-id/:userId", async (req, res) => {
   }
 });
 
-router.get("/by-experience-id/:ExperienceId", async (req, res) => {
-  const experienceId = req.params.ExperienceId;
-  const query = { ExperienceId: experienceId };
-  console.log(query);
-  try {
-    let collection = await db.collection(memoriesCollectionName);
-    let results = await collection
-      .find(query)
-      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-      .toArray();
-    res.send(results).status(200);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "failed to search by user id" });
-  }
+router.get("/by-trip-id/:TripId", async (req, res) => {
+    const tripId = req.params.TripId;
+    const query = { tripId: tripId };
+    console.log(query);
+    try {
+        let collection = await db.collection(memoriesCollectionName);
+        let results = await collection
+            .find(query)
+            .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+            .toArray();
+        res.send(results).status(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "failed to search by trip id" });
+    }
 });
 
-router.put("/", async (req, res) => {
-  let collection = await db.collection(memoriesCollectionName);
-  let data = req.body;
-  if (!data) {
-    res.send("Invalid data").status(404);
-  }
-  const query = { _id: data._id };
-  console.log(query);
-  const options = { upsert: true };
-  let result = await collection.updateOne(query, { $set: data }, options);
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
+router.post("/upsert-by-memory-id/:Id", async (req, res) => {
+    let collection = await db.collection(memoriesCollectionName);
+    let newDocument = req.body;
+    newDocument.createdAt = new Date();
+    newDocument.updatedAt = new Date();
+    newDocument.isDeleted = false;
+    let result = await collection.insertOne(newDocument);
+    res.send(result).status(201);
 });
 
 router.post("/", async (req, res) => {
