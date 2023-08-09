@@ -116,9 +116,13 @@ export default function Trip(props) {
       "Are you sure you want to delete this trip? This action cannot be undone."
     );
     if (confirm) {
-      dispatch(deleteTripAsync(trip.TripId)).then(() => {
-        dispatch(getTripsByUserIdAsync(userID));
-      });
+      try {
+        dispatch(deleteTripAsync(trip.TripId)).then(() => {
+          dispatch(getTripsByUserIdAsync(userID));
+        });
+      } catch (e) {
+        window.location.reload();
+      }
     }
   };
 
@@ -205,7 +209,7 @@ export default function Trip(props) {
               Add a Trip
             </BootstrapDialogTitle>
             <DialogContent dividers>
-              <TripForm handleAddTrip={handleAddTrip} />
+              <TripForm handleAddTrip={handleAddTrip} poi={poi}/>
             </DialogContent>
             <DialogActions>
               <Button autoFocus onClick={handleClose}>

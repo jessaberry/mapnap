@@ -12,6 +12,9 @@ const TripPersonalViewer = ({
   handleEditTrip,
   handleDeleteTrip,
 }) => {
+  if (!trips) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="card-container">
       {trips.map((trip) => (

@@ -7,12 +7,20 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import SelectCountry from "../../helpers/select-country/select-country.js";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Autocomplete } from "@mui/material";
 
-const TripForm = ({ handleAddTrip }) => {
+const TripForm = ({ handleAddTrip, poi }) => {
   const [data, setData] = useState({ ...initialTrip, IsPublic: true });
-
   const { user } = useAuth0();
   const userId = user.sub;
+  const startPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.StartingPointOfInterestId
+    ) || null;
+  const endPOI =
+    poi.find(
+      (item) => item.PointOfInterestId === data.EndingPointOfInterestId
+    ) || null;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,6 +43,20 @@ const TripForm = ({ handleAddTrip }) => {
     setData({ ...initialTrip, IsPublic: true });
   };
 
+  const handleStartChange = (event, newValue) => {
+    setData((prevData) => ({
+      ...prevData,
+      StartingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
+    }));
+  };
+
+  const handleEndChange = (event, newValue) => {
+    setData((prevData) => ({
+      ...prevData,
+      EndingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
+    }));
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <TextField
@@ -54,6 +76,38 @@ const TripForm = ({ handleAddTrip }) => {
         onChange={handleChange}
         placeholder="Enter trip description"
       />
+      <div className="textfield">
+        <Autocomplete
+          options={poi}
+          getOptionLabel={(option) => option.Title}
+          value={startPOI}
+          onChange={handleStartChange}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Start Point"
+              placeholder="1234 Burger St."
+              sx={{ width: "50%", mb: 2 }}
+            />
+          )}
+        />
+      </div>
+      <div className="textfield">
+        <Autocomplete
+          options={poi}
+          getOptionLabel={(option) => option.Title}
+          value={endPOI}
+          onChange={handleEndChange}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="End Point"
+              placeholder="1234 Burger St."
+              sx={{ width: "50%", mb: 2 }}
+            />
+          )}
+        />
+      </div>
       <SelectCountry
         name="Countries"
         value={data.Countries}
