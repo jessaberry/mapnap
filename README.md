@@ -82,10 +82,16 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 
 ### Description of "Above and Beyond" functionality
 
-- TODO: describe functionality, research, design, learning, debugging, documentation, or some other area
-- explain what the team has accomplished
-- explain why this goes beyond the complexity of other projects
--
+External APIs
+- Auth0 to handle authentication
+- It handles all the tokens and page protection and redirection.
+- It allows seamless integration without worrying about the implementation of authentication and authorization, which could get complex really fast
+
+
+S3 to handle file storage
+- Learned some best practices
+- Presigned URL for authentication and configuration
+
 
 ### Next Steps
 
