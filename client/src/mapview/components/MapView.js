@@ -17,6 +17,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const attrib =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>';
+
 const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
@@ -61,17 +62,29 @@ export default function Map() {
           scrollWheelZoom={true}
         >
           <TileLayer attribution={attrib} url={url} />
-          {markerArray.map(({ lat, lng, name }, index) => (
-            <Marker position={[lat, lng]} key={index}>
-              <Popup>
-                {name}
-                <br />
-                Latitude: {lat}
-                <br />
-                Longitude: {lng}
-              </Popup>
-            </Marker>
-          ))}
+
+          {trips.length > 0 &&
+            trips.map((trip) => {
+              {
+                /* this entire block is meant to simply render the markers over and over again */
+              }
+              return (
+                <Marker
+                  key={trip.TripId}
+                  position={[
+                    getPOI(trip.PointOfInterestId, "lat"),
+                    getPOI(trip.PointOfInterestId, "long"),
+                  ]}
+                >
+                  <Popup>
+                    {trip.Title}
+                    <br />
+                    {trip.Description}
+                  </Popup>
+                </Marker>
+              );
+            })}
+=
         </MapContainer>
       </div>
     </PageLayout>
