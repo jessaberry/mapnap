@@ -12,8 +12,6 @@ export const selectMemoryByMemoryId = async (memoryId) => {
   return response.json();
 };
 
-
-
 export const getAllMemories = async () => {
   const command = apiRoot + MemoryActionTypes.GET_ALL_MEMORIES;
   const response = await fetch(command, {
@@ -62,8 +60,6 @@ export const getMemoriesByExperienceId = async (experienceId) => {
   return response.json();
 };
 
-
-
 export const upsertSingleMemory = async (memory) => {
   const memoryId = memory["_id"] ? memory["_id"] : new ObjectID();
   const command = apiRoot + MemoryActionTypes.UPSERT_SINGLE_MEMORY + "/" + memoryId;
@@ -111,5 +107,3 @@ export const resetAllMemories = async () => {
   console.log(response);
   return response.json();
 };
-
-

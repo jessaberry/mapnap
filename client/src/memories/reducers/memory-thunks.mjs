@@ -59,7 +59,6 @@ export const getMemoriesByExperienceIdAsync = createAsyncThunk(
     }
 );
 
-
 export const upsertSingleMemoryAsync = createAsyncThunk(
   MemoryActionTypes.UPSERT_SINGLE_MEMORY,
   async (memory) => {

@@ -20,7 +20,6 @@ const initialState ={
     url: ''
 }
 
-
 function MemoryForm(props, children) {
     const dispatch = useDispatch();
     const userId = props.userId;
@@ -104,14 +103,10 @@ function MemoryForm(props, children) {
                     }
                 </Select>
                 <br/><br/>
-
                 <Button type="submit" fullWidth={true} className="SauderButton">Add Memory</Button>
-
-
             </form>
         </div>
     )
         ;
 }
-
 export default MemoryForm;

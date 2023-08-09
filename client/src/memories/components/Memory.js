@@ -1,10 +1,10 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import {Button, Typography} from "@mui/material";
-import {Provider, useDispatch, useSelector} from "react-redux";
-import {Masonry} from "@mui/lab";
-import {styled} from "@mui/material/styles";
+import { Button, Typography } from "@mui/material";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { Masonry } from "@mui/lab";
+import { styled } from "@mui/material/styles";
 import "./memory.css";
 import {useEffect, useState} from "react";
 import {PageLayout} from "../../content/template/page-layout.mjs";
@@ -104,6 +104,30 @@ export default function Memory(props, children) {
         dispatch(getOtherPublicMemoriesAsync(userId));
     }, []);
 
+  useEffect(() => {
+    window.addEventListener("error", (e) => {
+      if (e.message === "ResizeObserver loop limit exceeded") {
+        const resizeObserverErrDiv = document.getElementById(
+          "webpack-dev-server-client-overlay-div"
+        );
+        const resizeObserverErr = document.getElementById(
+          "webpack-dev-server-client-overlay"
+        );
+        if (resizeObserverErr) {
+          resizeObserverErr.setAttribute("style", "display: none");
+        }
+        if (resizeObserverErrDiv) {
+          resizeObserverErrDiv.setAttribute("style", "display: none");
+        }
+      }
+    });
+    console.log("userid", userId);
+    dispatch(getMemoriesByUserIdAsync(userId));
+    dispatch(getTripsByUserIdAsync(userId));
+    dispatch(getExperiencesByUserIdAsync(userId));
+    dispatch(getOtherPublicMemoriesAsync(userId));
+    console.log("trips", trips);
+    console.log("experiences", experiences);
 
     if (!memories) {
         return <></>;
@@ -177,10 +201,31 @@ export default function Memory(props, children) {
                             ))}
                         </Masonry>
                     </Box>
-
-
                 </div>
-            </PageLayout>
-        );
-    }
+              ))}
+            </Masonry>
+          </Box>
+          <h2>Memories from other users</h2>
+          <Box sx={{ width: "100%", minHeight: 829 }}>
+            <Masonry
+              colunn={{ xs: 3, sm: 4 }}
+              spacing={{ xs: 1, sm: 2, md: 3 }}
+            >
+              {otherPublicMemories.map((memory, index) => (
+                <div key={index}>
+                  <img
+                    className="masonryImage"
+                    src={memory.url}
+                    alt={memory.title}
+                    loading="lazy"
+                  />
+                  <Typography>{memory.title}</Typography>
+                </div>
+              ))}
+            </Masonry>
+          </Box>
+        </div>
+      </PageLayout>
+    );
+  }
 }

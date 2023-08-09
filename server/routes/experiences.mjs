@@ -55,7 +55,7 @@ router.put(
       data.mediaFile = req.file.location;
     }
   }
-);
+});
 
 router.get("/:id", async (req, res) => {
   let collection = await db.collection(experiencesCollectionName);
@@ -85,9 +85,6 @@ router.patch("/comment/:id", async (req, res) => {
 
   res.send(result).status(200);
 });
-
-
-
 
 router.delete("/:id", async (req, res) => {
   const query = { ExperienceId: req.params.id };
