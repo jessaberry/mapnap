@@ -4,4 +4,5 @@ img.masonryImage {
   display: block;
   width: 100%;
   border: #000 2px solid !important;
+  height: fit-content;
 }

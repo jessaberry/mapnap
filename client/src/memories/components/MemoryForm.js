@@ -25,7 +25,7 @@ function MemoryForm(props, children) {
   const userId = props.userId;
 
   const uploadUrl = useSelector((state) => state.s3.uploadUrl);
-  const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [buttonEnabled, setButtonEnabled] = useState(true);
 
   const {
     register,
@@ -33,11 +33,11 @@ function MemoryForm(props, children) {
     watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     const memoryId = new ObjectID();
     dispatch(upsertSingleMemoryAsync(data));
-    setFormData(initialState);
-    setButtonEnabled(false);
+    setButtonEnabled(true);
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -45,7 +45,6 @@ function MemoryForm(props, children) {
   const onChangeInput = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setButtonEnabled(true);
   };
 
   const [experiences, setExperiences] = useState(props.experiences);
@@ -69,7 +68,6 @@ function MemoryForm(props, children) {
         <TextField
           id="title"
           label="Title"
-          inputLabelProps={{ shrink: true }}
           fullWidth={true}
           required={props.isShown}
           onChange={onChangeInput}
@@ -82,7 +80,6 @@ function MemoryForm(props, children) {
           label="Description"
           multiline={true}
           rows="5"
-          inputLabelProps={{ shrink: true }}
           fullWidth={true}
           onChange={onChangeInput}
           {...register("description")}
@@ -94,7 +91,6 @@ function MemoryForm(props, children) {
           label="Latitude"
           aria-valuemin={-90}
           aria-valuemax={90}
-          inputLabelProps={{ shrink: true }}
           type={"number"}
           inputProps={{
             step: 0.001,
@@ -107,7 +103,6 @@ function MemoryForm(props, children) {
           label="Longitude"
           aria-valuemin={-180}
           aria-valuemax={180}
-          inputLabelProps={{ shrink: true }}
           defaultValue={135.5023}
           type={"number"}
           inputProps={{
@@ -125,7 +120,6 @@ function MemoryForm(props, children) {
           label="User"
           value={userId}
           InputProps={{ readOnly: true, hidden: true }}
-          inputLabelProps={{ shrink: true }}
           fullWidth={true}
           {...register("userId", { required: true })}
         ></TextField>
@@ -134,7 +128,6 @@ function MemoryForm(props, children) {
 
         <TextField
           id="url"
-          hidden
           label="Url"
           value={
             isValidUrl(uploadUrl)
@@ -142,7 +135,6 @@ function MemoryForm(props, children) {
               : ""
           }
           InputProps={{ readOnly: true, hidden: true }}
-          inputLabelProps={{ shrink: true }}
           fullWidth={true}
           {...register("url", { required: true })}
         ></TextField>
@@ -168,7 +160,7 @@ function MemoryForm(props, children) {
         <br />
         <br />
 
-        <Button type="submit" fullWidth={true} className="SauderButton">
+        <Button type="submit" fullWidth={true} className="SauderButton" disabled={!buttonEnabled}>
           Add Memory
         </Button>
       </form>
