@@ -6,7 +6,7 @@ const router = express.Router();
 import db from "../db/conn.mjs";
 import {ObjectId} from "mongodb";
 import {memoriesCollectionName} from "../common/environments-and-constants.mjs";
-import initialMemories from "../data/memory.json" assert {type: "json"};
+import initialMemories from "../data/memory.json"  assert { type: "json" };
 
 router.get("/reset-all/", async (req, res) => {
     try {
@@ -17,7 +17,7 @@ router.get("/reset-all/", async (req, res) => {
         res.send(result).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "failed to delete"});
+        res.status(500).json({ message: "failed to delete" });
     }
 });
 
@@ -35,20 +35,9 @@ router.get("/get-all/", async (req, res) => {
 router.get("/get-other-public-memories/:userId", async (req, res) => {
     console.log("get other public MEMORIES");
     const userId = req.params.userId;
-    const qPublicMemories = {isPublic: true};
-    const qNotCurrentUser = {userId: {$ne: userId}};
-    const query = {$and: [qPublicMemories, qNotCurrentUser]};
-    let collection = await db.collection(memoriesCollectionName);
-    let results = await collection
-        .find(query)
-        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-        .toArray();
-    console.log("results: " + results);
-    res.send(results).status(200);
-});
-router.get("/by-experience-id/:experienceId", async (req, res) => {
-    const experienceId = req.params.experienceId;
-    const query = {_id: `${new ObjectId(experienceId)}`};
+    const qPublicMemories = { isPublic: true };
+    const qNotCurrentUser = { userId: { $ne: userId } };
+    const query = { $and: [qPublicMemories, qNotCurrentUser] };
     let collection = await db.collection(memoriesCollectionName);
     let results = await collection
         .find(query)
@@ -75,7 +64,7 @@ router.get("/by-experience-id/:experienceId", async (req, res) => {
 
 router.get("/by-user-id/:userId", async (req, res) => {
     const userId = req.params.userId;
-    const query = {userId: userId};
+    const query = { userId: userId };
     try {
         let collection = await db.collection(memoriesCollectionName);
         let results = await collection
@@ -86,7 +75,7 @@ router.get("/by-user-id/:userId", async (req, res) => {
         res.send(results).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "failed to search by user id"});
+        res.status(500).json({ message: "failed to search by user id" });
     }
 });
 
@@ -128,9 +117,9 @@ router.post("/", async (req, res) => {
 });
 
 router.patch(`/by-memory-id/:id`, async (req, res) => {
-    const query = {_id: new ObjectId(req.params.id)};
+    const query = { _id: new ObjectId(req.params.id) };
     const updates = {
-        $push: {tags: req.body},
+        $push: { tags: req.body },
     };
     try {
         let collection = await db.collection(memoriesCollectionName);
@@ -139,7 +128,7 @@ router.patch(`/by-memory-id/:id`, async (req, res) => {
         res.send(result).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "failed to upsert"});
+        res.status(500).json({ message: "failed to upsert" });
     }
 });
 
@@ -147,11 +136,11 @@ router.delete("/delete-by-memory-id/:id/", async (req, res) => {
     try {
         const id = req.params.id;
         const collection = db.collection(memoriesCollectionName);
-        await collection.deleteOne({TripId: id});
+        await collection.deleteOne({ TripId: id });
         res.status(204).end();
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "failed to delete"});
+        res.status(500).json({ message: "failed to delete" });
     }
 });
 
@@ -162,7 +151,7 @@ router.delete("/delete-all/", async (req, res) => {
         res.status(204);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "failed to delete"});
+        res.status(500).json({ message: "failed to delete" });
     }
 });
 
