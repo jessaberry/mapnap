@@ -43,12 +43,12 @@ router.get("/get-other-public-memories/:userId", async (req, res) => {
         .find(query)
         .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
         .toArray();
-    console.log("results: " + results);
     res.send(results).status(200);
 });
+
 router.get("/by-experience-id/:experienceId", async (req, res) => {
     const experienceId = req.params.experienceId;
-    const query = { experienceId: experienceId };
+    const query = {experienceId: experienceId};
     try {
         let collection = await db.collection(memoriesCollectionName);
         let results = await collection
@@ -58,7 +58,7 @@ router.get("/by-experience-id/:experienceId", async (req, res) => {
         res.send(results).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "failed to search by experience id" });
+        res.status(500).json({message: "failed to search by experience id"});
     }
 });
 
@@ -81,7 +81,7 @@ router.get("/by-user-id/:userId", async (req, res) => {
 
 router.get("/by-trip-id/:TripId", async (req, res) => {
     const tripId = req.params.TripId;
-    const query = { tripId: tripId };
+    const query = {tripId: tripId};
     console.log(query);
     try {
         let collection = await db.collection(memoriesCollectionName);
@@ -92,7 +92,7 @@ router.get("/by-trip-id/:TripId", async (req, res) => {
         res.send(results).status(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "failed to search by trip id" });
+        res.status(500).json({message: "failed to search by trip id"});
     }
 });
 
