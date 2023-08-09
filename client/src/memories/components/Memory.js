@@ -122,8 +122,8 @@ export default function Memory(props, children) {
                                      onClose={handleClose}
                                      aria-labelledby="customized-dialog-title"
                                      open={isShown}
-                                     width={500}
-                    >
+                                     style={{width: 650 + 'px'}}
+                                     >
                         <BootstrapDialogTitle
                             id="customized-dialog-title"
                             onClose={handleClose}
@@ -136,7 +136,7 @@ export default function Memory(props, children) {
                         </DialogContent>
                         <DialogActions>
                             <Button fullWidth={true} autoFocus onClick={handleClose}>
-                                Cancel
+                                Close
                             </Button>
                         </DialogActions>
                     </BootstrapDialog>

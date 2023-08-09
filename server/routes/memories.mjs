@@ -96,18 +96,14 @@ router.get("/by-trip-id/:TripId", async (req, res) => {
     }
 });
 
-router.put("/", async (req, res) => {
+router.post("/upsert-by-memory-id/:Id", async (req, res) => {
     let collection = await db.collection(memoriesCollectionName);
-    let data = req.body;
-    if (!data) {
-        res.send("Invalid data").status(404);
-    }
-    const query = { _id: data._id };
-    console.log(query);
-    const options = { upsert: true };
-    let result = await collection.updateOne(query, { $set: data }, options);
-    if (!result) res.send("Not found").status(404);
-    else res.send(result).status(200);
+    let newDocument = req.body;
+    newDocument.createdAt = new Date();
+    newDocument.updatedAt = new Date();
+    newDocument.isDeleted = false;
+    let result = await collection.insertOne(newDocument);
+    res.send(result).status(201);
 });
 
 router.post("/", async (req, res) => {

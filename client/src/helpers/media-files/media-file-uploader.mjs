@@ -1,6 +1,5 @@
 import React, {useState, useCallback, useRef} from "react";
 import Cropper from "react-easy-crop";
-import ObjectId from 'bson-objectid';
 import Uploady, {
     withRequestPreSendUpdate,
     useItemFinalizeListener,
@@ -15,11 +14,8 @@ import {useAuth0} from "@auth0/auth0-react";
 import {useDispatch, useSelector} from "react-redux";
 import {Circle} from "rc-progress";
 import {getPresignedUploadUrlAsync} from "../s3/s3-thunks.mjs";
-import {TextField} from "@mui/material";
-import Button from "@mui/material/Button/Button.js";
-import exifr from "exifr";
-import heic2any from "heic2any";
 import Box from "@mui/material/Box/Box.js";
+import ObjectID from "bson-objectid";
 
 
 const UploadProgress = () => {
@@ -129,6 +125,7 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
         if (previewMethods.current?.clear) {
             previewMethods.current.clear();
         }
+
     }, [updateRequest, previewMethods]);
 
 
@@ -179,10 +176,6 @@ const ItemPreviewWithCrop = withRequestPreSendUpdate((props) => {
     );
 });
 
-const handleSubmission = async () => {
-
-}
-
 
 export default function MediaFileUploader(props) {
 
@@ -193,39 +186,8 @@ export default function MediaFileUploader(props) {
     const extension = 'jpg';
 
 
-    const [imageWidth, setImageWidth] = useState(1920);
-    const [imageHeight, setImageHeight] = useState(1080);
-
-    const [croppedImageWidth, setCroppedImageWidth] = useState(null);
-    const [croppedImageHeight, setCroppedImageHeight] = useState(null);
-
-    const [imageLatitude, setImageLatitude] = useState(null);
-    const [imageLongitude, setImageLongitude] = useState(null);
-
-    const [imgData, setImgData] = useState({});
-    const [imgSrc, setImgSrc] = useState({});
-
-    const convertImage = (file) => {
-        const blobURL = URL.createObjectURL(file);
-        fetch(blobURL)
-            .then((res) => res.blob())
-            .then((blob) => heic2any({blob}))
-            .then((conversionResult) => {
-                setImgSrc(conversionResult);
-            })
-            .catch((e) => {
-            });
-    };
-
-
-
-
-
     const userId = user.sub;
-    const fileId = new ObjectId();
-
-    const type = 'image/jpeg';
-
+    const fileId = new ObjectID();
 
     const key = fileId + '.' + extension;
 
@@ -235,109 +197,32 @@ export default function MediaFileUploader(props) {
         url: uploadUrl,
         params: {
             document_name: key,
-            ContentEncoding: 'base64'
-
         },
-        method: 'PUT',
-        headers: {
-            'Content-Type': type,
-        },
-    }
-
-
-    const fileMetaData = {
-        width: 1600,
-        height: 1200,
-        url: "",
-        latitude: 352.25221,
-        longitude: 35.2525,
-        fileSize: 162003,
-        createdAt: "2023-01-25",
-        updatedAt: "2023-01-25",
-        title: "Yatsusankan",
-        description: "Entrance",
-        userId: "GDsgsgs",
-        tripId: "SAdegsgsg",
-        experienceId: "352tswg",
-        isPublic: true
+        method: 'PUT'
     }
 
     const handleUploadButtonClick = () => {
         const params = {userid: userId, key: key};
-        console.log('parameters', parameters);
         dispatch(getPresignedUploadUrlAsync(params));
-    }
-    const readImageDimensions = (file) => {
-        return new Promise((resolve) => {
-            const img = new Image();
-            var dataUrl = URL.createObjectURL(file);
-            img.src = dataUrl;
-
-            convertImage(file);
-            exifr
-                .parse(file)
-                .then((output) => {
-                    setImgData(output);
-                })
-                .catch((e) => {
-                });
-
-
-            img.onload = () => {
-                URL.revokeObjectURL(dataUrl);
-                resolve([img.naturalWidth, img.naturalHeight]);
-            };
-        });
-    };
-
-    const UploadWithDimensionsCheck = () => {
-        useItemStartListener(async (item) => {
-            const [width, height] = await readImageDimensions(item.file);
-
-            return true;
-        });
-        return <></>;
-    };
-
-    const onChangeImageWidth = (e) => {
-        setImageWidth(e.value);
-    }
-    const onChangeImageHeight = (e) => {
-        setImageHeight(e.value);
-    }
-
-    const name = () => {
-        return this.name;
-    }
-
-    const value = () => {
-        return {uploadUrl};
     }
 
     return (
         <>
-            <div className="MediaFileUploader">
-                <Box component="fieldset">
-                    <legend>Media File Upload</legend>
-                    <Uploady
-                        multiple={false}
-                        destination={parameters}
-                    >
-                        <UploadWithDimensionsCheck/>
-                        <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
-                        <UploadProgress/>
-                        <UploadPreview
-                            PreviewComponent={ItemPreviewWithCrop}
-                            previewComponentProps={{previewMethods: previewMethodsRef}}
-                            previewMethodsRef={previewMethodsRef}
-                            fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
-                        />
+            <Uploady
+                multiple={false}
+                destination={parameters}
+            >
+                <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
+                <UploadProgress/>
+                <UploadPreview
+                    PreviewComponent={ItemPreviewWithCrop}
+                    previewComponentProps={{previewMethods: previewMethodsRef}}
+                    previewMethodsRef={previewMethodsRef}
+                    fallbackUrl="https://icon-library.net/images/image-placeholder-icon/image-placeholder-icon-6.jpg"
+                />
 
-                    </Uploady>
+            </Uploady>
 
-                </Box>
-                <br /><br />
-            </div>
 
         </>
     );

@@ -9,7 +9,7 @@ export const MemoryActionTypes = {
   GET_MEMORIES_BY_KEYWORD: "memories/by-keyword",
   GET_MEMORY_BY_MEMORY_ID: "memories/by-memory-id",
 
-  UPSERT_SINGLE_MEMORY: "memories/upsert",
+  UPSERT_SINGLE_MEMORY: "memories/upsert-by-memory-id",
 
   DELETE_MEMORY_BY_MEMORY_ID: "memories/delete-by-memory-id",
   DELETE_ALL_MEMORIES: "memories/delete-all",
