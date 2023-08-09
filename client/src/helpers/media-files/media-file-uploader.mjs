@@ -212,7 +212,7 @@ export default function MediaFileUploader(props) {
                 multiple={false}
                 destination={parameters}
             >
-                <UploadButton onClick={handleUploadButtonClick}>Select File to upload</UploadButton>
+                <UploadButton onClick={handleUploadButtonClick} sendWithFormData={false} className="SauderButton">Select File to upload</UploadButton>
                 <UploadProgress/>
                 <UploadPreview
                     PreviewComponent={ItemPreviewWithCrop}

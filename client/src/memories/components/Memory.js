@@ -104,9 +104,6 @@ export default function Memory(props, children) {
         dispatch(getOtherPublicMemoriesAsync(userId));
     }, []);
 
-    console.log(trips);
-    console.log(experiences);
-
 
     if (!memories) {
         return <></>;
@@ -116,14 +113,11 @@ export default function Memory(props, children) {
             <PageLayout>
                 <div>
                     <h1>Memories</h1>
-
-                    <h2>Add a new Memory</h2>
                     <BootstrapDialog zindex={2000}
                                      onClose={handleClose}
                                      aria-labelledby="customized-dialog-title"
                                      open={isShown}
-                                     style={{width: 650 + 'px'}}
-                                     >
+                    >
                         <BootstrapDialogTitle
                             id="customized-dialog-title"
                             onClose={handleClose}
@@ -135,13 +129,21 @@ export default function Memory(props, children) {
                                         trips={trips} experiences={experiences}></MemoryForm>
                         </DialogContent>
                         <DialogActions>
-                            <Button fullWidth={true} autoFocus onClick={handleClose}>
+                            <Button fullWidth={true} autoFocus onClick={handleClose} className="SauderButton">
                                 Close
                             </Button>
                         </DialogActions>
                     </BootstrapDialog>
 
-                    <Button onClick={handleOpen}>Add a new Memory</Button>
+                    <Button onClick={handleOpen}
+                            sx={{
+                                color: "var(--white)",
+                                backgroundColor: "var(--sauder-blue)",
+                                "&:hover": {
+                                    borderColor: "var(--sauder-blue)",
+                                    backgroundColor: "var(--sauder-green)",
+                                },
+                            }}>Add a new Memory</Button>
                     <h2>My Memories:</h2>
 
                     <Box sx={{width: "100%", minHeight: 829}}>

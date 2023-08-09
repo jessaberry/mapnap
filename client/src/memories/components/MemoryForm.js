@@ -67,30 +67,30 @@ function MemoryForm(props, children) {
             <MediaFileUploader onChange={onChangeInput} id="mediaFile"></MediaFileUploader>
             <form id="MemoryForm" onSubmit={handleSubmit(onSubmit)}>
 
-                <TextField id="title" label="Title" InputLabelProps={{shrink: true}} fullWidth={true}
+                <TextField id="title" label="Title" inputLabelProps={{shrink: true}} fullWidth={true}
                            required={props.isShown}
                            onChange={onChangeInput}  {...register("title")}></TextField><br/><br/>
                 <TextField id="description" label="Description" multiline={true} rows="5"
-                           InputLabelProps={{shrink: true}} fullWidth={true}
+                           inputLabelProps={{shrink: true}} fullWidth={true}
                            onChange={onChangeInput} {...register("description")}></TextField><br/><br/>
                 <TextField id="latitude" label="Latitude" aria-valuemin={-90} aria-valuemax={90}
-                           InputLabelProps={{shrink: true}} type={"number"} inputProps={{
+                           inputLabelProps={{shrink: true}} type={"number"} inputProps={{
                     step: 0.001,
                 }} defaultValue={34.6937} {...register("latitude")}></TextField>
                 <TextField id="longitude" label="Longitude" aria-valuemin={-180} aria-valuemax={180}
-                           InputLabelProps={{shrink: true}} defaultValue={135.5023} type={"number"} inputProps={{
+                           inputLabelProps={{shrink: true}} defaultValue={135.5023} type={"number"} inputProps={{
                     step: 0.001,
                 }} onChange={onChangeInput} {...register("longitude")}></TextField><br/><br/>
 
                 <TextField id="userId" hidden label="User" value={userId}
-                           InputProps={{readOnly: true, hidden: true}} InputLabelProps={{shrink: true}}
+                           InputProps={{readOnly: true, hidden: true}} inputLabelProps={{shrink: true}}
                            fullWidth={true} {...register("userId", {required: true})}></TextField><br/><br/>
 
 
                 <TextField id="url" hidden label="Url" value={
                     isValidUrl(uploadUrl) ? new URL(uploadUrl).origin + new URL(uploadUrl).pathname : ''
                 }
-                           InputProps={{readOnly: true, hidden: true}} InputLabelProps={{shrink: true}}
+                           InputProps={{readOnly: true, hidden: true}} inputLabelProps={{shrink: true}}
                            fullWidth={true} {...register("url", {required: true})}></TextField><br/><br/>
 
                 <Select id="experienceId" label="Experience" fullWidth={true} native
@@ -105,7 +105,7 @@ function MemoryForm(props, children) {
                 </Select>
                 <br/><br/>
 
-                <Button type="submit" fullWidth={true} >Add Memory</Button>
+                <Button type="submit" fullWidth={true} className="SauderButton">Add Memory</Button>
 
 
             </form>
