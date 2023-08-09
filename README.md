@@ -85,14 +85,18 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 External APIs
 **1.	Auth0 for authentication control**
 -	Allow granular control of authentication and authorization
--	Secure protected area and handle redirect  
+-	Secure protected area and handle redirect
+-	
 **2.	S3 Bucket for image storage**
 -	Presigned URL for increased security for upload
 -	Affordable storage with granular access policy and control
+-	
 **3.	react-chartjs**
 -	Data visualization
+-	
 **4.	React Leaflet**
 -	Map view
+-	
 **5. React Uploady with Crop**
 -	Allow images to be cropped before uploaded
 
