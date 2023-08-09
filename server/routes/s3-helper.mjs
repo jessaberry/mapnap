@@ -20,7 +20,10 @@ router.get("/get-presigned-upload/", async (req, res) => {
   const url = parseUrl(`https://${bucket}.s3.${region}.amazonaws.com/${key}`);
   console.log(url);
   const presigner = new S3RequestPresigner({
-    credentials: fromIni(),
+    credentials: {
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID
+    },
     region,
     sha256: Hash.bind(null, "sha256"),
   });
