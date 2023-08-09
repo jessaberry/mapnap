@@ -1,4 +1,4 @@
-/* used specifically for trips and the cards themselves */ 
+/* used specifically for trips and the cards themselves */
 
 .card-container {
   display: flex;
@@ -17,7 +17,7 @@
 .trip-title {
   font-size: 24px;
   margin-top: 0;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .trip-info {

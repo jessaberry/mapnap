@@ -4,12 +4,11 @@ import React from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useSelector } from "react-redux";
-
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { PageLayout } from "../../content/template/page-layout.mjs";
 
-let DefaultIcon = L.icon({                                           // used for initializing the default marker for the map itself, so all markers are consistent
+let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
 });
@@ -18,36 +17,61 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const attrib =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>';
-const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png"; // all for attribution purposes, change it if you want to move from watercolour theme
-                                                                      // doesnt need to be in .env or private as these are public attributions, not personal
+const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
-  const trips = [
-    { lat: 35.678748, lng: 139.777746, name: "Tokyo 2022" },
-    { lat: 39.895576, lng: 116.412269, name: "Beijing 2014"},
-    { lat: -15.830496, lng: -47.922526, name: "Brazil 2014" },
-  ];             // grabs trips that are currently in the state
+  const tripsFromState = useSelector((state) => state.trip.trips);
+  const poi = useSelector((state) => state.trip.poi);
+
+  const getPOI = (id, type) => {
+    if (!tripsFromState) {
+      return <div>Loading...</div>;
+    }
+    const loc = poi.find(
+      (point) => Number(point.PointOfInterestId) === Number(id)
+    );
+    if (loc) {
+      return type === "lat" ? loc.Latitude : loc.Longitude;
+    } else {
+      return null;
+    }
+  };
+
+  const markerArray = tripsFromState.map((trip) => {
+    const lat = getPOI(trip.StartingPointOfInterestId, "lat");
+    const lng = getPOI(trip.StartingPointOfInterestId, "long");
+    const name = trip.Title;
+    return { lat, lng, name };
+  });
+
+  const lats = markerArray.map(({ lat }) => lat).filter((lat) => lat !== null);
+  const longs = markerArray.map(({ lng }) => lng).filter((lng) => lng !== null);
+  const bounds = [
+    [Math.min(...lats), Math.min(...longs)],
+    [Math.max(...lats), Math.max(...longs)],
+  ];
 
   return (
     <PageLayout>
       <div>
         <h1>Map View</h1>
-        <MapContainer center={[35.676, 139.65]} zoom={2} scrollWheelZoom={true}>
+        <MapContainer
+          center={[35.676, 139.65]}
+          bounds={bounds}
+          scrollWheelZoom={true}
+        >
           <TileLayer attribution={attrib} url={url} />
-          {trips.map(({lat, lng, name}, index) => {  {/* this entire block is meant to simply render the markers over and over again */}
-            return (
-              <Marker
-                position={[
-                  lat, lng
-                ]} key={index}
-              >
-                <Popup>
-                  {name}
-                  <br />
-                </Popup>
-              </Marker>
-            );
-          })}
+          {markerArray.map(({ lat, lng, name }, index) => (
+            <Marker position={[lat, lng]} key={index}>
+              <Popup>
+                {name}
+                <br />
+                Latitude: {lat}
+                <br />
+                Longitude: {lng}
+              </Popup>
+            </Marker>
+          ))}
         </MapContainer>
       </div>
     </PageLayout>

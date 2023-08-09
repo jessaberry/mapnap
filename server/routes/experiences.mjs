@@ -16,15 +16,13 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
-router.put(
-  "/", async (req, res, next) => {
-    console.log(experiencesRouteCollectionName);
-    let data = {};
-    if (req.file) {
-      data.mediaFile = req.file.location;
-    }
+router.put("/", async (req, res, next) => {
+  console.log(experiencesRouteCollectionName);
+  let data = {};
+  if (req.file) {
+    data.mediaFile = req.file.location;
   }
-);
+});
 
 router.get("/:id", async (req, res) => {
   let collection = await db.collection(experiencesCollectionName);
