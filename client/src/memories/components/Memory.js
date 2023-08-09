@@ -77,32 +77,16 @@ export default function Memory(props, children) {
   const { user } = useAuth0();
   const userId = user.sub;
 
-  const [tripId, setTripId] = useState("");
-
-  const handleOpen = () => {
+    const handleOpen = () => {
     setIsShown(true);
   };
   const handleClose = () => {
     setIsShown(false);
+    dispatch(getMemoriesByUserIdAsync(userId));
   };
 
   useEffect(() => {
-    window.addEventListener("error", (e) => {
-      if (e.message === "ResizeObserver loop limit exceeded") {
-        const resizeObserverErrDiv = document.getElementById(
-          "webpack-dev-server-client-overlay-div"
-        );
-        const resizeObserverErr = document.getElementById(
-          "webpack-dev-server-client-overlay"
-        );
-        if (resizeObserverErr) {
-          resizeObserverErr.setAttribute("style", "display: none");
-        }
-        if (resizeObserverErrDiv) {
-          resizeObserverErrDiv.setAttribute("style", "display: none");
-        }
-      }
-    });
+
     dispatch(getMemoriesByUserIdAsync(userId));
     dispatch(getTripsByUserIdAsync(userId));
     dispatch(getExperiencesByUserIdAsync(userId));
