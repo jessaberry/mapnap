@@ -7,6 +7,10 @@ import { useSelector } from "react-redux";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { PageLayout } from "../../content/template/page-layout.mjs";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getTripsByUserIdAsync, getPOIAsync } from "../../trip/reducers/thunksTrip";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -21,6 +25,14 @@ const attrib =
 const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
+  const { user } = useAuth0();
+  const userID = user?.sub;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTripsByUserIdAsync(userID));
+    dispatch(getPOIAsync());
+  }, [dispatch, userID]);
+
   const tripsFromState = useSelector((state) => state.trip.trips);
   const poi = useSelector((state) => state.trip.poi);
 

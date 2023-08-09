@@ -1,4 +1,4 @@
-export const apiRoot = "http://localhost:4999/";
+export const apiRoot = "https://mapnap-backend.onrender.com";
 
 export const REQUEST_STATE = {
   IDLE: "IDLE",
