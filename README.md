@@ -68,10 +68,10 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 
 ### Next Steps
 
-- TODO
+- As the program itself is somewhat unique compared and maybe a little difficult to onboard users to, having a UI that would show and teach new users how to create and effectively use the application would be extremely useful. Because the program itself is already being built in React, using a library like React Tours could allow new users or users who have not been back in a while to teach themselves on how to use the program. As for other goals that initially were planned as stretch requirements, connecting the program with opentable-react or similar libraries would allow the user experience to be far more streamlined when booking reservations, seeing exactly where they had eaten and various other information related to anything with a reservation. Furthermore, replacing the Leaflet API with Google Maps API would be a good step to make in order to allow the Places API to be used and have a more updated and maintained map, as well as information for specific businesses and landmarks, such as when they open and close, or their respective Google reviews. In order to take this step, we must also be aware that there will be a significant cost in order to gain access to the API, which is necessary yet expensive if we want to continue the development of this application into a more robust and streamlined product.
 
 ### List of Contributions
 
-- Eric Chau: backend (express + mongoDB integration), memories, S3 upload and user authentication
-- Max Zhong: map view, frontend, styling
-- Jessa Shi: frontend (react + redux integration) of trips, experiences, budgeting
+- Eric Chau: backend (express + mongoDB integration), memories, S3 upload and user authentication, frameworking and R&D for project itself
+- Max Zhong: map view and React Leaflet implementation, frontend, styling, UX choices and implementation
+- Jessa Shi: frontend (react + redux integration) of trips, experiences, budgeting, as well as working on deployment
