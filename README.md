@@ -52,23 +52,33 @@ attraction, dining, etc.) within a trip, where each experience includes informat
    - virtual DOM only updates necessary parts of the UI
    - broke down UI into reusable functional components for trips, experiences, and memories
    - used react router to navigate within the app
+
+     
 **2. Redux**
    - ‘single source of truth’ applied to trips, experiences, and memories, filtered by user ID
    - used redux toolkit for standardized code
    - extracted data from store for components instead of calling the database too often
+
+     
 **3. Node & Express**
    - Node.js app framework used to build the API and handle HTTP requests for the app
    - organized routes with routers for trips, experiences, memories, point of interest — everything
    - simultaneously ran a 'dev' mode with localhost:PORT alongside the deployed site
    - integrated seamlessly with React/Redux frontend
+
+     
 **4. MongoDB**
    - collection of trips, experiences, as well as point of interest, etc
    - stored data in a flexible and scalable NoSQL database
    - utilized a single database, with multiple collections, each with multiple documents
    - easily modified and monitored fields and types of values in documents
+
+     
 **5. Builds & Deployment**
    - effortless deployment on Render.com, well-suited for MERN stack applications
    - Render features: automatic scaling (Render adjusts resources to handle the traffic to Mapnap), zero downtime deployment, and setup automatic deployment from Git branches.
+
+     
 
 ### Description of "Above and Beyond" functionality
 
