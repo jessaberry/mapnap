@@ -22,13 +22,11 @@ const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png"; // all for
                                                                       // doesnt need to be in .env or private as these are public attributions, not personal
 
 export default function Map() {
-  const trips = useSelector((state) => state.trip.trips);             // grabs trips that are currently in the state
-  const poi = useSelector((state) => state.trip.poi);
-
-  const getPOI = (id, type) => {                                      // helper for poi
-    const loc = poi.find((point) => point.PointOfInterestId === id);
-    return type === "lat" ? loc.Latitude : loc.Longitude;
-  };
+  const trips = [
+    { lat: 35.678748, lng: 139.777746, name: "Tokyo 2022" },
+    { lat: 39.895576, lng: 116.412269, name: "Beijing 2014"},
+    { lat: -15.830496, lng: -47.922526, name: "Brazil 2014" },
+  ];             // grabs trips that are currently in the state
 
   return (
     <PageLayout>
@@ -36,19 +34,16 @@ export default function Map() {
         <h1>Map View</h1>
         <MapContainer center={[35.676, 139.65]} zoom={2} scrollWheelZoom={true}>
           <TileLayer attribution={attrib} url={url} />
-          {trips.length > 0 && trips.map((trip) => {  {/* this entire block is meant to simply render the markers over and over again */}
+          {trips.map(({lat, lng, name}, index) => {  {/* this entire block is meant to simply render the markers over and over again */}
             return (
               <Marker
-                key={trip.TripId}
                 position={[
-                  getPOI(trip.PointOfInterestId, "lat"),
-                  getPOI(trip.PointOfInterestId, "long"),
-                ]}
+                  lat, lng
+                ]} key={index}
               >
                 <Popup>
-                  {trip.Title}
+                  {name}
                   <br />
-                  {trip.Description}
                 </Popup>
               </Marker>
             );
