@@ -47,17 +47,28 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 
 ### Description of Tech from Units 1-5
 
-1. HTML, CSS, JS
-   - CSS: styling
-2. React & Redux
-   - react frontend
-   - redux stores for handling single-state of trips and experiences
-3. Node & Express
-   - express backend with routes for GET, POST, PATCH, DEL trips and experiences
-4. MongoDB
+**1. React**
+   - cleaner, simplified frontend code compared to HTML/CSS/JS
+   - virtual DOM only updates necessary parts of the UI
+   - broke down UI into reusable functional components for trips, experiences, and memories
+   - used react router to navigate within the app
+**2. Redux**
+   - ‘single source of truth’ applied to trips, experiences, and memories, filtered by user ID
+   - used redux toolkit for standardized code
+   - extracted data from store for components instead of calling the database too often
+**3. Node & Express**
+   - Node.js app framework used to build the API and handle HTTP requests for the app
+   - organized routes with routers for trips, experiences, memories, point of interest — everything
+   - simultaneously ran a 'dev' mode with localhost:PORT alongside the deployed site
+   - integrated seamlessly with React/Redux frontend
+**4. MongoDB**
    - collection of trips, experiences, as well as point of interest, etc
-5. Builds & Deployment
-   - deployed on render.com
+   - stored data in a flexible and scalable NoSQL database
+   - utilized a single database, with multiple collections, each with multiple documents
+   - easily modified and monitored fields and types of values in documents
+**5. Builds & Deployment**
+   - effortless deployment on Render.com, well-suited for MERN stack applications
+   - Render features: automatic scaling (Render adjusts resources to handle the traffic to Mapnap), zero downtime deployment, and setup automatic deployment from Git branches.
 
 ### Description of "Above and Beyond" functionality
 
@@ -68,7 +79,7 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 
 ### Next Steps
 
-- As the program itself is somewhat unique compared and maybe a little difficult to onboard users to, having a UI that would show and teach new users how to create and effectively use the application would be extremely useful. Because the program itself is already being built in React, using a library like React Tours could allow new users or users who have not been back in a while to teach themselves on how to use the program. As for other goals that initially were planned as stretch requirements, connecting the program with opentable-react or similar libraries would allow the user experience to be far more streamlined when booking reservations, seeing exactly where they had eaten and various other information related to anything with a reservation. Furthermore, replacing the Leaflet API with Google Maps API would be a good step to make in order to allow the Places API to be used and have a more updated and maintained map, as well as information for specific businesses and landmarks, such as when they open and close, or their respective Google reviews. In order to take this step, we must also be aware that there will be a significant cost in order to gain access to the API, which is necessary yet expensive if we want to continue the development of this application into a more robust and streamlined product.
+As the program itself is somewhat unique compared and maybe a little difficult to onboard users to, having a UI that would show and teach new users how to create and effectively use the application would be extremely useful. Because the program itself is already being built in React, using a library like React Tours could allow new users or users who have not been back in a while to teach themselves on how to use the program. As for other goals that initially were planned as stretch requirements, connecting the program with opentable-react or similar libraries would allow the user experience to be far more streamlined when booking reservations, seeing exactly where they had eaten and various other information related to anything with a reservation. Furthermore, replacing the Leaflet API with Google Maps API would be a good step to make in order to allow the Places API to be used and have a more updated and maintained map, as well as information for specific businesses and landmarks, such as when they open and close, or their respective Google reviews. In order to take this step, we must also be aware that there will be a significant cost in order to gain access to the API, which is necessary yet expensive if we want to continue the development of this application into a more robust and streamlined product.
 
 ### List of Contributions
 
