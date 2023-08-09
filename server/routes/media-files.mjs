@@ -5,18 +5,17 @@ const router = express.Router();
 
 import db from "../db/conn.mjs";
 
-import {mediaFilesCollectionName} from "../common/environments-and-constants.mjs";
+import { mediaFilesCollectionName } from "../common/environments-and-constants.mjs";
 import { ObjectId } from "mongodb";
-import initialMediaFiles from "../data/mediafile.json" assert { type: "json" };;
-
+import initialMediaFiles from "../data/mediafile.json" assert { type: "json" };
 
 router.get("/get-all", async (req, res) => {
   try {
     const collection = await db.collection(mediaFilesCollectionName);
     let results = await collection
-        .find({})
-        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-        .toArray();
+      .find({})
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
     res.send(results).status(200);
   } catch (error) {
     console.error(error);
@@ -25,22 +24,21 @@ router.get("/get-all", async (req, res) => {
 });
 
 router.get("/get-other-public-media-files/:userId", async (req, res) => {
-try {
-  const userId = req.params.userId;
-  const qPublicMemories = {IsPublic: true};
-  const qNotCurrentUser = {UserId: {$ne: userId}};
-  const query = {$and: [qPublicMemories, qNotCurrentUser]};
-  let collection = await db.collection(mediaFilesCollectionName);
-  let results = await collection
+  try {
+    const userId = req.params.userId;
+    const qPublicMemories = { IsPublic: true };
+    const qNotCurrentUser = { UserId: { $ne: userId } };
+    const query = { $and: [qPublicMemories, qNotCurrentUser] };
+    let collection = await db.collection(mediaFilesCollectionName);
+    let results = await collection
       .find(query)
       .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
       .toArray();
-  console.log("results: " + results);
-  res.send(results).status(200);
-}
-catch (error) {
-  res.status(500).json({ message: "failed to get media files" });
-}
+    console.log("results: " + results);
+    res.send(results).status(200);
+  } catch (error) {
+    res.status(500).json({ message: "failed to get media files" });
+  }
 });
 router.get("/by-trip-id/:tripId", async (req, res) => {
   const tripId = req.params.tripId;
@@ -48,9 +46,9 @@ router.get("/by-trip-id/:tripId", async (req, res) => {
   try {
     let collection = await db.collection(mediaFilesCollectionName);
     let results = await collection
-        .find(query)
-        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-        .toArray();
+      .find(query)
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
     res.send(results).status(200);
   } catch (error) {
     console.error(error);
@@ -65,9 +63,9 @@ router.get("/by-user-id/:UserId", async (req, res) => {
   try {
     let collection = await db.collection(mediaFilesCollectionName);
     let results = await collection
-        .find(query)
-        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-        .toArray();
+      .find(query)
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
     res.send(results).status(200);
   } catch (error) {
     console.error(error);
@@ -82,9 +80,9 @@ router.get("/by-country-code/:countryCode", async (req, res) => {
   try {
     let collection = await db.collection(mediaFilesCollectionName);
     let results = await collection
-        .find(query)
-        .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-        .toArray();
+      .find(query)
+      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+      .toArray();
     res.send(results).status(200);
   } catch (error) {
     console.error(error);
@@ -99,9 +97,9 @@ router.get("/by-keyword/", async (req, res) => {
   console.log(query);
   let collection = await db.collection(mediaFilesCollectionName);
   let results = await collection
-      .find(query)
-      .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
-      .toArray();
+    .find(query)
+    .limit(Number(process.env.MONGODB_DEFAULT_MAX_RESULT))
+    .toArray();
   console.log("results: " + results);
   res.send(results).status(200);
 });
@@ -168,7 +166,6 @@ router.delete("/delete-all/", async (req, res) => {
     res.status(500).json({ message: "failed to delete" });
   }
 });
-
 
 router.get("/reset-all/", async (req, res) => {
   try {

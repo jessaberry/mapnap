@@ -20,7 +20,8 @@ const getAllMemories = async () => {
 };
 
 const getMemoryByMemoryId = async (tripId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORY_BY_MEMORY_ID + "/" + tripId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORY_BY_MEMORY_ID + "/" + tripId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -28,7 +29,8 @@ const getMemoryByMemoryId = async (tripId) => {
 };
 
 const getMemoriesByUserId = async (userId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_USER_ID + "/" + userId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORIES_BY_USER_ID + "/" + userId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -36,7 +38,8 @@ const getMemoriesByUserId = async (userId) => {
 };
 
 const getOtherPublicMemories = async (userId) => {
-  const command = apiRoot + MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES + "/" + userId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_OTHER_PUBLIC_MEMORIES + "/" + userId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -44,7 +47,8 @@ const getOtherPublicMemories = async (userId) => {
 };
 
 const getMemoriesByTripId = async (tripId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID + "/" + tripId;
+  const command =
+    apiRoot + MemoryActionTypes.GET_MEMORIES_BY_TRIP_ID + "/" + tripId;
   const response = await fetch(command, {
     method: "GET",
   });
@@ -52,20 +56,23 @@ const getMemoriesByTripId = async (tripId) => {
 };
 
 const getMemoriesByExperienceId = async (experienceId) => {
-  const command = apiRoot + MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID + "/" + experienceId;
+  const command =
+    apiRoot +
+    MemoryActionTypes.GET_MEMORIES_BY_EXPERIENCE_ID +
+    "/" +
+    experienceId;
   const response = await fetch(command, {
     method: "GET",
   });
   return response.json();
 };
 
-
-
 const upsertSingleMemory = async (trip) => {
   if (!trip._id) {
     trip._id = new ObjectId();
   }
-  const command = apiRoot + MemoryActionTypes.UPSERT_SINGLE_MEMORY + "/" + trip._id;
+  const command =
+    apiRoot + MemoryActionTypes.UPSERT_SINGLE_MEMORY + "/" + trip._id;
   const response = await fetch(command, {
     method: "PUT",
     headers: {
@@ -128,4 +135,3 @@ export default {
 
   resetAllMemories,
 };
-

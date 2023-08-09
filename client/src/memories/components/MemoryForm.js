@@ -2,7 +2,7 @@ import * as React from "react";
 import { Form, Field } from "redux-form";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import {Button, TextField, Typography} from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 import "react-dropzone-uploader/dist/styles.css";
@@ -32,8 +32,6 @@ function MemoryForm(props, children) {
       <form onSubmit={handleSubmit(submit)}>
         <TextField id="title"></TextField>
         <TextField id="description"></TextField>
-
-
       </form>
     </>
   );
