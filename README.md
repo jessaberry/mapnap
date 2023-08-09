@@ -83,6 +83,8 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 ### Description of "Above and Beyond" functionality
 
 External APIs
+
+
 **1.	Auth0 for authentication control**
 -	Allow granular control of authentication and authorization
 -	Secure protected area and handle redirect
