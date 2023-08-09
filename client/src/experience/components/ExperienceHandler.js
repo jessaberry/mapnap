@@ -11,6 +11,7 @@ const ExperienceHandler = ({ trip, poi, handleAddExperience }) => {
     StartingLocalDateTime: new Date(),
     EndingLocalDateTime: new Date(),
   });
+  const [updatedTrip, setUpdatedTrip] = useState({trip});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,9 @@ const ExperienceHandler = ({ trip, poi, handleAddExperience }) => {
       ...prevData,
       StartingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
     }));
+    if (updatedTrip.StartingPointOfInterestId === "") {
+      updateStartTrip(newValue);
+    }
   };
 
   const handleEndChange = (event, newValue) => {
@@ -29,7 +33,21 @@ const ExperienceHandler = ({ trip, poi, handleAddExperience }) => {
       ...prevData,
       EndingPointOfInterestId: newValue ? newValue.PointOfInterestId : "",
     }));
+    updateEndTrip(newValue);
   };
+
+  const updateStartTrip = (poi) => {
+    setUpdatedTrip((prevTrip) => ({
+      ...prevTrip,
+      StartingPointOfInterestId: poi,
+    }));
+  }
+  const updateEndTrip = (poi) => {
+    setUpdatedTrip((prevTrip) => ({
+      ...prevTrip,
+      EndingPointOfInterestId: poi,
+    }))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
