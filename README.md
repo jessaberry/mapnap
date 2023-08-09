@@ -68,6 +68,7 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 - TODO
 
 ### List of Contributions
+
 - Eric Chau: backend (express + mongoDB integration), memories, S3 upload and user authentication
 - Max Zhong: map view, frontend, styling
 - Jessa Shi: frontend (react + redux integration) of trips, experiences, budgeting

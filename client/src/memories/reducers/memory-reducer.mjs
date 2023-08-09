@@ -14,7 +14,6 @@ import {
 } from "./memory-thunks.mjs";
 import { apiRoot, REQUEST_STATE } from "../../common/global.mjs";
 
-
 const defaultSelectedMemoryId = "632fe308-ec3b-4d86-b2ea-03f2aa936ba7";
 const defaultMemoryList = [
   {
@@ -290,33 +289,33 @@ export const memoryReducer = createSlice({
         state.error = action.error;
       });
 
-        builder
-            .addCase(upsertSingleMemoryAsync.pending, (state) => {
-                state.upsertSingleMemory = REQUEST_STATE.PENDING;
-                state.error = null;
-            })
-            .addCase(upsertSingleMemoryAsync.fulfilled, (state, action) => {
-                state.upsertSingleMemory = REQUEST_STATE.FULFILLED;
-                state.memories.push(action.payload);
-            })
-            .addCase(upsertSingleMemoryAsync.rejected, (state, action) => {
-                state.upsertSingleMemory = REQUEST_STATE.REJECTED;
-                state.error = action.error;
-            });
+    builder
+      .addCase(upsertSingleMemoryAsync.pending, (state) => {
+        state.upsertSingleMemory = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(upsertSingleMemoryAsync.fulfilled, (state, action) => {
+        state.upsertSingleMemory = REQUEST_STATE.FULFILLED;
+        state.memories.push(action.payload);
+      })
+      .addCase(upsertSingleMemoryAsync.rejected, (state, action) => {
+        state.upsertSingleMemory = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      });
 
-        builder
-            .addCase(deleteMemoryByMemoryIdAsync.pending, (state) => {
-                state.deleteMemoryByMemoryId = REQUEST_STATE.PENDING;
-                state.error = null;
-            })
-            .addCase(deleteMemoryByMemoryIdAsync.fulfilled, (state, action) => {
-                state.deleteMemoryByMemoryId = REQUEST_STATE.FULFILLED;
-                state.memories = {Memories: action.payload};
-            })
-            .addCase(deleteMemoryByMemoryIdAsync.rejected, (state, action) => {
-                state.deleteMemoryByMemoryId = REQUEST_STATE.REJECTED;
-                state.error = action.error;
-            });
+    builder
+      .addCase(deleteMemoryByMemoryIdAsync.pending, (state) => {
+        state.deleteMemoryByMemoryId = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(deleteMemoryByMemoryIdAsync.fulfilled, (state, action) => {
+        state.deleteMemoryByMemoryId = REQUEST_STATE.FULFILLED;
+        state.memories = { Memories: action.payload };
+      })
+      .addCase(deleteMemoryByMemoryIdAsync.rejected, (state, action) => {
+        state.deleteMemoryByMemoryId = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      });
 
     builder
       .addCase(deleteAllMemoriesAsync.pending, (state) => {

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-    getExperiencesAsync,
-    addExperienceAsync,
-    deleteExperienceAsync,
-    updateExperienceAsync,
-    getExperiencesByUserIdAsync,
-    getExperiencesByTripIdAsync
+  getExperiencesAsync,
+  addExperienceAsync,
+  deleteExperienceAsync,
+  updateExperienceAsync,
+  getExperiencesByUserIdAsync,
+  getExperiencesByTripIdAsync,
 } from "./thunksExperience";
 import { REQUEST_STATE, INITIAL_STATE } from "./stateExperience";
 
@@ -19,15 +19,15 @@ export const expSlice = createSlice({
       state.experiences = action.payload;
     });
 
-        builder.addCase(getExperiencesByUserIdAsync.fulfilled, (state, action) => {
-            state.getExperiencesByUserId = REQUEST_STATE.FULFILLED;
-            state.experiences = action.payload;
-        });
+    builder.addCase(getExperiencesByUserIdAsync.fulfilled, (state, action) => {
+      state.getExperiencesByUserId = REQUEST_STATE.FULFILLED;
+      state.experiences = action.payload;
+    });
 
-        builder.addCase(getExperiencesByTripIdAsync.fulfilled, (state, action) => {
-            state.getExperiencesByTripId = REQUEST_STATE.FULFILLED;
-            state.experiences = action.payload;
-        });
+    builder.addCase(getExperiencesByTripIdAsync.fulfilled, (state, action) => {
+      state.getExperiencesByTripId = REQUEST_STATE.FULFILLED;
+      state.experiences = action.payload;
+    });
 
     builder.addCase(addExperienceAsync.fulfilled, (state, action) => {
       state.addExperience = REQUEST_STATE.FULFILLED;
@@ -42,25 +42,25 @@ export const expSlice = createSlice({
       state.error = action.error;
     });
 
-        builder.addCase(getExperiencesByTripIdAsync.pending, (state, action) => {
-            state.getExperiencesByTripId = REQUEST_STATE.PENDING;
-            state.experiences = action.payload;
-        });
+    builder.addCase(getExperiencesByTripIdAsync.pending, (state, action) => {
+      state.getExperiencesByTripId = REQUEST_STATE.PENDING;
+      state.experiences = action.payload;
+    });
 
-        builder.addCase(deleteExperienceAsync.fulfilled, (state, action) => {
-            state.deleteExperience = REQUEST_STATE.FULFILLED;
-            state.experiences = state.experiences.filter(
-                (experience) => experience.ExperienceId !== experience.payload
-            );
-        });
-        builder.addCase(deleteExperienceAsync.pending, (state, action) => {
-            state.deleteExperience = REQUEST_STATE.PENDING;
-            state.error = null;
-        });
-        builder.addCase(deleteExperienceAsync.rejected, (state, action) => {
-            state.deleteExperience = REQUEST_STATE.REJECTED;
-            state.error = action.error;
-        });
+    builder.addCase(deleteExperienceAsync.fulfilled, (state, action) => {
+      state.deleteExperience = REQUEST_STATE.FULFILLED;
+      state.experiences = state.experiences.filter(
+        (experience) => experience.ExperienceId !== experience.payload
+      );
+    });
+    builder.addCase(deleteExperienceAsync.pending, (state, action) => {
+      state.deleteExperience = REQUEST_STATE.PENDING;
+      state.error = null;
+    });
+    builder.addCase(deleteExperienceAsync.rejected, (state, action) => {
+      state.deleteExperience = REQUEST_STATE.REJECTED;
+      state.error = action.error;
+    });
 
     builder.addCase(updateExperienceAsync.fulfilled, (state, action) => {
       state.updateExperience = REQUEST_STATE.FULFILLED;
@@ -80,7 +80,6 @@ export const expSlice = createSlice({
     });
   },
 });
-
 
 export const { addExperience, deleteExperience, updateExperience } =
   expSlice.actions;
