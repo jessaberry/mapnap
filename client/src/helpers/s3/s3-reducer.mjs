@@ -1,5 +1,5 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { apiRoot, REQUEST_STATE } from "../../common/global.mjs";
+import { createSlice } from "@reduxjs/toolkit";
+import { REQUEST_STATE } from "../../common/global.mjs";
 import getPresignedUploadUrlAsync from "./s3-thunks.mjs";
 
 const defaultUploadUrl = "";

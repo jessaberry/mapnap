@@ -26,7 +26,6 @@ const getActivityExpenses = (experiences, expenses) => {
       }
     }
   });
-
   return activityExpenses;
 };
 

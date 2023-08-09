@@ -77,7 +77,7 @@ export default function Memory(props, children) {
   const { user } = useAuth0();
   const userId = user.sub;
 
-    const handleOpen = () => {
+  const handleOpen = () => {
     setIsShown(true);
   };
   const handleClose = () => {
@@ -86,7 +86,6 @@ export default function Memory(props, children) {
   };
 
   useEffect(() => {
-
     dispatch(getMemoriesByUserIdAsync(userId));
     dispatch(getTripsByUserIdAsync(userId));
     dispatch(getExperiencesByUserIdAsync(userId));

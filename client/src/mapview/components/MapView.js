@@ -10,7 +10,10 @@ import { PageLayout } from "../../content/template/page-layout.mjs";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getTripsByUserIdAsync, getPOIAsync } from "../../trip/reducers/thunksTrip";
+import {
+  getTripsByUserIdAsync,
+  getPOIAsync,
+} from "../../trip/reducers/thunksTrip";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
