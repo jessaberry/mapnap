@@ -12,7 +12,7 @@ import {
   resetAllMemoriesAsync,
   getOtherPublicMemoriesAsync,
 } from "./memory-thunks.mjs";
-import { apiRoot, REQUEST_STATE } from "../../common/global.mjs";
+import { REQUEST_STATE } from "../../common/global.mjs";
 
 const defaultSelectedMemoryId = "632fe308-ec3b-4d86-b2ea-03f2aa936ba7";
 const defaultMemoryList = [

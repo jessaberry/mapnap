@@ -70,18 +70,6 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 export default function Trip(props) {
   const [open, setOpen] = useState(false);
 
@@ -209,7 +197,7 @@ export default function Trip(props) {
               Add a Trip
             </BootstrapDialogTitle>
             <DialogContent dividers>
-              <TripForm handleAddTrip={handleAddTrip} poi={poi}/>
+              <TripForm handleAddTrip={handleAddTrip} poi={poi} />
             </DialogContent>
             <DialogActions>
               <Button autoFocus onClick={handleClose}>

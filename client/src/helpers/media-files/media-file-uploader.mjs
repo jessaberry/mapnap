@@ -4,7 +4,6 @@ import Uploady, {
   withRequestPreSendUpdate,
   useItemFinalizeListener,
   useItemProgressListener,
-  useItemStartListener,
 } from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import UploadPreview, { PREVIEW_TYPES } from "@rpldy/upload-preview";
@@ -14,7 +13,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Circle } from "rc-progress";
 import { getPresignedUploadUrlAsync } from "../s3/s3-thunks.mjs";
-import Box from "@mui/material/Box/Box.js";
 import ObjectID from "bson-objectid";
 
 const UploadProgress = () => {

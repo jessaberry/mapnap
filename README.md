@@ -64,7 +64,7 @@ attraction, dining, etc.) within a trip, where each experience includes informat
 - TODO: describe functionality, research, design, learning, debugging, documentation, or some other area
 - explain what the team has accomplished
 - explain why this goes beyond the complexity of other projects
-- 
+-
 
 ### Next Steps
 

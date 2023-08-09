@@ -1,11 +1,9 @@
 import * as React from "react";
 import { Button, Select, TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import MediaFileUploader from "../../helpers/media-files/media-file-uploader.mjs";
-import ObjectID from "bson-objectid";
 import { upsertSingleMemoryAsync } from "../reducers/memory-thunks.mjs";
 
 const initialState = {
@@ -30,12 +28,9 @@ function MemoryForm(props, children) {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    const memoryId = new ObjectID();
     dispatch(upsertSingleMemoryAsync(data));
     setButtonEnabled(true);
   };
@@ -57,7 +52,6 @@ function MemoryForm(props, children) {
     }
   };
 
-  const { error, pristine, submitting } = props;
   return (
     <div style={{ width: 500 + "px" }}>
       <MediaFileUploader
@@ -160,7 +154,12 @@ function MemoryForm(props, children) {
         <br />
         <br />
 
-        <Button type="submit" fullWidth={true} className="SauderButton" disabled={!buttonEnabled}>
+        <Button
+          type="submit"
+          fullWidth={true}
+          className="SauderButton"
+          disabled={!buttonEnabled}
+        >
           Add Memory
         </Button>
       </form>

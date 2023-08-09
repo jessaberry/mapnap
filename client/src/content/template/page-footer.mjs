@@ -1,6 +1,4 @@
 import React from "react";
-import { PageFooterHyperlink } from "../widgets/navigation/page-footer-hyperlink.mjs";
-import socialShare from "../widgets/buttons/social-share.mjs";
 import SocialButtons from "../widgets/buttons/social-share.mjs";
 
 export const PageFooter = () => {
