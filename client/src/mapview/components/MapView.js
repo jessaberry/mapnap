@@ -17,6 +17,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const attrib =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>';
+
 const url = "https://{s}.tile.openstreetmap.fr/hot//{z}/{x}/{y}.png";
 
 export default function Map() {
@@ -55,6 +56,7 @@ export default function Map() {
     <PageLayout>
       <div>
         <h1>Map View</h1>
+
         {markerArray.length === 0 ? (
           <div>Loading...</div>
         ) : (

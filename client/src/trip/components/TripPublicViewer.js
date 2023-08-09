@@ -28,6 +28,7 @@ const TripPublicViewer = ({
           {visible === trip.TripId && (
             <TripExpViewer
               trip={trip}
+              poi={poi}
               getExperiences={getExperiences}
               handleDeleteExperience={null}
             />
