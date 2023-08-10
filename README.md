@@ -10,11 +10,17 @@ If a user so chooses, they can then share their trip with their friends over the
 
 Access Mapnap here: https://mapnap.onrender.com/
 
-Demo user:
+**IMPORTANT:**
 
-USERID: jessashi96@gmail.com
+The `create new user` functionality is currently under development, and does not currently add trips as intended. Please use one of the following demo users below while accessing the app:
 
-PASSWORD: H0tP0t@AYC3
+1. USER 1
+- USERID: eric@devcube.net
+- PASSWORD: Saud3r@UBC
+
+2. USER 2
+- USERID: jessashi96@gmail.com
+- PASSWORD: H0tP0t@AYC3
 
 ### Statement of goals:
 
