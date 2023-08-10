@@ -10,6 +10,12 @@ If a user so chooses, they can then share their trip with their friends over the
 
 Access Mapnap here: https://mapnap.onrender.com/
 
+Demo user:
+
+USERID: jessashi96@gmail.com
+
+PASSWORD: H0tP0t@AYC3
+
 ### Statement of goals:
 
 ##### Minimal goals
